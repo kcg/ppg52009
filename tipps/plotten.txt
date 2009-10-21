@@ -1,0 +1,30 @@
+Plotten von Graphen
+===================
+
+Für jeden Plot sollte ein Skript in der jeweiligen Programmiersprache erstellt werden, sodass die Plots reproduzierbar sind. Das ist wichtig, wenn die Daten sich ändern sollten, der Stil angepasst wird oder Fehler entdeckt werden.
+
+
+Gnuplot
+=======
+
+Gnuplot eignet sich für unsere Zwecke als wissenschaftliches Plotwerkzeug.
+-Ausgabe im Vektorformat svg
+-Nichtlineare Fits an beliebige Modellfunktionen
+
+
+
+Python Matplotlib
+=================
+
+http://matplotlib.sourceforge.net/ , http://www.scipy.org/Cookbook
+Python Matplotlib eignet sich hervorragend zum Erstellen wissenschaftlicher Graphen. Als turing-vollständige Programmiersprache bietet es praktisch alle denkbaren Möglichkeiten. Die Bibliothek Scipy enthält eine riesige Fülle an wissenschaftlichen Funktionen, wie nichtlineare Fits mit Fehlern in verschiedene Dimensionen und Optimierungsroutinen.
+-Ausgabe direkt in pdf
+-alle erdenklichen Fit-Algorithmen
+-sehr schöne leserliche Plots
+
+
+
+Cern Root
+=========
+
+Scheint von vielen Profis verwendet zu werden. Wer kennt sich aus und kann ein template schreiben?

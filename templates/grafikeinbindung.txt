@@ -1,0 +1,10 @@
+Grafiken sollten in einer Figure-Umgebung untergebracht sein. Dann kann Latex sie dort platzieren wo sie am besten hinpassen, sie sind referenzierbar und haben eine Unterschrift. Das Paket "float" ermöglicht noch die Option \begin{figure}[H], so dass die Platzierung an einer Stelle erzwungen wird. Der vspace ist notwendig, weil die center-Umgebung einen zusätzlichen Umbruch erzeugt.
+
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=0.9\textwidth]{images/bildname.pdf}
+\end{center}
+\vspace{-1.5\baselineskip}
+\caption{Bildunterschrift}
+\label{grafikreferenz}
+\end{figure}

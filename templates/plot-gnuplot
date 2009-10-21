@@ -1,0 +1,20 @@
+# Die Datei kann mit gnuplot aufgerufen werden
+# Daten muss pro Zeile ein whitespace-getrenntes Datentupel enthalten
+
+
+# Ausgabemodus
+set term svg size 450,300
+set output "bild.svg"
+
+# Modellfunktion
+f(x) = a*x**2 + b*x + c
+
+# Fitten mit Daten aus "daten" und Ergebnis in a,b,c speichern
+fit f(x) "daten" via a,b,c
+
+# Plotten
+plot f(x), "daten"
+
+
+# Die Ausgabe kann von Inkscape aus nach pdf konvertiert werden.
+# Die svg-Ausgabe von gnuplot ist manchmal etwas verbuggt. Wer kennt ein workaround?

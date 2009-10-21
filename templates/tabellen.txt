@@ -1,0 +1,15 @@
+Tabellen werden mit "tabular" erzeugt. Es empfiehlt sich eine table-Umgebung.
+
+Grafiken sollten in einer Figure-Umgebung untergebracht sein. Dann kann Latex sie dort platzieren wo sie am besten hinpassen, sie sind referenzierbar und haben eine Unterschrift. Das Paket "float" ermöglicht noch die Option \begin{figure}[H], so dass die Platzierung an einer Stelle erzwungen wird. Der vspace ist notwendig, weil die center-Umgebung einen zusätzlichen Umbruch erzeugt.
+
+\begin{table}[h]
+\captionabove{Tabellenüberschrift}
+\begin{center}
+\begin{tabular}{c|cc}
+Name & a & b \\
+\hline
+Wert & 1 & 2
+\end{tabular}
+\end{center}
+\label{tabellenreferenz}
+\end{table}
