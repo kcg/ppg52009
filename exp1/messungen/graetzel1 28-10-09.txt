@@ -1,6 +1,6 @@
 # Spannung der ersten Graetzelzelle 28-10-09
 # Reduzierte Daten, Dunkelspannung abgezogen
-# Nummer	Ug [mV]	Helligkeit [klux]
+# LED-Nummer	Ug [mV]	Helligkeit [klux]
 1	0.258	1.79
 2	0.324	1.65
 3	0.202	0.486
