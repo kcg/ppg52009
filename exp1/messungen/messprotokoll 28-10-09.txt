@@ -1,0 +1,105 @@
+Messprotokoll 28.10.2009
+========================
+
+Nachdem die erste Grätzlzelle fertiggestellt war, wurden die ersten Messungen daran durchgeführt.
+
+Messaufbau:
+-Die Leiste mit LEDs liegt auf dem Tisch mit Leuchtrichtung nach oben.
+-Farben: 1=rot, 2=rot, 3=orange, 4=grün, 5=türkis, 6=blau, 7=violett-blau, 8=weiß, 9=weiß, 10=weiß
+-Messaparatur. Der Cassy-Luxsensor zeigt an der stativstange senkrecht nach unten auf die LEDs. Die Zelle hängt ein Stück daneben mit der TiO2-Seite nach unten und darunter eine Blende, die auf den Kernbereich der Zelle Konzenzriert ist.
+
+
+
+Kurzschlussstrom
+================
+
+Grobe Messung mit dem Multimeter direkt in Reihe geschaltet.
+
+dunkel: 0,5 µA
+Raumlicht: 0,6 µA
+eine LED: 0,8 µA
+
+
+
+Spannungsabschätzung
+====================
+
+Grobe Messung mit Multimeter und Messverstärker, beide parallel direkt an der Zelle angeschlossen.
+
+Beleuchtung   -   U [mV] Multimeter   -   U [mV] nach Messverstärker
+--------------------------------------------------------------------
+Raumlicht	3.8	-0.59
+Raumlicht+LED5	4.8	0.41
+Raumlicht+LED1	3.7	-0.80
+Raumlicht	3.5	-1.00
+dunkel		2.9	-1.6
+LED5		4.3	-0.13
+LED1		3.0	-1.45
+
+
+
+LUX-Messung
+===========
+
+Messung mit dem Cassy. Integrationszeit 1000ms
+Wartezeit bis zum Stabilisieren lag grob bei ca. 1min.
+Abstand LED-Sensor: ca. 12cm
+
+
+LED   -   LUX [klx]   -   Abweichung
+--------------------------------------------------------------------
+# Messbereich: 10klx
+1	1.79	0.01
+2	1.65	0.01
+3	0.486	0.01
+# Messbereich: 3klx
+4	0.003	0.02	# sehr schwach
+5	1.698	0.001
+6	1.965	0.01
+7	2.031	0.0001
+8	2.796	0.0001
+9	2.152	0.0001
+10	2.136	0.0001
+# Messbereich: 100lx
+4	0.0008	0.0001
+ohne	0.0000	
+
+
+
+die LUX und Grätzel-Messung sind unter vergleichbaren Bedingungen durchgeführt worden, so dass die LUX-Messung für die Grätzel-Messung als Referenz dienen kann.
+
+
+
+LED-Grätzel Messung
+===================
+
+Messung mit Multimeter und Messverstärker.
+Abstand LED-Zelle: ca. 12cm
+Blendendurchmesser: ca. 1.8cm
+Die Spannung wurde ohne Widerstand direkt an der Zelle abgegriffen.
+Die Verstärkten Spannungen sind genauer, enthalten aber einen unbekannten Offset, der sich während der Messung einmal ändert. Die relativen unterschiede sollten immer gleich sein.
+
+
+
+LED   -   U [mV]   -   U_verstärker [mV]  (gedriftet von hier)
+--------------------------------------------------------------------
+# Verstärkung um 10^3 (ist aber schon rausgerechnet)
+dunkel	1.9	-0.780
+1	2.1	-0.552
+2	2.2	-0.518
+3	2.0	-0.672	(-0.645)
+4	1.8	-0.919	(-0.795)
+5	4.5	1.800	(1.0)
+dunkel	1.8	-0.965	(0.0)
+# Ab hier Verstärkung um 10^2 und neuer Offset
+6	6.8	2.86	(1.4)
+7	8.2	4.23	(0.1)
+8	6.3	2.30	(0.03)
+9	4.1	0.13	(-0.01)
+10	3.6	-0.39	(0.06)
+dunkel	1.6	-2.45
+
+Die Fehler beim Verstärker sind so in etwa 0.01 mV
+
+
+
