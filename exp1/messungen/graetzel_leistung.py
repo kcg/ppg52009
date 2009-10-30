@@ -18,9 +18,9 @@ def fitfunc(p, xx):
 
 # Abstandsfunktion zwischen Modell und Daten
 # Muss nur modifiziert werden, wenn unterschiedliche Einzelfehler vorliegen
-def errfunc(p, x, y):
+def errfunc(p, x, y, delta_y):
 	yw = fitfunc(p,x)
-	return [yw[i] - y[i] for i in range(len(x))]
+	return [(yw[i] - y[i]) / delta_y[i] for i in range(len(x))]
 
 ifile = open(filename, "r")
 data = []
@@ -44,8 +44,7 @@ for linetext in ifile.readlines():
 R1 = [i[0] for i in data]
 U = [i[1] for i in data]
 I = [i[2] for i in data]
-P = [i[3] for i in data]
-R2 = [i[4] for i in data]
+P = [i[1] * i[2] for i in data]
 
 U_error = 0.2
 I_error = 0.1
@@ -55,21 +54,25 @@ P_error = [P[i] * sqrt((U_error/U[i])**2 + (I_error/I[i])**2) for i in range(len
 p0 = [150., 19., 6.]
 
 # Fit durchführen
-p1, success = optimize.leastsq(errfunc, p0[:], args=(R1, P))
+p1, success = optimize.leastsq(errfunc, p0[:], args=(R1, P, P_error))
 print p1
 
 xarray = pylab.linspace(R1[0]-2., R1[-1]+2., 100)
 
-pylab.plot(xarray, fitfunc(p1, xarray), "b-")
-pylab.errorbar(R1, P, P_error, None, "ro")
+pylab.plot(xarray, fitfunc(p1, xarray), "k-", label='$(%.0f\,\mathrm{mV})^2 \cdot \\frac{R+%.1f\,\mathrm{k\Omega}}{(R+%.1f\,\mathrm{k\Omega}+%.1f\,\mathrm{k\Omega})^2}$' % (p1[0], p1[2], p1[2], p1[1]))
+pylab.errorbar(R1, P, P_error, None, "bo", label="Messwerte")
 pylab.xlim(R1[0] -2.5, R1[-1]+2.5)
-pylab.ylim(0., 350.)
+pylab.ylim(0., 330.)
 
-#pylab.title(u"ein Plot")
 pylab.xlabel(u"$R\; [\mathrm{k\Omega}]$")
 pylab.ylabel(u"$P\; [\mathrm{nW}]$")
 
-pylab.legend(('$(%.0f\,\mathrm{V})^2 \cdot \\frac{R+%.1f\,\mathrm{k\Omega}}{(R+%.1f\,\mathrm{k\Omega}+%.1f\,\mathrm{k\Omega})^2}$' % (p1[0], p1[2], p1[2], p1[1]), 'Fehler', 'Fehler', 'Messwerte'), loc=4)
+pylab.legend(loc='lower right')
+
+x_max = p1[1] - p1[2]
+y_max = p1[0]**2 / (4. * p1[1])
+pylab.annotate('%.0f nW' % (y_max,), xy=(x_max, y_max+18),  xycoords='data', horizontalalignment='center', verticalalignment='bottom')
+
 
 # Speichern
 pylab.gcf().set_size_inches(6, 4)
