@@ -111,7 +111,7 @@ Die Gegenelektrode ist mit einem Katalysator, oft Platin, beschichtet, um die \"
 \section{Aufbau}
 \subsection{Materialien, Beschaffung und Bau der Zelle}
 %%% Karl
-Die Beschaffung der f\"ur den Bau ben\"otigten Materialien stellte zu Beginn ein Problem dar. Insbesondere war es schwer, leitende und gleichzeitig transparente Elektroden zu bekommen. Die erste M\"oglichkeit, mit Gold beschichtet Glaspl\"attchen, zu verwenden, scheiterte an den zu geringen Ausma\ss{}en der m\"oglichen Tr\"agerplatten. Zu lange Lieferzeiten und zu hohe Prei\ss{}e schlossen auch die Bestellung von industriell produzierten ITO-Gl\"asern (Indiumzinnoxid-Beschichtung) aus.
+Die Beschaffung der f\"ur den Bau ben\"otigten Materialien stellte zu Beginn ein Problem dar. Insbesondere war es schwer, leitende und gleichzeitig transparente Elektroden zu bekommen. Die erste M\"oglichkeit, mit Gold beschichtet Glaspl\"attchen, zu verwenden, scheiterte an den zu geringen Ausma\ss{}en der m\"oglichen Tr\"agerplatten. Zu lange Lieferzeiten und zu hohe Preise schlossen auch die Bestellung von industriell produzierten ITO-Gl\"asern (Indiumzinnoxid-Beschichtung) aus.
 
 Das Institut der Physikalischen Chemie der Universit\"at Erlangen stellte gl\"ucklicherweise mehrere Fluorzinnoxid (FTO) beschichtete Glasplatten zur Verf\"ugung. Die leitend beschichteten, transparenten Glasplatten waren bereits auf eine Gr\"o\ss{}e von \(70\unit{mm} \times 20\unit{mm} \times 4 \unit{mm}\) zugeschnitten. Auf der leitenden Seite der Glasplatte konnte mit Hilfe eines Multimeters ein Widerstand von etwa \(20 \unit{\frac{\Omega}{cm}}\) gemessen werden.
 
@@ -167,7 +167,9 @@ Um mehrere Paare an Messwerten zu erhalten, wurde wie zu sehen ist, ein regelbar
 \subsection{Leistung und Wirkungsgrad}
 Zur Leistungsmessung wurden die Strom- und Spannungswerte der Zelle mit einer spannungsrichtigen Schaltung nach (Abb.~\ref{leistungsschaltkreis}) bei verschiedenen Lastwiderständen gemessen. Die Lastwiderstände waren über eine Kombinationsbox einstell- und ablesbar. Das Voltmeter hatte mit $10\unit{M\Omega}$ genügend Eigenwiderstand um die Messung nicht zu beeinflussen. Das Amperemeter hatte jedoch wegen der hohen benötigten Empfindlichkeit einen signifikanten Eigenwiderstand von
 \[
-R_I = 5,22\pm 0,03 \unit{k\Omega}\;.
+R_I = 5,22\pm 0,03 \unit{k\Omega}
+\qquad\qquad\qquad
+R = R_I+R_{\text{L}}\;.
 \]
 Der zusätzliche Lastwiderstand $R$ wurde nun im Bereich 0 -- $40\unit{k\Omega}$ variiert und jeweils wenige Minuten gewartet bis sich stationäre Werte einstellten. Die Messwerte stehen in Tabelle \ref{leistungsmesstabelle}.
 \begin{table}[ht]
@@ -175,7 +177,7 @@ Der zusätzliche Lastwiderstand $R$ wurde nun im Bereich 0 -- $40\unit{k\Omega}$
 \begin{center}
 \begin{tabular}{rr|ccc}
 $R_{\text{L}}[\unit{k\Omega}]$ &
-$R = R_I+R_{\text{L}} [\unit{k\Omega}]$ &
+$R [\unit{k\Omega}]$ &
 $U [\unit{mV}]$ &
 $I [\unit{\mu A}]$ &
 $P [\unit{nW}]$ \\
@@ -206,7 +208,7 @@ Die Ableseungenauigkeit durch die begrenzte Anzeigegenauigkeit und Messwertschan
 \]
 Die größte Ungenauigkeit lag also im Messen der winzigen Ströme.
 
-Der Leistungsverlauf zeigt ein Maximum bei Mittleren Widerständen (im Bereich des Eigenwiderstandes der Zelle). Bei geringen Widerständen wird die meißte Leistung in der Zelle selbst freigesetzt und bei hohen Widerstand sorgt der geringe Stromfluss für eine schlechte Leistungsausbeute.
+Der Leistungsverlauf zeigt ein Maximum bei mittleren Widerständen (im Bereich des Eigenwiderstandes der Zelle). Bei geringen Widerständen wird die meißte Leistung in der Zelle selbst freigesetzt und bei hohen Widerstand sorgt der geringe Stromfluss für eine schlechte Leistungsausbeute.
 \begin{figure}[ht]
 \begin{center}
 %%% Zeichnung mit xcircuit
