@@ -1,0 +1,12 @@
+\select@language {ngerman}
+\contentsline {section}{\numberline {1}Einleitung}{3}
+\contentsline {section}{\numberline {2}Theorie}{3}
+\contentsline {subsection}{\numberline {2.1}B\"andermodell und Halbleitertechnik}{3}
+\contentsline {subsection}{\numberline {2.2}Funktionsweise der Gr\"atzelzelle}{4}
+\contentsline {section}{\numberline {3}Aufbau}{4}
+\contentsline {subsection}{\numberline {3.1}Materialien, Beschaffung und Bau der Zelle}{4}
+\contentsline {subsection}{\numberline {3.2}Versuchsanordnung}{5}
+\contentsline {section}{\numberline {4}Messungen und Ergebnisse}{7}
+\contentsline {subsection}{\numberline {4.1}Leistung und Wirkungsgrad}{7}
+\contentsline {subsection}{\numberline {4.2}Wellenl\"ange}{9}
+\contentsline {section}{\numberline {5}Fazit}{9}
