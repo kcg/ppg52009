@@ -9,4 +9,6 @@
 \contentsline {section}{\numberline {4}Messungen und Ergebnisse}{7}
 \contentsline {subsection}{\numberline {4.1}Leistung und Wirkungsgrad}{7}
 \contentsline {subsection}{\numberline {4.2}Wellenl\"ange}{9}
-\contentsline {section}{\numberline {5}Fazit}{9}
+\contentsline {subsubsection}{\numberline {4.2.1}Ermittlung der LED-Helligkeiten}{10}
+\contentsline {subsubsection}{\numberline {4.2.2}Wellenl\IeC {\"a}ngenempfindlichkeit der Gr\IeC {\"a}tzelzelle}{11}
+\contentsline {section}{\numberline {5}Fazit}{11}
