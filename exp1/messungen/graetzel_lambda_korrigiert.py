@@ -77,32 +77,33 @@ hell = [lux[i] / V(lam[i]) for i in range(color_diods)]
 max_hell = max(hell)
 hell_norm = [i / max_hell for i in hell]
 
-print hell_norm
 
 E = [U[i] / hell[i] for i in range(color_diods)]
 max_E = max(E)
 E_norm = [i / max_E for i in E]
-print E_norm
 
 
 # Spline Interpolation
 #lam.reverse()
 #E_norm.reverse()
 #newx = pylab.linspace(400, 660, 100)
-#newx)
 #tck = scipy.interpolate.splrep(lam,E_norm)
 #newy = scipy.interpolate.splev(newx,tck,der=0)
+#print [[lam[i], E_norm[i]] for i in range(len(lam))]
+# Spline-liste von mathematica
+x_spline = [420., 430., 440., 450., 460., 470., 480., 490., 500., 510., 520., 530., 540., 550., 560., 570., 580., 590., 600., 610., 620., 630., 640, 650., 660.]
+y_spline = [1.001, 1., 0.998, 0.991, 0.973, 0.938, 0.883, 0.813, 0.734, 0.654, 0.578, 0.507, 0.440, 0.379, 0.321, 0.269, 0.220, 0.175, 0.134, 0.100, 0.073, 0.056, 0.046, 0.039, 0.035]
 
 
 
-#pylab.plot(newx, newy)
+pylab.plot(x_spline, y_spline)
 pylab.plot(lam, E_norm, "bo")
 pylab.xlim(380., 700.)
 pylab.ylim(0., 1.1)
 
 pylab.xlabel(u"$\lambda\; [\mathrm{nm}]$")
 pylab.ylabel(u"$V$ (Energieeffizienz)")
-pylab.legend((u"Messung",), loc='upper right')
+pylab.legend((u"Spline-Fit", u"Messung",), loc='upper right')
 
 # Speichern
 pylab.gcf().set_size_inches(6, 4)
