@@ -1,6 +1,26 @@
 Ich hab hier mal ein paar von den Bildern auf meinen Webspace geladen.
 Ladet einfach die Bilder, wo ihr fuers Protokoll braucht ins git rueber. 
 
-Hier die Links: 
-[kommen noch ;-) ]
+
+Hier die Links zu den Bilder von der Zelle, dem Versuch und den exklusiven "Making Of Bildern":
+
+http://pics.benaxi.de/axi/ppg52009/ex1/pic_bau_zelle.zip
+
+http://pics.benaxi.de/axi/ppg52009/ex1/pic_behindthescenes.zip
+
+http://pics.benaxi.de/axi/ppg52009/ex1/pic_versuchsaufbau.zip
+
+
+
+
+Die Bilder sind evtl. etwas ueberschaerft geraten, aber beim verkleinern in LATEX sollten sie aber ok werden.
+Wenn ihr einzelne Bilder in hoeherer/anderer Aufloesung braucht gebt einfach Bescheid.
+
+
+mfg
+Axi [05.11.2009]
+
+
+
+
 
