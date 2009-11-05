@@ -147,13 +147,13 @@ Die Messung der Strom- und Spannungswerte wurde mit einem Multimeter f\"ur die S
 Der Aufbau sowie die verwendeten Bauteile sind wiederum im Schaltplan (Abb.~\ref{leistungsschaltkreis}) sowie den Foto illustriert:
 
 \begin{figure}[ht]
+\label{leistungsschaltkreis}
 \begin{center}
 %%% Zeichnung mit xcircuit
 \includegraphics[width=0.8\textwidth]{images/leistungsmesskreis.pdf}
 \end{center}
 \vspace{-1.5\baselineskip}
 \caption{Schaltkreis zur Leistungsmessung. Das Amperemeter hatte einen signifikaneten Eigenwiderstand.}
-\label{leistungsschaltkreis}
 \end{figure}
 hier fehlt Foto
 
@@ -174,6 +174,7 @@ R = R_I+R_{\text{L}}\;.
 \]
 Der zusätzliche Lastwiderstand $R$ wurde nun im Bereich 0 -- $40\unit{k\Omega}$ variiert und jeweils wenige Minuten gewartet bis sich stationäre Werte einstellten. Die Messwerte stehen in Tabelle \ref{leistungsmesstabelle}.
 \begin{table}[ht]
+\label{leistungsmesstabelle}
 \captionabove{Messwerte zur Leistungsbestimmung}
 \begin{center}
 \begin{tabular}{rr|ccc}
@@ -195,7 +196,6 @@ $P\; \unit{[nW]}$ \\
 40	& 45,2	& 99,7	& 2,3	& 229
 \end{tabular}
 \end{center}
-\label{leistungsmesstabelle}
 \end{table}
 Die Ableseungenauigkeit durch die begrenzte Anzeigegenauigkeit und Messwertschankungen betrugen:
 \[
@@ -211,13 +211,13 @@ Die größte Ungenauigkeit lag also im Messen der winzigen Ströme.
 
 Der Leistungsverlauf zeigt ein Maximum bei mittleren Widerständen (im Bereich des Eigenwiderstandes der Zelle). Bei geringen Widerständen wird die meißte Leistung in der Zelle selbst freigesetzt und bei hohen Widerstand sorgt der geringe Stromfluss für eine schlechte Leistungsausbeute.
 \begin{figure}[ht]
+\label{leistungskurve}
 \begin{center}
 %%% Zeichnung mit xcircuit
 \includegraphics[width=1.0\textwidth]{images/graetzel_leistung.pdf}
 \end{center}
 \vspace{-1.5\baselineskip}
 \caption{Leisungskurve in Abhängigkeit vom äußeren Widerstand. Auf die Daten wurde das Modell einer widerstandsbehafteten Spannungsquelle gefittet.}
-\label{leistungskurve}
 \end{figure}
 Abb. \ref{leistungskurve} zeigt den Verlauf der Spannung zusammen mit dem Modell einer widerstandsbehafteten Spannungsquelle. Der theoretische Leistungsverlauf wäre hier:
 \[
@@ -244,6 +244,7 @@ Unser tatsächlich erreichter Wirkungsgrad liegt also bei \ldots
 \subsection{Wellenl\"ange}
 Zur Ermittlung der Wellenlängenabhängigkeit der Zellleistung wurde eine einfachere Schaltung verwendet, da hier nur die relativen Werte interessant sind. Diesmal wurde nicht die erzielte Leistung am Lastwiderstand gemessen, sondern lediglich die direkt an der Zelle abgegriffene Spannung. Eine sinnvolle Stromstärkenmessung stand uns hier noch nicht zur Verfügung, aber da die Spannung weit von einem Sättigungsniveau entfernt war lassen sich daraus brauchbare Werte für die erzeugte Zellleistung ableiten. Die Spannungswerte lagen mit ca. $2\unit{mV}$ gefährlich nahe am minimal messbaren Signal von $0,1\unit{mV}$, weshalb das Multimetersignal nur zur Kalibration der Mittelwerte hergenommen wurde und genauere -- jedoch verschobene -- Werte vom Messverstärker abgelesen wurden. Während der Messung wurde mehrfach die Dunkelspannung ohne Beleuchtung abgelesen, die vom Anfang bis zum Ende der Messung von $U_0=1,9\unit{mV}$ bis $1,6\unit{mV}$ abdriftete. Da uns hier nur das vom Licht erzeugte Signal interessiert, wurde zu jedem Messzeitpunkt der linear interpolierte Dunkelspannungswert subtrahiert. Die Netto-Spannungswerte jeder Leuchtdiode sind in Tabelle \ref{ledspannung} eingetragen. Die grüne Leuchtdiode LED4 wurde aus den Messdaten herausgenommen, weil ihre Leuchtkraft unterhalb des messbaren Bereichs lag.
 \begin{table}[ht]
+\label{ledspannung}
 \captionabove{Messwerte zur Wellenlängenabhängigkeit. Die Wellenlängen der Leuchtdioden sind der Herstellerbeschreibung entnommen.}
 \begin{center}
 \begin{tabular}{l|ccc}
@@ -264,19 +265,18 @@ LED9	& 4100\unit{K}	& 2.514	& 2.152 \\
 LED10	& 3000\unit{K}	& 2.026	& 2.136
 \end{tabular}
 \end{center}
-\label{ledspannung}
 \end{table}
 
 
 \subsubsection{Ermittlung der LED-Helligkeiten}
 Die Wellenlängenabhängigkeit der Photozellenempfindlichkeit kann nur dann ermittelt werden, wenn auch die tatsächlich eingestrahlte Beleuchtungsstärke bekannt ist. Hierzu dient die Vergleichsmessung mit dem Cassy-Luxmeter. Doch auch dieses hat eine eigene Wellenlängenabhängigkeit. Auf der Herstellerseite von Leybold heißt es dazu: "`Der Photometerkopf besteht aus einem Si-Photoelement mit l-Filter zur Anpassung des Photoelements an die spektrale Empfindlichkeit des Auges. Er hat eine cos-Anpassung."' Genaue Tabellen werden aber nicht zur Verfügung gestellt. Die Winkelabhängikeit ist uns egal, weil wir exakt senkrecht eingestrahlt haben. L-Filter blocken in der Regel nur Licht unterhalb von $400\unit{nm}$ und oberhalb von $700\unit{nm}$ und sind dazwischen gleichmäßig durchlässig.
 \begin{figure}[ht]
+\label{lichteffizienz_auge}
 \begin{center}
 \includegraphics[width=0.75\textwidth]{images/lichteffizienz_silizium_auge.pdf}
 \end{center}
 \vspace{-1.5\baselineskip}
 \caption{Energieeffizienz des meschlischen Auges und einer Si-Photodiode in Abhängigkeit von der Wellenlänge. Die Ordinate ist nicht auf Einheiten normiert.}
-\label{lichteffizienz_auge}
 \end{figure}
 Um tatsächlich Lux zu messen, müsste der Sensor in etwa eine wellenlängenabhängige Empfindlichkeit wie in die des Auges\footnote{\url{http://www.cvrl.org}} aufweisen. Siliziumdioden, wie die im Sensor verbaute haben aber durchaus verschiedene Wellenlängenabhängkeiten. Die meißten der im Internet gefundenen Datenblätter zeigen eine höhere Effizienz bei großen Wellenlängen mit einem Maximum um $800\unit{nm}$ herum. Photodioden, die dem Auge mehr ähneln, scheinen aber zu existieren. In Frage kommt z.B. ein Spektrum wie das der Silizium Photodiode S1133 von Hamamatsu\footnote{\url{http://sales.hamamatsu.com/assets/pdf/parts_S/S1087_etc.pdf}}. Die Spektren sind in Abb. \ref{lichteffizienz_auge} gezeichnet.
 
@@ -290,6 +290,7 @@ E_{\text{mess}}(\lambda) = \Phi(\lambda)\cdot V(\lambda)
 \]
 Die relative Farbempfindlichkeit ergibt sich nun einfach aus $U/\Phi$. Die so berechneten und auf 1 normierten Werte sind in Tabelle \ref{lambda_kurve} aufgelistet.
 \begin{table}[ht]
+\label{lambda_kurve}
 \captionabove{Tatsächliche LED-Helligkeiten $\Phi$ und relative Effizienz der Photozelle}
 \begin{center}
 \begin{tabular}{l|ccc}
@@ -306,16 +307,15 @@ LED6	& 470	& 0.919	& 0.855 \\
 LED7	& 455	& 1.000	& 1.000
 \end{tabular}
 \end{center}
-\label{lambda_kurve}
 \end{table}
 Die Energieeffizienz unserer Grätzelzelle lässt nun eine eindeutige Wellenlängenabhängigkeit erkennen, die für kleine Wellenlängen deutlich höher ist. Insgesamt waren nicht genügend verschiedene Spektralbereiche zur Messung vorhanden um Sprünge oder genauere Details erkennen zu können. Aber man sieht schön, dass eine monotone Abhängigkeit vorhanden ist, und höherenergetische Photonen deutlich mehr zur Leistung beitragen.
 \begin{figure}[ht]
+\label{lambda_korrigiert}
 \begin{center}
 \includegraphics[width=1.0\textwidth]{images/graetzel_lambda_korrigiert.pdf}
 \end{center}
 \vspace{-1.5\baselineskip}
 \caption{relative Energieeffizienz der Grätzelzelle in Abhängigkeit von der Wellenlänge. Jeder Datenpunkt wurde mit der Referenzmessung des Luxsensors und der Effizienzkurve für die Siliziumdiode kalibriert.}
-\label{lambda_korrigiert}
 \end{figure}
 
 Die Unsicherheit der Werte in $y$-Richtung ist trotz aller Bemühungen relativ groß, aber nicht quantifizierbar, da sie dirkt von der Diode des Cassy Luxsensors abhängt. Effektiv wird die Ergebniskurve direkt proportional mit der Detektorcharakteristik multipliziert. Wurde z.B. eine weniger augenähnliche Diode verbaut, die bei großen Wellenlängen empfindlicher ist, so würde sich auch unsere Kurve dort nach oben verschieben und nicht mehr ganz so steil sein. Der Effekt wäre aber höchstwahrscheinlich nicht groß genug um den Trend umzukehren, da dieser ziemlich eindeutig hervortritt. Die Erkenntnis bleibt: die Grätzelzelle liefert bei höherenergetischen Photonen deutlich mehr Leistung.
