@@ -6,7 +6,7 @@ Nachdem die erste Grätzlzelle fertiggestellt war, wurden die ersten Messungen d
 Messaufbau:
 -Die Leiste mit LEDs liegt auf dem Tisch mit Leuchtrichtung nach oben.
 -Farben: 1=rot, 2=rot, 3=orange, 4=grün, 5=türkis, 6=blau, 7=violett-blau, 8=weiß, 9=weiß, 10=weiß
--Messaparatur. Der Cassy-Luxsensor zeigt an der stativstange senkrecht nach unten auf die LEDs. Die Zelle hängt ein Stück daneben mit der TiO2-Seite nach unten und darunter eine Blende, die auf den Kernbereich der Zelle Konzenzriert ist.
+-Messaparatur: Der Cassy-Luxsensor zeigt an der Stativstange senkrecht nach unten auf die LEDs. Die Zelle hängt ein Stück daneben mit der TiO2-Seite nach unten und darunter eine Blende, die auf den Kernbereich der Zelle Konzenzriert ist.
 
 
 
@@ -53,7 +53,7 @@ LED   -   LUX [klx]   -   Abweichung
 2	1.65	0.01
 3	0.486	0.01
 # Messbereich: 3klx
-4	0.003	0.02	# sehr schwach
+4	0.003	0.02	# LED ist tatsächlich nicht sehr hell
 5	1.698	0.001
 6	1.965	0.01
 7	2.031	0.0001

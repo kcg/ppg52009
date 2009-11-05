@@ -1,0 +1,13 @@
+# Kennlinie einer Siliziumdiode S1133 (http://209.73.52.252/assets/img/general/pdf.jpg)
+# Daten sind aus dem Graphen abgelesen
+# lambda [nm]	Empfindlichkeit
+300	0
+430	0.205
+550	0.3
+570	0.3
+625	0.24
+670	0.13
+680	0.1
+700	0.07
+720	0.055
+810	0
