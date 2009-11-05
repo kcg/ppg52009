@@ -251,15 +251,16 @@ $\lambda\; \unit{[nm]}$ &
 $U\; \unit{[mV]}$ &
 $E\; \unit{[klux]}$ \\
 \hline
-LED1	& 500	& 0.258	& 1.79 \\
-LED2	& 500	& 0.324	& 1.65 \\
-LED3	& 500	& 0.202	& 0.486 \\
-LED5	& 500	& 2.738	& 1.698 \\
-LED6	& 500	& 5.148	& 1.965 \\
-LED7	& 500	& 6.550	& 2.031 \\
-LED8	& 10..20	& 4.652	& 2.796 \\
-LED9	& 10..20	& 2.514	& 2.152 \\
-LED10	& 10..20	& 2.026	& 2.136
+LED1	& 627	& 0.258	& 1.79 \\
+LED2	& 617	& 0.324	& 1.65 \\
+LED3	& 590	& 0.202	& 0.486 \\
+LED5	& 505	& 2.738	& 1.698 \\
+LED6	& 470	& 5.148	& 1.965 \\
+LED7	& 455	& 6.550	& 2.031 \\
+\hline
+LED8	& 6500\unit{K}	& 4.652	& 2.796 \\
+LED9	& 4100\unit{K}	& 2.514	& 2.152 \\
+LED10	& 3000\unit{K}	& 2.026	& 2.136
 \end{tabular}
 \end{center}
 \label{ledspannung}
@@ -296,12 +297,12 @@ $\lambda\; \unit{[nm]}$ &
 $\Phi / \Phi_{\text{max}}$ &
 $E/E_{\text{max}}$ \\
 \hline
-LED1	& 500	& 1.000	& 0.039 \\
-LED2	& 500	& 0.672	& 0.073 \\
-LED3	& 500	& 0.175	& 0.175 \\
-LED5	& 500	& 0.632	& 0.654 \\
-LED6	& 500	& 0.830	& 0.938 \\
-LED7	& 500	& 0.990	& 1.000
+LED1	& 627	& 0.843	& 0.047 \\
+LED2	& 617	& 0.734	& 0.067 \\
+LED3	& 590	& 0.193	& 0.159 \\
+LED5	& 505	& 0.711	& 0.588 \\
+LED6	& 470	& 0.919	& 0.855 \\
+LED7	& 455	& 1.000	& 1.000
 \end{tabular}
 \end{center}
 \label{lambda_kurve}
@@ -315,6 +316,8 @@ Die Energieeffizienz unserer Grätzelzelle lässt nun eine eindeutige Wellenlän
 \caption{relative Energieeffizienz der Grätzelzelle in Abhängigkeit von der Wellenlänge. Jeder Datenpunkt wurde mit der Referenzmessung des Luxsensors und der Effizienzkurve für die Siliziumdiode kalibriert.}
 \label{lambda_korrigiert}
 \end{figure}
+
+Die Unsicherheit der Werte in $y$-Richtung ist trotz aller Bemühungen relativ groß, aber nicht quantifizierbar, da sie dirkt von der Diode des Cassy Luxsensors abhängt. Effektiv wird die Ergebniskurve direkt proportional mit der Detektorcharakteristik multipliziert. Wurde z.B. eine weniger augenähnliche Diode verbaut, die bei großen Wellenlängen empfindlicher ist, so würde sich auch unsere Kurve dort nach oben verschieben und nicht mehr ganz so steil sein. Der Effekt wäre aber höchstwahrscheinlich nicht groß genug um den Trend umzukehren, da dieser ziemlich eindeutig hervortritt. Die Erkenntnis bleibt: die Grätzelzelle liefert bei höherenergetischen Photonen deutlich mehr Leistung.
 
 
 \section{Fazit}
