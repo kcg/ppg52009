@@ -6,7 +6,8 @@
 \usepackage{graphicx} % Um Bilder einbinden zu koennen
 \usepackage{float} % fuer \begin{figure}[H]
 \usepackage{icomma} % laesst das Komma als Dezimaltrennzeichen interpretieren
-
+\usepackage[pdftex]{hyperref} % Hyperlinks im Dokument
+\hypersetup{colorlinks=true, linkcolor=black, citecolor=black, filecolor=black, urlcolor=black, pdftitle={Grätzelzelle - Projektpraktikum 09/10 Gruppe 5}}
 
 
 \newcommand{\unit}[1]{\ensuremath{\,\mathrm{#1}}} % Einheiten schreiben sich immer aufrecht!
@@ -55,7 +56,7 @@ Tutor: Xiaoyue Jin}
 
 
 
-\small{\texttt{http://pp.physik.uni-erlangen.de/groups/ws0910/ppg5/ppg5\_start.html}}
+\small{\url{http://pp.physik.uni-erlangen.de/groups/ws0910/ppg5/ppg5\_start.html}}
 \end{center}
 \newpage
 
@@ -123,7 +124,7 @@ Das Elektrolyt, eine Iod-Kaliumiodid-L\"osung sowie verd\"unnte Salzs\"aure zum 
 %%% noch weiter untergliedern? vorueberlegung, LED, Wellenlaenge, Leistung? -> eher nein
 Das erste Ziel war die Bestimmung der Abh\"angigkeit der Leistung der Zelle von der Wellenl\"ange des eingestrahlten Lichts. Zun\"achst wollten wir dieses Spektrum mit einem Gitter erzeugen. Die ersten Versuche mit einem Aufbau aus Baustrahler, Linse und Gitter auf einer optischen Bank hatten jedoch bereits gezeigt, dass die zu erwartende Lichtst\"arke des aufgef\"acherten Spektrums viel zu schwach f\"ur eine Messung sein w\"urde. Außerdem wurden die einzelnen Linien des Spektrums viel zu schwach aufgef\"achert, so dass nicht nur ein Farbbereich auf die breitere Zelle treffen w\"urde. Auch der Ersatz des Gitters durch ein Prisma konnte diese Probleme nicht l\"osen.
 
-Deshalb haben wir uns entschlossen, die verschiedenen Farbbereiche durch LEDs unterschiedlicher Wellenl\"ange darzustellen. Hierbei kam ein Verbund aus zehn verschiedenen LEDs\footnote{http://www.led-tech.de/produkt-pdf/luxeon/DS51\_Luxeon\_K2.pdf} zum Einsatz, welcher bereits fr\"uher von einem Gruppenmitglied gebaut wurde.
+Deshalb haben wir uns entschlossen, die verschiedenen Farbbereiche durch LEDs unterschiedlicher Wellenl\"ange darzustellen. Hierbei kam ein Verbund aus zehn verschiedenen LEDs\footnote{\url{http://www.led-tech.de/produkt-pdf/luxeon/DS51\_Luxeon\_K2.pdf}} zum Einsatz, welcher bereits fr\"uher von einem Gruppenmitglied gebaut wurde.
 %%% Beschreibung der LEDs, Wellenlaengen? , Spannungen? 
 Die LEDs sind einzeln dimmbar, sie wurden jedoch stets bei maximaler Leuchtst\"arke betrieben.
 
@@ -277,7 +278,7 @@ Die Wellenlängenabhängigkeit der Photozellenempfindlichkeit kann nur dann ermi
 \caption{Energieeffizienz des meschlischen Auges und einer Si-Photodiode in Abhängigkeit von der Wellenlänge. Die Ordinate ist nicht auf Einheiten normiert.}
 \label{lichteffizienz_auge}
 \end{figure}
-Um tatsächlich Lux zu messen, müsste der Sensor in etwa eine wellenlängenabhängige Empfindlichkeit wie in die des Auges\footnote{\texttt{http://www.cvrl.org}} aufweisen. Siliziumdioden, wie die im Sensor verbaute haben aber durchaus verschiedene Wellenlängenabhängkeiten. Die meißten der im Internet gefundenen Datenblätter zeigen eine höhere Effizienz bei großen Wellenlängen mit einem Maximum um $800\unit{nm}$ herum. Photodioden, die dem Auge mehr ähneln, scheinen aber zu existieren. In Frage kommt z.B. ein Spektrum wie das der Silizium Photodiode S1133 von Hamamatsu\footnote{\texttt{http://209.73.52.252/assets/img/general/pdf.jpg}}. Die Spektren sind in Abb. \ref{lichteffizienz_auge} gezeichnet.
+Um tatsächlich Lux zu messen, müsste der Sensor in etwa eine wellenlängenabhängige Empfindlichkeit wie in die des Auges\footnote{\url{http://www.cvrl.org}} aufweisen. Siliziumdioden, wie die im Sensor verbaute haben aber durchaus verschiedene Wellenlängenabhängkeiten. Die meißten der im Internet gefundenen Datenblätter zeigen eine höhere Effizienz bei großen Wellenlängen mit einem Maximum um $800\unit{nm}$ herum. Photodioden, die dem Auge mehr ähneln, scheinen aber zu existieren. In Frage kommt z.B. ein Spektrum wie das der Silizium Photodiode S1133 von Hamamatsu\footnote{\url{http://209.73.52.252/assets/img/general/pdf.jpg}}. Die Spektren sind in Abb. \ref{lichteffizienz_auge} gezeichnet.
 
 
 \subsubsection{Wellenlängenempfindlichkeit der Grätzelzelle}
