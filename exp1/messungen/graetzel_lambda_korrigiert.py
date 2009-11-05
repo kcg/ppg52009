@@ -100,14 +100,19 @@ x_spline = [450., 460., 470., 480., 490., 500., 510., 520., 530., 540., 550., 56
 y_spline = [1.050, 0.951, 0.855, 0.769, 0.692, 0.621, 0.556, 0.495, 0.438, 0.385, 0.335, 0.288, 0.243, 0.200, 0.159, 0.121, 0.087, 0.061, 0.041]
 
 
-pylab.plot(x_spline, y_spline)
-pylab.errorbar(lam, E_norm, None, delta_lam, "bo")
+
+pylab.plot([0.], [0.], "ko", markersize=10., markeredgewidth=1., markerfacecolor="white")
+pylab.plot(x_spline, y_spline, "k-")
+colors=['#de2b35', '#f48622', '#f9df30', '#82b8e6', '#887ecd', '#2656a8']
+for i in range(len(lam)):
+	pylab.errorbar(lam[i], E_norm[i], None, delta_lam[i], "ko", markersize=10., markeredgewidth=1., markerfacecolor=colors[i])
+
 pylab.xlim(420., 660.)
 pylab.ylim(0., 1.1)
 
 pylab.xlabel(u"$\lambda\; [\mathrm{nm}]$")
 pylab.ylabel(u"$V$ (Energieeffizienz)")
-pylab.legend((u"Spline-Fit", u"Messung"), loc='upper right')
+pylab.legend(("LEDs", "Spline-Fit"), loc='upper right', numpoints=1)
 
 # Speichern
 pylab.gcf().set_size_inches(6, 4)
