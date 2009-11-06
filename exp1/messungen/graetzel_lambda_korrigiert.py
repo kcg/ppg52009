@@ -59,6 +59,10 @@ lux = [i[3] for i in data_graetzel[:color_diods]]
 lambda_diode = [i[0] for i in data_diode]
 V_diode = [i[1] for i in data_diode]
 
+# Fehler (FWHM Spektrenbreite)
+delta_lam = [i[4]/2. for i in data_graetzel[:color_diods]]
+
+
 def V(lamb):
 	i0 = 0
 	i1 = len(lambda_diode)-1
@@ -81,7 +85,8 @@ hell_norm = [i / max_hell for i in hell]
 E = [U[i] / hell[i] for i in range(color_diods)]
 max_E = max(E)
 E_norm = [i / max_E for i in E]
-
+print hell_norm
+print E_norm
 
 # Spline Interpolation
 #lam.reverse()
@@ -90,20 +95,24 @@ E_norm = [i / max_E for i in E]
 #tck = scipy.interpolate.splrep(lam,E_norm)
 #newy = scipy.interpolate.splev(newx,tck,der=0)
 #print [[lam[i], E_norm[i]] for i in range(len(lam))]
-# Spline-liste von mathematica
-x_spline = [420., 430., 440., 450., 460., 470., 480., 490., 500., 510., 520., 530., 540., 550., 560., 570., 580., 590., 600., 610., 620., 630., 640, 650., 660.]
-y_spline = [1.001, 1., 0.998, 0.991, 0.973, 0.938, 0.883, 0.813, 0.734, 0.654, 0.578, 0.507, 0.440, 0.379, 0.321, 0.269, 0.220, 0.175, 0.134, 0.100, 0.073, 0.056, 0.046, 0.039, 0.035]
+# extern berechnete Spline-liste
+x_spline = [450., 460., 470., 480., 490., 500., 510., 520., 530., 540., 550., 560., 570., 580., 590., 600., 610., 620., 630.]
+y_spline = [1.050, 0.951, 0.855, 0.769, 0.692, 0.621, 0.556, 0.495, 0.438, 0.385, 0.335, 0.288, 0.243, 0.200, 0.159, 0.121, 0.087, 0.061, 0.041]
 
 
 
-pylab.plot(x_spline, y_spline)
-pylab.plot(lam, E_norm, "bo")
-pylab.xlim(380., 700.)
+pylab.plot([0.], [0.], "ko", markersize=10., markeredgewidth=1., markerfacecolor="white")
+pylab.plot(x_spline, y_spline, "k-")
+colors=['#de2b35', '#f48622', '#f9df30', '#82b8e6', '#887ecd', '#2656a8']
+for i in range(len(lam)):
+	pylab.errorbar(lam[i], E_norm[i], None, delta_lam[i], "ko", markersize=10., markeredgewidth=1., markerfacecolor=colors[i])
+
+pylab.xlim(420., 660.)
 pylab.ylim(0., 1.1)
 
 pylab.xlabel(u"$\lambda\; [\mathrm{nm}]$")
 pylab.ylabel(u"$V$ (Energieeffizienz)")
-pylab.legend((u"Spline-Fit", u"Messung",), loc='upper right')
+pylab.legend(("LEDs", "Spline-Fit"), loc='upper right', numpoints=1)
 
 # Speichern
 pylab.gcf().set_size_inches(6, 4)

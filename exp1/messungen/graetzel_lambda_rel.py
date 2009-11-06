@@ -40,7 +40,7 @@ lux = [i[3] for i in data[:6]]
 
 pylab.plot(lam, [U[i] / lux[i] for i in range(len(lam))], "bo", label="Mesung")
 #pylab.errorbar(R1, P, P_error, None, "bo", label="Messwerte")
-pylab.xlim(380., 700.)
+pylab.xlim(420., 660.)
 pylab.ylim(0., 1.1*max([U[i] / lux[i] for i in range(len(lam))]))
 
 pylab.xlabel(u"$\lambda\; [\mathrm{nm}]$")

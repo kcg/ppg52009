@@ -6,7 +6,8 @@
 \usepackage{graphicx} % Um Bilder einbinden zu koennen
 \usepackage{float} % fuer \begin{figure}[H]
 \usepackage{icomma} % laesst das Komma als Dezimaltrennzeichen interpretieren
-
+\usepackage[pdftex]{hyperref} % Hyperlinks im Dokument
+\hypersetup{colorlinks=true, linkcolor=black, citecolor=black, filecolor=black, urlcolor=black, pdftitle={Grätzelzelle - Projektpraktikum 09/10 Gruppe 5}}
 
 
 \newcommand{\unit}[1]{\ensuremath{\,\mathrm{#1}}} % Einheiten schreiben sich immer aufrecht!
@@ -41,7 +42,7 @@
 \\[1.5\baselineskip]
 {\Large 19.10.2009 -- 31.10.2009}
 \\[6\baselineskip]
-{\Huge\textbf{PPG 5}}\\[0.5\baselineskip]
+{\huge\textbf{PPG 5}}\\[0.5\baselineskip]
 {\large\textbf{
 Michele Collodo,
 Andreas Glossner,\\
@@ -55,7 +56,7 @@ Tutor: Xiaoyue Jin}
 
 
 
-\small{\texttt{http://pp.physik.uni-erlangen.de/groups/ws0910/ppg5/ppg5\_start.html}}
+\small{\url{http://pp.physik.uni-erlangen.de/groups/ws0910/ppg5/ppg5\_start.html}}
 \end{center}
 \newpage
 
@@ -91,7 +92,7 @@ Noch weiter von den Atomr\"umpfen entfernt liegen weitere, unbesetzte Energieniv
 
 Zwischen Valenz- und Leitungsband befindet sich die verbotene Zone (Bandl\"ucke), in der sich keine Elektronen befinden. Nach der Gr\"o\ss{}e dieser Zone unterscheidet man Leiter, Halbleiter und Isolatoren. Bei einem Leiter gibt es keine verbotene Zone und Valenz- und Leitungsband gehen ineinander \"uber oder im Valenzband sind nicht alle Pl\"atze mit Elektronen besetzt. So kann problemlos Strom fliessen. Isolatoren hingegen haben ein vollst\"andig besetztes Valenzband und die Bandl\"ucke ist so gro\ss{} dass sie selbst von hoch angeregten Elektronen nicht oder nur sehr schwer \"uberwunden werden kann.
 
-Auch bei Halbleitern ist das Valenzband voll besetzt, jedoch ist hier die verbotene Zone noch kleiner als etwa 10eV. Es ist also f\"ur Elektronen, die durch hohe Temperaturen oder einfallende Photonen angeregt sind, m\"oglich, die L\"ucke zu \"uberspringen und sich im Leitungsband fortzubewegen. Werden hier nun in den Kristall Fremdatome eingef\"ugt (Dotierung), ver\"andern sich dessen leitenden Eigenschaften. Werden Atome eingesetzt, die mehr Elektronen in der \"au\ss{}eren Schale haben als die des Kristalls (n-Dotierung), so gibt es \glqq\"ubersch\"ussige\grqq Elektronen, die einfacher ins Leitungsband wechseln k\"onnen. Solche Atome hei\ss{}en Elektronendonatoren. F\"ugt man hingegen Fremdatome ein, die weniger Elektronen in ihrer \"au\ss{}eren Schale haben (p-Dotierung), entstehen L\"ocher, in denen leicht Elektronen aus dem Valenzband angelagert werden. Es gibt nun Elektronenfehlstellen, die Atome werden als Elektronenakzeptoren bezeichnet.
+Auch bei Halbleitern ist das Valenzband voll besetzt, jedoch ist hier die verbotene Zone noch kleiner als etwa $10\unit{eV}$. Es ist also f\"ur Elektronen, die durch hohe Temperaturen oder einfallende Photonen angeregt sind, m\"oglich, die L\"ucke zu \"uberspringen und sich im Leitungsband fortzubewegen. Werden hier nun in den Kristall Fremdatome eingef\"ugt (Dotierung), ver\"andern sich dessen leitenden Eigenschaften. Werden Atome eingesetzt, die mehr Elektronen in der \"au\ss{}eren Schale haben als die des Kristalls (n-Dotierung), so gibt es \glqq\"ubersch\"ussige\grqq Elektronen, die einfacher ins Leitungsband wechseln k\"onnen. Solche Atome hei\ss{}en Elektronendonatoren. F\"ugt man hingegen Fremdatome ein, die weniger Elektronen in ihrer \"au\ss{}eren Schale haben (p-Dotierung), entstehen L\"ocher, in denen leicht Elektronen aus dem Valenzband angelagert werden. Es gibt nun Elektronenfehlstellen, die Atome werden als Elektronenakzeptoren bezeichnet.
 
 Bringt man nun einen p-dotierten und einen n-dotierten Halbleiter zusammen, diffundieren die \"ubersch\"ussigen Elektronen aus der n-Schicht zu den Fehlstellen in der p-Schicht, es bildet sich ein elektrisches Feld, das von der n- zur p-Seite gerichtet ist. Nun k\"onnen durch das Anlegen einer \"au\ss{}eren Spannung verschiedene Funktionen, wie beispielsweise die Diode, erreicht werden. Schliesst man den Pluspol an die p-Schicht und den Minuspol an die n-Schicht, betreibt man eine Diode in Durchlassrichtung. Die Bandl\"ucke wird beinahe aufgehoben und Leitung ist m\"oglich.
 
@@ -121,9 +122,9 @@ Das Elektrolyt, eine Iod-Kaliumiodid-L\"osung sowie verd\"unnte Salzs\"aure zum 
 
 \subsection{Versuchsanordnung} %%% Michele und Axi
 %%% noch weiter untergliedern? vorueberlegung, LED, Wellenlaenge, Leistung? -> eher nein
-Das erste Ziel war die Bestimmung der Abh\"angigkeit der Leistung der Zelle von der Wellenl\"ange des eingestrahlten Lichts. Zun\"achst wollten wir dieses Spektrum mit einem Gitter erzeugen. Die ersten Versuche mit einem Aufbau aus Baustrahler, Linse und Gitter auf einer optischen Bank hatten jedoch bereits gezeigt, dass die zu erwartende Lichtst\"arke des aufgef\"acherten Spektrums viel zu schwach f\"ur eine Messung sein w\"urde. Au\"sserdem wurden die einzelnen Linien des Spektrums viel zu schwach aufgef\"achert, so dass nicht nur ein Farbbereich auf die breitere Zelle treffen w\"urde. Auch der Ersatz des Gitters durch ein Prisma konnte diese Probleme nicht l\"osen.
+Das erste Ziel war die Bestimmung der Abh\"angigkeit der Leistung der Zelle von der Wellenl\"ange des eingestrahlten Lichts. Zun\"achst wollten wir dieses Spektrum mit einem Gitter erzeugen. Die ersten Versuche mit einem Aufbau aus Baustrahler, Linse und Gitter auf einer optischen Bank hatten jedoch bereits gezeigt, dass die zu erwartende Lichtst\"arke des aufgef\"acherten Spektrums viel zu schwach f\"ur eine Messung sein w\"urde. Außerdem wurden die einzelnen Linien des Spektrums viel zu schwach aufgef\"achert, so dass nicht nur ein Farbbereich auf die breitere Zelle treffen w\"urde. Auch der Ersatz des Gitters durch ein Prisma konnte diese Probleme nicht l\"osen.
 
-Deshalb haben wir uns entschlossen, die verschiedenen Farbbereiche durch LEDs unterschiedlicher Wellenl\"ange darzustellen. Hierbei kam ein Verbund aus zehn verschiedenen LEDs zum Einsatz, welcher bereits fr\"uher von einem Gruppenmitglied gebaut wurde.
+Deshalb haben wir uns entschlossen, die verschiedenen Farbbereiche durch LEDs unterschiedlicher Wellenl\"ange darzustellen. Hierbei kam ein Verbund aus zehn verschiedenen LEDs\footnote{\url{http://www.led-tech.de/produkt-pdf/luxeon/DS51\_Luxeon\_K2.pdf}} zum Einsatz, welcher bereits fr\"uher von einem Gruppenmitglied gebaut wurde.
 %%% Beschreibung der LEDs, Wellenlaengen? , Spannungen? 
 Die LEDs sind einzeln dimmbar, sie wurden jedoch stets bei maximaler Leuchtst\"arke betrieben.
 
@@ -171,9 +172,10 @@ R_I = 5,22\pm 0,03 \unit{k\Omega}
 \qquad\qquad\qquad
 R = R_I+R_{\text{L}}\;.
 \]
-Der zusätzliche Lastwiderstand $R$ wurde nun im Bereich 0 -- $40\unit{k\Omega}$ variiert und jeweils wenige Minuten gewartet bis sich stationäre Werte einstellten. Die Messwerte stehen in Tabelle \ref{leistungsmesstabelle}.
+Der zusätzliche Lastwiderstand $R_{\text{L}}$ wurde nun im Bereich 0 -- $40\unit{k\Omega}$ variiert und jeweils wenige Minuten gewartet bis sich stationäre Werte einstellten. Die Messwerte stehen in Tabelle \ref{leistungsmesstabelle}.
 \begin{table}[ht]
 \captionabove{Messwerte zur Leistungsbestimmung}
+\label{leistungsmesstabelle}
 \begin{center}
 \begin{tabular}{rr|ccc}
 $R_{\text{L}}\; \unit{[k\Omega]}$ &
@@ -184,17 +186,16 @@ $P\; \unit{[nW]}$ \\
 \hline
 0	& 5,2	& 34,5	& 6,2	& 214 \\
 1	& 6,2	& 38,0	& 5,9	& 224 \\
-5	& 11,2	& 52,4	& 5,1	& 267 \\
-10	& 16,2	& 66,0	& 4,3	& 284 \\
-15	& 21,2	& 75,1	& 3,7	& 278 \\
-20	& 26,2	& 82,3	& 3,2	& 263 \\
-25	& 31,2	& 88,8	& 2,9	& 258 \\
-30	& 36,2	& 93,3	& 2,6	& 243 \\
-35	& 41,2	& 96,5	& 2,4	& 232 \\
-40	& 46,2	& 99,7	& 2,3	& 229
+5	& 10,2	& 52,4	& 5,1	& 267 \\
+10	& 15,2	& 66,0	& 4,3	& 284 \\
+15	& 20,2	& 75,1	& 3,7	& 278 \\
+20	& 25,2	& 82,3	& 3,2	& 263 \\
+25	& 30,2	& 88,8	& 2,9	& 258 \\
+30	& 35,2	& 93,3	& 2,6	& 243 \\
+35	& 40,2	& 96,5	& 2,4	& 232 \\
+40	& 45,2	& 99,7	& 2,3	& 229
 \end{tabular}
 \end{center}
-\label{leistungsmesstabelle}
 \end{table}
 Die Ableseungenauigkeit durch die begrenzte Anzeigegenauigkeit und Messwertschankungen betrugen:
 \[
@@ -244,6 +245,7 @@ Unser tatsächlich erreichter Wirkungsgrad liegt also bei \ldots
 Zur Ermittlung der Wellenlängenabhängigkeit der Zellleistung wurde eine einfachere Schaltung verwendet, da hier nur die relativen Werte interessant sind. Diesmal wurde nicht die erzielte Leistung am Lastwiderstand gemessen, sondern lediglich die direkt an der Zelle abgegriffene Spannung. Eine sinnvolle Stromstärkenmessung stand uns hier noch nicht zur Verfügung, aber da die Spannung weit von einem Sättigungsniveau entfernt war lassen sich daraus brauchbare Werte für die erzeugte Zellleistung ableiten. Die Spannungswerte lagen mit ca. $2\unit{mV}$ gefährlich nahe am minimal messbaren Signal von $0,1\unit{mV}$, weshalb das Multimetersignal nur zur Kalibration der Mittelwerte hergenommen wurde und genauere -- jedoch verschobene -- Werte vom Messverstärker abgelesen wurden. Während der Messung wurde mehrfach die Dunkelspannung ohne Beleuchtung abgelesen, die vom Anfang bis zum Ende der Messung von $U_0=1,9\unit{mV}$ bis $1,6\unit{mV}$ abdriftete. Da uns hier nur das vom Licht erzeugte Signal interessiert, wurde zu jedem Messzeitpunkt der linear interpolierte Dunkelspannungswert subtrahiert. Die Netto-Spannungswerte jeder Leuchtdiode sind in Tabelle \ref{ledspannung} eingetragen. Die grüne Leuchtdiode LED4 wurde aus den Messdaten herausgenommen, weil ihre Leuchtkraft unterhalb des messbaren Bereichs lag.
 \begin{table}[ht]
 \captionabove{Messwerte zur Wellenlängenabhängigkeit. Die Wellenlängen der Leuchtdioden sind der Herstellerbeschreibung entnommen.}
+\label{ledspannung}
 \begin{center}
 \begin{tabular}{l|ccc}
 \# &
@@ -251,18 +253,18 @@ $\lambda\; \unit{[nm]}$ &
 $U\; \unit{[mV]}$ &
 $E\; \unit{[klux]}$ \\
 \hline
-LED1	& 500	& 0.258	& 1.79 \\
-LED2	& 500	& 0.324	& 1.65 \\
-LED3	& 500	& 0.202	& 0.486 \\
-LED5	& 500	& 2.738	& 1.698 \\
-LED6	& 500	& 5.148	& 1.965 \\
-LED7	& 500	& 6.550	& 2.031 \\
-LED8	& 10..20	& 4.652	& 2.796 \\
-LED9	& 10..20	& 2.514	& 2.152 \\
-LED10	& 10..20	& 2.026	& 2.136
+LED1	& 627	& 0.258	& 1.79 \\
+LED2	& 617	& 0.324	& 1.65 \\
+LED3	& 590	& 0.202	& 0.486 \\
+LED5	& 505	& 2.738	& 1.698 \\
+LED6	& 470	& 5.148	& 1.965 \\
+LED7	& 455	& 6.550	& 2.031 \\
+\hline
+LED8	& 6500\unit{K}	& 4.652	& 2.796 \\
+LED9	& 4100\unit{K}	& 2.514	& 2.152 \\
+LED10	& 3000\unit{K}	& 2.026	& 2.136
 \end{tabular}
 \end{center}
-\label{ledspannung}
 \end{table}
 
 
@@ -276,7 +278,7 @@ Die Wellenlängenabhängigkeit der Photozellenempfindlichkeit kann nur dann ermi
 \caption{Energieeffizienz des meschlischen Auges und einer Si-Photodiode in Abhängigkeit von der Wellenlänge. Die Ordinate ist nicht auf Einheiten normiert.}
 \label{lichteffizienz_auge}
 \end{figure}
-Um tatsächlich Lux zu messen, müsste der Sensor in etwa eine wellenlängenabhängige Empfindlichkeit wie in die des Auges\footnote{\texttt{http://www.cvrl.org}} aufweisen. Siliziumdioden, wie die im Sensor verbaute haben aber durchaus verschiedene Wellenlängenabhängkeiten. Die meißten der im Internet gefundenen Datenblätter zeigen eine höhere Effizienz bei großen Wellenlängen mit einem Maximum um $800\unit{nm}$ herum. Photodioden, die dem Auge mehr ähneln, scheinen aber zu existieren. In Frage kommt z.B. ein Spektrum wie das der Silizium Photodiode S1133 von Hamamatsu\footnote{\texttt{http://209.73.52.252/assets/img/general/pdf.jpg}}. Die Spektren sind in Abb. \ref{lichteffizienz_auge} gezeichnet.
+Um tatsächlich Lux zu messen, müsste der Sensor in etwa eine wellenlängenabhängige Empfindlichkeit wie in die des Auges\footnote{\url{http://www.cvrl.org}} aufweisen. Siliziumdioden, wie die im Sensor verbaute haben aber durchaus verschiedene Wellenlängenabhängkeiten. Die meißten der im Internet gefundenen Datenblätter zeigen eine höhere Effizienz bei großen Wellenlängen mit einem Maximum um $800\unit{nm}$ herum. Photodioden, die dem Auge mehr ähneln, scheinen aber zu existieren. In Frage kommt z.B. ein Spektrum wie das der Silizium Photodiode S1133 von Hamamatsu\footnote{\url{http://sales.hamamatsu.com/assets/pdf/parts_S/S1087_etc.pdf}}. Die Spektren sind in Abb. \ref{lichteffizienz_auge} gezeichnet.
 
 
 \subsubsection{Wellenlängenempfindlichkeit der Grätzelzelle}
@@ -289,6 +291,7 @@ E_{\text{mess}}(\lambda) = \Phi(\lambda)\cdot V(\lambda)
 Die relative Farbempfindlichkeit ergibt sich nun einfach aus $U/\Phi$. Die so berechneten und auf 1 normierten Werte sind in Tabelle \ref{lambda_kurve} aufgelistet.
 \begin{table}[ht]
 \captionabove{Tatsächliche LED-Helligkeiten $\Phi$ und relative Effizienz der Photozelle}
+\label{lambda_kurve}
 \begin{center}
 \begin{tabular}{l|ccc}
 \# &
@@ -296,15 +299,14 @@ $\lambda\; \unit{[nm]}$ &
 $\Phi / \Phi_{\text{max}}$ &
 $E/E_{\text{max}}$ \\
 \hline
-LED1	& 500	& 1.000	& 0.039 \\
-LED2	& 500	& 0.672	& 0.073 \\
-LED3	& 500	& 0.175	& 0.175 \\
-LED5	& 500	& 0.632	& 0.654 \\
-LED6	& 500	& 0.830	& 0.938 \\
-LED7	& 500	& 0.990	& 1.000
+LED1	& 627	& 0.843	& 0.047 \\
+LED2	& 617	& 0.734	& 0.067 \\
+LED3	& 590	& 0.193	& 0.159 \\
+LED5	& 505	& 0.711	& 0.588 \\
+LED6	& 470	& 0.919	& 0.855 \\
+LED7	& 455	& 1.000	& 1.000
 \end{tabular}
 \end{center}
-\label{lambda_kurve}
 \end{table}
 Die Energieeffizienz unserer Grätzelzelle lässt nun eine eindeutige Wellenlängenabhängigkeit erkennen, die für kleine Wellenlängen deutlich höher ist. Insgesamt waren nicht genügend verschiedene Spektralbereiche zur Messung vorhanden um Sprünge oder genauere Details erkennen zu können. Aber man sieht schön, dass eine monotone Abhängigkeit vorhanden ist, und höherenergetische Photonen deutlich mehr zur Leistung beitragen.
 \begin{figure}[ht]
@@ -315,6 +317,8 @@ Die Energieeffizienz unserer Grätzelzelle lässt nun eine eindeutige Wellenlän
 \caption{relative Energieeffizienz der Grätzelzelle in Abhängigkeit von der Wellenlänge. Jeder Datenpunkt wurde mit der Referenzmessung des Luxsensors und der Effizienzkurve für die Siliziumdiode kalibriert.}
 \label{lambda_korrigiert}
 \end{figure}
+
+Die Unsicherheit der Werte in $y$-Richtung ist trotz aller Bemühungen relativ groß, aber nicht quantifizierbar, da sie dirkt von der Diode des Cassy Luxsensors abhängt. Effektiv wird die Ergebniskurve direkt proportional mit der Detektorcharakteristik multipliziert. Wurde z.B. eine weniger augenähnliche Diode verbaut, die bei großen Wellenlängen empfindlicher ist, so würde sich auch unsere Kurve dort nach oben verschieben und nicht mehr ganz so steil sein. Der Effekt wäre aber höchstwahrscheinlich nicht groß genug um den Trend umzukehren, da dieser ziemlich eindeutig hervortritt. Die Erkenntnis bleibt: die Grätzelzelle liefert bei höherenergetischen Photonen deutlich mehr Leistung.
 
 
 \section{Fazit}
