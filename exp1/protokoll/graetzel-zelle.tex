@@ -175,6 +175,7 @@ R = R_I+R_{\text{L}}\;.
 Der zusätzliche Lastwiderstand $R$ wurde nun im Bereich 0 -- $40\unit{k\Omega}$ variiert und jeweils wenige Minuten gewartet bis sich stationäre Werte einstellten. Die Messwerte stehen in Tabelle \ref{leistungsmesstabelle}.
 \begin{table}[ht]
 \captionabove{Messwerte zur Leistungsbestimmung}
+\label{leistungsmesstabelle}
 \begin{center}
 \begin{tabular}{rr|ccc}
 $R_{\text{L}}\; \unit{[k\Omega]}$ &
@@ -195,7 +196,6 @@ $P\; \unit{[nW]}$ \\
 40	& 45,2	& 99,7	& 2,3	& 229
 \end{tabular}
 \end{center}
-\label{leistungsmesstabelle}
 \end{table}
 Die Ableseungenauigkeit durch die begrenzte Anzeigegenauigkeit und Messwertschankungen betrugen:
 \[
@@ -245,6 +245,7 @@ Unser tatsächlich erreichter Wirkungsgrad liegt also bei \ldots
 Zur Ermittlung der Wellenlängenabhängigkeit der Zellleistung wurde eine einfachere Schaltung verwendet, da hier nur die relativen Werte interessant sind. Diesmal wurde nicht die erzielte Leistung am Lastwiderstand gemessen, sondern lediglich die direkt an der Zelle abgegriffene Spannung. Eine sinnvolle Stromstärkenmessung stand uns hier noch nicht zur Verfügung, aber da die Spannung weit von einem Sättigungsniveau entfernt war lassen sich daraus brauchbare Werte für die erzeugte Zellleistung ableiten. Die Spannungswerte lagen mit ca. $2\unit{mV}$ gefährlich nahe am minimal messbaren Signal von $0,1\unit{mV}$, weshalb das Multimetersignal nur zur Kalibration der Mittelwerte hergenommen wurde und genauere -- jedoch verschobene -- Werte vom Messverstärker abgelesen wurden. Während der Messung wurde mehrfach die Dunkelspannung ohne Beleuchtung abgelesen, die vom Anfang bis zum Ende der Messung von $U_0=1,9\unit{mV}$ bis $1,6\unit{mV}$ abdriftete. Da uns hier nur das vom Licht erzeugte Signal interessiert, wurde zu jedem Messzeitpunkt der linear interpolierte Dunkelspannungswert subtrahiert. Die Netto-Spannungswerte jeder Leuchtdiode sind in Tabelle \ref{ledspannung} eingetragen. Die grüne Leuchtdiode LED4 wurde aus den Messdaten herausgenommen, weil ihre Leuchtkraft unterhalb des messbaren Bereichs lag.
 \begin{table}[ht]
 \captionabove{Messwerte zur Wellenlängenabhängigkeit. Die Wellenlängen der Leuchtdioden sind der Herstellerbeschreibung entnommen.}
+\label{ledspannung}
 \begin{center}
 \begin{tabular}{l|ccc}
 \# &
@@ -264,7 +265,6 @@ LED9	& 4100\unit{K}	& 2.514	& 2.152 \\
 LED10	& 3000\unit{K}	& 2.026	& 2.136
 \end{tabular}
 \end{center}
-\label{ledspannung}
 \end{table}
 
 
@@ -291,6 +291,7 @@ E_{\text{mess}}(\lambda) = \Phi(\lambda)\cdot V(\lambda)
 Die relative Farbempfindlichkeit ergibt sich nun einfach aus $U/\Phi$. Die so berechneten und auf 1 normierten Werte sind in Tabelle \ref{lambda_kurve} aufgelistet.
 \begin{table}[ht]
 \captionabove{Tatsächliche LED-Helligkeiten $\Phi$ und relative Effizienz der Photozelle}
+\label{lambda_kurve}
 \begin{center}
 \begin{tabular}{l|ccc}
 \# &
@@ -306,7 +307,6 @@ LED6	& 470	& 0.919	& 0.855 \\
 LED7	& 455	& 1.000	& 1.000
 \end{tabular}
 \end{center}
-\label{lambda_kurve}
 \end{table}
 Die Energieeffizienz unserer Grätzelzelle lässt nun eine eindeutige Wellenlängenabhängigkeit erkennen, die für kleine Wellenlängen deutlich höher ist. Insgesamt waren nicht genügend verschiedene Spektralbereiche zur Messung vorhanden um Sprünge oder genauere Details erkennen zu können. Aber man sieht schön, dass eine monotone Abhängigkeit vorhanden ist, und höherenergetische Photonen deutlich mehr zur Leistung beitragen.
 \begin{figure}[ht]
