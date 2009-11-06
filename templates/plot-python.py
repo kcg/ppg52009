@@ -8,7 +8,7 @@ from scipy import optimize
 
 
 filename = "daten"
-colsep = "\t" # maybe " "
+colsep = " " # maybe "\t"
 
 
 # Die Modellfunktion
