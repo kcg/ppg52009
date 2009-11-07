@@ -116,9 +116,27 @@ Die Gegenelektrode ist mit einem Katalysator, oft Platin, beschichtet, um die \"
 %%% Karl
 Die Beschaffung der f\"ur den Bau ben\"otigten Materialien stellte zu Beginn ein Problem dar. Insbesondere war es schwer, leitende und gleichzeitig transparente Elektroden zu bekommen. Die erste M\"oglichkeit, mit Gold beschichtet Glaspl\"attchen, zu verwenden, scheiterte an den zu geringen Ausma\ss{}en der m\"oglichen Tr\"agerplatten. Zu lange Lieferzeiten und zu hohe Preise schlossen auch die Bestellung von industriell produzierten ITO-Gl\"asern (Indiumzinnoxid-Beschichtung) aus.
 
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{images/herstellung_pipette.jpg}
+\end{center}
+\vspace{-1.5\baselineskip}
+\caption{Aufbringen der eingefärbten Titandioxid Paste}
+\label{herstellung_pipette}
+\end{figure}
+
 Das Institut der Physikalischen Chemie der Universit\"at Erlangen stellte gl\"ucklicherweise mehrere Fluorzinnoxid (FTO) beschichtete Glasplatten zur Verf\"ugung. Die leitend beschichteten, transparenten Glasplatten waren bereits auf eine Gr\"o\ss{}e von \(70\unit{mm} \times 20\unit{mm} \times 4 \unit{mm}\) zugeschnitten. Auf der leitenden Seite der Glasplatte konnte mit Hilfe eines Multimeters ein Widerstand von etwa \(20 \unit{\frac{\Omega}{cm}}\) gemessen werden.
 
 Das Elektrolyt, eine Iod-Kaliumiodid-L\"osung sowie verd\"unnte Salzs\"aure zum Anmischen der Titandioxidpaste konnten ebenfalls von der Physikalischen Chemie bezogen werden.
+
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{images/zelle_gruen.jpg}
+\end{center}
+\vspace{-1.5\baselineskip}
+\caption{Die fertige Zelle}
+\label{zelle_gruen.jpg}
+\end{figure}
 
 
 
@@ -130,23 +148,42 @@ Deshalb haben wir uns entschlossen, die verschiedenen Farbbereiche durch LEDs un
 %%% Beschreibung der LEDs, Wellenlaengen? , Spannungen? 
 Die LEDs sind einzeln dimmbar, sie wurden jedoch stets bei maximaler Leuchtst\"arke betrieben.
 
-Um eine Vergleichsmessung wie die Wellenl\"angenabh\"angigkeit genau durchf\"uhren zu k\"onnen, muss der Aufbau bei jeder Einzelmessung genau gleich sein. Daf\"ur wurde die Gr\"atzelzelle in eine Halterung aus Klemmen und Stativstangen eingespannt. Der Verbund aus LEDs wurde entlang der Grundplatte des Aufbaus unter die Zelle geschoben. Zwischen LED und Zelle kam eine variable Blende zum Einsatz, deren \"Offnungsdurchmesser fest auf ca. $1,8\unit{cm}$ eingestellt war. Eine weitere Stativstange markierte dabei die Stelle, an der sich die momentan verwendete LED befinden musste, um jeweils genau senkrecht unter Zelle positioniert zu sein. Der vertikale Abstand LED - Zelle betrug dabei ca. $12\unit{cm}$.
+Um eine Vergleichsmessung wie die Wellenl\"angenabh\"angigkeit genau durchf\"uhren zu k\"onnen, muss der Aufbau bei jeder Einzelmessung genau gleich sein. Daf\"ur wurde die Gr\"atzelzelle in eine Halterung aus Klemmen und Stativstangen eingespannt. Der Verbund aus LEDs wurde entlang der Grundplatte des Aufbaus unter die Zelle geschoben. Zwischen LED und Zelle kam eine Blende mit \"Offnungsdurchmesser $1,8\unit{cm}$ zum Einsatz, um in etwa den Teil des Lichtkegels zu nutzen, der auch vom Luxsensor empfangen wird. Eine weitere Stativstange markierte dabei die Stelle, an der sich die momentan verwendete LED befinden musste, um jeweils genau senkrecht unter Zelle positioniert zu sein. Der vertikale Abstand LED - Zelle betrug dabei ca. $12\unit{cm}$.
+
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=1.0\textwidth]{images/messung_farben.jpg}
+\end{center}
+\vspace{-1.5\baselineskip}
+\caption{Aufbau zur Messung der Wellenlängenabhängigkeit. Der Luxsensor ist die graue vertikale Sonde. Die Zelle befindet sich über der Blende.}
+\label{messung_farben}
+\end{figure}
 
 In der selben H\"ohe wurde, versetzt zur Zelle, auch ein LUX-Sensor befestigt, um eine Messung der jeweiligen Leuchtkraft der LEDs zu erm\"oglichen. Auch hier markierte eine Stativstange die Messposition. Zum Auslesen des Sensor wurde das CASSY-LAB verwendet, welches die Messwerte \"uber $1000\unit{ms}$ gemittelt anzeigte.
 
-Die Messung, der von der Zelle gelieferten Spannung, erfolgte zum Einen durch ein direkt an die Zelle angeschlossenes Multimeter, sowie durch ein weiteres Multimeter, dessen Signal jedoch zun\"achst einen Messverst\"arker durchlief. Der genau Aufbau ist auch aus dem folgenden Schaltplan sowie dem Foto ersichtlich.\newline
-hier fehlt Schaltplan + Foto
+Die Messung, der von der Zelle gelieferten Spannung, erfolgte zum Einen durch ein direkt an die Zelle angeschlossenes Multimeter, sowie durch ein weiteres Multimeter, dessen Signal jedoch zun\"achst einen Messverst\"arker durchlief. Der genau Aufbau ist auch aus dem folgenden Schaltplan sowie dem Foto ersichtlich.
+
+%hier fehlt Schaltplan + Foto
 
 Bei der Messung wurde jeweils zwei Minuten gewartet, bis sich die Messwerte eingependelt hatten.
 %%% gehoert das hier hin? eigentlich nein, oder?
 
-Der zweite Teil der Messung umfasste die Bestimmung der Leistung der Solarzelle in verschiedenen Widerstandsbereichen. Hierbei wurde nur die LED Nr.7 (Farbe blau) verwendet, da sie die h\"ochsten Spannungen geliefert hat. Au\ss{}erdem kam eine neue Gr\"atzelzelle zum Einsatz, da die Zelle der ersten Messung bereits eingetrocknet war.
+Der zweite Teil der Messung umfasste die Bestimmung der Leistung der Solarzelle in verschiedenen Widerstandsbereichen. Hierbei wurde nur die LED Nr.~7 (Farbe blau) verwendet, da sie die h\"ochsten Spannungen geliefert hat. Au\ss{}erdem kam eine neue Gr\"atzelzelle zum Einsatz, da die Zelle der ersten Messung bereits eingetrocknet war.
 
-Der Aufbau der LEDs wurde leicht angepasst. Neben einem geringeren Abstand der Lichtquelle von der Zelle, ersetzte eine Linse die Lochblende zum Fokussieren des Lichtstrahls.
+Der Aufbau der LEDs wurde leicht angepasst. Neben einem geringeren Abstand der Lichtquelle von der Zelle, ersetzte eine Linse die Lochblende zum Fokussieren des Lichtstrahls. (Abb. \ref{messung_leistung})
 
-Die Messung der Strom- und Spannungswerte wurde mit einem Multimeter f\"ur die Spannung und einem Amperemeter f\"ur die Stromst\"arke durchgef\"uhrt. Der Einsatz eines Messverst\"arkers war hierbei nicht m\"oglich, da die anschlie\ss{}end am Multimeter abzulesenden Werte sehr starke Schwankungen aufwie\ss{}en und einen Offset unklaren Ursprungs enthielten.
+Die Messung der Strom- und Spannungswerte wurde mit einem Multimeter f\"ur die Spannung und einem Amperemeter f\"ur die Stromst\"arke durchgef\"uhrt. Der Einsatz eines Messverst\"arkers war hierbei nicht m\"oglich, da die anschlie\ss{}end am Multimeter abzulesenden Werte sehr starke Schwankungen aufwie\ss{}en und einen willkürlichen Offset enthielten.
 
-Der Aufbau sowie die verwendeten Bauteile sind wiederum im Schaltplan (Abb.~\ref{leistungsschaltkreis}) sowie den Foto illustriert:
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{images/messung_leistung.jpg}
+\end{center}
+\vspace{-1.5\baselineskip}
+\caption{Aufbau zur Messung der Leistung}
+\label{messung_leistung}
+\end{figure}
+
+Der Aufbau sowie die verwendeten Bauteile sind wiederum im Schaltplan (Abb.~\ref{leistungsschaltkreis}) sowie dem ?Foto? illustriert.
 
 \begin{figure}[ht]
 \begin{center}
@@ -157,7 +194,6 @@ Der Aufbau sowie die verwendeten Bauteile sind wiederum im Schaltplan (Abb.~\ref
 \caption{Schaltkreis zur Leistungsmessung. Das Amperemeter hatte einen signifikanten Eigenwiderstand.}
 \label{leistungsschaltkreis}
 \end{figure}
-hier fehlt Foto
 
 Um mehrere Paare an Messwerten zu erhalten, wurde wie zu sehen ist, ein regelbarer Widerstand zwischengeschaltet und die Messung mit verschiedenen Kombinationen der Widerst\"ande durchgef\"uhrt. Leider hatte auch das Amperemeter einen Eigenwiderstand. Dieser hat allerdings die Messmethode nicht nachhaltig beeinflusst. ($\rightarrow$ vgl. Ergebnisse) %%% gehoert das hier hin?
 
