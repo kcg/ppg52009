@@ -271,7 +271,7 @@ Die Ableseungenauigkeit durch die begrenzte Anzeigegenauigkeit und Messwertschwa
 \qquad\quad
 \Delta I = 0,2\unit{\mu A}
 \]
-Die größte Ungenauigkeit lag also im Messen der winzigen Ströme.
+Die größte Ungenauigkeit lag also im Messen der winzigen Ströme. Diese haben sowohl einen Einzelfehler als auch einen korelierten Offsetfehler von $0,1\unit{\mu A}$, also insgesamt bis zu 6\%.
 
 Der Leistungsverlauf zeigt ein Maximum bei mittleren Widerständen (im Bereich des Eigenwiderstandes der Zelle). Bei geringen Widerständen wird der Großteil der Leistung in der Zelle selbst freigesetzt und bei hohem Widerstand sorgt der geringe Stromfluss für eine schlechte Leistungsausbeute.
 \begin{figure}[ht]
@@ -294,9 +294,11 @@ P(R)= U_{\text{Last}}\cdot I
 \]
 Auf die Messdaten wurden nun die Zellspannung $U$ und der Eigenwiderstand $R_{\text{Zelle}}$ gefittet. Die Best-fit Werte sind:
 \[
-U = 134\unit{mV}
+U = 135 \pm 3\unit{mV}
 \qquad\qquad
-R_{\text{Zelle}} = 15,9\unit{k\Omega}
+R_{\text{Zelle}} = 16,0 \pm 0,7\unit{k\Omega}
+\qquad\qquad
+P_{\text{max}} = 284 \pm 4\unit{nW}
 \]
 Die Spannung erreicht hier einen sehr zufriedenstellenden Wert im $0,1\unit{V}$ Bereich, also in der Größenordnung kommerzieller Zellen. Der Innenwiderstand von ca. $16\unit{k\Omega}$ ist jedoch viel zu groß um eine vernünftige Leistung zu erzeugen. Hierdurch konnte die Zelle im Endeffekt auch nicht wirklich "`unter Last"' getestet werden und die tatsächliche Leistungsfähigkeit von Grätzelzellen entzieht sich unserer Untersuchung.
 
@@ -304,7 +306,10 @@ Die eingestrahlte Leistung in diesem Versuchsteil ermittelt sich aus der verwend
 diese emittiert unter optimalen Bedingungen eine Leistung von $475 \unit{mW}$\footnote{vgl. \url{http://www.led-tech.de/produkt-pdf/luxeon/DS51\_Luxeon\_K2.pdf}, bei der verwendeten LED handelt es sich um die LXK2 PR14 Q00}, in unserer Anwendung kann der Wert allerdings wegen der erhöhten Chiptemperatur und bereits vorhandener Degradation auf $400 \unit{mW}$ geschätzt werden.
 Der Transmissionsgrad der verwendeten Linse\footnote{Fraen FHS-HNB1-LB01-H, Datenblatt siehe \url{http://www.farnell.com/datasheets/16887.pdf}} liegt bei 85\%, der Halbwerts-Öffnungswinkel bei $10\degr$.
 Die bestrahlte Fläche der Grätzelzelle beträgt $1,5 \unit{cm} \times 1,5 \unit{cm}$ und befindet sich in einem Abstand vom $5 \unit{cm}$ zur LED, es kann also angenommen werden, dass der gesamte Lichtstrom auf die Zelle gebündelt wird, wodurch sich die eingestrahlte Leistung also zu $340 \unit{mW}$ ergibt.
-In Relation zur ermittelten Leistung der Zelle liegt der tatsächlich erreichte Wirkungsgrad liegt also bei $8 \ee{-7}$.
+In Relation zur ermittelten Leistung der Zelle liegt der tatsächlich erreichte Wirkungsgrad also bei
+\[
+\boxed{\eta = 8 \ee{-7}} \;.
+\]
 
 \subsection{Wellenl\"ange}
 Zur Ermittlung der Wellenlängenabhängigkeit der Zellleistung wurde eine einfachere Schaltung verwendet, da hier nur die relativen Werte interessant sind. Dieses Mal wurde nicht die erzielte Leistung am Lastwiderstand gemessen, sondern lediglich die direkt an der Zelle abgegriffene Spannung. Eine sinnvolle Stromstärkenmessung stand uns hier noch nicht zur Verfügung, aber da die Spannung weit von einem Sättigungsniveau entfernt war, lassen sich daraus brauchbare Werte für die erzeugte Zellleistung ableiten. Die Spannungswerte lagen mit ca. $2\unit{mV}$ gefährlich nahe am minimal messbaren Signal von $0,1\unit{mV}$, weshalb das Multimetersignal nur zur Kalibration der Mittelwerte verwendet wurde und genauere -- jedoch verschobene -- Werte vom Messverstärker abgelesen wurden. Während der Messung wurde mehrfach die Dunkelspannung ohne Beleuchtung abgelesen, die vom Anfang bis zum Ende der Messung von $U_0=1,9\unit{mV}$ bis $1,6\unit{mV}$ abdriftete. Da uns hier nur das vom Licht erzeugte Signal interessiert, wurde zu jedem Messzeitpunkt der linear interpolierte Dunkelspannungswert subtrahiert. Die Netto-Spannungswerte jeder Leuchtdiode sind in Tabelle \ref{ledspannung} eingetragen. Die grüne Leuchtdiode LED4 wurde aus den Messdaten herausgenommen, weil ihre Leuchtkraft unterhalb des messbaren Bereichs lag.
