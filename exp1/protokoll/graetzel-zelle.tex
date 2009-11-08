@@ -152,7 +152,7 @@ Es wurden 3 weiße sowie 7 farbige LEDs verwendet (Tabelle \ref{leds}), wobei di
 \begin{table}[ht]
 \captionabove{Daten der verwendeten LEDs}
 \label{leds}
-\begin{center}
+\begin{center}\vspace{-\baselineskip}
 \begin{tabular}{l|cccc}
 &Farbe &
 $\lambda_{\text{Peak}} \unit{[nm]}$ &
@@ -170,7 +170,7 @@ LED8 & kalt-weiß	& $6500\pm 3500\unit{K}$& n/a	& 120 (V)	\\
 LED9 & neutral-weiß	& $4100\pm 600 \unit{K}$& n/a	& 120 (V)	\\
 LED10 & warm-weiß	& $3000\pm 500 \unit{K}$& n/a	& 100 (U)	
 \end{tabular}
-\end{center}
+\vspace{-\baselineskip}\end{center}
 \end{table}
 
 
@@ -194,7 +194,7 @@ Die Messung, der von der Zelle gelieferten Spannung, erfolgte zum Einen durch ei
 Bei der Messung wurde jeweils zwei Minuten gewartet, bis sich die Messwerte eingependelt hatten.
 %%% gehoert das hier hin? eigentlich nein, oder?
 
-Der zweite Teil der Messung umfasste die Bestimmung der Leistung der Solarzelle in verschiedenen Widerstandsbereichen. Hierbei wurde nur die LED Nr.~7 (Farbe blau) verwendet, da sie die h\"ochsten Spannungen geliefert hat. Au\ss{}erdem kam eine neue Gr\"atzelzelle zum Einsatz, da die Zelle der ersten Messung bereits eingetrocknet war.
+Der zweite Teil der Messung umfasste die Bestimmung der Leistung der Solarzelle in verschiedenen Widerstandsbereichen. Hierbei wurde nur die LED Nr.~7 (Farbe~blau) verwendet, da sie die h\"ochsten Spannungen geliefert hat. Au\ss{}erdem kam eine neue Gr\"atzelzelle zum Einsatz, da die Zelle der ersten Messung bereits eingetrocknet war.
 
 Der Aufbau der LEDs wurde leicht angepasst. Neben einem geringeren Abstand der Lichtquelle von der Zelle, ersetzte eine Linse die Lochblende zum Fokussieren des Lichtstrahls. (Abb. \ref{messung_leistung})
 
@@ -240,7 +240,7 @@ Der zusätzliche Lastwiderstand $R_{\text{L}}$ wurde nun im Bereich 0 -- $40\uni
 \begin{table}[ht]
 \captionabove{Messwerte zur Leistungsbestimmung}
 \label{leistungsmesstabelle}
-\begin{center}
+\begin{center}\vspace{-\baselineskip}
 \begin{tabular}{rr|ccc}
 $R_{\text{L}}\; \unit{[k\Omega]}$ &
 $R\; \unit{[k\Omega]}$ &
@@ -259,7 +259,7 @@ $P\; \unit{[nW]}$ \\
 35	& 40,2	& 96,5	& 2,4	& 232 \\
 40	& 45,2	& 99,7	& 2,3	& 229
 \end{tabular}
-\end{center}
+\vspace{-\baselineskip}\end{center}
 \end{table}
 Die Ableseungenauigkeit durch die begrenzte Anzeigegenauigkeit und Messwertschwankungen betrugen:
 \[
@@ -311,7 +311,7 @@ Zur Ermittlung der Wellenlängenabhängigkeit der Zellleistung wurde eine einfac
 \begin{table}[ht]
 \captionabove{Messwerte zur Wellenlängenabhängigkeit. Die Wellenlängen der Leuchtdioden sind der Herstellerbeschreibung entnommen.}
 \label{ledspannung}
-\begin{center}
+\begin{center}\vspace{-\baselineskip}
 \begin{tabular}{l|ccc}
 \# &
 $\lambda\; \unit{[nm]}$ &
@@ -329,7 +329,7 @@ LED8	& 6500\unit{K}	& 4.652	& 2.796 \\
 LED9	& 4100\unit{K}	& 2.514	& 2.152 \\
 LED10	& 3000\unit{K}	& 2.026	& 2.136
 \end{tabular}
-\end{center}
+\vspace{-\baselineskip}\end{center}
 \end{table}
 
 
@@ -357,7 +357,7 @@ Die relative Farbempfindlichkeit ergibt sich nun einfach aus $U/\Phi$. Die so be
 \begin{table}[ht]
 \captionabove{Tatsächliche LED-Helligkeiten $\Phi$ und relative Effizienz der Photozelle}
 \label{lambda_kurve}
-\begin{center}
+\begin{center}\vspace{-\baselineskip}
 \begin{tabular}{l|ccc}
 \# &
 $\lambda\; \unit{[nm]}$ &
@@ -371,7 +371,7 @@ LED5	& 505	& 0.711	& 0.588 \\
 LED6	& 470	& 0.919	& 0.855 \\
 LED7	& 455	& 1.000	& 1.000
 \end{tabular}
-\end{center}
+\vspace{-\baselineskip}\end{center}
 \end{table}
 Die Energieeffizienz der Grätzelzelle lässt nun eine eindeutige Wellenlängenabhängigkeit erkennen, die für kleine Wellenlängen deutlich höher ist. Insgesamt waren nicht genügend verschiedene Spektralbereiche zur Messung vorhanden um Sprünge oder genauere Details erkennen zu können. Aber es kann leicht nachvollzogen werden, dass eine monotone Abhängigkeit vorhanden ist, und höherenergetische Photonen deutlich mehr zur Leistung beitragen.
 \begin{figure}[ht]
