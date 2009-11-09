@@ -58,6 +58,9 @@ V2 = [i[1] for i in data2]
 A1 = sum((lam1[i+1] - lam1[i]) * (V1[i] + V1[i+1]) / 2. for i in range(len(lam1)-1))
 A2 = sum((lam2[i+1] - lam2[i]) * (V2[i] + V2[i+1]) / 2. for i in range(len(lam2)-1))
 
+# Plotten
+pylab.rcParams['figure.subplot.bottom'] = 0.11
+pylab.rcParams['figure.subplot.top'] = 0.96
 pylab.plot(lam1, V1, "k--")
 pylab.plot(lam2, [i * A1 / A2 for i in V2], "k-")
 pylab.xlim(290, 820)

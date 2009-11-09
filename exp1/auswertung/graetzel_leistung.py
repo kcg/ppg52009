@@ -78,6 +78,8 @@ for i in range(len(fit[0])):
 
 
 ################# Plot #####################
+pylab.rcParams['figure.subplot.bottom'] = 0.11
+pylab.rcParams['figure.subplot.top'] = 0.96
 xarray = pylab.linspace(R[0]-2., R[-1]+2., 100)
 pylab.plot(xarray, fitfunc(p1, xarray), "k-", label='$(%.0f\,\mathrm{mV})^2 \cdot \\frac{R}{(R+%.0f\,\mathrm{k\Omega})^2}$' % (p1[0], p1[1]))
 pylab.errorbar(R, P, sc.sqrt(sc.diag(var_P)), None, "bo", label="Messwerte")

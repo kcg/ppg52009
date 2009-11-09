@@ -124,6 +124,8 @@ print p1
 xarray = pylab.linspace(p1[1], energy[-1] + 0.07, 2)
 
 # Plotten
+pylab.rcParams['figure.subplot.bottom'] = 0.12
+pylab.rcParams['figure.subplot.top'] = 0.96
 pylab.plot([0.], [0.], "ko", markersize=10., markeredgewidth=1., markerfacecolor="white")
 pylab.plot(xarray, fitfunc(p1, xarray), "k-")
 colors=['#de2b35', '#f48622', '#f9df30', '#82b8e6', '#887ecd', '#2656a8']
