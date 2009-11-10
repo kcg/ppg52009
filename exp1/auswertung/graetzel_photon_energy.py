@@ -117,17 +117,19 @@ xarray = pylab.linspace(p1[1], energy[-1] + 0.07, 2)
 # Plotten
 pylab.rcParams['figure.subplot.bottom'] = 0.12
 pylab.rcParams['figure.subplot.top'] = 0.96
-pylab.plot([0.], [0.], "ko", markersize=10., markeredgewidth=1., markerfacecolor="white")
-pylab.plot(xarray, fitfunc(p1, xarray), "k-")
+ax = pylab.figure().add_subplot(111)
+pylab.plot([0.], [0.], "ko", markersize=10., markeredgewidth=1., markerfacecolor="white") # just a hack
+ax.plot(xarray, fitfunc(p1, xarray), "k--")
 colors=['#de2b35', '#f48622', '#f9df30', '#82b8e6', '#887ecd', '#2656a8']
 for i in range(len(lam)):
-	pylab.errorbar(energy[i], E_norm[i], None, delta_energy[i], "ko", markersize=10., markeredgewidth=1., markerfacecolor=colors[i])
+	ax.errorbar(energy[i], E_norm[i], None, delta_energy[i], "ko", markersize=10., markeredgewidth=1., markerfacecolor=colors[i])
 
+ax.set_yticklabels([]) # keine y-Werte
 pylab.xlim(1.78, 2.9)
 pylab.ylim(0., 1.1)
 
 pylab.xlabel(u"$E_\mathrm{phot}\; [\mathrm{eV}]$")
-pylab.ylabel(u"$V$ (Energieeffizienz)")
+pylab.ylabel(u"$V$ (relative Energieeffizienz)")
 pylab.legend(("LEDs", "$V_0\cdot(E-%.2f\,\mathrm{eV})$" % (p1[1])), loc='lower right', numpoints=1)
 
 # Speichern
