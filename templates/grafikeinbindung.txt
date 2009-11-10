@@ -6,5 +6,5 @@ Grafiken sollten in einer Figure-Umgebung untergebracht sein. Dann kann Latex si
 \end{center}
 \vspace{-1.5\baselineskip}
 \caption{Bildunterschrift}
-\label{grafikreferenz}
+\label{fig:grafikreferenz}
 \end{figure}

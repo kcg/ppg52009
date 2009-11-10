@@ -82,7 +82,7 @@ Unter Bestrahlung der Zelle mit einer hellen LED und Zwischenschaltung verschied
 \section{Einleitung}
 
 % Ist das zu viel Blabla?
-Ein großes Problem der an sich viel versprechenden Solartechnik bleiben nach wie vor die enormen Kosten im Vergleich zur Energieerzeugung mit fossilen Brennstoffen. Die in den neunziger Jahren von Michael Grätzel von der EPFL Lausanne entwickelte und seitdem stetig verbesserte Farbstoff\-solarzelle ("`Grätzelzelle"') ermöglicht im Vergleich zu herkömmlichen, siliziumbasierten Solarzellen die Möglichkeit einer relativ kostengünstigen Herstellung und könnte deswegen in Zukunft mit zur Lösung der Energieproblematik beitragen. Nicht zuletzt auf Grund dessen, aber auch weil eine solche Zelle leicht herzustellen ist, waren die nachfolgend beschriebenen Untersuchungen an der Grätzelzelle Thema des ersten Projektpraktikumsversuchs.
+Ein großes Problem der an sich viel versprechenden Solartechnik bleiben nach wie vor die enormen Kosten im Vergleich zur Energieerzeugung mit fossilen Brennstoffen. Die in den neunziger Jahren von Michael Grätzel von der EPFL Lausanne entwickelte und seitdem stetig verbesserte Farbstoff\-solarzelle ("`Grätzelzelle"') ermöglicht im Vergleich zu herkömmlichen, siliziumbasierten Solarzellen die Möglichkeit einer relativ kostengünstigen Herstellung und könnte deswegen in Zukunft mit zur Lösung der Energieproblematik beitragen. Nicht zuletzt auf Grund dessen, aber auch weil eine solche Zelle mit vertretbarem Aufwand herzustellen ist, waren die nachfolgend beschriebenen Untersuchungen an der Grätzelzelle Thema des ersten Projektpraktikumsversuchs.
 
 
 
@@ -104,8 +104,6 @@ Bei umgekehrter Polung, also in Sperrrichtung, kann kein Strom flie\ss{}en. Solc
 
 
 \subsection{Funktionsweise der Gr\"atzelzelle}
-Die Gr\"atzelzelle, benannt nach ihrem Erfinder, dem Schweizer Michael Gr\"atzel, besteht aus zwei Elektroden, typischerweise leitend beschichteten Glasplatten. Auf der einen Glasplatte wird als Halbleiter Titandioxid angebracht. Da hier aber die verbotene Zone aber eine Gr\"o\ss{}e von $3.2\unit{eV}$ hat, w\"are die Zelle nur f\"ur hoch-energetische Photonen des TiO\textsubscript{2}-Lichts empfindlich. Daher wird auf die TiO$_{2}$-Schicht ein lichtempfindlicher organischer Farbstoff aufgebracht, dessen Elektronen auch von sichtbarem Licht angeregt werden k\"onnen. Die Gr\"atzelzelle wird deshalb auch als Farbstoffsolarzelle bezeichnet.
-
 \begin{figure}[ht]
 \begin{center}
 \includegraphics[height=0.4\textheight]{images/skizze.png}
@@ -114,6 +112,7 @@ Die Gr\"atzelzelle, benannt nach ihrem Erfinder, dem Schweizer Michael Gr\"atzel
 \caption{Schematischer Aufbau der Zelle}
 \label{skizze}
 \end{figure}
+Die Gr\"atzelzelle besteht aus zwei Elektroden, typischerweise leitend beschichteten Glasplatten. Auf der einen Glasplatte wird als Halbleiter Titandioxid angebracht. Da hier aber die verbotene Zone aber eine Gr\"o\ss{}e von $3.2\unit{eV}$ hat, w\"are die Zelle nur f\"ur hoch-energetische Photonen des Lichts empfindlich. Daher wird auf die TiO$_{2}$-Schicht ein lichtempfindlicher organischer Farbstoff aufgebracht, dessen Elektronen auch von sichtbarem Licht angeregt werden k\"onnen. Die Gr\"atzelzelle wird deshalb auch als Farbstoffsolarzelle bezeichnet.
 
 Die Gegenelektrode ist mit einem Katalysator, oft Platin, beschichtet, um die \"Ubergabe der ausgel\"osten Elektronen zu erleichtern. Den Raum zwischen den beiden Elektroden f\"ullt ein Elektrolyt, der in Redox-Reaktionen einerseits dem Farbstoff schnellen Nachschub an Elektronen liefert und andererseits an der Kathode wieder zur\"uck reagiert. Hier wird h\"aufig Iodkaliumiodid eingesetzt.
 
@@ -126,7 +125,7 @@ Die Gegenelektrode ist mit einem Katalysator, oft Platin, beschichtet, um die \"
 %%% Karl
 Die Beschaffung der f\"ur den Bau ben\"otigten Materialien stellte zu Beginn ein Problem dar. Insbesondere war es schwer, leitende und gleichzeitig transparente Elektroden zu bekommen. Die erste M\"oglichkeit, mit Gold beschichtet Glaspl\"attchen, zu verwenden, scheiterte an den zu geringen Ausma\ss{}en der m\"oglichen Tr\"agerplatten. Zu lange Lieferzeiten und zu hohe Preise schlossen auch die Bestellung von industriell produzierten ITO-Gl\"asern (Indiumzinnoxid-Beschichtung) aus.
 
-Das Institut der Physikalischen Chemie der Universit\"at Erlangen stellte gl\"ucklicherweise mehrere Fluorzinnoxid (FTO) beschichtete Glasplatten zur Verf\"ugung. Die leitend beschichteten, transparenten Glasplatten waren bereits auf eine Gr\"o\ss{}e von \(70\unit{mm} \times 20\unit{mm} \times 4 \unit{mm}\) zugeschnitten. Auf der leitenden Seite der Glasplatte konnte mit Hilfe eines Multimeters ein Widerstand von etwa \(20 \unit{\frac{\Omega}{cm}}\) gemessen werden.
+Das Institut der Physikalischen Chemie der Universit\"at Erlangen stellte gl\"ucklicherweise mehrere mit Fluorzinnoxid (FTO) beschichtete Glasplatten zur Verf\"ugung. Die leitend beschichteten, transparenten Glasplatten waren bereits auf eine Gr\"o\ss{}e von \(70\times 20 \times 4 \unit{mm}\) zugeschnitten. Auf der leitenden Seite der Glasplatte konnte mit Hilfe eines Multimeters ein Widerstand von etwa \(20 \unit{\frac{\Omega}{cm}}\) gemessen werden.
 
 Das Elektrolyt, eine Iod-Kaliumiodid-L\"osung sowie verd\"unnte Salzs\"aure zum Anmischen der Titandioxidpaste konnten ebenfalls von der Physikalischen Chemie bezogen werden.
 
@@ -139,9 +138,19 @@ Das Elektrolyt, eine Iod-Kaliumiodid-L\"osung sowie verd\"unnte Salzs\"aure zum 
 \label{herstellung_pipette}
 \end{figure}
 
-Mit Hilfe einer Bauanleitung\footnote{Internetreferenz} wurde versucht die erste Zelle zu fertigen: Zu Beginn wurde das TiO\textsubscript{2}-Pulver in einem Mörser zermalen und so lange verdünnte Salzsäure zugegeben, bis die entstandene Paste mit einer Plastikpipette aufgenommen werden konnte. Die Ränder der FTO-Elektroden wurden auf der leitenden Seite mit dünnem Klebeband abgeklebt und die Paste mit Hilfe eines Objektträgers zwischen die Klebebandränder einer Elektrode aufgebracht.
+% Bei "Internetreferenz" fehlt der Link!
+Mit Hilfe einiger Herstellungstipps\footnote{Internetreferenz} wurde versucht die erste Zelle zu fertigen: Zu Beginn wurde das TiO\textsubscript{2}-Pulver in einem Mörser zermahlen und so lange verdünnte Salzsäure zugegeben, bis die entstandene Paste mit einer Plastikpipette aufgenommen werden konnte. Die Ränder der FTO-Elektroden wurden auf der leitenden Seite mit dünnem Klebeband abgeklebt und die Paste mit Hilfe eines Objektträgers zwischen die Klebebandränder einer Elektrode aufgebracht.
 
-Um die Oberfläche des TiO\textsubscript{2} zu vergrößern, wurde versucht die Elektrode mit einem Gasbrenner zu sintern. In mehreren Versuchen, mit verschiedenen Brennern und Heißluftgeräten, gelang es jedoch nicht die Schicht so zu preparieren, dass anschließend der aufgebrachte Farbstoff in das TiO\textsubscript{2} eindringen konnte. So war die Zelle nicht funktionsfähig. Aus diesem Grund wurde der Farbstoff nun direkt beim anmischen der TiO\textsubscript{2}-Paste zugegeben und die Schicht nur leicht angetrocknet.
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{images/brennen.jpg}
+\end{center}
+\vspace{-1.5\baselineskip}
+\caption{Sintern der Zelle mit dem Gasbrenner}
+\label{fig:brennen}
+\end{figure}
+
+Um die Oberfläche des TiO\textsubscript{2} zu vergrößern, wurde versucht die Elektrode mit einem Gasbrenner zu sintern (\hyperref[fig:brennen]{Abb.~\ref{fig:brennen}}). In mehreren Versuchen mit verschiedenen Brennern und Heißluftgeräten gelang es jedoch nicht, die Schicht so zu präparieren, dass anschließend der aufgebrachte Farbstoff in das TiO\textsubscript{2} eindringen konnte. So war die Zelle nicht funktionsfähig. Aus diesem Grund wurde der Farbstoff nun direkt beim anmischen der TiO\textsubscript{2}-Paste zugegeben und die Schicht nur leicht angetrocknet.
 
 Die zweite leitende Glasplatte wurde mit einem Graphit-Propanol-Gemisch (anstatt des Platins) versehen und das Propanol verbrannt, um eine gleichmäßige, dünne Graphit-Schicht zu erhalten. Leider löste das Elektrolyt in der fertigen Zelle das Graphitpulver. Deshalb wurde das Graphit nun mit einem weichen Bleistift auf die FTO-Glasplatte aufgebracht. Die Klebestreifen der mit TiO\textsubscript{2} beschichteten Elektrode wurden entfernt, die der anderen Elektrode wurden als Isolator belassen.
 
@@ -162,6 +171,7 @@ Auf diese Weise wurden vier funktionsfähige Grätzel-Zellen mit verschiedenen F
 
 \subsection{Versuchsanordnung} %%% Michele und Axi
 %%% noch weiter untergliedern? vorueberlegung, LED, Wellenlaenge, Leistung? -> nein
+\subsubsection{Wellenlänge}
 Das erste Ziel war die Bestimmung der Abh\"angigkeit der Leistung der Zelle von der Wellenl\"ange des eingestrahlten Lichts. Zun\"achst wollten wir dieses Spektrum mit einem Gitter erzeugen. Die ersten Versuche mit einem Aufbau aus Baustrahler, Linse und Gitter auf einer optischen Bank hatten jedoch bereits gezeigt, dass die zu erwartende Lichtst\"arke des aufgef\"acherten Spektrums viel zu schwach f\"ur eine Messung sein w\"urde. Außerdem wurden die einzelnen Linien des Spektrums viel zu schwach aufgef\"achert, so dass nicht nur ein Farbbereich auf die breitere Zelle treffen w\"urde. Auch der Ersatz des Gitters durch ein Prisma konnte diese Probleme nicht l\"osen.
 
 Deshalb haben wir uns entschlossen, die verschiedenen Farbbereiche durch LEDs unterschiedlicher Wellenl\"ange darzustellen. Hierbei kam ein Verbund aus zehn verschiedenen LEDs des Modells Luxeon K2 von Philips\footnote{\url{http://www.led-tech.de/produkt-pdf/luxeon/DS51\_Luxeon\_K2.pdf}} zum Einsatz, welcher bereits fr\"uher von einem Gruppenmitglied gebaut wurde.
@@ -206,13 +216,14 @@ Um eine Vergleichsmessung, wie die Wellenl\"angenabh\"angigkeit, genau durchf\"u
 
 In der selben H\"ohe wurde, versetzt zur Zelle, auch ein LUX-Sensor befestigt, um eine Messung der jeweiligen Leuchtkraft der LEDs zu erm\"oglichen. Auch hier markierte eine Stativstange die Messposition. Zum Auslesen des Sensor wurde das CASSY-LAB verwendet, welches die Messwerte \"uber $1000\unit{ms}$ gemittelt anzeigte.
 
-Die Messung, der von der Zelle gelieferten Spannung, erfolgte zum Einen durch ein direkt an die Zelle angeschlossenes Multimeter, sowie durch ein weiteres Multimeter, dessen Signal jedoch zun\"achst einen Messverst\"arker durchlief. Der genaue Aufbau ist auch aus dem folgenden Foto (\hyperref[messung_farben]{Abb.~\ref{messung_farben}}) ersichtlich.
+Die Messung, der von der Zelle gelieferten Spannung, erfolgte zum Einen durch ein direkt an die Zelle angeschlossenes Multimeter, sowie durch ein weiteres Multimeter, dessen Signal jedoch zun\"achst einen Messverst\"arker durchlief. Der Aufbau ist auch auf dem Foto (\hyperref[messung_farben]{Abb.~\ref{messung_farben}}) dargestellt.
 
 %fehlt hier noch Schaltplan ?
 
 Bei der Messung wurde jeweils zwei Minuten gewartet, bis sich die Messwerte eingependelt hatten.
 %%% gehoert das hier hin? eigentlich nein, oder?
 
+\subsubsection{Leistung und Wirkungsgrad}
 Der zweite Teil der Messung umfasste die Bestimmung der Leistung der Solarzelle in verschiedenen Widerstandsbereichen. Hierbei wurde nur die LED Nr.~7 (Farbe~blau) verwendet, da sie die h\"ochsten Spannungen geliefert hat. Au\ss{}erdem kam eine neue Gr\"atzelzelle zum Einsatz, da die Zelle der ersten Messung bereits eingetrocknet war.
 
 Der Aufbau der LEDs wurde leicht angepasst. Neben einem geringeren Abstand der Lichtquelle von der Zelle, ersetzte eine Linse die Lochblende zum Fokussieren des Lichtstrahls. (\hyperref[messung_leistung]{Abb.~\ref{messung_leistung}})
@@ -248,6 +259,93 @@ Um mehrere Paare an Messwerten zu erhalten, wurde wie zu sehen ist, ein regelbar
 
 \section{Messungen und Ergebnisse}
 %%% Basti, Michele (LED's)
+\subsection{Wellenl\"ange}
+Zur Ermittlung der Wellenlängenabhängigkeit der Zellleistung wurde eine einfachere Schaltung verwendet, da hier nur die relativen Werte interessant sind. Hierzu wurde die Spannung direkt an der Zelle abgegriffen. Eine sinnvolle Stromstärkenmessung stand uns bei diesem Versuch noch nicht zur Verfügung, aber da die Spannung weit von einem Sättigungsniveau entfernt war, lassen sich daraus brauchbare Werte für die erzeugte Zellleistung ableiten. Die Spannungswerte lagen mit ca. $2\unit{mV}$ gefährlich nahe am minimal messbaren Signal von $0,1\unit{mV}$, weshalb das Multimetersignal nur zur Kalibration der Mittelwerte verwendet wurde und genauere -- jedoch verschobene -- Werte vom Messverstärker abgelesen wurden. Während der Messung wurde mehrfach die Dunkelspannung ohne Beleuchtung abgelesen, die vom Anfang bis zum Ende der Messung von $U_0=1,9\unit{mV}$ bis $1,6\unit{mV}$ abdriftete. Da uns hier nur das vom Licht erzeugte Signal interessiert, wurde zu jedem Messzeitpunkt der linear interpolierte Dunkelspannungswert subtrahiert. Die Netto-Spannungswerte jeder Leuchtdiode sind in \hyperref[ledspannung]{Tabelle~\ref{ledspannung}}\ref{ledspannung} eingetragen. Die grüne Leuchtdiode LED4 wurde aus den Messdaten herausgenommen, weil ihre Leuchtkraft wegen fehlerhafter elektrischer Ansteuerung unterhalb des messbaren Bereichs lag.
+\begin{table}[ht]
+\captionabove{Messwerte zur Wellenlängenabhängigkeit. Die Wellenlängen der Leuchtdioden sind der Herstellerbeschreibung entnommen.}
+\label{ledspannung}
+\begin{center}\vspace{-\baselineskip}
+\begin{tabular}{l|ccc}
+\# &
+$\lambda\; \unit{[nm]}$ &
+$U\; \unit{[mV]}$ &
+$E\; \unit{[klux]}$ \\
+\hline
+LED1	& 627	& 0.258	& 1.79 \\
+LED2	& 617	& 0.324	& 1.65 \\
+LED3	& 590	& 0.202	& 0.486 \\
+LED5	& 505	& 2.738	& 1.698 \\
+LED6	& 470	& 5.148	& 1.965 \\
+LED7	& 455	& 6.550	& 2.031 \\
+\hline
+LED8	& 6500\unit{K}	& 4.652	& 2.796 \\
+LED9	& 4100\unit{K}	& 2.514	& 2.152 \\
+LED10	& 3000\unit{K}	& 2.026	& 2.136
+\end{tabular}
+\vspace{-\baselineskip}\end{center}
+\end{table}
+
+
+\subsubsection{Ermittlung der LED-Helligkeiten}
+Die Wellenlängenabhängigkeit der Photozellenempfindlichkeit kann nur dann ermittelt werden, wenn auch die tatsächlich eingestrahlte Beleuchtungsstärke bekannt ist. Hierzu dient die Vergleichsmessung mit dem Cassy-Luxmeter. Doch auch dieses hat eine eigene Wellenlängenabhängigkeit. Auf der Herstellerseite von Leybold heißt es dazu: "`Der Photometerkopf besteht aus einem Si-Photoelement mit l-Filter zur Anpassung des Photoelements an die spektrale Empfindlichkeit des Auges. Er hat eine cos-Anpassung."' Genaue Tabellen werden aber nicht zur Verfügung gestellt. Die Winkelabhängigkeit spielt im vorliegenden Fall keinen Rolle, da die Einstrahlung senkrecht zur Photozelle verlief. L-Filter blocken in der Regel nur Licht unterhalb von $400\unit{nm}$ und oberhalb von $700\unit{nm}$ und sind dazwischen gleichmäßig durchlässig.
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=0.75\textwidth]{images/lichteffizienz_silizium_auge.pdf}
+\end{center}
+\vspace{-1.5\baselineskip}
+\caption{Energieeffizienz des menschlichen Auges und einer Si-Photodiode in Abhängigkeit von der Wellenlänge. Die Ordinate ist nicht auf Einheiten normiert.}
+\label{lichteffizienz_auge}
+\end{figure}
+Um tatsächlich Lux zu messen, müsste der Sensor in etwa eine wellenlängenabhängige Empfindlichkeit wie in die des Auges\footnote{\url{http://www.cvrl.org}} aufweisen. Siliziumdioden, wie die im Sensor verbaute haben aber durchaus verschiedene Wellenlängenabhängigkeiten. Die meisten der im Internet gefundenen Datenblätter zeigen eine höhere Effizienz bei großen Wellenlängen mit einem Maximum um $800\unit{nm}$ herum. Photodioden, die dem Auge mehr ähneln, scheinen aber zu existieren. In Frage kommt z.B. ein Spektrum wie das der Silizium Photodiode S1133 von Hamamatsu\footnote{\url{http://sales.hamamatsu.com/assets/pdf/parts_S/S1087_etc.pdf}}. Die Spektren sind in \hyperref[lichteffizienz_auge]{Abb.~\ref{lichteffizienz_auge}} gezeichnet.
+
+
+\subsubsection{Wellenlängenempfindlichkeit der Grätzelzelle}
+Nimmt man nun die Si-Diodenempfindlichkeitskurve als Schätzung für die Sensorempfindlichkeit $V$ her, so ergibt sich für die tatsächliche Helligkeit $\Phi$ einer LED:
+\[
+E_{\text{mess}}(\lambda) = \Phi(\lambda)\cdot V(\lambda)
+\qquad\Rightarrow\qquad
+\Phi(\lambda) = \frac{E_{\text{mess}}(\lambda)}{V(\lambda)}
+\]
+Die relative Farbempfindlichkeit ergibt sich nun einfach aus $U/\Phi$. Die so berechneten und auf 1 normierten Werte sind in \hyperref[lambda_kurve]{Tabelle~\ref{lambda_kurve}} aufgelistet.
+\begin{table}[hc]
+\captionabove{Tatsächliche LED-Helligkeiten $\Phi$ und relative Effizienz der Photozelle}
+\label{lambda_kurve}
+\begin{center}\vspace{-\baselineskip}
+\begin{tabular}{l|ccc}
+\# &
+$\lambda\; \unit{[nm]}$ &
+$\Phi / \Phi_{\text{max}}$ &
+$E/E_{\text{max}}$ \\
+\hline
+LED1	& 627	& 0.843	& 0.047 \\
+LED2	& 617	& 0.734	& 0.067 \\
+LED3	& 590	& 0.193	& 0.159 \\
+LED5	& 505	& 0.711	& 0.588 \\
+LED6	& 470	& 0.919	& 0.855 \\
+LED7	& 455	& 1.000	& 1.000
+\end{tabular}
+\vspace{-\baselineskip}\end{center}
+\end{table}
+Die Energieeffizienz der Grätzelzelle lässt nun eine eindeutige Wellenlängenabhängigkeit erkennen, die für kleine Wellenlängen deutlich höher ist. Insgesamt waren nicht genügend verschiedene Spektralbereiche zur Messung vorhanden um Sprünge oder genauere Details erkennen zu können. Aber es kann leicht nachvollzogen werden, dass eine monotone Abhängigkeit vorhanden ist, und höherenergetische Photonen deutlich mehr zur Leistung beitragen.
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=1.0\textwidth]{images/graetzel_photon_energy.pdf}
+\end{center}
+\vspace{-1.5\baselineskip}
+\caption{relative Energieeffizienz der Grätzelzelle in Abhängigkeit von der Photonenenergie. Jeder Datenpunkt wurde mit der Referenzmessung des Luxsensors und der Effizienzkurve für die Siliziumdiode kalibriert.}
+\label{lambda_korrigiert}
+\end{figure}
+
+Die Unsicherheit der Werte in $y$-Richtung ist trotz aller Bemühungen relativ groß, aber nicht quantifizierbar, da sie direkt von der Diode des Cassy Luxsensors abhängt. Effektiv wird die Ergebniskurve direkt proportional mit der Detektorcharakteristik multipliziert. Wurde z.B. eine weniger augenähnliche Diode verbaut, die bei großen Wellenlängen empfindlicher ist, so würde sich auch unsere Kurve dort nach oben verschieben und nicht mehr ganz so steil sein. Der Effekt wäre aber höchstwahrscheinlich nicht groß genug um den Trend umzukehren, da dieser ziemlich eindeutig hervortritt. Die Erkenntnis bleibt: Die Grätzelzelle liefert bei höherenergetischen Photonen deutlich mehr Leistung.
+
+Trägt man die relative Energieausbeute der Grätzelzelle nach der Photonenenergie auf, zeigt sich ein beinahe linearer Zusammenhang, obwohl dies von uns durch kein theoretisches Modell gefordert war. Sehr schön zeigt sich, dass die Zelle erst ab einer Mindestenergie
+\[
+E_{\text{min}} = 1,96 \unit{eV}
+\]
+Energie liefert. Dies ist ein Beweis dafür, dass die Schwellenenergie von TiO\textsubscript{2} von $3,2 \unit{eV}$ durch den Farbstoff heruntergesetzt wurde.
+
+
+
 \subsection{Leistung und Wirkungsgrad}
 Zur Leistungsmessung wurden die Strom- und Spannungswerte der Zelle mit einer spannungsrichtigen Schaltung nach (\hyperref[leistungsschaltkreis]{Abb.~\ref{leistungsschaltkreis}}) bei verschiedenen Lastwiderständen gemessen. Die Lastwiderstände waren über eine Kombinationsbox einstell- und ablesbar. Das Voltmeter hatte mit $10\unit{M\Omega}$ genügend Eigenwiderstand, um die Messung nicht zu beeinflussen. Das Amperemeter hatte jedoch wegen der hohen benötigten Empfindlichkeit einen signifikanten Eigenwiderstand von
 \[
@@ -326,93 +424,22 @@ In Relation zur ermittelten Leistung der Zelle liegt der tatsächlich erreichte 
 \boxed{\eta = 8 \ee{-7}} \;.
 \]
 
-\subsection{Wellenl\"ange}
-Zur Ermittlung der Wellenlängenabhängigkeit der Zellleistung wurde eine einfachere Schaltung verwendet, da hier nur die relativen Werte interessant sind. Dieses Mal wurde nicht die erzielte Leistung am Lastwiderstand gemessen, sondern lediglich die direkt an der Zelle abgegriffene Spannung. Eine sinnvolle Stromstärkenmessung stand uns hier noch nicht zur Verfügung, aber da die Spannung weit von einem Sättigungsniveau entfernt war, lassen sich daraus brauchbare Werte für die erzeugte Zellleistung ableiten. Die Spannungswerte lagen mit ca. $2\unit{mV}$ gefährlich nahe am minimal messbaren Signal von $0,1\unit{mV}$, weshalb das Multimetersignal nur zur Kalibration der Mittelwerte verwendet wurde und genauere -- jedoch verschobene -- Werte vom Messverstärker abgelesen wurden. Während der Messung wurde mehrfach die Dunkelspannung ohne Beleuchtung abgelesen, die vom Anfang bis zum Ende der Messung von $U_0=1,9\unit{mV}$ bis $1,6\unit{mV}$ abdriftete. Da uns hier nur das vom Licht erzeugte Signal interessiert, wurde zu jedem Messzeitpunkt der linear interpolierte Dunkelspannungswert subtrahiert. Die Netto-Spannungswerte jeder Leuchtdiode sind in \hyperref[ledspannung]{Tabelle~\ref{ledspannung}}\ref{ledspannung} eingetragen. Die grüne Leuchtdiode LED4 wurde aus den Messdaten herausgenommen, weil ihre Leuchtkraft unterhalb des messbaren Bereichs lag.
-\begin{table}[ht]
-\captionabove{Messwerte zur Wellenlängenabhängigkeit. Die Wellenlängen der Leuchtdioden sind der Herstellerbeschreibung entnommen.}
-\label{ledspannung}
-\begin{center}\vspace{-\baselineskip}
-\begin{tabular}{l|ccc}
-\# &
-$\lambda\; \unit{[nm]}$ &
-$U\; \unit{[mV]}$ &
-$E\; \unit{[klux]}$ \\
-\hline
-LED1	& 627	& 0.258	& 1.79 \\
-LED2	& 617	& 0.324	& 1.65 \\
-LED3	& 590	& 0.202	& 0.486 \\
-LED5	& 505	& 2.738	& 1.698 \\
-LED6	& 470	& 5.148	& 1.965 \\
-LED7	& 455	& 6.550	& 2.031 \\
-\hline
-LED8	& 6500\unit{K}	& 4.652	& 2.796 \\
-LED9	& 4100\unit{K}	& 2.514	& 2.152 \\
-LED10	& 3000\unit{K}	& 2.026	& 2.136
-\end{tabular}
-\vspace{-\baselineskip}\end{center}
-\end{table}
 
 
-\subsubsection{Ermittlung der LED-Helligkeiten}
-Die Wellenlängenabhängigkeit der Photozellenempfindlichkeit kann nur dann ermittelt werden, wenn auch die tatsächlich eingestrahlte Beleuchtungsstärke bekannt ist. Hierzu dient die Vergleichsmessung mit dem Cassy-Luxmeter. Doch auch dieses hat eine eigene Wellenlängenabhängigkeit. Auf der Herstellerseite von Leybold heißt es dazu: "`Der Photometerkopf besteht aus einem Si-Photoelement mit l-Filter zur Anpassung des Photoelements an die spektrale Empfindlichkeit des Auges. Er hat eine cos-Anpassung."' Genaue Tabellen werden aber nicht zur Verfügung gestellt. Die Winkelabhängigkeit spielt im vorliegenden Fall jedoch keinen Rolle, da die Einstrahlung senkrecht zur Photozelle verlief. L-Filter blocken in der Regel nur Licht unterhalb von $400\unit{nm}$ und oberhalb von $700\unit{nm}$ und sind dazwischen gleichmäßig durchlässig.
-\begin{figure}[ht]
-\begin{center}
-\includegraphics[width=0.75\textwidth]{images/lichteffizienz_silizium_auge.pdf}
-\end{center}
-\vspace{-1.5\baselineskip}
-\caption{Energieeffizienz des menschlichen Auges und einer Si-Photodiode in Abhängigkeit von der Wellenlänge. Die Ordinate ist nicht auf Einheiten normiert.}
-\label{lichteffizienz_auge}
-\end{figure}
-Um tatsächlich Lux zu messen, müsste der Sensor in etwa eine wellenlängenabhängige Empfindlichkeit wie in die des Auges\footnote{\url{http://www.cvrl.org}} aufweisen. Siliziumdioden, wie die im Sensor verbaute haben aber durchaus verschiedene Wellenlängenabhängigkeiten. Die meisten der im Internet gefundenen Datenblätter zeigen eine höhere Effizienz bei großen Wellenlängen mit einem Maximum um $800\unit{nm}$ herum. Photodioden, die dem Auge mehr ähneln, scheinen aber zu existieren. In Frage kommt z.B. ein Spektrum wie das der Silizium Photodiode S1133 von Hamamatsu\footnote{\url{http://sales.hamamatsu.com/assets/pdf/parts_S/S1087_etc.pdf}}. Die Spektren sind in \hyperref[lichteffizienz_auge]{Abb.~\ref{lichteffizienz_auge}} gezeichnet.
 
-
-\subsubsection{Wellenlängenempfindlichkeit der Grätzelzelle}
-Nimmt man nun die Si-Diodenempfindlichkeitskurve als Schätzung für die Sensorempfindlichkeit $V$ her, so ergibt sich für die tatsächliche Helligkeit $\Phi$ einer LED:
-\[
-E_{\text{mess}}(\lambda) = \Phi(\lambda)\cdot V(\lambda)
-\qquad\Rightarrow\qquad
-\Phi(\lambda) = \frac{E_{\text{mess}}(\lambda)}{V(\lambda)}
-\]
-Die relative Farbempfindlichkeit ergibt sich nun einfach aus $U/\Phi$. Die so berechneten und auf 1 normierten Werte sind in \hyperref[lambda_kurve]{Tabelle~\ref{lambda_kurve}} aufgelistet.
-\begin{table}[hc]
-\captionabove{Tatsächliche LED-Helligkeiten $\Phi$ und relative Effizienz der Photozelle}
-\label{lambda_kurve}
-\begin{center}\vspace{-\baselineskip}
-\begin{tabular}{l|ccc}
-\# &
-$\lambda\; \unit{[nm]}$ &
-$\Phi / \Phi_{\text{max}}$ &
-$E/E_{\text{max}}$ \\
-\hline
-LED1	& 627	& 0.843	& 0.047 \\
-LED2	& 617	& 0.734	& 0.067 \\
-LED3	& 590	& 0.193	& 0.159 \\
-LED5	& 505	& 0.711	& 0.588 \\
-LED6	& 470	& 0.919	& 0.855 \\
-LED7	& 455	& 1.000	& 1.000
-\end{tabular}
-\vspace{-\baselineskip}\end{center}
-\end{table}
-Die Energieeffizienz der Grätzelzelle lässt nun eine eindeutige Wellenlängenabhängigkeit erkennen, die für kleine Wellenlängen deutlich höher ist. Insgesamt waren nicht genügend verschiedene Spektralbereiche zur Messung vorhanden um Sprünge oder genauere Details erkennen zu können. Aber es kann leicht nachvollzogen werden, dass eine monotone Abhängigkeit vorhanden ist, und höherenergetische Photonen deutlich mehr zur Leistung beitragen.
-\begin{figure}[ht]
-\begin{center}
-\includegraphics[width=1.0\textwidth]{images/graetzel_photon_energy.pdf}
-\end{center}
-\vspace{-1.5\baselineskip}
-\caption{relative Energieeffizienz der Grätzelzelle in Abhängigkeit von der Photonenenergie. Jeder Datenpunkt wurde mit der Referenzmessung des Luxsensors und der Effizienzkurve für die Siliziumdiode kalibriert.}
-\label{lambda_korrigiert}
-\end{figure}
-
-Die Unsicherheit der Werte in $y$-Richtung ist trotz aller Bemühungen relativ groß, aber nicht quantifizierbar, da sie direkt von der Diode des Cassy Luxsensors abhängt. Effektiv wird die Ergebniskurve direkt proportional mit der Detektorcharakteristik multipliziert. Wurde z.B. eine weniger augenähnliche Diode verbaut, die bei großen Wellenlängen empfindlicher ist, so würde sich auch unsere Kurve dort nach oben verschieben und nicht mehr ganz so steil sein. Der Effekt wäre aber höchstwahrscheinlich nicht groß genug um den Trend umzukehren, da dieser ziemlich eindeutig hervortritt. Die Erkenntnis bleibt: Die Grätzelzelle liefert bei höherenergetischen Photonen deutlich mehr Leistung.
-
-Trägt man die relative Energieausbeute der Grätzelzelle nach der Photonenenergie auf, zeigt sich ein beinahe linearer Zusammenhang, obwohl dies von uns durch kein theoretisches Modell gefordert war. Sehr schön zeigt sich, dass die Zelle erst ab einer Mindestenergie
-\[
-E_{\text{min}} = 1,96 \unit{eV}
-\]
-Energie liefert. Dies ist ein Beweis dafür, dass die Schwellenenergie von TiO\textsubscript{2} von $3,2 \unit{eV}$ durch den Farbstoff heruntergesetzt wurde.
 
 \section{Fazit}
-%%% zusammen
-Dank an Dr. Vito Sgobba, etc.
+%%% Fehlt hier noch was? Umformulierungen? zu lang?
+In diesem ersten Projekt zeigte sich bereits, wie schwierig das Beschaffen aller benötigten Bauteile ist, bevor überhaupt erst Versuche durchgeführt werden können.
+Im Falle der Grätzelzelle betraf das insbesondere die leitenden Glasplatten, weil solche allein aus physikalischen Prinzipien nicht ohne weiteres funktionieren.
+An dieser Stelle möchten wir uns besonders bei Dr. Vito Sgobba aus der Physikalischen Chemie bedanken, durch dessen Hilfe wir letztendlich doch alle Materialien zur Verfügung hatten.
+
+Der entscheidende Erfolg war dann, dass unsere gebauten Zellen ab dem zweiten Versuch tatsächlich einen lichtabhängigen Strom lieferten, denn damit bestätigte sich die Funktionsfähigkeit des Prinzips als Solarzelle.
+Die Abhängigkeit der Leistung von der Lichtwellenlänge trat schöner zum Vorschein als wir es ursprünglich erwartet hatten.
+Der Wirkungsgrad von rund $0,0001\%$ ist dagegen etwas gering ausgefallen wenn man bedenkt, dass mit dem gleichen Prinzip schon bis zu $11\%$ erreicht worden sein sollen.
+Hier war offensichtlich irgendein Detail am Aufbau nicht optimal abgestimmt.
+Weitere Untersuchungen konnten wir dazu aber nicht unternehmen.
+
+Wenn noch mehr Zeit zur Verfügung gewesen wäre, hätten wir also reichlich Spielraum bei der Optimierung der Effizienz gehabt. Doch auch so kann man die Versuche schon als erfolgreich betrachten. In Zukunft darf man gespannt sein, wie weit die Grätzelzelle ihr Potential unter Beweis stellen wird, um vielleicht irgendwann sogar die konventionelle Photovoltaikzelle abzulösen.
 \end{document}
 

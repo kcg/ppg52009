@@ -4,7 +4,7 @@ Grafiken sollten in einer Figure-Umgebung untergebracht sein. Dann kann Latex si
 
 \begin{table}[h]
 \captionabove{Tabellenüberschrift}
-\label{tabellenreferenz}
+\label{tab:tabellenreferenz}
 \begin{center}\vspace{-\baselineskip}
 \begin{tabular}{c|cc}
 Name & a & b \\
