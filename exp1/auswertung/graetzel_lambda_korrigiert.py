@@ -60,7 +60,7 @@ lambda_diode = [i[0] for i in data_diode]
 V_diode = [i[1] for i in data_diode]
 
 # Fehler (FWHM Spektrenbreite)
-delta_lam = [i[4]/2. for i in data_graetzel[:color_diods]]
+delta_lam = [i[5]/2. for i in data_graetzel[:color_diods]]
 
 
 def V(lamb):
@@ -89,22 +89,19 @@ print hell_norm
 print E_norm
 
 # Spline Interpolation
-#lam.reverse()
-#E_norm.reverse()
-#newx = pylab.linspace(400, 660, 100)
-#tck = scipy.interpolate.splrep(lam,E_norm)
-#newy = scipy.interpolate.splev(newx,tck,der=0)
-#print [[lam[i], E_norm[i]] for i in range(len(lam))]
-# extern berechnete Spline-liste
-x_spline = [450., 460., 470., 480., 490., 500., 510., 520., 530., 540., 550., 560., 570., 580., 590., 600., 610., 620., 630.]
-y_spline = [1.050, 0.951, 0.855, 0.769, 0.692, 0.621, 0.556, 0.495, 0.438, 0.385, 0.335, 0.288, 0.243, 0.200, 0.159, 0.121, 0.087, 0.061, 0.041]
+lam.reverse()
+delta_lam.reverse()
+E_norm.reverse()
+x_spline = pylab.linspace(450, 630, 40)
+tck = scipy.interpolate.splrep(lam, E_norm)
+y_spline = scipy.interpolate.splev(x_spline, tck, der=0)
 
 
 pylab.rcParams['figure.subplot.bottom'] = 0.11
 pylab.rcParams['figure.subplot.top'] = 0.96
 pylab.plot([0.], [0.], "ko", markersize=10., markeredgewidth=1., markerfacecolor="white")
 pylab.plot(x_spline, y_spline, "k-")
-colors=['#de2b35', '#f48622', '#f9df30', '#82b8e6', '#887ecd', '#2656a8']
+colors=['#2656a8', '#887ecd', '#82b8e6', '#f9df30', '#f48622', '#de2b35']
 for i in range(len(lam)):
 	pylab.errorbar(lam[i], E_norm[i], None, delta_lam[i], "ko", markersize=10., markeredgewidth=1., markerfacecolor=colors[i])
 

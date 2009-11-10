@@ -15,15 +15,6 @@ filename_diode = "hamamatsuS1133.txt"
 colsep = "\t"
 
 
-# Integral der Spektralverteilung einer LED (gebastelt)
-def int_spec_led(de, hwhm):
-	# de = Energie - E_mittel
-	b = 1. - sqrt(0.5)
-	a = (1. + b**(2.*abs(de/hwhm))/3. - 4./3. * b**(abs(de/hwhm)))
-	if de >= 0:
-		return 0.5 + 0.5 * a
-	return 0.5 - 0.5 * a
-
 
 # Die Modellfunktion
 def fitfunc(p, xx):
@@ -33,7 +24,7 @@ def fitfunc(p, xx):
 def errfunc(p, x, y, hwhm):
 	yw = fitfunc(p,x)
 	# Berücksichtigen, dass ein Teil des LED-Spektrums abgeschnitten wird (da Energie zu klein)
-	return [yw[i] - y[i] * int_spec_led(y[i]/p[0], hwhm[i]) for i in range(len(x))]
+	return [yw[i] - y[i] for i in range(len(x))]
 
 
 # Datne einlesen
@@ -84,7 +75,7 @@ V_diode = [i[1] for i in data_diode]
 energy = [1.23986E3 / i for i in lam]
 
 # Fehler (FWHM Spektrenbreite)
-delta_lam = [i[4]/2. for i in data_graetzel[:color_diods]]
+delta_lam = [i[5]/2. for i in data_graetzel[:color_diods]]
 delta_energy = [energy[i] / lam[i] * delta_lam[i] for i in range(len(energy))]
 
 def V(lamb):

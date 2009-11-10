@@ -388,15 +388,20 @@ LED7	& 455	& 1.000	& 1.000
 Die Energieeffizienz der Grätzelzelle lässt nun eine eindeutige Wellenlängenabhängigkeit erkennen, die für kleine Wellenlängen deutlich höher ist. Insgesamt waren nicht genügend verschiedene Spektralbereiche zur Messung vorhanden um Sprünge oder genauere Details erkennen zu können. Aber es kann leicht nachvollzogen werden, dass eine monotone Abhängigkeit vorhanden ist, und höherenergetische Photonen deutlich mehr zur Leistung beitragen.
 \begin{figure}[ht]
 \begin{center}
-\includegraphics[width=1.0\textwidth]{images/graetzel_lambda_korrigiert.pdf}
+\includegraphics[width=1.0\textwidth]{images/graetzel_photon_energy.pdf}
 \end{center}
 \vspace{-1.5\baselineskip}
-\caption{relative Energieeffizienz der Grätzelzelle in Abhängigkeit von der Wellenlänge. Jeder Datenpunkt wurde mit der Referenzmessung des Luxsensors und der Effizienzkurve für die Siliziumdiode kalibriert.}
+\caption{relative Energieeffizienz der Grätzelzelle in Abhängigkeit von der Photonenenergie. Jeder Datenpunkt wurde mit der Referenzmessung des Luxsensors und der Effizienzkurve für die Siliziumdiode kalibriert.}
 \label{lambda_korrigiert}
 \end{figure}
 
 Die Unsicherheit der Werte in $y$-Richtung ist trotz aller Bemühungen relativ groß, aber nicht quantifizierbar, da sie direkt von der Diode des Cassy Luxsensors abhängt. Effektiv wird die Ergebniskurve direkt proportional mit der Detektorcharakteristik multipliziert. Wurde z.B. eine weniger augenähnliche Diode verbaut, die bei großen Wellenlängen empfindlicher ist, so würde sich auch unsere Kurve dort nach oben verschieben und nicht mehr ganz so steil sein. Der Effekt wäre aber höchstwahrscheinlich nicht groß genug um den Trend umzukehren, da dieser ziemlich eindeutig hervortritt. Die Erkenntnis bleibt: Die Grätzelzelle liefert bei höherenergetischen Photonen deutlich mehr Leistung.
 
+Trägt man die relative Energieausbeute der Grätzelzelle nach der Photonenenergie auf, zeigt sich ein beinahe linearer Zusammenhang, obwohl dies von uns durch kein theoretisches Modell gefordert war. Sehr schön zeigt sich, dass die Zelle erst ab einer Mindestenergie
+\[
+E_{\text{min}} = 1,96 \unit{eV}
+\]
+Energie liefert. Dies ist ein Beweis dafür, dass die Schwellenenergie von TiO\textsubscript{2} von $3,2 \unit{eV}$ durch den Farbstoff heruntergesetzt wurde.
 
 \section{Fazit}
 %%% zusammen
