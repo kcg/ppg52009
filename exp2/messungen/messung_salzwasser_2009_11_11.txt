@@ -1,0 +1,78 @@
+Messprotokoll 11.11.2009
+========================
+Messung der Leitfähigkeit des Salzwassers. 
+
+Aufbau:
+----------
+Salzwasser in quadratischer Plastikwanne, Kantenlänge: 14,3cm
+Wasserhöhe: 1,4cm
+-> Wassermenge ca. 0,286l
+
+getauchte Fläche der Alu-Elektroden: 14,3cm x 1,4cm
+
+zwischengeschalteter, verstellbarer Widerstand
+Es wurde jeweils die Spannung an der Stromquelle varriert und die Werte für Spannung un Stromfluss geplottet
+
+[geheim] Alufolie färbt sich schwarz[\geheim]
+
+
+Salzmenge [g]  -   Stromstärke [mA]  -  Spannung [mV] -  Widerstand [k Ohm]  	 
+------------------------------------------------------------------------------------------------------------
+#Abweichungen: Spannung schwankt bis ca 370mV sehr stark +/- 30mV, darüber: geringe Schwankung +/- 5mV
+# Strom: Keine Abweichung beim Ablesen
+0	0.148	80	
+0	0.455	330	
+0	1.170	750
+6	0.464	100	11
+6	1.02	440	11
+6	2.64	640	11
+6	27	1.4	1
+13	0.437	180	11
+13	0.847	410	11
+13	2.38	600	11
+13	25.4	1000	1
+19	0.467	150	11
+19	1.056	450	11
+19	2.39	570	11
+19	25.5	980	1
+25	0.236	90	11
+25	0.525	300	11
+25	2.14	540	11
+25	25.6	920	1
+31	0.402	200	11
+31	0.942	410	11
+31	2.5	540	11
+31	54	1100	0.5
+40	0.610	300	11
+40	2.55	500	11
+40	9.29	654	3
+40	54	1000	0.5
+48	0.412	240	11.4
+48	2.25	458	11.4
+48	8.2	610	3.4
+48	13.24	673	0.5
+#ab jetzt andere Spannungsquelle, Schwankung der Spannung +/-5mV in allen Messbereichen
+55	0.179	10	11
+55	0.189	49	11
+55	0.750	300	11
+55	23	740	11
+62	0.178	10	11
+62	0.225	80	11
+62	0.703	300	11
+62	2.9	500	3
+62	25	780	0.5
+76	0.214	20	11
+76	0.256	80	11
+76	0.786	310	11
+76	8.2	600	1
+92	0.235	10	11
+92	0.372	140	11
+92	0.846	300	11
+92	5.9	560	1
+92	14.9	675	1
+116	0.148	10	11
+116	0.248	80	11
+116	0.702	300	11
+116	3.8	520	4
+116	22.7	740	0.5
+# 116g Salz lösen sich nichtmehr vollständig im Wasser auf
