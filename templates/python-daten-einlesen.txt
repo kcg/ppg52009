@@ -1,8 +1,6 @@
 # Einlesen von Daten aus Textdateien nach Gnuplot Schema
 
-def readdata(filename):
-	colsep = "\t"
-	comment = "#"
+def readdata(filename, colsep="\t", comment="#"):
 	ifile = open(filename, "r")
 	data = []
 	for linetext in ifile.readlines():

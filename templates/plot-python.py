@@ -7,9 +7,6 @@ from math import *
 from scipy import optimize
 
 
-filename = "daten"
-colsep = " " # maybe "\t"
-
 
 # Die Modellfunktion
 def fitfunc(p, xx):
@@ -22,23 +19,30 @@ def errfunc(p, x, y):
 	yw = fitfunc(p,x)
 	return [yw[i] - y[i] for i in range(len(x))]
 
-ifile = open(filename, "r")
-data = []
-for linetext in ifile.readlines():
-	if linetext[0] == "#":
-		continue
-	linetext = linetext[:-1]
-	line = linetext.split(colsep)
-	if len(line) <= 0:
-		continue
-	row = []
-	for i in line:
-		try:
-			x = float(i)
-			row.append(x)
-		except ValueError:
-			print i, "is not a float"
-	data.append(row)
+
+def readdata(filename, colsep="\t", comment="#"):
+	ifile = open(filename, "r")
+	data = []
+	for linetext in ifile.readlines():
+		if linetext[0] == comment:
+			continue
+		linetext = linetext[:-1]
+		line = linetext.split(colsep)
+		if len(line) <= 0:
+			continue
+		row = []
+		for i in line:
+			try:
+				x = float(i)
+				row.append(x)
+			except ValueError:
+				print i, "is not a float"
+				row.append(0.)
+		data.append(row)
+	return(data)
+
+
+data = readdata("dateiname.txt")
 
 # x-Werte in der ersten Spalte
 x = [i[0] for i in data]
