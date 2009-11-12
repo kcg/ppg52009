@@ -10,12 +10,6 @@ from scipy import signal
 
 
 
-filename_graetzel = "graetzel1 28-10-09.txt"
-filename_diode = "hamamatsuS1133.txt"
-colsep = "\t"
-
-
-
 # Die Modellfunktion
 def fitfunc(p, xx):
 	return [p[0] * (x - p[1]) for x in xx]
@@ -26,42 +20,31 @@ def errfunc(p, x, y, hwhm):
 	# Berücksichtigen, dass ein Teil des LED-Spektrums abgeschnitten wird (da Energie zu klein)
 	return [yw[i] - y[i] for i in range(len(x))]
 
+def readdata(filename):
+	colsep = "\t"
+	ifile = open(filename, "r")
+	data = []
+	for linetext in ifile.readlines():
+		if linetext[0] == "#":
+			continue
+		linetext = linetext[:-1]
+		line = linetext.split(colsep)
+		if len(line) <= 0:
+			continue
+		row = []
+		for i in line:
+			try:
+				x = float(i)
+				row.append(x)
+			except ValueError:
+				print i, "is not a float"
+		data.append(row)
+	return data
 
-# Datne einlesen
-ifile = open(filename_graetzel, "r")
-data_graetzel = []
-for linetext in ifile.readlines():
-	if linetext[0] == "#":
-		continue
-	linetext = linetext[:-1]
-	line = linetext.split(colsep)
-	if len(line) <= 0:
-		continue
-	row = []
-	for i in line:
-		try:
-			x = float(i)
-			row.append(x)
-		except ValueError:
-			print i, "is not a float"
-	data_graetzel.append(row)
-ifile = open(filename_diode, "r")
-data_diode = []
-for linetext in ifile.readlines():
-	if linetext[0] == "#":
-		continue
-	linetext = linetext[:-1]
-	line = linetext.split(colsep)
-	if len(line) <= 0:
-		continue
-	row = []
-	for i in line:
-		try:
-			x = float(i)
-			row.append(x)
-		except ValueError:
-			print i, "is not a float"
-	data_diode.append(row)
+
+# Daten einlesen
+data_graetzel = readdata("graetzel1 28-10-09.txt")
+data_diode = readdata("hamamatsuS1133.txt")
 
 color_diods = 6
 
