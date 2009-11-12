@@ -62,9 +62,9 @@ for di in d3:
 
 
 # Plot
-pylab.plot([0.,0.], [0.,90.], "k-", [16.,16.], [0.,90.], "k-")
 pylab.rcParams['figure.subplot.bottom'] = 0.11
 pylab.rcParams['figure.subplot.top'] = 0.96
+pylab.plot([0.,0.], [0.,90.], "k-", [16.,16.], [0.,90.], "k-")
 
 colors = ('rgb')
 for di, col in zip(splines.iteritems(), colors):
@@ -80,7 +80,7 @@ pylab.xlim(min(x) - 1., max(x) + 1.)
 pylab.ylim(0., 90.)
 
 pylab.xlabel(u"Position [cm]")
-pylab.ylabel(u"Magnetfeld [T]")
+pylab.ylabel(u"Magnetfeld [mT]  bei 1A")
 pylab.legend(loc=8)
 
 # Speichern
