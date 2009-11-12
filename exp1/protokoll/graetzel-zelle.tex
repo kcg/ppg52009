@@ -388,14 +388,6 @@ Die Ableseungenauigkeit durch die begrenzte Anzeigegenauigkeit und Messwertschwa
 Die größte Ungenauigkeit lag also im Messen der winzigen Ströme. Diese haben sowohl einen Einzelfehler, als auch einen korrelierten Offsetfehler von $0,1\unit{\mu A}$, also insgesamt bis zu 6\%.
 
 Der Leistungsverlauf zeigt ein Maximum bei mittleren Widerständen (im Bereich des Eigenwiderstandes der Zelle). Bei geringen Widerständen wird der Großteil der Leistung in der Zelle selbst freigesetzt und bei hohem Widerstand sorgt der geringe Stromfluss für eine schlechte Leistungsausbeute.
-\begin{figure}[ht]
-\begin{center}
-\includegraphics[width=1.0\textwidth]{images/graetzel_leistung.pdf}
-\end{center}
-\vspace{-1.5\baselineskip}
-\caption{Leisungskurve in Abhängigkeit vom äußeren Widerstand. Auf die Daten wurde das Modell einer widerstandsbehafteten Spannungsquelle gefittet.}
-\label{leistungskurve}
-\end{figure}
 \hyperref[leistungskurve]{Abb.~\ref{leistungskurve}} zeigt den Verlauf der Leistung zusammen mit dem Modell einer widerstandsbehafteten Spannungsquelle. Der theoretische Leistungsverlauf wäre hier:
 \[
 P(R)= U_{\text{Last}}\cdot I
@@ -414,6 +406,14 @@ R_{\text{Zelle}} = 16,0 \pm 0,7\unit{k\Omega}
 P_{\text{max}} = 284 \pm 4\unit{nW}
 \]
 Die Spannung erreicht hier einen sehr zufriedenstellenden Wert im $0,1\unit{V}$ Bereich, also in der Größenordnung kommerzieller Zellen. Der Innenwiderstand von ca. $16\unit{k\Omega}$ ist jedoch viel zu groß um eine vernünftige Leistung zu erzeugen. Hierdurch konnte die Zelle im Endeffekt auch nicht wirklich "`unter Last"' getestet werden und die tatsächliche Leistungsfähigkeit von Grätzelzellen entzieht sich unserer Untersuchung.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=1.0\textwidth]{images/graetzel_leistung.pdf}
+\end{center}
+\vspace{-1.5\baselineskip}
+\caption{Leisungskurve in Abhängigkeit vom äußeren Widerstand. Auf die Daten wurde das Modell einer widerstandsbehafteten Spannungsquelle gefittet.}
+\label{leistungskurve}
+\end{figure}
 
 Die eingestrahlte Leistung in diesem Versuchsteil ermittelt sich aus der verwendeten Leuchtdiode.
 Diese emittiert unter optimalen Bedingungen eine Leistung von $475 \unit{mW}$\footnote{vgl. \url{http://www.led-tech.de/produkt-pdf/luxeon/DS51\_Luxeon\_K2.pdf}, bei der verwendeten LED handelt es sich um die LXK2 PR14 Q00}. In unserer Anwendung kann der Wert allerdings wegen der erhöhten Chiptemperatur und bereits vorhandener Degradation auf $400 \unit{mW}$ geschätzt werden.
