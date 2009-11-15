@@ -42,27 +42,10 @@ wasser = 14.3 * 14.3 * 1.4
 c = [i / (i + wasser) for i in salz]
 
 # Leitfähigkeit
-l = 14.3
-A = 14.3 * 1.4
+l = 0.143
+A = 0.143 * 0.014
 sigma = [I[i] / U[i] * l / A for i in range(len(I))]
 
-"""
-# Spline Interpolation
-splines = {}
-for di in d3:
-	xx = []; BB = []
-	for i in range(len(d)):
-		if d[i] == di and z[i] == z[0]:
-			xx.append(x[i])
-			BB.append(B[i])
-	'''
-	x_spline = pylab.linspace(min(xx), max(xx), 40)
-	spline = scipy.interpolate.splrep(xx, BB)
-	y_spline = scipy.interpolate.splev(x_spline, spline, der=0)
-	splines[di] = [x_spline, y_spline]
-	'''
-	splines[di] = [xx, BB]
-"""
 
 # make colors from values
 def mycolor(x):
@@ -96,7 +79,6 @@ U_max = max(U) + 0.001 * (max(U) - min(U))
 pylab.rcParams['figure.subplot.left'] = 0.14
 pylab.rcParams['figure.subplot.bottom'] = 0.11
 pylab.rcParams['figure.subplot.top'] = 0.96
-#pylab.plot([0.,0.], [0.,90.], "k-", [16.,16.], [0.,90.], "k-")
 
 for i in range(len(c)):
 	if U[i] <= 370:
@@ -105,17 +87,11 @@ for i in range(len(c)):
 		err = 30
 	# Fehler aus der Strommessung
 	err = sigma[i] / U[i] * err
+	# Fehler des Wasserstandes
 	err = sqrt(err**2 + (sigma[i] / 14.)**2)
 	pylab.errorbar([c[i]], [sigma[i]], [err], None, "o", color=mycolor((U[i] - U_min) / (U_max - U_min)))
 # blau: wenig Spannung, rot: viel Spannung
 
-'''for di, col in zip(d3, colors):
-	xx = []; BB = []
-	for i in range(len(d)):
-		if d[i] == di:
-			xx.append(x[i])
-			BB.append(B[i])
-	pylab.plot(xx, BB, col+'o')'''
 
 pylab.xlim(min(c) - 0.01, max(c) + 0.01)
 #pylab.ylim(0., 90.)
