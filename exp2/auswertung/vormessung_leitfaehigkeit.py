@@ -36,6 +36,7 @@ data = readdata("vormessung_leitfaehigkeit.txt")
 salz = [i[0] for i in data]
 I = [i[1] for i in data]
 U = [i[2] for i in data]
+n = len(salz)
 
 # Salz Konzentration
 wasser = 14.3 * 14.3 * 1.4
@@ -44,7 +45,7 @@ c = [i / (i + wasser) for i in salz]
 # Leitfähigkeit
 l = 0.143
 A = 0.143 * 0.014
-sigma = [I[i] / U[i] * l / A for i in range(len(I))]
+sigma = [I[i] / U[i] * l / A for i in range(n)]
 
 
 # make colors from values
@@ -80,8 +81,8 @@ pylab.rcParams['figure.subplot.left'] = 0.14
 pylab.rcParams['figure.subplot.bottom'] = 0.11
 pylab.rcParams['figure.subplot.top'] = 0.96
 
-for i in range(len(c)):
-	if U[i] <= 370:
+for i in range(n):
+	if U[i] > 370 or salz[i] >= 55:
 		err = 5
 	else:
 		err = 30
