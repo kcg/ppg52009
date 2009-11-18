@@ -1,0 +1,20 @@
+Messprotokoll 18.11.2009
+========================
+
+Wiederholte Messung der Leitfähigkeit des Salzwassers. Es wurde versucht, die unregelmäßigen Ergebnisse des letzten Versuchs zu erklären und bessere Werte zu erhalten.
+Hierzu wurde eine Vierpunktmessung in Jins Labor durchgeführt. Die Vierpunktmessung eliminiert die Fehler der Kontaktwiderstände an den Klemmen.
+
+Messung im Wasserbecken:
+343g Wasser
+50g Salz
+
+Weg zwischen Elektroden: 14cm
+Querschnittsfläche: 25cm^2
+
+Die Salzlösung zeigte mit Kupferelektroden einen deutlich nicht-ohmschen Widerstand. Bei Variation der Spannung ergab sich ein nichtlinearer und nichteinmal monotoner Stromverlauf. Es ergab sich eine Art unsaubere Hysterese.
+
+Mit Alufolieelektroden hatten wir ein ähnliches Ergebnis wie beim Kupfer.
+
+Mit Edelstahlelektroden (Schraubschlüssel) war die Kennlinie deutlich sauberer. Noch immer war eine Hystereseform erkennbar, jedoch etwas kleiner und monoton.
+
+Der Widerstand der Salzlösung lag hierbei in etwa im 10kOhm-Bereich (bei kleineren Elektroden).
