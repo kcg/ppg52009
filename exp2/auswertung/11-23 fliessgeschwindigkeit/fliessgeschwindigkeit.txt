@@ -1,0 +1,18 @@
+Messung der Fliessgeschwindigkeit des Wassers.
+
+aufgefülltes Volumen Delta V = 400 ml
+
+delta t [s]:
+3.22
+3.25
+3.19
+3.31
+
+=> delta t = 3.243 +- 0.026 s
+
+dV / dt = 123.4 +- 1 ml/s
+
+bei einem Querschnitt von 0.5 x 2 cm = 1 cm^2:
+
+v= 1,23 m/s
+

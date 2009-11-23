@@ -1,0 +1,35 @@
+Zur Auswertung der Spannungsdifferenzwerte wird ein passendes Modell auf die Daten gefittet.
+Es scheint die Funktion U = a + b / sqrt(t) ganz gut zu passen.
+
+Erster Fit: Im Bereich t=[500s;1350s]
+U(t) = 15.33 + 208.9 / sqrt(t)
+
+Daraufhin Fit der einzelnen Abschnitte nach
+Ui(t) = 15.33 + 208.9 / sqrt(t) + U0
+
+# Spulenstrom I [A] - t [s] - U0 [mA]
+0.25	863	0.67
+0.5	895	1.35
+0.75	944	2.01
+1.	991	2.52
+1.25	1060	2.91
+1.4	1130	3.06
+
+
+
+
+Zweiter Fit: Im Bereich t=[1200s;2300s]
+
+ok, ich sehs ein, der Logarithmus passt viel besser!
+
+U(t) = 46.47 - 3.538 * ln( t )
+
+Daraufhin Fit der einzelnen Abschnitte nach
+U(t) = 46.47 - 3.538 * ln( t ) + U0
+
+# Spulenstrom I [A] - t [s] - U0 [mA]
+1.5	1630	3.13
+1.0	1790	2.40
+2.0	2010	3.64
+1.6	2100	3.20
+1.8	2160	3.42
