@@ -1,0 +1,15 @@
+In der Vormessung zum Magnetfeld ergab sich das Magnetfeld bei 1A in der Mitte in Abhängigkeit vom Abstand:
+
+# d [cm] - B [mT]
+3.5	43.2
+2.5	61.1
+1.5	82.1
+
+Fittet man nun ein lineares Modell darauf (stimmt physikalisch nicht, passt aber am besten), so ergibt sich:
+
+B = ( 111 - 19.5 * x[cm] ) mT
+
+bei der verwendeten Spaltbreite von 1,1 cm also:
+
+B = 89 mT * I[A]
+Wenn die B-Feld Sonden wieder gehen, werden wir das prüfen.
