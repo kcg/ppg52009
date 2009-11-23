@@ -9,17 +9,6 @@ import scipy.interpolate
 from scipy import signal
 
 
-
-# Die Modellfunktion
-def fitfunc(p, xx):
-	return [p[0] * (x - p[1]) for x in xx]
-
-# Abstandsfunktion zwischen Modell und Daten
-def errfunc(p, x, y, hwhm):
-	yw = fitfunc(p,x)
-	# Berücksichtigen, dass ein Teil des LED-Spektrums abgeschnitten wird (da Energie zu klein)
-	return [yw[i] - y[i] for i in range(len(x))]
-
 def readdata(filename, colsep="\t", comment="#"):
 	ifile = open(filename, "r")
 	data = []
