@@ -107,12 +107,12 @@ colors=['#de2b35', '#f48622', '#f9df30', '#82b8e6', '#887ecd', '#2656a8']
 for i in range(len(lam)):
 	ax.errorbar(energy[i], E_norm[i], None, delta_energy[i], "ko", markersize=10., markeredgewidth=1., markerfacecolor=colors[i])
 
-ax.set_yticklabels([0.]) # keine y-Werte
+#ax.set_yticklabels([0.]) # keine y-Werte
 pylab.xlim(1.78, 2.9)
 pylab.ylim(0., 1.1)
 
 pylab.xlabel(u"$E_\mathrm{phot}\; [\mathrm{eV}]$")
-pylab.ylabel(u"relative Energieeffizienz")
+pylab.ylabel(u"relative Energieeffizienz (willk. Einheiten)")
 pylab.legend(("LEDs", "$V_0\cdot(E-%.2f\,\mathrm{eV})$" % (p1[1])), loc='lower right', numpoints=1)
 
 # Speichern
