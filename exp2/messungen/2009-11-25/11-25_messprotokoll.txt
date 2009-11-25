@@ -1,0 +1,13 @@
+# Messung 1 (11-25_spannungsmessung.txt): Strom, B-Feld, Spannung
+# Strom in A (fließt durch Spulen), B-Feld in mT (zwischen den Eisenjochs) Spannung in mV (am Generator) 
+# Reihenfolge der Einträge evtl. unklar. Wahrscheinlicher ist eine Reihenfolge der Parameter wie bei Messung 2
+
+
+
+# Messung 2 (11-25_strommessung.txt): Spulenstrom, Magnetfeld, Spannung an der Zelle wird über 1 Ohm Widerstand zwischengeschaltet gemessen.
+# Spannung in mV (über 1 Ohm Widerstand), B-Feld in mT (zwischen den Eisenjochs), Strom in A (fließt durch Spulen)
+
+
+
+
+
