@@ -1,0 +1,3 @@
+Vorsicht mit den Stromwerten. Auch wenn der Verlauf sehr schön ist, so liegen die Werte viel zu hoch. Wir haben im Prinzip Spannungen im Millivoltbereich an einem Shuntwiderstand von 1 Ohm gemessen. Am Ende kommen aber die gleichen Spannungswerte raus wie ohne Widerstand. Erwaten würde man, dass das Signal viel schwächer ist (3 µA anstatt 3mA). Das System verhält sich also genauso, also ob anstatt des Shuntwiderstandes garnichts dazwischengeschalten wäre.
+
+Das müssen wir nochmal untersuchen!
