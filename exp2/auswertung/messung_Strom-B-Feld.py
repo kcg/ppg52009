@@ -65,7 +65,7 @@ p.legend(loc='lower right')  # Legende
 
 
 # Speichern
-p.gcf().set_size_inches(6, 4)
+p.gcf().set_size_inches(7.5, 5)
 p.savefig("messung_Strom-B-Feld.pdf")
 
 # Anzeigen
