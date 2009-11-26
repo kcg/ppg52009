@@ -1,0 +1,7 @@
+# Messung 25.11.09: Abhängigkeit von B-Feld und Jochabstand
+# Abstand in [mm], B-Feld in [mT] (bei Spulenstrom I=const.=1A)
+7	148.9
+11	119.3
+17	111.1
+22	95.7
+49	51.4
