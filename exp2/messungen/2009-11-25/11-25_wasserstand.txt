@@ -1,0 +1,29 @@
+Messung des statischen Druckes (radial zur Röhre)
+=================================================
+
+Ohne Stromfluss (d.h. abgegriffener Leistung) an der Zelle.
+
+Bei einer Fließgeschwindigkeit von dV / dt = 123.4 +- 1 ml/s
+=> v = (dV / dt) / (A=1cm^2) = 1,23 m/s
+
+Die Flüssigkeitssäule vor dem Generator war tiefer:
+Messung - delta_h
+1	2mm
+2	5mm
+3	2mm
+4	3mm
+
+=> delta_h = 3mm +- 1mm
+
+Absolute Höhe über der Generatormitte:
+
+vorher:  41,8 cm
+nachher: 42,1 cm
+
+p = rho * g * h
+rho = 1200
+
+=> p_v = 4921 Pa
+=> p_n = 4956 Pa
+
+delta_p = 35 Pa

@@ -13,6 +13,8 @@ delta t [s]:
 dV / dt = 123.4 +- 1 ml/s
 
 bei einem Querschnitt von 0.5 x 2 cm = 1 cm^2:
-
 v= 1,23 m/s
+
+bei einem Querschnitt von 0.5 x 1,8 cm = 0,9 cm^2:
+v= 1,37 m/s
 
