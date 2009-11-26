@@ -3,6 +3,7 @@
 
 import pylab as p
 import scipy
+import numpy
 from math import *
 from scipy import optimize
 import scipy.interpolate
@@ -44,7 +45,7 @@ u = p.linspace(-0.05,2.05,100)
 
 ax = p.figure().add_subplot(111)
 
-ax.plot(u, (94.3416*u+16.0346), 'k--' )  # fit
+ax.plot(u, (204.087*numpy.arctan(u*0.666)), 'k--', label="$204.087 \mathrm{mT} \cdot arctan(I*0.666 \\frac{1}{\mathrm{A}})$" )  # fit
 
 ic = 16
 
@@ -59,7 +60,7 @@ p.grid()
 p.xlabel('Spulenstrom I in [A]')
 p.ylabel('B-Feld B in [mT] bei 1mm Jochabstand')
 
-p.legend(('$94.34 \\frac{\mathrm{mT}}{\mathrm{A}} \cdot I + 16.03\mathrm{mT}$', 'Messwerte'),loc='lower right')  # Legende
+p.legend(loc='lower right')  # Legende
 
 
 
