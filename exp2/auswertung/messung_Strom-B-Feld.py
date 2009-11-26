@@ -34,12 +34,22 @@ data = readdata("messung_Strom-B-Feld.txt")
 
 x = [i[0] for i in data]
 y = [i[1] for i in data]
+delta_B = [i[2] for i in data]
+delta_I = [i[3] for i in data]
 u = p.linspace(-0.05,2.05,100)
 
 
 
-p.plot(u, (94.3416*u+16.0346), 'k--' )  # fit
-p.plot(x,y, 'bo' )  # daten werden geplottet
+
+
+ax = p.figure().add_subplot(111)
+
+ax.plot(u, (94.3416*u+16.0346), 'k--' )  # fit
+
+ic = 16
+
+ax.errorbar(x[:ic], y[:ic], delta_I[:ic], delta_B[:ic], "bo", label=u"Netzgeräte einzeln")
+ax.errorbar(x[ic:], y[ic:], delta_I[ic:], delta_B[ic:], "ro", label=u"Netzgeräte zusammen")
 
 
 p.xlim(-0.05,+2.05)
