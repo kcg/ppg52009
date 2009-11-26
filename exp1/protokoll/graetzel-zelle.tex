@@ -19,8 +19,9 @@
 
 
 \setlength{\parindent}{1em}
-\setlength{\parskip}{0.5\baselineskip}
-
+\setlength{\parskip}{4pt}
+\widowpenalty 200
+\clubpenalty 300
 
 \title{Gr\"atzelzelle - Gruppe 5 WS 09/10, Projektpraktikum der Uni Erlangen}
 \date{19.10.2009 -- 31.10.2009}
@@ -80,8 +81,6 @@ Unter Bestrahlung der Zelle mit einer hellen LED und Zwischenschaltung verschied
 
 
 \section{Einleitung}
-
-% Ist das zu viel Blabla?
 Ein großes Problem der an sich viel versprechenden Solartechnik bleiben nach wie vor die enormen Kosten im Vergleich zur Energieerzeugung mit fossilen Brenn\-stoffen. Die in den neunziger Jahren von Michael Grätzel von der EPFL Lausanne entwickelte und seitdem stetig verbesserte Farbstoff\-solarzelle ("`Grätzelzelle"') ermöglicht im Vergleich zu herkömmlichen, siliziumbasierten Solarzellen eine relativ kostengünstigen Herstellung und könnte deswegen in Zukunft mit zur Lösung der Energieproblematik beitragen. Nicht zuletzt auf Grund dessen, aber auch weil eine solche Zelle mit vertretbarem Aufwand herzustellen ist, waren die nachfolgend beschriebenen Untersuchungen an der Grätzelzelle Thema des ersten Projektpraktikumsversuchs.
 
 
@@ -89,8 +88,8 @@ Ein großes Problem der an sich viel versprechenden Solartechnik bleiben nach wi
 
 
 \section{Theorie}
-\subsection{B\"andermodell und Halbleitertechnik}
-Um die Funktionsweise von Solarzellen im Allgemeinen und der Gr\"atzelzelle im Besonderen verstehen zu k\"onnen, muss man sich zun\"achst mit dem Energieb\"andermodell aus der Quantenmechanik besch\"aftigen. Die B\"ander entstehen durch \"Uberlagerung der Energieniveaus der einzelnen, im Kristall dicht nebeneinander gelagerten Atome. Nahe bei den Atomr\"umpfen befinden sich die gebundenen Zust\"ande. Wenig dar\"uber entsteht durch \"Uberlappung der Potentiale das Valenzband, in dem alle Pl\"atze mit Elektronen besetzt sind. So kann sich ein Elektron nur lösen, wenn sich ein anderes Elektron genau in entgegengesetzter Richtung bewegt. 
+\subsection{B\"andermodell und Halbleiterphysik}
+Um die Funktionsweise von Solarzellen im Allgemeinen und der Gr\"atzelzelle im Besonderen verstehen zu k\"onnen, muss man sich zun\"achst mit dem Energieb\"andermodell aus der Quantenmechanik besch\"aftigen. Die B\"ander entstehen durch \"Uberlagerung der Energieniveaus der einzelnen, im Kristall dicht nebeneinander gelagerten Atome. Nahe bei den Atomr\"umpfen befinden sich die gebundenen Zust\"ande. Wenig dar\"uber entsteht durch \"Uberlappung der Potentiale das Valenzband, in dem alle Pl\"atze mit Elektronen besetzt sind. So kann sich ein Elektron nur lösen, wenn sich ein anderes Elektron genau in entgegengesetzter Richtung bewegt.
 Noch weiter von den Atomr\"umpfen entfernt liegen weitere, unbesetzte Energieniveaus \"ubereinander. Hier k\"onnen sich die Elektronen frei bewegen. Dieses Band wird daher Leitungsband genannt.
 
 Zwischen Valenz- und Leitungsband befindet sich die verbotene Zone (Bandl\"ucke), in der sich keine Elektronen befinden. Nach der Gr\"o\ss{}e dieser Zone unterscheidet man Leiter, Halbleiter und Isolatoren. Bei einem Leiter gibt es keine verbotene Zone und Valenz- und Leitungsband gehen entweder ineinander \"uber, oder im Valenzband sind nicht alle Pl\"atze mit Elektronen besetzt. So kann problemlos Strom fließen. Isolatoren hingegen haben ein vollst\"andig besetztes Valenzband und die Bandl\"ucke ist so gro\ss{}, dass sie selbst von hoch angeregten Elektronen nicht oder nur sehr schwer \"uberwunden werden kann.
@@ -106,7 +105,7 @@ Bei umgekehrter Polung, also in Sperrrichtung, kann kein Strom flie\ss{}en. Solc
 \subsection{Funktionsweise der Gr\"atzelzelle}
 \begin{figure}[ht]
 \begin{center}
-\includegraphics[height=0.4\textheight]{images/skizze.png}
+\includegraphics[height=0.45\textheight]{images/skizze.png}
 \end{center}
 \vspace{-1.5\baselineskip}
 \caption{Schematischer Aufbau der Zelle}
@@ -138,11 +137,11 @@ Das Elektrolyt, eine Iod-Kaliumiodid-L\"osung sowie verd\"unnte Salzs\"aure zum 
 \label{herstellung_pipette}
 \end{figure}
 
-% Bei "Internetreferenz" fehlt der Link!
 Mit Hilfe einiger Herstellungstipps\footnote{\url{http://www.physik.uni-bielefeld.de/didaktik/Experimente/Solar1.pdf}} wurde versucht die erste Zelle zu fertigen: Zu Beginn wurde das TiO\textsubscript{2}-Pulver in einem Mörser zermahlen und so lange verdünnte Salzsäure zugegeben, bis die entstandene Paste mit einer Plastikpipette aufgenommen werden konnte. Die Ränder der FTO-Elektroden wurden auf der leitenden Seite mit dünnem Klebeband abgeklebt und die Paste mit Hilfe eines Objektträgers zwischen die Klebebandränder einer Elektrode aufgebracht.
 
-\begin{figure}[ht]
+\begin{figure}[H]
 \begin{center}
+\vspace{0.5\baselineskip}
 \includegraphics[width=0.8\textwidth]{images/brennen.jpg}
 \end{center}
 \vspace{-1.5\baselineskip}
@@ -150,33 +149,43 @@ Mit Hilfe einiger Herstellungstipps\footnote{\url{http://www.physik.uni-bielefel
 \label{fig:brennen}
 \end{figure}
 
-\newpage Um die Oberfläche des TiO\textsubscript{2} zu vergrößern, wurde versucht die Elektrode mit einem Gasbrenner zu sintern (\hyperref[fig:brennen]{Abb.~\ref{fig:brennen}}). In mehreren Versuchen mit verschiedenen Brennern und Heißluftgeräten gelang es jedoch nicht, die Schicht so zu präparieren, dass anschließend der aufgebrachte Farbstoff in das TiO\textsubscript{2} eindringen konnte. So war die Zelle nicht funktionsfähig. Aus diesem Grund wurde der Farbstoff nun direkt beim Anmischen der TiO\textsubscript{2}-Paste zugegeben und die Schicht nur leicht angetrocknet.
+Um die Oberfläche des TiO\textsubscript{2} zu vergrößern, wurde versucht die Elektrode mit einem Gasbrenner zu sintern (\hyperref[fig:brennen]{Abb.~\ref{fig:brennen}}). In mehreren Versuchen mit verschiedenen Brennern und Heißluftgeräten gelang es jedoch nicht, die Schicht so zu präparieren, dass anschließend der aufgebrachte Farbstoff in das TiO\textsubscript{2} eindringen konnte. So war die Zelle nicht funktionsfähig. Aus diesem Grund wurde der Farbstoff nun direkt beim Anmischen der TiO\textsubscript{2}-Paste zugegeben und die Schicht nur leicht angetrocknet.
 
 Die zweite leitende Glasplatte wurde mit einem Graphit-Propanol-Gemisch (anstatt des Platins) versehen und das Propanol verbrannt, um eine gleichmäßige, dünne Graphit-Schicht zu erhalten. Leider löste das Elektrolyt in der fertigen Zelle das Graphitpulver. Deshalb wurde das Graphit nun mit einem weichen Bleistift auf die FTO-Glasplatte aufgebracht. Die Klebestreifen der mit TiO\textsubscript{2} beschichteten Elektrode wurden entfernt, die der anderen Elektrode wurden als Isolator belassen.
 
 Die beiden Platten wurden leicht versetzt übereinander gelegt und mit Hilfe von Klammern fixiert. In einem letzten Schritt wurde mit Hilfe einer Spritze die Iod-Kaliumiodid-Lösung eingebracht, die sich durch den Kapillar-Effekt gleichmäßig verteilte.
 
-Auf diese Weise wurden fünf Grätzel-Zellen mit verschiedenen Farbstoffen (zweimal E 124 - Cochenillerot A, E 131 - Patentblau, E 110 - Gelborange S, E 131 + E 110 - grün) hergestellt. Für die Messungen wurden jedoch nur die beiden Zellen mit der roten Farbe verwendet, da die beiden anderen kaum messbare Signale erzeugten. % Wurde nicht auch die grüne verwendet?? Axi: Nein, hat auch nicht funktiniert
-
 \begin{figure}[ht]
 \begin{center}
-\includegraphics[width=0.8\textwidth]{images/zelle_gruen.jpg}
+\includegraphics[width=0.8\textwidth, trim=0pt 0pt 0pt \baselineskip,clip]{images/zelle_gruen.jpg}
 \end{center}
 \vspace{-1.5\baselineskip}
 \caption{Die fertige Zelle}
 \label{zelle_gruen.jpg}
 \end{figure}
 
+Auf diese Weise wurden fünf Grätzel-Zellen mit verschiedenen Farbstoffen (zweimal E 124 - Cochenillerot A, E 131 - Patentblau, E 110 - Gelborange S, E 131 + E 110 - grün) hergestellt. Für die Messungen wurden jedoch nur die beiden Zellen mit der roten Farbe verwendet, da die beiden anderen kaum messbare Signale erzeugten.
 
 
-\subsection{Versuchsanordnung} %%% Michele und Axi
-%%% noch weiter untergliedern? vorueberlegung, LED, Wellenlaenge, Leistung? -> nein
+
+
+\subsection{Versuchsanordnung}
 \subsubsection{Wellenlänge}
 Das erste Ziel war die Bestimmung der Abh\"angigkeit der Leistung der Zelle von der Wellenl\"ange des eingestrahlten Lichts. Zun\"achst wollten wir dieses Spektrum mit einem Gitter erzeugen. Die ersten Versuche mit einem Aufbau aus Baustrahler, Linse und Gitter auf einer optischen Bank hatten jedoch bereits gezeigt, dass die zu erwartende Lichtst\"arke des aufgef\"acherten Spektrums viel zu schwach f\"ur eine Messung sein w\"urde. Außerdem wurden die einzelnen Linien des Spektrums viel zu schwach aufgef\"achert, so dass nicht nur ein Farbbereich auf die breitere Zelle treffen w\"urde. Auch der Ersatz des Gitters durch ein Prisma konnte diese Probleme nicht l\"osen.
 
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=1.0\textwidth]{images/messung_farben.jpg}
+\end{center}
+\vspace{-1.5\baselineskip}
+\caption{Aufbau zur Messung der Wellenlängenabhängigkeit. Der Luxsensor ist die graue vertikale Sonde. Die Zelle befindet sich über der Blende.}
+\label{messung_farben}
+\end{figure}
+
 Deshalb haben wir uns entschlossen, die verschiedenen Farbbereiche durch LEDs unterschiedlicher Wellenl\"ange darzustellen. Hierbei kam ein Verbund aus zehn verschiedenen LEDs des Modells Luxeon K2 von Philips\footnote{\url{http://www.led-tech.de/produkt-pdf/luxeon/DS51\_Luxeon\_K2.pdf}} zum Einsatz, welcher bereits fr\"uher von einem Gruppenmitglied gebaut wurde.
 
-Es wurden drei weiße sowie sieben farbige LEDs verwendet (\hyperref[leds]{Tabelle~\ref{leds}}), wobei die roten bis amberfarbenen LEDs mit $700 \unit{mA}$, die restlichen mit $1000 \unit{mA}$ bestromt wurden. Die LEDs sind einzeln dimmbar, wurden jedoch stets bei maximaler Leuchtst\"arke betrieben. Um den Abstrahlwinkel von $140\degr$ einzuschränken kam zusätzlich eine Linse\footnote{Datenblatt: \url{http://www.farnell.com/datasheets/16887.pdf}} mit einer Halbwertsbreite von $10\degr$ zum Einsatz.
+Es wurden drei weiße sowie sieben farbige LEDs verwendet (\hyperref[leds]{Tabelle~\ref{leds}}), wobei die roten bis amberfarbenen LEDs mit $700 \unit{mA}$, die restlichen mit $1000 \unit{mA}$ bestromt wurden. Die LEDs sind einzeln dimmbar, wurden jedoch stets bei maximaler Leuchtst\"arke betrieben. Um den Abstrahlwinkel von $140\degr$ einzuschränken kam zusätzlich eine Linse\footnote{Datenblatt: \url{http://www.farnell.com/datasheets/16887.pdf}} mit einem Abstrahlwinkel von $10\degr$ zum Einsatz.
+% Der Abstrahlwinkel ist als die FWHM definiert!
 
 \begin{table}[ht]
 \captionabove{Daten der verwendeten LEDs}
@@ -203,41 +212,32 @@ LED10 & warm-weiß	& $3000\pm 500 \unit{K}$& n/a	& 100 (U)
 \end{table}
 
 
-Um eine Vergleichsmessung, wie die Wellenl\"angenabh\"angigkeit, genau durchf\"uhren zu k\"onnen, muss der Aufbau bei jeder Einzelmessung genau gleich sein. Daf\"ur wurde die Gr\"atzelzelle in eine Halterung aus Klemmen und Stativstangen eingespannt. Der Verbund aus LEDs wurde entlang der Grundplatte des Aufbaus unter die Zelle geschoben. Zwischen LED und Zelle kam eine Blende mit \"Offnungsdurchmesser $1,8\unit{cm}$ zum Einsatz, um in etwa den Teil des Lichtkegels zu nutzen, der auch vom Luxsensor empfangen wird. Eine weitere Stativstange markierte dabei die Stelle, an der sich die momentan verwendete LED befinden musste, um jeweils genau senkrecht unter Zelle positioniert zu sein. Der vertikale Abstand LED - Zelle betrug dabei ca. $12\unit{cm}$.
+Um eine Vergleichsmessung, wie die Wellenl\"angenabh\"angigkeit, genau durchf\"uhren zu k\"onnen, muss der Aufbau bei jeder Einzelmessung genau gleich sein. Daf\"ur wurde die Gr\"atzelzelle in eine Halterung aus Klemmen und Stativstangen eingespannt. Der Verbund aus LEDs wurde entlang der Grundplatte des Aufbaus unter die Zelle geschoben. Zwischen LED und Zelle kam eine Blende mit \"Offnungsdurchmesser $1,8\unit{cm}$ zum Einsatz, um in etwa den Teil des Lichtkegels zu nutzen, der auch vom Luxsensor empfangen wird. Eine weitere Stativstange markierte dabei die Stelle, an der sich die momentan verwendete LED befinden musste, um jeweils genau senkrecht unter der Zelle positioniert zu sein. Der vertikale Abstand LED - Zelle betrug dabei ca. $12\unit{cm}$.
 
-\begin{figure}[ht]
-\begin{center}
-\includegraphics[width=1.0\textwidth]{images/messung_farben.jpg}
-\end{center}
-\vspace{-1.5\baselineskip}
-\caption{Aufbau zur Messung der Wellenlängenabhängigkeit. Der Luxsensor ist die graue vertikale Sonde. Die Zelle befindet sich über der Blende.}
-\label{messung_farben}
-\end{figure}
-
-In der selben H\"ohe wurde, versetzt zur Zelle, auch ein LUX-Sensor befestigt, um eine Messung der jeweiligen Leuchtkraft der LEDs zu erm\"oglichen. Auch hier markierte eine Stativstange die Messposition. Zum Auslesen des Sensor wurde das CASSY-LAB verwendet, welches die Messwerte \"uber $1000\unit{ms}$ gemittelt anzeigte.
+In der selben H\"ohe wurde, versetzt zur Zelle, auch ein LUX-Sensor befestigt, um eine Messung der jeweiligen Leuchtkraft der LEDs zu erm\"oglichen. Auch hier markierte eine Stativstange die Messposition. Zum Auslesen des Sensor wurde das CASSY-Lab verwendet, welches die Messwerte \"uber $1000\unit{ms}$ gemittelt anzeigte.
 
 Die Messung der von der Zelle gelieferten Spannung erfolgte zum Einen durch ein direkt an die Zelle angeschlossenes Multimeter, sowie durch ein weiteres Multimeter, dessen Signal jedoch zun\"achst einen Messverst\"arker durchlief. Der Aufbau ist auch auf dem Foto (\hyperref[messung_farben]{Abb.~\ref{messung_farben}}) dargestellt.
 
-%fehlt hier noch Schaltplan ?
 
 Bei der Messung wurde jeweils zwei Minuten gewartet, bis sich die Messwerte eingependelt hatten.
-%%% gehoert das hier hin? eigentlich nein, oder?
 
 \subsubsection{Leistung und Wirkungsgrad}
 Der zweite Teil der Messung umfasste die Bestimmung der Leistung der Solarzelle in verschiedenen Widerstandsbereichen. Hierbei wurde nur die LED Nr.~7 (Farbe~Blau) verwendet, da sie die h\"ochsten Spannungen geliefert hat. Au\ss{}erdem kam eine neue Gr\"atzelzelle zum Einsatz, da die Zelle der ersten Messung bereits eingetrocknet war.
 
 Der Aufbau der LEDs wurde leicht angepasst. Neben einem geringeren Abstand der Lichtquelle von der Zelle, ersetzte eine Linse die Lochblende zum Fokussieren des Lichtstrahls (\hyperref[messung_leistung]{Abb.~\ref{messung_leistung}}).
 
-Die Messung der Strom- und Spannungswerte wurde mit einem Multimeter bzw. einem Amperemeter durchgef\"uhrt. Der Einsatz eines Messverst\"arkers war hierbei nicht m\"oglich, da die anschlie\ss{}end am Multimeter abzulesenden Werte sehr starke Schwankungen aufwie\ss{}en und einen willkürlichen Offset enthielten.
-
 \begin{figure}[ht]
+\vspace{0.5\baselineskip}
 \begin{center}
 \includegraphics[width=0.8\textwidth]{images/messung_leistung.jpg}
 \end{center}
 \vspace{-1.5\baselineskip}
 \caption{Aufbau zur Messung der Leistung}
 \label{messung_leistung}
+\vspace{0.5\baselineskip}
 \end{figure}
+
+Die Messung der Strom- und Spannungswerte wurde mit einem Multimeter bzw. einem Amperemeter durchgef\"uhrt. Der Einsatz eines Messverst\"arkers war hierbei nicht m\"oglich, da die anschlie\ss{}end am Multimeter abzulesenden Werte sehr starke Schwankungen aufwiesen und einen willkürlichen Offset enthielten.
 
 Der Aufbau, wie auch die verwendeten Bauteile sind wiederum im Schaltplan (\hyperref[leistungsschaltkreis]{Abb.~\ref{leistungsschaltkreis}}), sowie dem Foto illustriert.
 
@@ -288,6 +288,7 @@ LED10	& 3000\unit{K}	& 2.026	& 2.136
 
 \subsubsection{Ermittlung der LED-Helligkeiten}
 Die Wellenlängenabhängigkeit der Photozellenempfindlichkeit kann nur dann ermittelt werden, wenn auch die tatsächlich eingestrahlte Beleuchtungsstärke bekannt ist. Hierzu dient die Vergleichsmessung mit dem Cassy-Luxmeter. Doch auch dieses hat eine eigene Wellenlängenabhängigkeit. Auf der Herstellerseite von Leybold heißt es dazu: "`Der Photometerkopf besteht aus einem Si-Photoelement mit l-Filter zur Anpassung des Photoelements an die spektrale Empfindlichkeit des Auges. Er hat eine cos-Anpassung."'\footnote{\url{http://www.leybold-didactic.de/phk/a.asp?a=666243&L=1}} Genaue Tabellen werden aber nicht zur Verfügung gestellt. Die Winkelabhängigkeit spielt im vorliegenden Fall keine Rolle, da die Einstrahlung senkrecht zur Photozelle verlief. L-Filter blocken in der Regel nur Licht unterhalb von $400\unit{nm}$ und oberhalb von $700\unit{nm}$ und sind dazwischen gleichmäßig durchlässig.
+
 \begin{figure}[ht]
 \begin{center}
 \includegraphics[width=0.75\textwidth]{images/lichteffizienz_silizium_auge.pdf}
@@ -296,6 +297,7 @@ Die Wellenlängenabhängigkeit der Photozellenempfindlichkeit kann nur dann ermi
 \caption{Energieeffizienz des menschlichen Auges und einer Si-Photodiode in Abhängigkeit von der Wellenlänge. Die Ordinate ist nicht auf Einheiten normiert.}
 \label{lichteffizienz_auge}
 \end{figure}
+
 Um tatsächlich Lux zu messen, müsste der Sensor in etwa eine wellenlängenabhängige Empfindlichkeit wie die des Auges\footnote{\url{http://www.cvrl.org}} aufweisen. Siliziumdioden, wie die im Sensor verbaute, haben aber durchaus verschiedene Wellenlängenabhängigkeiten. Die meisten der im Internet gefundenen Datenblätter zeigen eine höhere Effizienz bei großen Wellenlängen, mit einem Maximum um $800\unit{nm}$ herum. Photodioden, die dem Auge mehr ähneln, scheinen aber zu existieren. In Frage kommt z.B. ein Spektrum wie das der Silizium Photodiode S1133 von Hamamatsu\footnote{\url{http://sales.hamamatsu.com/assets/pdf/parts_S/S1087_etc.pdf}}. Die Spektren sind in \hyperref[lichteffizienz_auge]{Abb.~\ref{lichteffizienz_auge}} gezeichnet.
 
 
@@ -377,6 +379,7 @@ $P\; \unit{[nW]}$ \\
 \end{tabular}
 \vspace{-\baselineskip}\end{center}
 \end{table}
+
 Die Ableseungenauigkeit durch die begrenzte Anzeigegenauigkeit und Messwertschwankungen betrug:
 \[
 \Delta R_{\text{L}} = 1\% R
