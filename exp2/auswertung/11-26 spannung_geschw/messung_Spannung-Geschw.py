@@ -61,7 +61,7 @@ p.legend(loc='lower left')  # Legende
 
 
 # Speichern
-p.gcf().set_size_inches(6, 4)
+p.gcf().set_size_inches(7.5, 5)
 p.savefig("messung_Spannung-Geschw.pdf")
 
 # Anzeigen
