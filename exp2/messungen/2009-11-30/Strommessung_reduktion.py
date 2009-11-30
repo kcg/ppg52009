@@ -14,6 +14,8 @@ ofile.writelines(["# Spalte1: Zeit [s]\n",
 "# Spalte3: Spulenstrom [A]\n",
 "# Spalte4: Magn. Flussdichte [mT]\n"])
 
+t = -1
+
 for linetext in ifile.readlines():
 	if linetext[0] == comment:
 		continue
@@ -22,12 +24,12 @@ for linetext in ifile.readlines():
 	line = linetext.split(colsep)
 	if len(line) <= 0:
 		continue
-	row = []
 	# Erstes token muss eine Zahl sein
 	# nimm nur ganzzahlige Werte, keine mit 0,1
 	try:
 		x = float(line[0])
-		if abs(x - round(x)) < 0.05:
+		if x >= t + 1:
+			t = int(x)
 			# Spalte ok => ausgeben
 			line_new = []
 			for i in range(len(line)):
@@ -35,7 +37,7 @@ for linetext in ifile.readlines():
 					x = float(line[i])
 					if x == x: # False wenn x=NAN
 						if (i == 0):
-							line_new.append(str(int(round(x))))
+							line_new.append(str(int(x)))
 						else:
 							line_new.append(str(x))
 				except ValueError:
