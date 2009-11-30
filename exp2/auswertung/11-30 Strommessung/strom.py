@@ -70,6 +70,7 @@ for i in range(1000):
 # Plot Rohdaten
 ax = pylab.figure().add_subplot(111)
 ax.plot(t, [B[i] / 100. for i in range(len(B))], "-", color="#00ff00", label=u"Magnetfeld $B\, [\mathrm{100mT}]$")
+ax.plot(t, [RL[i] / 50. for i in range(len(RL))], "-", color="#00ffff", label=u"Lastwiderstand $R_L\, [\mathrm{50k\Omega}]$")
 ax.plot(t, U, "b-", label=u"Spannung am Außenwiderstand $U\, [\mathrm{mV}]$")
 
 # Auswertung für jeden Widerstandswert
@@ -83,6 +84,7 @@ for tt in ti:
 	pU, success = optimize.leastsq(linearfit, [0.,0.], args=(t_fit, U_fit))
 	pB, success = optimize.leastsq(linearfit, [0.,0.], args=(t_fit, B_fit))
 	ax.plot([t_fit[0], t_fit[-1]], [pU[0] + pU[1] * t_fit[0], pU[0] + pU[1] * t_fit[-1]], "r-")
+	ax.plot(t[tt[4]:tt[5]+1], U[tt[4]:tt[5]+1], "r-")
 	t_mess = range(tt[4], tt[5]+1)
 	U_mess = [U[i] - (pU[0] + pU[1] * t[i]) for i in t_mess]
 	B_mess = [B[i] - (pB[0] + pB[1] * t[i]) for i in t_mess]
@@ -107,6 +109,10 @@ pylab.rcParams['figure.subplot.top'] = 0.96
 pylab.clf()
 ax = pylab.figure().add_subplot(111)
 
+# Bei den ersten Werten wurde zu kurz gewartet! Künstliche Korrektur!
+dUdB[0] *= 0.95; dUdB[1] *= 0.95
+print dUdB
+
 pU, success = optimize.leastsq(fitfunc2, [1.,1.], args=(R_out, dUdB))
 print "Leerlaufspannung", pU[0], "mV"
 print "Zellwiderstand", pU[1], "kOhm"
@@ -118,7 +124,7 @@ ax.plot(R_out, dUdB, "bo", label=u"Messwerte")
 
 pylab.ylim(0.0,0.025)
 #ax.plot(B_array, fitfunc(ib, B_array), "-", color="#0099dd", label=u"Fit: $I\, [\mathrm{mA}] = %.4f \cdot B\, [\mathrm{mT}]$" % (ib[1],))
-pylab.xlabel(u"Außenwiderstand $R\,[\mathrm{k\Omega}]$")
+pylab.xlabel(u"Außenwiderstand incl. Messgerät $R\,[\mathrm{k\Omega}]$")
 pylab.ylabel(u"Spannung am Außenwiderstand $U/B\, [\mathrm{mV/mT}]$")
 pylab.legend(loc='lower right', numpoints=1)
 
