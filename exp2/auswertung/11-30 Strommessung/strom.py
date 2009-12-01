@@ -88,6 +88,7 @@ for tt in ti:
 	t_mess = range(tt[4], tt[5]+1)
 	U_mess = [U[i] - (pU[0] + pU[1] * t[i]) for i in t_mess]
 	B_mess = [B[i] - (pB[0] + pB[1] * t[i]) for i in t_mess]
+	print "B", sum(B_mess) / float(len(B_mess))
 	dUdB_mess = [U_mess[i] / B_mess[i] for i in range(len(U_mess))]
 	dUdB.append(sum(dUdB_mess) / float(len(dUdB_mess)))
 
@@ -99,9 +100,9 @@ pylab.gcf().set_size_inches(7, 5)
 pylab.savefig("rohdaten.pdf")
 
 # Vorbereitung fuer Plots
-pylab.rcParams['figure.subplot.left'] = 0.14
+#pylab.rcParams['figure.subplot.left'] = 0.14
 pylab.rcParams['figure.subplot.bottom'] = 0.12
-pylab.rcParams['figure.subplot.top'] = 0.96
+#pylab.rcParams['figure.subplot.top'] = 0.96
 
 
 
@@ -111,22 +112,27 @@ ax = pylab.figure().add_subplot(111)
 
 # Bei den ersten Werten wurde zu kurz gewartet! Künstliche Korrektur!
 dUdB[0] *= 0.95; dUdB[1] *= 0.95
-print dUdB
+U160 = [160. * i for i in dUdB]
+I160 = [U160[i] / R_out[i] for i in range(len(U160))]
 
-pU, success = optimize.leastsq(fitfunc2, [1.,1.], args=(R_out, dUdB))
+pU, success = optimize.leastsq(fitfunc2, [1.,1.], args=(R_out, U160))
 print "Leerlaufspannung", pU[0], "mV"
 print "Zellwiderstand", pU[1], "kOhm"
-R_array = pylab.linspace(0., max(R_out), 40.)
+R_array = pylab.linspace(0., max(R_out)+4., 40.)
 B_array = [pU[0] * rr / (rr + pU[1]) for rr in R_array]
-ax.plot(R_array, B_array, "k-", label='$(%.4f\,\\frac{\mathrm{mV}}{\mathrm{mT}} \cdot \\frac{R_L}{R_L+%.1f\,\mathrm{k\Omega}}$' % (pU[0], pU[1]))
+I_array = [pU[0] / (rr + pU[1]) for rr in R_array]
+ax.plot(R_array, B_array, "k-", label='$U = %.2f\,\mathrm{mV} \cdot \\frac{R_L}{R_L+%.1f\,\mathrm{k\Omega}}$' % (pU[0], pU[1]))
+ax.plot(R_out, U160, "bo", label=u"Messwerte Spannung [$\mathrm{mV}$]")
 
-ax.plot(R_out, dUdB, "bo", label=u"Messwerte")
+ax.plot(R_array, [10.*i for i in I_array], "k-", label='$I = \\frac{%.2f\,\mathrm{mV}}{R_L+%.1f\,\mathrm{k\Omega}}$' % (pU[0], pU[1]))
+ax.plot(R_out, [10.*i for i in I160], "ro", label=u"Berechneter Strom [$\mathrm{0.1\mu V}$]")
 
-pylab.ylim(0.0,0.025)
+pylab.xlim(0.0,104.)
 #ax.plot(B_array, fitfunc(ib, B_array), "-", color="#0099dd", label=u"Fit: $I\, [\mathrm{mA}] = %.4f \cdot B\, [\mathrm{mT}]$" % (ib[1],))
+pylab.title(u"Generatorstrom/-spannung bei $B=160\mathrm{mT}$")
 pylab.xlabel(u"Außenwiderstand incl. Messgerät $R\,[\mathrm{k\Omega}]$")
-pylab.ylabel(u"Spannung am Außenwiderstand $U/B\, [\mathrm{mV/mT}]$")
-pylab.legend(loc='lower right', numpoints=1)
+#pylab.ylabel(u"Spannung am Außenwiderstand $U/B\, [\mathrm{mV/mT}]$")
+pylab.legend(loc='center right', numpoints=1)
 
 # Speichern
 pylab.gcf().set_size_inches(7, 4.5)
