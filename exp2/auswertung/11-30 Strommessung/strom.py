@@ -88,7 +88,6 @@ for tt in ti:
 	t_mess = range(tt[4], tt[5]+1)
 	U_mess = [U[i] - (pU[0] + pU[1] * t[i]) for i in t_mess]
 	B_mess = [B[i] - (pB[0] + pB[1] * t[i]) for i in t_mess]
-	print "B", sum(B_mess) / float(len(B_mess))
 	dUdB_mess = [U_mess[i] / B_mess[i] for i in range(len(U_mess))]
 	dUdB.append(sum(dUdB_mess) / float(len(dUdB_mess)))
 
@@ -125,11 +124,11 @@ ax.plot(R_array, B_array, "k-", label='$U = %.2f\,\mathrm{mV} \cdot \\frac{R_L}{
 ax.plot(R_out, U160, "bo", label=u"Messwerte Spannung [$\mathrm{mV}$]")
 
 ax.plot(R_array, [10.*i for i in I_array], "k-", label='$I = \\frac{%.2f\,\mathrm{mV}}{R_L+%.1f\,\mathrm{k\Omega}}$' % (pU[0], pU[1]))
-ax.plot(R_out, [10.*i for i in I160], "ro", label=u"Berechneter Strom [$\mathrm{0.1\mu V}$]")
+ax.plot(R_out, [10.*i for i in I160], "ro", label=u"Berechneter Strom [$\mathrm{0.1\mu A}$]")
 
 pylab.xlim(0.0,104.)
 #ax.plot(B_array, fitfunc(ib, B_array), "-", color="#0099dd", label=u"Fit: $I\, [\mathrm{mA}] = %.4f \cdot B\, [\mathrm{mT}]$" % (ib[1],))
-pylab.title(u"Generatorstrom/-spannung bei $B=160\mathrm{mT}$")
+pylab.title(u"Generatorstrom/-spannung bei $B=160\,\mathrm{mT}$, $v=1,23\,\mathrm{m/s}$")
 pylab.xlabel(u"Außenwiderstand incl. Messgerät $R\,[\mathrm{k\Omega}]$")
 #pylab.ylabel(u"Spannung am Außenwiderstand $U/B\, [\mathrm{mV/mT}]$")
 pylab.legend(loc='center right', numpoints=1)

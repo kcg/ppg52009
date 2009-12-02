@@ -1,0 +1,9 @@
+Umkehrung des Effekts
+=====================
+
+angelegtes Magnetfeld: (150 +/- 1) mT
+Strom durch die Zelle: +/- (1.125 +/- 0,02) A
+Pegelunterschied im Steigrohr: +/- (2,8 +/- 0,2) mm
+Dichte: (1,125 +/- 0,02) kg/l
+
+=> Druckunterschied: p = g*rho*h = (31 +/- 2) Pa
