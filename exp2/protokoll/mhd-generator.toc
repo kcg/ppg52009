@@ -1,0 +1,15 @@
+\select@language {ngerman}
+\contentsline {section}{\numberline {1}Einleitung}{3}{section.1}
+\contentsline {section}{\numberline {2}Theorie}{3}{section.2}
+\contentsline {section}{\numberline {3}Konstruktion und Aufbau}{4}{section.3}
+\contentsline {subsection}{\numberline {3.1}Konstruktion des Magnetfelds}{4}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Aufbau der Zelle}{5}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Aufbau der Messapperatur}{5}{subsection.3.3}
+\contentsline {section}{\numberline {4}Messungen und Ergebnisse}{8}{section.4}
+\contentsline {subsection}{\numberline {4.1}Leitf\IeC {\"a}higkeit von Salzwasser}{8}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Magnetfeld}{8}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Zellspannung und -strom}{8}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Wassergeschwindigkeit und Druck}{11}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.5}Umkehrung des Effekts, Nutzung als Wasserpumpe}{11}{subsection.4.5}
+\contentsline {section}{\numberline {5}Fazit}{11}{section.5}
+\contentsline {section}{\numberline {6}Autorenverzeichnis}{12}{section.6}
