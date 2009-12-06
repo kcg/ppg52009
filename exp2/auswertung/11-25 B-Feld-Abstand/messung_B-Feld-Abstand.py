@@ -8,6 +8,10 @@ from scipy import optimize
 import scipy.interpolate
 from matplotlib import colors as clr
 
+def fit(p, x, y):
+	yw = [p[0] / (xx + p[1]) for xx in x]
+	return [yw[i] - y[i] for i in range(len(x))]
+
 def readdata(filename, colsep="\t", comment="#"):
 	ifile = open(filename, "r")
 	data = []
@@ -32,10 +36,16 @@ def readdata(filename, colsep="\t", comment="#"):
 
 data = readdata("messung_B-Feld-Abstand.txt")
 
-x = [i[0] for i in data]
-y = [i[1] for i in data]
+d = [i[0] for i in data]
+B = [i[1] for i in data]
 
-p.plot(x,y, 'bo' )
+# Fitten
+p1, success = optimize.leastsq(fit, [1., 0.], args=(d, B))
+d_array = scipy.linspace(5., 50., 41)
+
+p.plot(d_array, [p1[0] / (i + p1[1]) for i in d_array], 'k-', label=u"Fit: $\\frac{%.0f\,\mathrm{mT}}{(d + %.1f\,\mathrm{mm})/\mathrm{cm}}$" % (p1[0]/10., p1[1]))
+
+p.plot(d, B, 'bo', label="Messung")
                      
 p.xlabel('Abstand in [mm]')      
 p.ylabel('B-Feld in [mT] bei 1A')
@@ -43,6 +53,7 @@ p.ylabel('B-Feld in [mT] bei 1A')
 
 # Speichern
 p.gcf().set_size_inches(6, 4)
+p.legend()
 p.savefig("messung_B-Feld-Abstand.pdf")
 
 # Anzeigen
