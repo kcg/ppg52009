@@ -156,12 +156,12 @@ Unter Berücksichtigung der Geometrie des B-Feldes und mit Absprache der Werksta
 \end{figure}
 
 Als Elektrodenmaterial wurde zuerst Aluminium angedacht. Erste Versuche zeigten jedoch starke chemische Reaktionen mit der Salzwasserlösung, weshalb die Elektroden dann aus Edelstahl gefertigt wurden. 
-An den in Abbildung ??? zu erkennenden Löchern wurden Schlauchstutzen aus Kunststoff angebracht, um vorne und hinten den Durchlaufschlauch und seitlich dünnere Schläuche zur Druckmessung befestigen zu können.
+An den in \abb{zelle-einzeln} zu erkennenden Löchern wurden Schlauchstutzen aus Kunststoff angebracht, um vorne und hinten den Durchlaufschlauch und seitlich dünnere Schläuche zur Druckmessung befestigen zu können.
 Die mechanische Werkstatt fertigte zwei Durchflusszellen aus Plexiglas, die jedoch leider beide nicht wasserdicht waren. Mit Hilfe von Silikon konnten die Leckstellen abgedichtet werden.
 
 \begin{figure}[ht]
 \begin{center}
-\includegraphics[width=0.8\textwidth]{images/zelle-einzeln.jpg}
+\includegraphics[width=1.0\textwidth]{images/zelle-einzeln.jpg}
 \end{center}
 \vspace{-1.5\baselineskip}
 \caption{Die fertige Durchflusszelle}
@@ -347,9 +347,9 @@ Für die verschiedenen Durchflussgeschwindigkeiten konnte mit Hilfe des Cassy La
 Bei jeder Geschwindigkeit wurde die Referenzspannung, d.h. die Spannung bei ausgeschaltetem B-Feld (nur Restmagnetisierung des Eisenjochs) gemessen und dann mehrmals das Magnetfeld ein- und ausgeschaltet.
 Folgender Verlauf wurde beispielsweise für $v=0.68\frac{\unit{m}}{\unit{s}}$ aufgezeichnet:
 
-%%Ich will das Diagramm genau hier haben! Geht das? Notfalls kleiner?
+%%Ich will das Diagramm genau hier haben! Geht das? Notfalls kleiner? -> ja, benutze ein [H]
 
-\begin{figure}[ht]
+\begin{figure}[H]
 \begin{center}
 \includegraphics[width=0.8\textwidth]{images/U-B-068.pdf}
 \end{center}
@@ -368,11 +368,11 @@ Aus diesen Daten konnte für jede Geschwindigkeit der Spannungsunterschied und d
 $v\; \unit{[\frac{m}{s}]}$ &
 $\frac{\Delta U}{\Delta B}\; \unit{[\frac{mV}{T}]}$ \\
 \hline
-0.35	& 6.69 \\
-0.48	& 8.98 \\
-0.68	& 12.96 \\
-0.80	& 15.11 \\
-0.96	& 18.29
+0,35	& 6,69 \\
+0,48	& 8,98 \\
+0,68	& 12,96 \\
+0,80	& 15,11 \\
+0,96	& 18,29
 \end{tabular}
 \vspace{-\baselineskip}\end{center}
 \end{table}
@@ -399,19 +399,21 @@ U=B \cdot d \cdot v
 \frac{\Delta U}{\Delta B}=d \cdot v
 \]
 
-Die lineare Abhängigkeit von Strom und Geschwindigkeit ist hervorragend erkennbar. Die Steigung der Fit-Geraden gibt laut Theorie den Abstand $d$ der Elektroden an. Sie beträgt $19 \frac{ \frac{\unit{mV}}{\unit{T}} }{ \frac{\unit{m}}{\unit{s}}} = 19 \unit{mm}$ und stimmt damit sehr gut mit dem Abstand der Edelstahlplatten in unserer Zelle (20\unit{mm}) überein.
+Die lineare Abhängigkeit von Strom und Geschwindigkeit ist hervorragend erkennbar. Die Steigung der Fit-Geraden gibt laut Theorie den Abstand $d$ der Elektroden an. Sie beträgt $19 \unit{\frac{ mV/T }{ m/s }} = 19 \unit{mm}$ und stimmt damit sehr gut mit dem Abstand der Edelstahlplatten in unserer Zelle (18\unit{mm}) überein.
 
 
 \subsection{Umkehrung des Effekts, Nutzung als Wasserpumpe}		%%david
 
-Eine andere Nutzung des magentohydrodynamischen Effekts als die der Stromerzeugung entsteht dadurch, wenn man nun nicht fließendes Wasser benutzt, sondern bei Anwesenheit eines äußeren magnetischen Feldes Strom durch die Zelle schickt. Es ist somit quasi die Umkehrung des MHD-Generators und erzeugt einen Wasserfluss, welcher entweder als Antrieb oder Pumpe genutzt werden kann. So wurde in den 90er Jahren ein Schiff mit einem MH-Antrieb als Prototyp gebaut, welches allerdings aufgrund einiger Schwierigkeiten nicht über eine Geschwindigkeit von 15km/h hinaus kam.\footnote{http://de.wikipedia.org/wiki/Magnetohydrodynamischer\_Antrieb} Eine vielversprechendere Weiterführung des Gedankes ist der Magnetoplasmadynamische Antrieb, welcher nicht Wasser sondern Plasma als Medium benutzt und mit welchem bereits Austrittsgeschwindigkeiten des Plasmas von 40km/s erreicht wurden.\footnote{http://de.wikipedia.org/wiki/Magnetoplasmadynamischer\_Antrieb}\\
-\\
-Bei der Durchführung unseres Versuches lösten wir den Schlauch von der Pumpe und legten beide Enden in den Wasserbehälter, um den Fließwiderstand durch die Pumpe hindurch zu eliminieren. Wir legten ein magnetisches Feld von $ B = (150 \pm 1) \unit{mT} $ an und schickten einen Strom von $I = (1,125 \pm 0,02) \unit{A}$ durch die Zelle. Die Dichte des Salzwassers wurde zuvor mithilfe einer Waage und eines Messbechers zu $\rho = (1,125 \pm 0,02) \unit{\frac{kg}{l}}$ bestimmt.\\
-Es stellte sich jedoch heraus, dass man an den Enden der Schläuche keinen Wasserfluss spüren konnte, da der Fließwiderstand des Systemes anscheinend trotz Herausnahme der Pumpe noch zu groß war.\\
-Um dennoch die theoretisch erreichbare Fließgeschwindigkeit des Wassers bestimmen zu können, wurden die beiden Schlauchenden verstopft, wodurch sich in den Steigrohren vor und nach den Elektroden der Zelle ein Pegelunterschied ergab. Dieser betrug $\Delta h = (2,8 \pm 0,2) \unit{mm}$. Zur Verifizierung, dass dies auch wirklich auf dem nachzuweisenden Effekt beruht, wurde die Stromrichtung umgekehrt, was zur Folge hatte, dass wieder der gleiche Pegelunterschied $\Delta h$ entstand, jedoch war nun, wie erhofft, der höhere Pegelstand in dem Steigrohr, in welchem zuvor noch der kleinere war.\\
+Eine andere Nutzung des magentohydrodynamischen Effekts als die der Stromerzeugung entsteht dadurch, wenn man nun nicht fließendes Wasser benutzt, sondern bei Anwesenheit eines äußeren magnetischen Feldes Strom durch die Zelle schickt. Es ist somit quasi die Umkehrung des MHD-Generators und erzeugt einen Wasserfluss, welcher entweder als Antrieb oder Pumpe genutzt werden kann. So wurde in den 90er Jahren ein Schiff mit einem MH-Antrieb als Prototyp gebaut, welches allerdings aufgrund einiger Schwierigkeiten nicht über eine Geschwindigkeit von 15km/h hinaus kam.\footnote{http://de.wikipedia.org/wiki/Magnetohydrodynamischer\_Antrieb} Eine vielversprechendere Weiterführung des Gedankes ist der Magnetoplasmadynamische Antrieb, welcher nicht Wasser sondern Plasma als Medium benutzt und mit welchem bereits Austrittsgeschwindigkeiten des Plasmas von 40km/s erreicht wurden.\footnote{http://de.wikipedia.org/wiki/Magnetoplasmadynamischer\_Antrieb}
+
+Bei der Durchführung unseres Versuches lösten wir den Schlauch von der Pumpe und legten beide Enden in den Wasserbehälter, um den Fließwiderstand durch die Pumpe hindurch zu eliminieren. Wir legten ein magnetisches Feld von $ B = (150 \pm 1) \unit{mT} $ an und schickten einen Strom von $I = (1,125 \pm 0,02) \unit{A}$ durch die Zelle. Die Dichte des Salzwassers wurde zuvor mithilfe einer Waage und eines Messbechers zu $\rho = (1,125 \pm 0,02) \unit{\frac{kg}{\ell}}$ bestimmt.\\
+Es stellte sich jedoch heraus, dass man an den Enden der Schläuche keinen Wasserfluss spüren konnte, da der Fließwiderstand des Systemes anscheinend trotz Herausnahme der Pumpe noch zu groß war.
+
+Um dennoch die theoretisch erreichbare Fließgeschwindigkeit des Wassers bestimmen zu können, wurden die beiden Schlauchenden verstopft, wodurch sich in den Steigrohren vor und nach den Elektroden der Zelle ein Pegelunterschied ergab. Dieser betrug $\Delta h = (2,8 \pm 0,2) \unit{mm}$. Zur Verifizierung, dass dies auch wirklich auf dem nachzuweisenden Effekt beruht, wurde die Stromrichtung umgekehrt, was zur Folge hatte, dass wieder der gleiche Pegelunterschied $\Delta h$ entstand, jedoch war nun, wie erhofft, der höhere Pegelstand in dem Steigrohr, in welchem zuvor noch der kleinere war.
+
 Aus diesem Pegelunterschied lässt sich nun der Druckunterschied $\Delta p$ berechnen:
 \[\Delta p = g \cdot \rho \cdot \Delta h = (31 \pm 2) \unit{Pa} \]
-Hierbei entspricht $g = 9,81 \unit{\frac{m}{s}}$ der Schwerebeschleunigung.\\
+Hierbei entspricht $g = 9,81 \unit{\frac{m}{s^2}}$ der Schwerebeschleunigung.\\
 Nach dem Gesetz von Bernoulli \[\frac{1}{2}\cdot\rho\cdot v^2_{Fluss} + p = const\]
 kann man nun die nominelle Fließgeschwindigkeit berechnen und erhält \[v_{Fluss} = (0,23 \pm 0,06)\unit{\frac{m}{s}}.\]
 
