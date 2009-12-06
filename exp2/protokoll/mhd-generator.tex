@@ -6,6 +6,7 @@
 \usepackage{graphicx} % Um Bilder einbinden zu koennen
 \usepackage{float} % fuer \begin{figure}[H]
 \usepackage{icomma} % laesst das Komma als Dezimaltrennzeichen interpretieren
+\usepackage{fix-cm} % für die große Titelschrift
 \usepackage[pdftex]{hyperref} % Hyperlinks im Dokument
 \hypersetup{colorlinks=true, linkcolor=black, citecolor=black, filecolor=black, urlcolor=black, pdftitle={MHD-Generator - Projektpraktikum 09/10 Gruppe 5}}
 
@@ -37,10 +38,10 @@
 \raisebox{-1.4cm}{\includegraphics[width=5cm]{images/fau.pdf}}
 \\[8\baselineskip]
 \begin{center}
-{\Huge\textbf{MHD-Generator}}
+{\fontsize{36}{54}\textbf{MHD-Generator}}
 \\[2\baselineskip]
 {\Large 09.11.2009 -- 04.12.2009}
-\\[6\baselineskip]
+\\[7\baselineskip]
 {\huge\textbf{PPG 5}}\\[0.5\baselineskip]
 {\large\textbf{
 Michele Collodo,
@@ -274,7 +275,7 @@ Bei unserer Zellgeometrie von $1,8\unit{cm}\times 7,5\unit{cm^2}$ ergibt dies ei
 \begin{equation}
 \sigma
 = \frac{d}{R\,A}
-= (0,00153 \pm 0,00017)\ee{-3}\unit{\frac{1}{\Omega m}}
+= (0,001\,53 \pm 0,000\,17)\ee{-3}\unit{\frac{1}{\Omega m}}
 \qquad
 \text{ bei } U\approx 3\unit{mV}
 \label{eqn:sigma}
