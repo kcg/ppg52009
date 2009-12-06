@@ -1,10 +1,9 @@
 # Messung des Generatorstromes
-# Der Generator wurde über einen 1 Ohm Widerstand kurzgeschlossen
+# Der Generator wurde über einen 1 Ohm Widerstand kurzgeschlossen -> anscheinend nicht
 # und die Spannung darauf in mV abgegriffen.
-# Deshalb gibt das Signal den Strom in mA an.
 #
 # Spalte1: t [s]
-# Spalte2: Generatorstrom I [mA]
+# Spalte2: Generatorspannung U [mV]
 # Spalte3: Spulenstrom I_S [A]
 # Spalte4: Magnetfeld B [mT]
 0	3.705	0	9.9
