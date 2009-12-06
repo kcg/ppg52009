@@ -31,13 +31,12 @@ def readdata(filename, colsep="\t", comment="#"):
 	return(data)
 
 
-data = readdata("fertig1.txt")
+data = readdata("068-all.txt")
 
-x = [i[0] for i in data]
-y = [i[1] for i in data]
-delta_x = [i[3] for i in data]
-delta_y = [i[2] for i in data]
-u = p.linspace(0,1.2,100)
+t = [i[0] for i in data]
+U = [-i[1] for i in data]
+B = [0.1*i[3] for i in data]
+#u = p.linspace(0,1.2,100)
 
 
 
@@ -45,16 +44,15 @@ u = p.linspace(0,1.2,100)
 
 ax = p.figure().add_subplot(111)
 
-ax.plot(u, (19.0646*u-0.0622608), 'k--', label="$19.065 \\frac{ \\frac{\mathrm{mV}}{\mathrm{T}} }{ \\frac{\mathrm{m}}{\mathrm{s}}} \cdot v - 0.0623 \mathrm{mV}$" )  # fit
-#ax.plot(x, y, "bo", label="Messung")
+#ax.plot(u, (19.0646*u-0.0622608), 'k--', label="$19.065 \\frac{ \\frac{\mathrm{mV}}{\mathrm{T}} }{ \\frac{\mathrm{m}}{\mathrm{s}}} \cdot v - 0.0623 \mathrm{mV}$" )  # fit
+ax.plot(t, U, "k-", label="Spannung")
+ax.plot(t, B, "g-", label="B-Feld")
 
 
-ax.errorbar(x, y, delta_x, delta_y, "bo", label="Messung")
-#ax.errorbar(x[ic:], y[ic:], delta_I[ic:], delta_B[ic:], "ro", label=u"Netzgeräte zusammen")
 
 #p.grid()                      
-p.xlabel('Geschwindigkeit v in [m/s]')
-p.ylabel('$\Delta$U/$\Delta$B in [mV/T]')
+p.xlabel('Zeitverlauf t in [s]')
+p.ylabel('Spannung U in [mV], Magnetfeld B in [$10^{-2}$T]')
 
 p.legend(loc='lower right')  # Legende
 
