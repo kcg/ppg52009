@@ -15,8 +15,9 @@
 \newcommand{\cel}{\ensuremath{\degr\mathrm{C}}}
 \newcommand{\dif}{\ensuremath{\mathrm{d}}}
 \newcommand{\pdif}[2]{\ensuremath{\frac{\partial#1}{\partial#2}}}
-\newcommand{\ee}[1]{\ensuremath{\cdot 10^{#1}}}
-
+\newcommand{\ee}[1]{\ensuremath{\cdot\! 10^{#1}}}
+\newcommand{\abb}[1]{\hyperref[#1]{Abb.~\ref{#1}}}
+\newcommand{\tab}[1]{\hyperref[#1]{Tabelle~\ref{#1}}}
 
 \setlength{\parindent}{1em}
 \setlength{\parskip}{0.5\baselineskip}
@@ -87,6 +88,10 @@ Das Prinzip des MHD-Generators beruht auf der Lorentzkraft,
 \end{equation*}
 die in einem Magnetfeld auf eine bewegte Ladung wirkt. Wird also eine leitende Fl\"ussigkeit durch ein m\"oglichst homogenes, starkes Magnetfeld geschickt, welches senkrecht zur Flussrichtung gerichtet ist, werden positive und negative Ladung entsprechend der Rechten-Hand-Regel in entgegengesetzte Richtungen abgelenkt. Bringt man dann in jeder dieser Richtungen je eine Elektrode an, kann man eine Spannung abgreifen und hat so eine Generatorzelle konstruiert. 
 
+
+
+
+
 \section{Konstruktion und Aufbau}
 
 \subsection{Konstruktion des Magnetfelds}		%%andi
@@ -109,7 +114,7 @@ durchgeführt. Zu erwarten war wegen
 \begin{equation*}
 B = \frac{\mu \cdot \mu_{0} \cdot N \cdot I}{\mu \cdot d + 2 \cdot \pi \cdot R}
 \end{equation*}
-in etwa eine $1/d$-Abhängigkeit, wobei $\mu$ die Materialkonstante des Eisens, $N$ die Windungszahl, $d$ der Abstand zwischen den beiden Eisenjochen und $R$ der Radius der "Gesamtspule" ist. Die "Gesamtspule" ist dabei die gesamte Anordnung der vier Einzelspulen und kann in erster Näherung als kreisförmig angenommen werden.
+in etwa eine $1/d$-Abhängigkeit, wobei $\mu$ die Materialkonstante des Eisens, $N$ die Windungszahl, $d$ der Abstand zwischen den beiden Eisenjochen und $R$ der Radius der "`Gesamtspule"' ist. Die "`Gesamtspule"' ist dabei die gesamte Anordnung der vier Einzelspulen und kann in erster Näherung als kreisförmig angenommen werden.
 Permannentmageneten nicht geeignet, Vormessung B-Feld: Verschiedene Abstaende, Geometrie des Feldes, Schaltung der Spulenpaare
 
 \begin{figure}[ht]
@@ -133,7 +138,7 @@ Nachdem die Zelle in der Werkstatt fertiggestellt worden war, wurde die restlich
 	\item M\"oglichkeiten zur Messung der Magnetfeldst\"arke sowie des lokalen Drucks in der Zelle.
 \end{itemize}
 
-Die Pumpe wurde bereits im Vorraus im Versandhandel bestellt. Die ersten Vorabrechnungen hatten ergaben, dass eine Wassergeschwindigkeit im Bereich von $1m/s$ messbare Ergebnisse liefern w\"urde. Daher entschieden wir uns f\"ur eine Teichpumpe, die mit 220V Netzspannung betrieben wird und dabei laut Herstellerangaben bei einer Leistung von 16W ca. 1000l Wasser pro Stunde bis zu einer F\"orderh\"ohe von 1,7m transportieren soll. Da davon auszugehen war, dass diese nicht f\"ur den Einsatz in hoch konzentriertem Salzwasser geeignet ist, wurde der komplette Kreislauf am Ende jedes Arbeitstages mit Leitungswasser gesp\"ult um Langzeitsch\"aden vorzubeugen.
+Die Pumpe wurde bereits im Vorraus im Versandhandel bestellt. Die ersten Vorabrechnungen hatten ergaben, dass eine Wassergeschwindigkeit im Bereich von $1m/s$ messbare Ergebnisse liefern w\"urde. Daher entschieden wir uns f\"ur eine Teichpumpe, die mit 220V Netzspannung betrieben wird und dabei laut Herstellerangaben bei einer Leistung von 16W ca. $1000\unit{\ell}$ Wasser pro Stunde bis zu einer F\"orderh\"ohe von 1,7m transportieren soll. Da davon auszugehen war, dass diese nicht f\"ur den Einsatz in hoch konzentriertem Salzwasser geeignet ist, wurde der komplette Kreislauf am Ende jedes Arbeitstages mit Leitungswasser gesp\"ult um Langzeitsch\"aden vorzubeugen.
 
 Beim Aufbau der gesamten Apperatur des MHD-Geneators musste mehreren Faktoren besondere Aufmerksamkeit geschenkt werden: 
 \begin{itemize}
@@ -178,15 +183,109 @@ Zur Bestimmung des lokalen Drucks, kamen zwei d\"unne Schl\"auche als Steigrohre
 
 Strom und Spannungsmesswerte, sowie die Magnetfeldst"arke wurden durch das Cassy Lab System mit entsprechenden Verst"arker und Anschlussboxen \"uber die Zeit aufgetragen und zur Auswertung aufgezeichnet. F\"ur die Messung des, an der Spule angelegten, Stroms im Bereich von bis zu $2A$, war der Messbereich ausreichend, es waren jedoch keine Adapter verf\"ugbar, um den an der Zelle abfallenden Strom zu verst\"arken. Daher kam auch hier wieder der Umweg \"uber einen einstellbaren Widerstand mit anschlie\"ssender Spannungsmessung zum Zuge.
 
+
+
+
+
 \section{Messungen und Ergebnisse}
 
-\subsection{Leitfähigkeit von Salzwasser}		%%michele
+\subsection{Leitfähigkeit von Salzwasser}\label{leit}		%%michele
 Die interessantesten Messungen gibts hier, Widerstand der Zelle
 
 \subsection{Magnetfeld}			%%andi
 Abh"angigkeit der Zellspannung vom B-Feld
 
-\subsection{Generatorspannung und -strom}		%%basti
+\subsection{Zellspannung und -strom}		%%basti
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=1.0\textwidth]{images/rohdaten_strom.pdf}
+\end{center}
+\vspace{-1.5\baselineskip}
+\caption{Spannungswerte am Außenwiderstand in Abhängigkeit vom Widerstand und dem Magnetfeld}
+\label{rohdatenstrom}
+\end{figure}
+Prinzipiell dient ein Generator dazu, elektrische Leistung zu erzeugen, und das kann er nur wenn mit der induzierten Spannung ein ein Strom fließt.
+Wie es sich gezeigt hat, erhalten wir bei der verwendeten Fließgeschwindigkeit von $v=1,4\unit{\frac{m}{s}}$ leider nur Ströme im $\mathrm{\mu A}$-Bereich.
+Deshalb wäre die Messung über ein Amperemeter recht schwierig gewesen und wir haben uns für eine indirekte Methode entschieden.
+
+Das verwendete Voltmeter des Cassy-systems besitzt einen Innenwiderstand von $R_{\text{U}} = 100\unit{k\Omega}$.
+Sein Stromfluss ergibt sich ganz einfach nach dem ohmschen Gesetz.
+Zusätzlich wurden nun verschiedene Lastwiderstände $R_{\text{L}}$ parallel geschalten und der Gesamtstrom in der Schaltung bzw. Zelle ist folglich
+\begin{equation}
+I
+= \frac{U}{R}
+= \frac{U}{(R_{\text{U}}^{-1} + R_{\text{L}}^{-1})^{-1}}
+= U\cdot\left(\frac{1}{R_{\text{U}}} + \frac{1}{R_{\text{L}}}\right)
+\label{stromrechnung}
+\end{equation}
+\begin{table}[ht]
+\captionabove{Ausgewertete Spannungs- und Stromwerte bei $B = 160\unit{mT}$}
+\label{tab:strom}
+\begin{center}\vspace{-\baselineskip}
+\begin{tabular}{rr|cc}
+$R_{\text{L}} \; \unit{[k\Omega]}$ &
+$R \; \unit{[k\Omega]}$ &
+$U\; \unit{[mV]}$ &
+$I\; \unit{[\mu A]}$ \\
+\hline
+$\infty$ & 100.00 & 3.16 & 0.032 \\
+100 & 50.00 & 2.79 & 0.056 \\
+50 & 33.33 & 2.51 & 0.075 \\
+20 & 16.67 & 1.93 & 0.116 \\
+14 & 12.28 & 1.65 & 0.134 \\
+10 & 9.09 & 1.35 & 0.149 \\
+7 & 6.54 & 1.10 & 0.168 \\
+5 & 4.76 & 0.78 & 0.164 \\
+2 & 1.96 & 0.42 & 0.215 \\
+1 & 0.99 & 0.24 & 0.244 \\
+0.5 & 0.50 & 0.14 & 0.275
+\end{tabular}
+\vspace{-\baselineskip}\end{center}
+\end{table}
+
+Die Apperatur zeigte bei der Messung wieder eine zeitabhängige Offsetspannung in der gleichen Größenordnung des Signals, welche daher unbedingt zu eliminieren war.
+Hierzu wurde jeweils der gewünschte Lastwiderstand angeklemmt, dann ein stabiler Spannungsverlauf abgewartet.
+Sobald dieser vorhanden war, wurde das Magnetfeld aktiviert und wieder gewartet.
+Hier konnte es schon 10 Minuten dauern, bis das Signal asymptotisch wurde.
+Daraufhin wurde das Magnetfeld wieder deaktiviert und ein letztes mal gewartet.
+In \abb{rohdatenstrom} ist der resultierende Spannungsverlauf dargestellt.
+Die Offsetspannung konnte nun (als rote Linien dargestellt) in den Graphen gefittet und die Differenzen zu den höheren Spannungswerten gemessen werden.
+Die Spannungswerte wurden punktweise durch das vorherrschende -- nicht ganz konstante -- Magnetfeld geteilt und dann für jeden Widerstandswert gemittelt.
+Die Ausgabe des hierzu erstellten Pythonprogramms findet sich in \tab{tab:strom}, wobei die Strom- und spannungswerte wieder mit der mittleren Flussdichte von $160\unit{mT}$ hochgerechnet sind.
+
+
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=1.0\textwidth]{images/strom.pdf}
+\end{center}
+\vspace{-1.5\baselineskip}
+\caption{Spannung und Strom an der Zelle}
+\label{fig:strom}
+\end{figure}
+
+Die so ermittelten Spannungs- und Stromwerte sind in \abb{fig:strom} aufgetragen.
+Aus den Daten errechnet sich nun, dass die Zellspannung unter gegebenen Umständen bei $U = (3,7 \pm 0,2)\unit{mV}$ lag und der Eigenwiderstand der Zelle in diesem Spannungsbereich bei
+\begin{equation}
+R_{\text{Z}} = (15,7 \pm 1,7)\unit{k\Omega}
+\end{equation}
+mit einer Kovarianz der beiden Werte von $0,33\unit{mV}\unit{k\Omega}$.
+Einen derart hohen Widerstandswert hatten wir nicht erwartet.
+Bei unserer Zellgeometrie von $1,8\unit{cm}\times 7,5\unit{cm^2}$ ergibt dies einen Leitwert von
+\begin{equation}
+\sigma
+= \frac{d}{R\,A}
+= (0,00153 \pm 0,00017)\ee{-3}\unit{\frac{1}{\Omega m}}
+\qquad
+\text{ bei } U\approx 3\unit{mV}
+\label{eqn:sigma}
+\end{equation}
+Dies ist erstaunlich wenig, wenn man bedenkt dass der Leitwert von Leitungswasser in etwa bei $0,05\unit{\Omega^{-1}m^{-1}}$ und von Salzwasser sogar bei $5\unit{\Omega^{-1}m^{-1}}$ liegen sollte.
+Das Ergebnis geht also konform mit unseren anderen Erkenntnissen zur Leitfähigkeit von Salzwasser, dass diese für geringe Gleichspannungen deutlich verringert ist.
+
+Für unseren MHD-Generator bedeutet das konsequenterweise, dass mit den gegebenen Parametern keine sinnvolle Stromerzeugung möglich ist. Wie im \hyperref[leit]{Abschnitt~\ref{leit}} festgestellt wären dazu Spannungen in der Größenordnung ab $1\unit{V}$ notwendig, wozu man das Produkt aus Magnetfeld, Elektrodenabstand und Fließgeschwindigkeit um den Faktor 300 erhöhen müsste. Das ist großtechnisch wohl machbar, liegt aber außerhalb unserer Verbesserungsmöglichkeiten.
+
+
+
 
 \subsection{Wassergeschwindigkeit und Druck}		%%evtl. 
 ... Wirkungsgrad gibts keinen, weil die Druckmessung zu schwierig war.

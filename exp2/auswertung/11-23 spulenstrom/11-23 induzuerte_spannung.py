@@ -65,9 +65,9 @@ B_array = scipy.array([0., 200.])
 ax = pylab.figure().add_subplot(111)
 ax.plot(B_array, 0.022 * B_array, "k--", label=u"Theorie: $U/B = v\cdot d$")
 
-B = [89. * Ii for Ii in I]
-# Der Fehler fürs Magnetfeld ist nicht sicher, weil B(I) noch nicht bekannt ist
-delta_B = [89. * delta_I[i] + B[i] * 0.1 for i in range(len(delta_I))]
+# Benutze die Daten aus dem Magnetfeld-fit (scheint aber nicht ganz zu passen):
+B = [204.1 * atan(0.666*Ii) for Ii in I]
+delta_B = [delta_I[i] * 204.2*0.666/(1.+(0.666*Ii)**2.) for i in range(len(delta_I))]
 ax.errorbar(B[:ic], U[:ic], delta_U[:ic], delta_B[:ic], "bo", label=u"Netzgeräte einzeln")
 ax.errorbar(B[ic:], U[ic:], delta_U[ic:], delta_B[ic:], "ro", label=u"Netzgeräte zusammen")
 pylab.xlim(0., 200.)
