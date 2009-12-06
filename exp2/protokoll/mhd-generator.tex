@@ -106,7 +106,7 @@ P = U \cdot I = B^{2} \cdot v^{2} \cdot A \cdot d \cdot \sigma.
 \subsection{Konstruktion des Magnetfelds}		%%andi
 Im Vorfeld der eigentlichen Messungen an der Zelle wurde die möglichst optimale Konstruktion des Magnetfelds ermittelt. Ziel war es bei einer Feldstärke von rund $0,1 T$ ein möglichst im gesamten Bereich der Zelle homogenes Feld zu erhalten.\
 Zunächst wurden verschiedene Permanentmagneten eingesetzt, die jedoch allesamt unbefriedigende Ergebnisse lieferten. Die eingesetzten Stabmagneten erzielten eine maximale Feldstärke von $0,07T$, das der zur Verfügung stehenden Hufeisenmagneten war noch wesentlich niedriger. Die größte Feldstärke wurde an Ringpermanentmagneten ($B\approx0,3T$) gemessen; dieser Wert fiel jedoch schon im Abstand von wenigen $mm$ stark ab ($1/r^3$-Abhängigkeit) und war deshalb ebenfalls ungeeignet.\
-Folglich wurde ein Aufbau mit Elektromagneten gewählt. Zum Einsatz kamen dabei vier Spulen mit je 1000 Windungen (Anordnung siehe \hyperref[bfeld-vor2]{Abb.~\ref{bfeld-vor2}}).
+Folglich wurde ein Aufbau mit Elektromagneten gewählt. Zum Einsatz kamen dabei vier Spulen mit je 1000 Windungen (Anordnung siehe \abb{bfeld-vor2}).
 
 \begin{figure}[ht]
 \begin{center}
@@ -124,14 +124,14 @@ durchgeführt. Zu erwarten war wegen
 B = \frac{\mu \cdot \mu_{0} \cdot N \cdot I}{\mu \cdot d + 2 \pi \cdot R}
 \end{equation*}
 in etwa eine $1/d$-Abhängigkeit, wobei $\mu$ die Materialkonstante des Eisens, $N$ die Windungszahl, $d$ der Abstand zwischen den beiden Eisenjochen und $R$ der Radius der "`Gesamtspule"' ist. Die "`Gesamtspule"' ist dabei die gesamte Anordnung der vier Einzelspulen und kann in erster Näherung als kreisförmig angenommen werden.\
-Wie in \hyperref[bfeld-vor2]{Abb.~\ref{bfeld-vor2}} gut sichtbar, hat sich diese Annahme zumindest qualitativ bestätigt. Bei der angelegten Spannung von $1 \unit{A}$ und einem Radius der Gesamtanordnung von $8.5 \unit{cm}$ ergibt sich für $N=2992$ die eingezeichnete Fitkurve. Der $N$-Wert weicht zwar deutlich von den tatsächlichen 1000 Wicklungen ab. Dies dürfte jedoch auf die von einer idealen kreisförmig Geometrie abweichende Anordnung sowie die recht ungenauen Messwerte zurückzuführen sein.\ In Folge der vorliegenden Messergebnisse wurde der Abstand zwischen den beiden Eisenjochen beim eigentlichen Versuch dann möglichst klein gewählt (auf $1.1 \unit{cm}$, das entspricht der Zellbreite).
+Wie in \abb{bfeld-vor2} gut sichtbar, hat sich diese Annahme zumindest qualitativ bestätigt. Bei der angelegten Spannung von $1 \unit{A}$ und einem Radius der Gesamtanordnung von $8.5 \unit{cm}$ ergibt sich für $N=2992$ die eingezeichnete Fitkurve. Der $N$-Wert weicht zwar deutlich von den tatsächlichen 1000 Wicklungen ab. Dies dürfte jedoch auf die von einer idealen kreisförmig Geometrie abweichende Anordnung sowie die recht ungenauen Messwerte zurückzuführen sein.\ In Folge der vorliegenden Messergebnisse wurde der Abstand zwischen den beiden Eisenjochen beim eigentlichen Versuch dann möglichst klein gewählt (auf $1.1 \unit{cm}$, das entspricht der Zellbreite).
 
 \begin{figure}[ht]
 \begin{center}
 \includegraphics[width=0.8\textwidth]{images/messung_B-Feld-Abstand.pdf}
 \end{center}
 \vspace{-1.5\baselineskip}
-\caption{Abhängigkeit der Magnetfeldstärke vom Abstand zwischen den beiden Eisenjochen (siehe \hyperref[bfeld-vor2]{Abb.~\ref{bfeld-vor2}})}
+\caption{Abhängigkeit der Magnetfeldstärke vom Abstand zwischen den beiden Eisenjochen (siehe \abb{bfeld-vor2})}
 \label{messung_B-Feld-Abstand}
 \end{figure}
 
@@ -155,7 +155,7 @@ Der relativ deutliche Abfall der Feldstärke schon knapp $1 \unit{cm}$ über den
 \includegraphics[width=0.8\textwidth]{images/vormessung_magnetfeld.pdf}
 \end{center}
 \vspace{-1.5\baselineskip}
-\caption{Abhängigkeit der Magnetfeldstärke vom Abstand zwischen den beiden Eisenjochen (siehe \hyperref[vormessung_magnetfeld]{Abb.~\ref{vormessung_magnetfeld}})}
+\caption{Stärke des Magnetfeldes entlang der Achse (Messung mittig, einzelne Punkte am oberen Rand)}
 \label{vormessung_magnetfeld}
 \end{figure}
 
@@ -189,7 +189,7 @@ Die mechanische Werkstatt fertigte zwei Durchflusszellen aus Plexiglas, die jedo
 \includegraphics[width=1.0\textwidth]{images/zelle-einzeln.jpg}
 \end{center}
 \vspace{-1.5\baselineskip}
-\caption{Die fertige Durchflusszelle}
+\caption{Die fertige Durchflusszelle mit Elektroden. Die seitlichen Stutzen dienen der Druckmessung.}
 \label{zelle-einzeln}
 \end{figure}
 
@@ -317,16 +317,6 @@ Die Offsetspannung konnte nun (als rote Linien dargestellt) in den Graphen gefit
 Die Spannungswerte wurden punktweise durch das vorherrschende -- nicht ganz konstante -- Magnetfeld geteilt und dann für jeden Widerstandswert gemittelt.
 Die Ausgabe des hierzu erstellten Pythonprogramms findet sich in \tab{tab:strom}, wobei die Strom- und spannungswerte wieder mit der mittleren Flussdichte von $160\unit{mT}$ hochgerechnet sind.
 
-
-\begin{figure}[ht]
-\begin{center}
-\includegraphics[width=1.0\textwidth]{images/strom.pdf}
-\end{center}
-\vspace{-1.5\baselineskip}
-\caption{Spannung und Strom an der Zelle}
-\label{fig:strom}
-\end{figure}
-
 Die so ermittelten Spannungs- und Stromwerte sind in \abb{fig:strom} aufgetragen.
 Aus den Daten errechnet sich nun, dass die Zellspannung unter gegebenen Umständen bei $U = (3,7 \pm 0,2)\unit{mV}$ lag und der Eigenwiderstand der Zelle in diesem Spannungsbereich bei
 \begin{equation}
@@ -346,6 +336,15 @@ Bei unserer Zellgeometrie von $1,8\unit{cm}\times 7,5\unit{cm^2}$ ergibt dies ei
 Dies ist erstaunlich wenig, wenn man bedenkt dass der Leitwert von Leitungswasser in etwa bei $0,05\unit{\Omega^{-1}m^{-1}}$ und von Salzwasser sogar bei $5\unit{\Omega^{-1}m^{-1}}$ liegen sollte.
 Das Ergebnis geht also konform mit unseren anderen Erkenntnissen zur Leitfähigkeit von Salzwasser, dass diese für geringe Gleichspannungen deutlich verringert ist.
 
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=1.0\textwidth]{images/strom.pdf}
+\end{center}
+\vspace{-1.5\baselineskip}
+\caption{Spannung und Strom an der Zelle}
+\label{fig:strom}
+\end{figure}
+
 Für unseren MHD-Generator bedeutet das konsequenterweise, dass mit den gegebenen Parametern keine sinnvolle Stromerzeugung möglich ist. Wie im \hyperref[leit]{Abschnitt~\ref{leit}} festgestellt wären dazu Spannungen in der Größenordnung ab $1\unit{V}$ notwendig, wozu man das Produkt aus Magnetfeld, Elektrodenabstand und Fließgeschwindigkeit um den Faktor 300 erhöhen müsste. Das ist großtechnisch wohl machbar, liegt aber außerhalb unserer Verbesserungsmöglichkeiten.
 
 
@@ -363,14 +362,14 @@ Mit Hilfe des Volumendurchsatzes konnte dann die Durchflussgeschwindigkeit $v$ i
 \[
 v=\frac{\text{Volumendurchsatz pro Zeit}}{A_{\text{Durchfluss}}}
 \]
-Der Querschnitt der verwendeten Zelle betrug $A_{\text{Durchfluss}}=0.5\unit{cm} \cdot 2.0\unit{cm}=1.0\unit{cm^{2}}$.
+Der Querschnitt der verwendeten Zelle betrug $A_{\text{Durchfluss}}=0,5\unit{cm} \cdot 1,8\unit{cm}=0,9\unit{cm^{2}}$.
 
 Die Unsicherheit der Geschwindigkeit ist durch das manuelle Stoppen der Zeitwerte bedingt und wird auf etwa $\Delta v=7\% \cdot v$ geschätzt.
 Natürlich wird die Durchflussgeschwindigkeit innerhalb der Zelle eigentlich durch eine parabelförmige Geschwindigkeitsverteilung beschrieben, die aber hier in guter Näherung als konstant angenommen wird. 
 
 Für die verschiedenen Durchflussgeschwindigkeiten konnte mit Hilfe des Cassy Lab Systems Spannung und B-Feld über die Zeit gemessen werden. Es wurde darauf geachtet, dass sich die Spannungskurve bereits 'eingependelt' hatte, um keine Störung durch die elektrochemischen und kapazitiven (???) Prozesse zu messen.
 Bei jeder Geschwindigkeit wurde die Referenzspannung, d.h. die Spannung bei ausgeschaltetem B-Feld (nur Restmagnetisierung des Eisenjochs) gemessen und dann mehrmals das Magnetfeld ein- und ausgeschaltet.
-Folgender Verlauf wurde beispielsweise für $v=0.68\frac{\unit{m}}{\unit{s}}$ aufgezeichnet:
+Folgender Verlauf wurde beispielsweise für $v=0,68\frac{\unit{m}}{\unit{s}}$ aufgezeichnet:
 
 %%Ich will das Diagramm genau hier haben! Geht das? Notfalls kleiner? -> ja, benutze ein [H]! Kann man das Bild nicht auch per Verweis referenzieren?
 
@@ -379,7 +378,7 @@ Folgender Verlauf wurde beispielsweise für $v=0.68\frac{\unit{m}}{\unit{s}}$ au
 \includegraphics[width=0.8\textwidth]{images/U-B-068.pdf}
 \end{center}
 \vspace{-1.5\baselineskip}
-\caption{Spannungs- und B-Feld-Verlauf für $v=0.68\frac{\unit{m}}{\unit{s}}$}
+\caption{Spannungs- und B-Feld-Verlauf für $v=0,68\frac{\unit{m}}{\unit{s}}$}
 \label{U-B-068}
 \end{figure}
 
