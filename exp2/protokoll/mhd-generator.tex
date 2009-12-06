@@ -74,11 +74,19 @@ dumdidum
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\section{Einleitung}	%% maria
-Faraday hats wohl 1832 entdeckt.
+\section{Einleitung}	%% maria: ist fertig, kommentare, wuensche, anregungen?
+Die Frage der Energieerzeugung hat in der Physik der letzten Jahrhunderte immer eine bedeutende Rolle gespielt. Eine vielversprechende M\"oglichkeit schien das Ausnutzen von magnetischen Feldern. Die ersten \"Uberlegungen zu solchen Generatoren machte Michael Faraday schon 1832. Sp\"ater wurden immer mehr Arten entdeckt, Magnetfelder zur Stromerzeugung zu nutzen. Zur Anwendung kommen hier sowohl statische als auch ver\"anderliche Magnetfelder. Der wohl bekannteste MHD-Generator ist der Dynamo, der bis heute oft zur Energiegewinnung eingesetzt wird. Doch der Effekt l\"asst sich auch auf viel gr\"o\ss{}eren Skalen wiederfinden. So erzeugt zum Beispiel die Erde ihr sch\"utzendes Magnetfeld mit dem Dynamoprinzip. Auch f\"ur die Erzeugung und Beschleunigung stellarer Jets gibt es magnetohydrodynamische Modelle.
 
 \section{Theorie}	%% maria
-Lorenzkraft, usw.
+
+%%% mir faellt nix mehr ein, was koennt ich noch reinschreiben?
+
+Das Prinzip des MHD-Generators beruht auf der Lorentzkraft,
+\begin{equation*}
+\vec{F} = q \cdot \left(\vec{v} \times \vec{B} \right),
+\end{equation*}
+die in einem Magnetfeld auf eine bewegte Ladung wirkt. Wird also eine leitende Fl\"ussigkeit durch ein m\"oglichst homogenes, starkes Magnetfeld geschickt, welches senkrecht zur Flussrichtung gerichtet ist, werden positive und negative Ladung entsprechend der Rechten-Hand-Regel in entgegengesetzte Richtungen abgelenkt. Bringt man dann in jeder dieser Richtungen je eine ELektrode an, kann man eine Spannung abgreifen und hat so eine Generatorzelle konstruiert. 
+
 \section{Konstruktion und Aufbau}
 
 \subsection{Konstruktion des Magnetfelds}		%%andi
@@ -98,9 +106,9 @@ Folglich wurde ein Aufbau mit Elektromagneten gewählt. Zum Einsatz kamen dabei 
 Zunächst wurde eine kurze Messung zur Ermittlung der Abhängigkeit der Magnetfeldstärke vom Abstand zwischen den beiden Eisenjochen
 %% wie heissen die dinger schnell wieder
 durchgeführt. Zu erwarten war wegen 
-\[
-B=\mu*\mu_0*N*I/(\mu*d+2*\pi*R)
-\]
+\begin{equation*}
+B = \frac{\mu \cdot \mu_{0} \cdot N \cdot I}{\mu \cdot d + 2 \cdot \pi \cdot R}
+\end{equation*}
 in etwa eine $1/d$-Abhängigkeit, wobei $\mu$ die Materialkonstante des Eisens, $N$ die Windungszahl, $d$ der Abstand zwischen den beiden Eisenjochen und $R$ der Radius der "Gesamtspule" ist. Die "Gesamtspule" ist dabei die gesamte Anordnung der vier Einzelspulen und kann in erster Näherung als kreisförmig angenommen werden.
 Permannentmageneten nicht geeignet, Vormessung B-Feld: Verschiedene Abstaende, Geometrie des Feldes, Schaltung der Spulenpaare
 
