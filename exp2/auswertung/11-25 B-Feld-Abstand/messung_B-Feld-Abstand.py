@@ -47,7 +47,7 @@ p.plot(d_array, [p1[0] / (i + p1[1]) for i in d_array], 'k-', label=u"Fit: $\\fr
 
 p.plot(d, B, 'bo', label="Messung")
                      
-p.xlabel('Abstand in [mm]')      
+p.xlabel('Abstand in [mm]')
 p.ylabel('B-Feld in [mT] bei 1A')
 
 
