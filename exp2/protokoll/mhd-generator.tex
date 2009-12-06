@@ -402,7 +402,19 @@ Die lineare Abhängigkeit von Strom und Geschwindigkeit ist hervorragend erkennb
 
 
 \subsection{Umkehrung des Effekts, Nutzung als Wasserpumpe}		%%david
-Wird sogar als Antriebstechnik für Schiffe getestet (Magnetohydrodynamischer Antrieb bei Wikipedia)
+
+Eine andere Nutzung des magentohydrodynamischen Effekts als die der Stromerzeugung entsteht dadurch, wenn man nun nicht fließendes Wasser benutzt, sondern bei Anwesenheit eines äußeren magnetischen Feldes Strom durch die Zelle schickt. Es ist somit quasi die Umkehrung des MHD-Generators und erzeugt einen Wasserfluss, welcher entweder als Antrieb oder Pumpe genutzt werden kann. So wurde in den 90er Jahren ein Schiff mit einem MH-Antrieb als Prototyp gebaut, welches allerdings aufgrund einiger Schwierigkeiten nicht über eine Geschwindigkeit von 15km/h hinaus kam.\footnote{http://de.wikipedia.org/wiki/Magnetohydrodynamischer\_Antrieb} Eine vielversprechendere Weiterführung des Gedankes ist der Magnetoplasmadynamische Antrieb, welcher nicht Wasser sondern Plasma als Medium benutzt und mit welchem bereits Austrittsgeschwindigkeiten des Plasmas von 40km/s erreicht wurden.\footnote{http://de.wikipedia.org/wiki/Magnetoplasmadynamischer\_Antrieb}\\
+\\
+Bei der Durchführung unseres Versuches lösten wir den Schlauch von der Pumpe und legten beide Enden in den Wasserbehälter, um den Fließwiderstand durch die Pumpe hindurch zu eliminieren. Wir legten ein magnetisches Feld von $ B = (150 \pm 1) \unit{mT} $ an und schickten einen Strom von $I = (1,125 \pm 0,02) \unit{A}$ durch die Zelle. Die Dichte des Salzwassers wurde zuvor mithilfe einer Waage und eines Messbechers zu $\rho = (1,125 \pm 0,02) \unit{\frac{kg}{l}}$ bestimmt.\\
+Es stellte sich jedoch heraus, dass man an den Enden der Schläuche keinen Wasserfluss spüren konnte, da der Fließwiderstand des Systemes anscheinend trotz Herausnahme der Pumpe noch zu groß war.\\
+Um dennoch die theoretisch erreichbare Fließgeschwindigkeit des Wassers bestimmen zu können, wurden die beiden Schlauchenden verstopft, wodurch sich in den Steigrohren vor und nach den Elektroden der Zelle ein Pegelunterschied ergab. Dieser betrug $\Delta h = (2,8 \pm 0,2) \unit{mm}$. Zur Verifizierung, dass dies auch wirklich auf dem nachzuweisenden Effekt beruht, wurde die Stromrichtung umgekehrt, was zur Folge hatte, dass wieder der gleiche Pegelunterschied $\Delta h$ entstand, jedoch war nun, wie erhofft, der höhere Pegelstand in dem Steigrohr, in welchem zuvor noch der kleinere war.\\
+Aus diesem Pegelunterschied lässt sich nun der Druckunterschied $\Delta p$ berechnen:
+\[\Delta p = g \cdot \rho \cdot \Delta h = (31 \pm 2) \unit{Pa} \]
+Hierbei entspricht $g = 9,81 \unit{\frac{m}{s}}$ der Schwerebeschleunigung.\\
+Nach dem Gesetz von Bernoulli \[\frac{1}{2}\cdot\rho\cdot v^2_{Fluss} + p = const\]
+kann man nun die nominelle Fließgeschwindigkeit berechnen und erhält \[v_{Fluss} = (0,23 \pm 0,06)\unit{\frac{m}{s}}.\]
+
+
 
 \section{Fazit}		%%david
 
