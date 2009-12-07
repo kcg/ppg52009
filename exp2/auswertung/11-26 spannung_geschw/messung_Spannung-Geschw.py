@@ -45,7 +45,7 @@ u = p.linspace(0,1.2,100)
 
 ax = p.figure().add_subplot(111)
 
-ax.plot(u, (19.0646*u-0.0622608), 'k--', label="$19.065 \\frac{ \\frac{\mathrm{mV}}{\mathrm{T}} }{ \\frac{\mathrm{m}}{\mathrm{s}}} \cdot v - 0.0623 \mathrm{mV}$" )  # fit
+ax.plot(u, (19.0646*u-0.0622608), 'k--', label="$19.065 \\frac{ \\frac{\mathrm{mV}}{\mathrm{T}} }{ \\frac{\mathrm{m}}{\mathrm{s}}} \cdot v - 0.0623 \\frac{\mathrm{mV}}{\mathrm{T}}$" )  # fit
 #ax.plot(x, y, "bo", label="Messung")
 
 
