@@ -264,8 +264,50 @@ Strom und Spannungsmesswerte, sowie die Magnetfeldst"arke wurden durch das Cassy
 
 \section{Messungen und Ergebnisse}
 
-\subsection{Leitfähigkeit von Salzwasser}\label{leit}		%%michele
-Die interessantesten Messungen gibts hier, Widerstand der Zelle
+\subsection{Leitfähigkeit von Salzwasser}\label{leit}		%%michele - done
+Um die Größenordnung der Leistung des MHD-Generators abschätzen zu können, ist es zunächst besonders wichtig den Leitwert von Salzwasser zu kennen.
+
+\subsubsection{Vormessungen}
+In einer ersten Vormessung wurden hierfür in einem mit Salzwasser gefüllten, quaderförmigen Bassin mit den Maßen $14.3 \unit{cm} \times 14.3 \unit{cm} \times 1.4 \unit{cm}$ Aluminuimelektroden an zwei entgegengesetzte Stirnflächen angebracht.
+% evtl Foto ?
+An diesen Elektroden wurde eine variable Spannung angelegt und der resultierende Strom aufgezeichnet. Die durch ein strakes Schwanken der Spannungswerte um bis zu $\pm 30 \unit{mV}$ erschwerte Messung wurde anschleißend für veschiedene Salzkonzentrationen wiederholt (siehe Abbildung \ref{widerstand_vormessung}).
+
+
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{images/kennlinien1.pdf}
+\end{center}
+\vspace{-1.5\baselineskip}
+\caption{Widerstand von Salzwasser bei verschieden Konzentrationen}
+\label{widerstand_vormessung}
+\end{figure}
+
+Deutlich zu erkennen ist der erwartete Zusammenhang zwischen Leitwert und Salzkonzentration. Der Widerstand liegt jeweils in der Größenordnung von $1\ee{1} \ \Omega$, der spezifische Widerstand somit im Bereich von $1 \ee{0} \ \Omega\unit{m}$. Leider sind die Ergebnisse der Messungen aufgrund der Unregelmäßigkeiten nicht besonders signifikant, sodass jeweils nur über die Größenordnung der Messwerte eine Aussage getroffen werden kann.
+
+Diese Vormessung wurde nochmal nach dem Vier-Punkt-Messverfahren wiederholt, welches sicherstellt, dass die Fehler der Kontaktwiderstände an den Klemmen elimiert werden. Bei diesem Verfahren wird die Spannungsmessung über separate, nicht stromführende Kontakte ausgeführt, um Übergangswiderstände zu minimieren. Zudem konnten dank unseres Betreuers Messapparaturen aus dem Labor des Physikalischen Instituts III verwendet werden.
+Bei den nun eingesetzten Kupferelektroden zeigte sich ein deutlich nicht-ohmscher Widerstand, bei Variation der Spannung ergab sich ein nichtlinearer und nichteinmal monotoner Stromverlauf, sondern nur eine Art unsaubere Hysterese. Mit den Aluminumelektroden aus der ersten Vormessung hatten wir ein ähnliches Ergebnis. Deutlich sauberer allerdings war die Kennlinien mit Edelstahlelektroden, trotzdem war immernoch eine verkleinerte und monotene Hystereseform erkennbar. Die Ursache für diese Nichtlinearität sehen wir in elektrochemischen Prozessen, da sie offensichtlich vom verwendeten Elektrodenmaterial abhängig ist. Aufgrund dieser Ergebnisse entschieden wir uns dafür auch bei unserer finalen Zelle Edelstahlelektroden zu verwenden.
+
+Der spezifische Widerstand konnte bei dieser zweiten Vormessung auf einen Bereich von $1 \ee{2} \ \Omega \unit{m}$ abgeschätzt werden, bei einer Salzkonzentration von $0.15 \%$
+
+\subsubsection{Messung an der Zelle}
+Um schließlich einen für unseren endgültigen Messaufbau validen Widerstandswert zu erhalten, führten wir die Messungen nochmal an der eigentlich verwendeten Zelle durch. Es wurde wieder nach dem Vier-Punkt-Verfahren gemessen, nun allerdings nicht mehr mit den professionellen Messgeräten sondern mit dem Cassy-System. Im Messprozess wurde ein bekannter Strom in der Größenordnung des eigentlich zu messenden MHD-Effekts an die Zelle angelegt und die resultierende Spannung aufgezeichnet, das Ergebnis ist die $I$-$U$-Kennlinie in Abbildung \ref{widerstand_zelle}. Diese setzt sich zusammen aus einem Bereich mit ansteigenden Strom (unten) sowie mit absinkenden Strom (oben). Zudem zeigt sich ein weiterer Effekt: selbst bei konstantem Strom driftet die gemessene Spannung mit einer Rate von $\frac{\dif U}{\dif t} = 0.415 \frac{\unit{mV}}{\unit{s}}$ (rechts) bzw. $\frac{\dif U}{\dif t} = -0.274 \frac{\unit{mV}}{\unit{s}}$ (links) (jeder der vier Bereiche wurde in einer Zeitspanne von $30\ldots40 \unit{s}$ aufgezeichnet).
+
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=1.0\textwidth]{images/messung_widerstand.pdf}
+\end{center}
+\vspace{-1.5\baselineskip}
+\caption{Widerstandswert der verwendeten Zelle bei gesättigter Salzlösung}
+\label{widerstand_zelle}
+\end{figure}
+
+Die aus der Messung erhaltenen Widerstandswerte finden sich ebenfalls in Abbildung \ref{widerstand_zelle}, wobei die steigende (hell-/blau) und fallende Flanke (hell-/grün) getrennt behandelt wurden, die später aus der Mittelwertbildung ausgeschlossenen Werte sind in einem helleren Farbton gezeichnet. Man erkannt dank der Symmetrie der beiden Kurven, dass, zumindest in der Größenordnung vom $\unit{\mu A}$, keine Abhängigkeit des Widerstands von Strom vorliegt, sondern vielmehr von elektrochemischen Prozessen bei Herauf- und Herabfahren der Stromstärke.
+Die Überhöhungen der Widerstandswerte bis hin zu $15 \unit{k}\Omega$ können mit den erwähnten Spannungsdriften  erklärt und korrigiert werden. Hierfür wurde ein linearer Anstieg dieser Driftraten mit dem Strom im Bereich des steilen Widerstandsanstieges ($1.5\ldots2.45 \unit{\mu A}$ für den ansteigenden bzw. $0.0\ldots1.0 \unit{\mu A}$ für den abfallenden Strombereich) angenommen. Für die übertrieben kleinen bis hin zu negativen Widerstandswerte (vgl. auch die horizintalen Abschnitte der Kennlinie) kann allerdings keine befriedigende Erklärung gefunden werden, weshalb diese Bereich einfach von der Mittelwertbildung ausgeschlossen werden. Auf diesem Weg erhaltenb wir schließlich einen Wert von
+\begin{equation*}
+R = 5.31 \pm 1.18 \ \unit{k}\Omega
+\end{equation*}
+für unsere finale Zelle bei einer gesättigen Salzlösung.
+
 
 \subsection{Magnetfeld}		 	%%andi
 Eine weiterer Messung zielte auf die Ermittlung der Abhängigkeit der Zellspannung vom angelegten Magnetfeld hin. Theoretisch müsste sich nach
