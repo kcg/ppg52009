@@ -159,7 +159,7 @@ Der relativ deutliche Abfall der Feldstärke schon knapp $1 \unit{cm}$ über den
 \label{vormessung_magnetfeld}
 \end{figure}
 
-In einer letzten Vormessung wurde noch der Zusammenhang zwischen der an den Spulen angelegten Stromstärke und der Magnetfeldstärke ermittelt. Dabei ergab sich die in \hyperref[messung_Strom-B-Feld]{Abb.~\ref{messung_Strom-B-Feld}} gut erkennbare, nahezu lineare Abhängigkeit. 
+In einer letzten Vormessung wurde noch der Zusammenhang zwischen der an den Spulen angelegten Stromstärke und der Magnetfeldstärke ermittelt. Dabei ergab sich die in \hyperref[messung_Strom-B-Feld]{Abb.~\ref{messung_Strom-B-Feld}} gut erkennbare, nahezu lineare Abhängigkeit. Gewählt wurde dabei ein Jochabstand von $1\unit{mm}$, was der Breite der verwendeten Hallsonde entspricht. Keine Rolle spielte erwartungsgemäß, ob die Schaltung der dabei verwendeten Netzgeräte (bei Strömen bis zu $1.5\unit{A}$ 2 Netzgeräte, über $1.5\unit{A}$ 3 Netzgeräte) an zwei parallel geschalteten Spulenpaaren oder an zwei voneinander unabhängige Spulenpaare erfolgte.
 
 \begin{figure}[ht]
 \begin{center}
@@ -267,8 +267,35 @@ Strom und Spannungsmesswerte, sowie die Magnetfeldst"arke wurden durch das Cassy
 \subsection{Leitfähigkeit von Salzwasser}\label{leit}		%%michele
 Die interessantesten Messungen gibts hier, Widerstand der Zelle
 
-\subsection{Magnetfeld}			%%andi
-Abh"angigkeit der Zellspannung vom B-Feld
+\subsection{Magnetfeld}		 	%%andi
+Eine weiterer Messung zielte auf die Ermittlung der Abhängigkeit der Zellspannung vom angelegten Magnetfeld hin. Theoretisch müsste sich nach
+\begin{equation*}
+U = B \cdot v \cdot d,
+\end{equation*}
+eine lineare Abhängigkeit ergeben (für $B,v=const$). Eine erste Messreihe, bei der die beiden für diese Messung unerheblichen Druckmessungsschläuche (siehe ABBILDUNG) per Hand verschlossen wurde, lieferte scheinbare willkürliche Werte für die Zellspannung. Nach einer Befestigung dieser Schläuche lieferte der Aufbau jedoch Werte, die einwandfrei mit der Theorie übereinstimmten (siehe \hyperref[spannung]{Abb.~\ref{spannung}}). \
+
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=1.0\textwidth]{images/spannung.pdf}
+\end{center}
+\vspace{-1.5\baselineskip}
+\caption{Zellspannungswerte in Abhängigkeit von der Magnetfeldstärke}
+\label{spannung}
+\end{figure}
+
+Grafik \hyperref[messkurve_spannung]{Abb.~\ref{messkurve_spannung}} zeigt exemplarisch den Zellspannungsverlauf für $B=50\unit{mT}$. 
+
+%% Rest dieses Absatzes morgen(heute) (7.12.); v.a. noch fehlend: Erklärung Spannungsverlauf, Grundspannung; vg Andi
+
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=1.0\textwidth]{images/messkurve_spannung.pdf}
+\end{center}
+\vspace{-1.5\baselineskip}
+\caption{Spannungswerte am Außenwiderstand in Abhängigkeit vom Widerstand und dem Magnetfeld}
+\label{messkurve_spannung}
+\end{figure}
+
 
 \subsection{Zellspannung und -strom}		%%basti
 \begin{figure}[ht]
