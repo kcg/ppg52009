@@ -36,13 +36,13 @@
 \large{Projektpraktikum WS 09/10}
 \hfill
 \raisebox{-1.4cm}{\includegraphics[width=5cm]{images/fau.pdf}}
-\\begin{equation}8\baselineskip]
+\\[8\baselineskip]
 \begin{center}
 {\fontsize{36}{54}\textbf{MHD-Generator}}
-\\begin{equation}2\baselineskip]
+\\[2\baselineskip]
 {\Large 09.11.2009 -- 04.12.2009}
-\\begin{equation}7\baselineskip]
-{\huge\textbf{PPG 5}}\\begin{equation}0.5\baselineskip]
+\\[7\baselineskip]
+{\huge\textbf{PPG 5}}\\[0.5\baselineskip]
 {\large\textbf{
 Michele Collodo,
 Andreas Glossner,\\
@@ -68,7 +68,7 @@ Tutor: Xiaoyue Jin}
 
 
 \begin{abstract}
-Der magnetohydrodynamische (MHD) Generator wandelt die Bewegungsenergie von Teilchen in elektrische Leistung um. Ziel des Projekts war es, diesen Effekt an einer selbst gebauten Zelle mit strömendem Salzwasser nachzuweisen. Hierzu wurde mit Hilfe von vier Spulen ein Magnetfeld von $160 \unit{mT}$ erzeugt und die durch den Effekt entstandene Spannugn an zwei längsseitig angebrachten Elektroden abgenommen. Die theoretischen Zusammenhänge haben sich dabei alle experimentell sehr gut nachweisen lassen, die Spannungswerte an der Zelle waren jedoch vergleichsweise niedrig. Zur praktischen Einsetzbarkeit müsste noch die Leitfähigkeit des Fluids gesteigert werden.
+Der magnetohydrodynamische (MHD) Generator wandelt die Bewegungsenergie von Teilchen in elektrische Leistung um. Ziel des Projekts war es, diesen Effekt an einer selbst gebauten Zelle mit strömendem Salzwasser nachzuweisen. Hierzu wurde mit Hilfe von vier Spulen ein Magnetfeld von $160 \unit{mT}$ erzeugt und die durch den Effekt entstandene Spannungen an zwei längsseitig angebrachten Elektroden abgenommen. Die theoretischen Zusammenhänge haben sich dabei alle experimentell sehr gut nachweisen lassen, die Spannungswerte an der Zelle waren jedoch vergleichsweise niedrig. Zur praktischen Einsetzbarkeit müsste noch die Leitfähigkeit des Fluids gesteigert werden.
 \end{abstract}
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -78,6 +78,7 @@ Der magnetohydrodynamische (MHD) Generator wandelt die Bewegungsenergie von Teil
 
 \section{Einleitung}	%% maria: ist fertig, kommentare, wuensche, anregungen?
 Die Frage der Energieerzeugung hat in der Physik der letzten Jahrhunderte immer eine bedeutende Rolle gespielt. Eine vielversprechende M\"oglichkeit schien das Ausnutzen von magnetischen Feldern. Die ersten \"Uberlegungen zum Magnetohydrodynamischen Generator, kurz MHD-Generator, machte Michael Faraday schon 1832. Er führte Experimente an der Waterloo Bridge in London durch und entdeckte den zugrunde liegenden Effekt des MHD-Generators, indem er Spannung maß, die vom Fluß der Themse im Erdmagnetfeld erzeugt wurde.
+
 140 Jahre später wurde mit einer Leistung von 25MW der bisher größte MHD-Generator in der Sowjetunion fertiggestellt und ans Moskauer Stromnetz angeschlossen. Zur Zeit gibt es die Aussicht, diesen Effekt in Kern- oder Fusionskraftwerken zu nutzen, in welchen flüssiges Metall als Fluid genutzt werden soll.
 
 \section{Theorie}	%% maria
@@ -105,15 +106,9 @@ P = U \cdot I = B^{2} \cdot v^{2} \cdot A \cdot d \cdot \sigma.
 \section{Konstruktion und Aufbau}
 
 \subsection{Konstruktion des Magnetfelds}		%%andi
-<<<<<<< HEAD:exp2/protokoll/mhd-generator.tex
-Im Vorfeld der eigentlichen Messungen an der Zelle wurde eine möglichst optimale Konstruktion des Magnetfelds ermittelt. Ziel war es, bei einer Feldstärke von rund $0,1 \unit{T}$ ein möglichst im gesamten Bereich der Zelle homogenes Feld zu erhalten.
-
-Zunächst wurden verschiedene Permanentmagneten eingesetzt, die jedoch allesamt unbefriedigende Ergebnisse lieferten. Die eingesetzten Stabmagneten erzielten eine maximale Feldstärke von $0,07 \unit{T}$, das der zur Verfügung stehenden Hufeisenmagneten war noch wesentlich niedriger. Die größte Feldstärke wurde an Ringpermanentmagneten ($B\approx0,3T$) gemessen; dieser Wert fiel jedoch schon im Abstand von wenigen $\unit{mm}$ stark ab ($1/r^3$-Abhängigkeit !) und war deshalb ebenfalls ungeeignet.
-=======
 Im Vorfeld der eigentlichen Messungen an der Zelle wurde die möglichst optimale Konstruktion des Magnetfelds ermittelt. Ziel war es, bei einer Feldstärke von rund $0,1 T$, ein möglichst im gesamten Bereich der Zelle homogenes Feld zu erhalten.
 
 Zunächst wurden verschiedene Permanentmagneten eingesetzt, die jedoch allesamt unbefriedigende Ergebnisse lieferten. Die eingesetzten Stabmagneten erzielten eine maximale Feldstärke von $0,07T$, die der zur Verfügung stehenden Hufeisenmagneten war noch wesentlich niedriger. Die größte Feldstärke wurde an Ringpermanentmagneten ($B\approx0,3T$) gemessen; dieser Wert fiel jedoch schon im Abstand von wenigen $mm$ stark ab ($1/r^3$-Abhängigkeit) und war deshalb ebenfalls ungeeignet.
->>>>>>> 0dfd7a8e82e906a49ac84748d4abd0738047c329:exp2/protokoll/mhd-generator.tex
 
 Folglich wurde ein Aufbau mit Elektromagneten gewählt. Zum Einsatz kamen dabei vier Spulen mit je 1000 Windungen (Anordnung siehe \abb{bfeld-vor2}).
 
@@ -126,19 +121,12 @@ Folglich wurde ein Aufbau mit Elektromagneten gewählt. Zum Einsatz kamen dabei 
 \label{bfeld-vor2}
 \end{figure}
 
-<<<<<<< HEAD:exp2/protokoll/mhd-generator.tex
-Zunächst wurde eine kurze Messung zur Ermittlung der Abhängigkeit der Magnetfeldstärke vom Abstand zwischen den beiden Eisenjochen durchgeführt. Zu erwarten war wegen 
-\begin{equation*}
-B = \frac{\mu \cdot \mu_{0} \cdot N \cdot I}{\mu \cdot d + 2 \pi \cdot R}
-\end{equation*}
-=======
 Zunächst wurde eine kurze Messung zur Ermittlung der Abhängigkeit der Magnetfeldstärke vom Abstand zwischen den beiden Eisenjochen
 %% wie heissen die dinger schnell wieder
 durchgeführt. Zu erwarten war wegen 
 \begin{equation}
 B = \frac{\mu \cdot \mu_{0} \cdot N \cdot I}{\mu \cdot d + 2 \pi \cdot R}
 \end{equation}
->>>>>>> 0dfd7a8e82e906a49ac84748d4abd0738047c329:exp2/protokoll/mhd-generator.tex
 in etwa eine $1/d$-Abhängigkeit, wobei $\mu$ die Materialkonstante des Eisens, $N$ die Windungszahl, $d$ der Abstand zwischen den beiden Eisenjochen und $R$ der Radius der "`Gesamtspule"' ist. Die "`Gesamtspule"' ist dabei die gesamte Anordnung der vier Einzelspulen und kann in erster Näherung als kreisförmig angenommen werden.
 
 Wie in \abb{bfeld-vor2} gut sichtbar, hat sich diese Annahme zumindest qualitativ bestätigt. Bei der angelegten Spannung von $1 \unit{A}$ und einem Radius der Gesamtanordnung von $8.5 \unit{cm}$ ergibt sich für $N=2992$ die eingezeichnete Fitkurve. Der $N$-Wert weicht zwar deutlich von den tatsächlichen 1000 Wicklungen ab. Dies dürfte jedoch auf die von einer idealen kreisförmig Geometrie abweichende Anordnung sowie die recht ungenauen Messwerte zurückzuführen sein.
@@ -581,3 +569,4 @@ David Winnekens & Umkehrung des Effekts und Fazit\\
 \end{tabular}
 
 \end{document}
+
