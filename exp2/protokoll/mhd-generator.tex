@@ -36,13 +36,13 @@
 \large{Projektpraktikum WS 09/10}
 \hfill
 \raisebox{-1.4cm}{\includegraphics[width=5cm]{images/fau.pdf}}
-\\[8\baselineskip]
+\\begin{equation}8\baselineskip]
 \begin{center}
 {\fontsize{36}{54}\textbf{MHD-Generator}}
-\\[2\baselineskip]
+\\begin{equation}2\baselineskip]
 {\Large 09.11.2009 -- 04.12.2009}
-\\[7\baselineskip]
-{\huge\textbf{PPG 5}}\\[0.5\baselineskip]
+\\begin{equation}7\baselineskip]
+{\huge\textbf{PPG 5}}\\begin{equation}0.5\baselineskip]
 {\large\textbf{
 Michele Collodo,
 Andreas Glossner,\\
@@ -84,9 +84,9 @@ Die Frage der Energieerzeugung hat in der Physik der letzten Jahrhunderte immer 
 %%% mir faellt nix mehr ein, was koennt ich da noch reinschreiben?
 
 Das Prinzip des MHD-Generators beruht auf der Lorentzkraft,
-\begin{equation*}
+\begin{equation}
 \vec{F} = q \cdot \left(\vec{v} \times \vec{B} \right),
-\end{equation*}
+\end{equation}
 die in einem Magnetfeld auf eine bewegte Ladung wirkt. Wird also eine leitende Fl\"ussigkeit durch ein m\"oglichst homogenes, starkes Magnetfeld geschickt, welches senkrecht zur Flussrichtung gerichtet ist, werden positive und negative Ladung entsprechend der Rechten-Hand-Regel in entgegengesetzte Richtungen abgelenkt. Bringt man dann in jeder dieser Richtungen je eine Elektrode an, kann man eine Spannung abgreifen und hat so eine Generatorzelle konstruiert. Die hierbei entstehende Spannung ist
 \begin{equation}
 U = B \cdot v \cdot d,
@@ -177,9 +177,9 @@ Gewählt wurde dabei ein Jochabstand von $1\unit{mm}$, was der Breite der verwen
 \subsection{Aufbau der Zelle}			%%karl
 Bei der Planung der Zellengeometrie mussten verschiedene Eigenschaften abgewägt werden, um eine möglichst hohe Leistung der Zelle zu erhalten.
 Es gilt:
-\[
+\begin{equation}
 P \propto B^2 \cdot v^2 \cdot d \cdot A_{\text{Elektrode}}
-\]
+\end{equation}
 Wobei $B$ die Flussdichte des Magnetfeldes des Elektromagneten, $v$ die Durchflussgeschwindigkeit durch die Zelle, $d$ den Abstand der Elektroden und $A_{\text{Elektrode}}$ die Elektrodenfläche bezeichnen. 
 Bei einer begrenzten Pumpenleistung und damit einem konstanten maximalen Volumendurchsatz $V=A_{\text{Durchfluss}} \cdot v=\text{const}$ ist die Geschwindigkeit $v$ indirekt proportional von der Durchflussfläche $A_{\text{Durchfluss}} = d \cdot b$ abhängig.
 Die Breite $b$ der Zelle sollte klein gehalten werden, um ein möglichst starkes Magnetfeld zu gewährleisten. Deshalb wurde versucht eine hohe, schmale und dünnwandige Zelle zu konstruieren.
@@ -306,17 +306,17 @@ Um schließlich einen für unseren endgültigen Messaufbau validen Widerstandswe
 
 Die aus der Messung erhaltenen Widerstandswerte finden sich ebenfalls in Abbildung \ref{widerstand_zelle}, wobei die steigende (hell-/blau) und fallende Flanke (hell-/grün) getrennt behandelt wurden, die später aus der Mittelwertbildung ausgeschlossenen Werte sind in einem helleren Farbton gezeichnet. Man erkannt dank der Symmetrie der beiden Kurven, dass, zumindest in der Größenordnung vom $\unit{\mu A}$, keine Abhängigkeit des Widerstands von Strom vorliegt, sondern vielmehr von elektrochemischen Prozessen bei Herauf- und Herabfahren der Stromstärke.
 Die Überhöhungen der Widerstandswerte bis hin zu $15 \unit{k}\Omega$ können mit den erwähnten Spannungsdriften  erklärt und korrigiert werden. Hierfür wurde ein linearer Anstieg dieser Driftraten mit dem Strom im Bereich des steilen Widerstandsanstieges ($1.5\ldots2.45 \unit{\mu A}$ für den ansteigenden bzw. $0.0\ldots1.0 \unit{\mu A}$ für den abfallenden Strombereich) angenommen. Für die übertrieben kleinen bis hin zu negativen Widerstandswerte (vgl. auch die horizintalen Abschnitte der Kennlinie) kann allerdings keine befriedigende Erklärung gefunden werden, weshalb diese Bereich einfach von der Mittelwertbildung ausgeschlossen werden. Auf diesem Weg erhalten wir schließlich einen Wert von
-\begin{equation*}
+\begin{equation}
 R = (5.31 \pm 1.18) \, \unit{k}\Omega
-\end{equation*}
+\end{equation}
 für unsere finale Zelle bei einer gesättigen Salzlösung.
 
 
 \subsection{Magnetfeld}		 	%%andi
 Eine weiterer Messung zielte auf die Ermittlung der Abhängigkeit der Zellspannung vom angelegten Magnetfeld hin. Theoretisch müsste sich nach
-\begin{equation*}
+\begin{equation}
 U = B \cdot v \cdot d,
-\end{equation*}
+\end{equation}
 eine lineare Abhängigkeit ergeben (für $B,v=const$). Eine erste Messreihe, bei der die beiden für diese Messung unerheblichen Druckmessungsschläuche (siehe \hyperref[wwaage]{Abb.~\ref{wwaage}}) per Hand verschlossen wurde, lieferte scheinbare willkürliche Werte für die Zellspannung. Nach einer Befestigung dieser Schläuche lieferte der Aufbau jedoch Werte, die einwandfrei mit der Theorie übereinstimmten (siehe \hyperref[spannung]{Abb.~\ref{spannung}}). \
 
 \begin{figure}[ht]
@@ -442,9 +442,9 @@ Zur Bestimmung der Abhängigkeit der generierten Spannung von der Durchflussgesc
 Ein mitgeliefertes Ventil konnte verwendet werden, um den Volumendurchsatz der Pumpe zu reduzieren. So war es möglich verschiedene Geschwindigkeiten durch die Zelle zu realisieren.
 Um den Betrag der Durchflussgeschwindigkeit zu ermitteln wurde die Zeit $t$ genommen, die die Pumpe benötigte um ein konstantes Volumen $V=400\unit{ml}$ mit Wasser zu füllen. Um statistische Fehler zu minimieren wurde dies bei eingestelltem Ventil mehrmals durchgeführt und über die Zeitwerte gemittelt.
 Mit Hilfe des Volumendurchsatzes konnte dann die Durchflussgeschwindigkeit $v$ in der Zelle mit Querschnitt $A_{\text{Durchfluss}}$ ermittelt werden:
-\[
+\begin{equation}
 v=\frac{\text{Volumendurchsatz pro Zeit}}{A_{\text{Durchfluss}}}
-\]
+\end{equation}
 Der Querschnitt der verwendeten Zelle betrug $A_{\text{Durchfluss}}=0,5\unit{cm} \cdot 1,8\unit{cm}=0,9\unit{cm^{2}}$.
 
 Die Unsicherheit der Geschwindigkeit ist durch das manuelle Stoppen der Zeitwerte bedingt und wird auf etwa $\Delta v=7\% \cdot v$ geschätzt.
@@ -496,15 +496,15 @@ Um Spannungswerte bei leicht verschiedenen Magnetfeldern (unterschiedliche Magne
 \end{figure}
 
 Das theoretische Modell für die Spannung ergibt sich aus der Lorentzkraft für geladene Teilchen in einem homogenen Magnetfeld:
-\[
+\begin{equation}
 F=Q\cdot v\cdot B = Q \cdot E = Q \cdot \frac{U}{d}
-\]
-\[
+\end{equation}
+\begin{equation}
 U=B \cdot d \cdot v
-\]
-\[
+\end{equation}
+\begin{equation}
 \frac{\Delta U}{\Delta B}=d \cdot v
-\]
+\end{equation}
 
 Die lineare Abhängigkeit von Strom und Geschwindigkeit ist hervorragend erkennbar. Die Steigung der Fit-Geraden gibt laut Theorie den Abstand $d$ der Elektroden an. Sie beträgt $19 \unit{\frac{ mV/T }{ m/s }} = 19 \unit{mm}$ und stimmt damit sehr gut mit dem Abstand der Edelstahlplatten in unserer Zelle (18\unit{mm}) überein.
 
@@ -519,10 +519,17 @@ Es stellte sich jedoch heraus, dass man an den Enden der Schläuche keinen Wasse
 Um dennoch die theoretisch erreichbare Fließgeschwindigkeit des Wassers bestimmen zu können, wurden die beiden Schlauchenden verstopft, wodurch sich in den Steigrohren vor und nach den Elektroden der Zelle ein Pegelunterschied ergab. Dieser betrug $\Delta h = (2,8 \pm 0,2) \unit{mm}$. Zur Verifizierung, dass dies auch wirklich auf dem nachzuweisenden Effekt beruht, wurde die Stromrichtung umgekehrt, was zur Folge hatte, dass wieder der gleiche Pegelunterschied $\Delta h$ entstand, jedoch war nun, wie erhofft, der höhere Pegelstand in dem Steigrohr, in welchem zuvor noch der kleinere war.
 
 Aus diesem Pegelunterschied lässt sich nun der Druckunterschied $\Delta p$ berechnen:
-\[\Delta p = g \cdot \rho \cdot \Delta h = (31 \pm 2) \unit{Pa} \]
+\begin{equation}
+\Delta p = g \cdot \rho \cdot \Delta h = (31 \pm 2) \unit{Pa}
+\end{equation}
 Hierbei entspricht $g = 9,81 \unit{\frac{m}{s^2}}$ der Schwerebeschleunigung.\\
-Nach dem Gesetz von Bernoulli \[\frac{1}{2}\cdot\rho\cdot v^2_{Fluss} + p = const\]
-kann man nun die nominelle Fließgeschwindigkeit berechnen und erhält \[v_{Fluss} = (0,23 \pm 0,06)\unit{\frac{m}{s}}.\]
+Nach dem Gesetz von Bernoulli
+\begin{equation}\frac{1}{2}\cdot\rho\cdot v^2_{\text{Fluss}} + p = const
+\end{equation}
+kann man nun die nominelle Fließgeschwindigkeit berechnen und erhält
+\begin{equation}
+v_{\text{Fluss}} = (0,23 \pm 0,06)\unit{\frac{m}{s}}.
+\end{equation}
 
 
 
