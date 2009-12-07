@@ -81,6 +81,7 @@ pylab.rcParams['figure.subplot.bottom'] = 0.11
 pylab.rcParams['figure.subplot.top'] = 0.96
 ax = pylab.figure().add_subplot(111)
 
+# linear
 i = 0
 while i < len(c):
 	ci = c[i]
@@ -94,23 +95,51 @@ while i < len(c):
 		U_array.append(U[i])
 		I_array.append(I[i])
 		i += 1
-	pylab.semilogy(U_array, I_array, "o-", color=col, label=u"$c = %.1f$" % (100.*c[i-1],) + "$\\%$")
+	# Spline
+	U_spline = pylab.linspace(min(U_array), max(U_array), 40)
+	tck = scipy.interpolate.splrep(U_array, [log(x) for x in I_array], k=min(2, len(U_array)-1))
+	I_spline_log = scipy.interpolate.splev(U_spline, tck, der=0)
+	pylab.plot(U_spline, [exp(x) for x in I_spline_log], "-", color=col)
+	pylab.plot([-1], [-1], "o-", color=col, label=u"$c = %.1f$" % (100.*c[i-1],) + "$\\%$")
+	pylab.plot(U_array, I_array, "o", color=col)
+pylab.xlim(0., 1020.)
+pylab.ylim(0., 27.)
+pylab.xlabel(u"Spannung $U\, [\mathrm{mV}]$")
+pylab.ylabel(u"Strom $I\, [\mathrm{mA}]$")
+pylab.legend(loc=u"upper left")
+# Speichern
+pylab.gcf().set_size_inches(7, 5)
+pylab.savefig("kennlinien_lin.pdf")
 
-
-
-#pylab.xlim(0., 1120.)
+# logscale
+pylab.clf()
+i = 0
+while i < len(c):
+	ci = c[i]
+	col = mycolor(0.999*(ci - c[0]) / (c[-1] - c[0]))
+	U_array = []; I_array = []; Ierr_array = []
+	while i < len(c) and c[i] == ci:
+		if U[i] > 370 or salz[i] >= 55:
+			Ierr_array.append(5.)
+		else:
+			Ierr_array.append(30.)
+		U_array.append(U[i])
+		I_array.append(I[i])
+		i += 1
+	# Spline
+	U_spline = pylab.linspace(min(U_array), max(U_array), 40)
+	tck = scipy.interpolate.splrep(U_array, [log(x) for x in I_array], k=min(2, len(U_array)-1))
+	I_spline_log = scipy.interpolate.splev(U_spline, tck, der=0)
+	pylab.semilogy(U_spline, [exp(x) for x in I_spline_log], "-", color=col)
+	pylab.semilogy([-1], [-1], "o-", color=col, label=u"$c = %.1f$" % (100.*c[i-1],) + "$\\%$")
+	pylab.semilogy(U_array, I_array, "o", color=col)
+pylab.xlim(0., 1400.)
 pylab.ylim(0.12, 70.)
-#ax.set_yticklabels([10., 100.])
-
 pylab.xlabel(u"Spannung $U\, [\mathrm{mV}]$")
 pylab.ylabel(u"Strom $I\, [\mathrm{mA}]$")
 pylab.legend(loc=u"lower right")
-
-
 # Speichern
 pylab.gcf().set_size_inches(7, 5)
-pylab.savefig("kennlinien.pdf")
+pylab.savefig("kennlinien_log.pdf")
 
-# Anzeigen
-pylab.show()
 
