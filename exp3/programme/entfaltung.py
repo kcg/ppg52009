@@ -17,7 +17,8 @@ Dabei werden allerdings auch statistische Fehler verstärkt.
 Stand der Dinge:
 Der naive Matrizeninvertierungsalgorithmus wird schnell instabil
 Wir brauchen noch was besseres!
-Vielleicht reicht SVD, ansonsten vielleicht maximum likelihood
+SVD ist auch nicht viel besser.
+Vielleicht kommen wir mit sowas wie "maximum likelihood" weiter
 '''
 
 
@@ -37,7 +38,6 @@ def entfalte (x, b, f):
 	'''
 
 	n = len(x)
-	norm = sum([f(xi) for xi in x])
 	
 	# b_i = \sum_j f(x_j - x_i) * a_j
 	# b = A_{ij} * a
@@ -53,6 +53,36 @@ def entfalte (x, b, f):
 			A[i][j] /= s[i]
 
 	a = la.solve(A, b)
+	return a
+
+
+
+def entfalte_svd (x, b, f):
+	'''
+	x: Messstellen
+	b: gemessene Werte
+	f: Faltungsfunktion (muss nicht normiert sein)
+	gibt den entfalteten Punktvektor a zurück
+	'''
+
+	n = len(x)
+	
+	# b_i = \sum_j f(x_j - x_i) * a_j
+	# b = A_{ij} * a
+	# a = A_{ij}^{-1} * b
+
+	# Matrix der x-Differenzen D_{ij} = x_j - x_i
+	A = sc.array([[f(x[i] - x[j]) #
+		for j in range(n)] for i in range(n)])
+	# Zeilen normieren
+	s = sc.sum(A, axis=1)
+	for i in range(n):
+		for j in range(n):
+			A[i][j] /= s[i]
+
+	svdA = la.svd(A)
+	# Matrizen(pseudo)inversion mit der Singulärwertzerlegung
+	a = sc.dot(b, sc.dot(sc.dot(svdA[0], sc.eye(n) / svdA[1]), svdA[2]))
 	return a
 
 
@@ -101,6 +131,36 @@ def test1():
 
 	# Entfalte die Funktion wieder!
 	c = entfalte(x, b, f)
+	pylab.plot(x, c, "o-", color="#00ff00", label="entfaltet")
+
+	pylab.legend(loc="center right")
+	pylab.show()
+
+
+
+
+def test2():
+	'''
+	Testweise Hin- und Rücktransformation einer Funktion
+	Fazit: bei breiter Faltungsfunktion instabil
+	=> es entstehen Oszillationen
+	'''
+	# Ungleiche x-Wert Verteilung
+	x = sc.concatenate((sc.linspace(1,2,5), sc.linspace(2.1,4,20), sc.linspace(4.3,5,3)), axis=0)
+
+	# Beispielfunktion
+	a = sc.sin(3*x)
+	pylab.plot(x,a,"bo-",label="original", markersize=8.5, markeredgewidth=0.5)
+
+	# Faltungskern
+	f = lambda x: exp(-(2.1*x)**2)
+
+	# Falte die Funktion!
+	b = falte(x, a, f)
+	pylab.plot(x, b, "ro-", label="gefaltet")
+
+	# Entfalte die Funktion wieder!
+	c = entfalte_svd(x, b, f)
 	pylab.plot(x, c, "o-", color="#00ff00", label="entfaltet")
 
 	pylab.legend(loc="center right")
