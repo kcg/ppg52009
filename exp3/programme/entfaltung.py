@@ -3,7 +3,7 @@
 
 '''
 Enftaltet diskrete Funktionen
-http://de.wikipedia.org/wiki/Faltung_(Mathematik)
+http://de.wikipedia.org/wiki/Dekonvolution
 
 Anwendung:
 Nimmt man ein verschmiertes Signal auf, also zum Beispiel ein unscharfes
@@ -16,9 +16,13 @@ Dabei werden allerdings auch statistische Fehler verstärkt.
 '''
 Stand der Dinge:
 Der naive Matrizeninvertierungsalgorithmus wird schnell instabil
-Wir brauchen noch was besseres!
+Wir brauchen auf jeden Fall was besseres!
 SVD ist auch nicht viel besser.
 Vielleicht kommen wir mit sowas wie "maximum likelihood" weiter
+Wahrscheinlich ist die Wiener Entfaltung recht gut
+
+Nach oder beim Entfalten sollten wir die Kurven vielleicht noch
+glätten, wenn sie statistisch streuen.
 '''
 
 
@@ -123,48 +127,27 @@ def test1():
 	pylab.plot(x,a,"bo-",label="original", markersize=8.5, markeredgewidth=0.5)
 
 	# Faltungskern
-	f = lambda x: exp(-(2.1*x)**2)
+	f = lambda x: exp(-(2.05*x)**2)
 
 	# Falte die Funktion!
 	b = falte(x, a, f)
 	pylab.plot(x, b, "ro-", label="gefaltet")
 
 	# Entfalte die Funktion wieder!
+
+	# primitive Inversion
 	c = entfalte(x, b, f)
 	pylab.plot(x, c, "o-", color="#00ff00", label="entfaltet")
 
-	pylab.legend(loc="center right")
-	pylab.show()
-
-
-
-
-def test2():
-	'''
-	Testweise Hin- und Rücktransformation einer Funktion
-	Fazit: bei breiter Faltungsfunktion instabil
-	=> es entstehen Oszillationen
-	'''
-	# Ungleiche x-Wert Verteilung
-	x = sc.concatenate((sc.linspace(1,2,5), sc.linspace(2.1,4,20), sc.linspace(4.3,5,3)), axis=0)
-
-	# Beispielfunktion
-	a = sc.sin(3*x)
-	pylab.plot(x,a,"bo-",label="original", markersize=8.5, markeredgewidth=0.5)
-
-	# Faltungskern
-	f = lambda x: exp(-(2.1*x)**2)
-
-	# Falte die Funktion!
-	b = falte(x, a, f)
-	pylab.plot(x, b, "ro-", label="gefaltet")
-
-	# Entfalte die Funktion wieder!
-	c = entfalte_svd(x, b, f)
-	pylab.plot(x, c, "o-", color="#00ff00", label="entfaltet")
+	# SVD Inversion
+	d = entfalte_svd(x, b, f)
+	pylab.plot(x, d, "o-", color="#ffff00", label="svd")
 
 	pylab.legend(loc="center right")
 	pylab.show()
+
+
+
 
 
 test1()
