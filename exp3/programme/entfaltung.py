@@ -29,6 +29,7 @@ glätten, wenn sie statistisch streuen.
 import pylab
 import scipy as sc
 import scipy.linalg as la
+from scipy import dot
 from math import *
 
 
@@ -86,12 +87,12 @@ def entfalte_svd (x, b, f):
 
 	svdA = la.svd(A)
 	# Matrizen(pseudo)inversion mit der Singulärwertzerlegung
-	a = sc.dot(b, sc.dot(sc.dot(svdA[0], sc.eye(n) / svdA[1]), svdA[2]))
+	a = dot(b, dot(dot(svdA[0], sc.eye(n) / svdA[1]), svdA[2]))
 	return a
 
 
 
-def falte (x, a, f):
+def falte_diskret (x, a, f):
 	'''
 	x: Messstellen
 	a: Originalwerte
@@ -107,7 +108,29 @@ def falte (x, a, f):
 		# Funktion der Abstände
 		F = sc.array([f(x[i] - x[j]) for j in range(n)])
 		# b_i = \sum_j a_j * f(x_i - x_j)  (+normiere F)
-		b[i] = sc.sum(sc.dot(a, F)) / sc.sum(F)
+		b[i] = sc.sum(dot(a, F)) / sc.sum(F)
+	return b
+
+
+
+def falte (x, g, f, xf):
+	'''
+	x: Messstellen
+	g: Originalfunktion
+	f: Faltungsfunktion (muss nicht normiert sein), aber integrabel
+	dx: ungefähre Breite von f
+	gibt den gefalteten Punktvektor b zurück
+	sinnvoll für Tests
+	'''
+
+	yf = [f(xi) for xi in xf]
+	# normieren
+	yf = sc.array(yf) / sum(yf)
+
+	b = sc.zeros(len(x))
+	# Faltung ausführen
+	for i in range(len(x)):
+		b[i] = sum([yf[j] * g(x[i] + xf[j]) for j in range(len(xf))])
 	return b
 
 
@@ -127,10 +150,12 @@ def test1():
 	pylab.plot(x,a,"bo-",label="original", markersize=8.5, markeredgewidth=0.5)
 
 	# Faltungskern
-	f = lambda x: exp(-(2.05*x)**2)
+	f = lambda x: exp(-(4.7*x)**2)
+
 
 	# Falte die Funktion!
-	b = falte(x, a, f)
+	#b = falte_diskret(x, a, f)
+	b = falte(x, lambda x: sin(3.*x), f, sc.linspace(-2., 2.,81))
 	pylab.plot(x, b, "ro-", label="gefaltet")
 
 	# Entfalte die Funktion wieder!
@@ -143,6 +168,7 @@ def test1():
 	d = entfalte_svd(x, b, f)
 	pylab.plot(x, d, "o-", color="#ffff00", label="svd")
 
+	pylab.ylim(-1.5, 1.5)
 	pylab.legend(loc="center right")
 	pylab.show()
 
