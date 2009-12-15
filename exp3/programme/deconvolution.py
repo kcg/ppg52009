@@ -217,8 +217,8 @@ def test1():
 	# Entfalte die Funktion wieder!
 
 	# primitive Inversion
-	#c = entfalte(x, b, f)
-	#pylab.plot(x, c, "o-", color="#ffff00", label="mat-inv")
+	c = entfalte(x, b, f)
+	pylab.plot(x, c, "o-", color="#ffff00", label="mat-inv")
 
 	# wiener deconvolution
 	xnew, d = wiener_deconvolution (x, b, f, 0.023)
