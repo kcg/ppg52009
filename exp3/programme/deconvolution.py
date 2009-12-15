@@ -15,14 +15,12 @@ Dabei werden allerdings auch statistische Fehler verstärkt.
 
 '''
 Stand der Dinge:
-Der naive Matrizeninvertierungsalgorithmus wird schnell instabil
-Wir brauchen auf jeden Fall was besseres!
-SVD ist auch nicht viel besser.
-Vielleicht kommen wir mit sowas wie "maximum likelihood" weiter
-Wahrscheinlich ist die Wiener Entfaltung recht gut
-
-Nach oder beim Entfalten sollten wir die Kurven vielleicht noch
-glätten, wenn sie statistisch streuen.
+-Der naive Matrizeninvertierungsalgorithmus wird schnell instabil
+-Wir brauchen auf jeden Fall was besseres!
+-SVD ist auch nicht viel besser.
+-Wiener Deconvolution scheint zu klappen, jedoch muss man da die Parameter gut einstellen. Vielleicht ist es besser, die
+Fouriertrafo gleich auf den ungleich gebinnten
+Originaldaten auszuführen.
 '''
 
 
@@ -32,6 +30,7 @@ import scipy.linalg as la # lineare algebra
 from scipy import dot
 from math import *
 import scipy.fftpack as ft # fourier transformation
+import scipy.interpolate as ip
 
 
 def entfalte (x, b, f):
@@ -121,46 +120,39 @@ def wiener_deconvolution (x, b, f, dx):
 	f: Faltungsfunktion (muss nicht normiert sein)
 	dx: neuer Abstand fürs äquidistante rebinning
 	gibt den geschätzten Originalvektor a zurück
-
-	bisher noch total verbuggt!
 	'''
 
 	# äquidistantes Binning
 	xnew = sc.linspace(ceil(x[0]/dx)*dx, floor(x[-1]/dx)*dx,
 				1 + floor(x[-1]/dx) - ceil(x[0]/dx))
 
-	# erstmal nur testweise: linear interpolieren
-	# simpel und ineffizient
-	bnew = []
-	for i in range(len(xnew)):
-		j = 0; j0 = 0; j1 = 0
-		while j < len(x) and x[j] <= xnew[i]:
-			j0 = j
-			j += 1
-		j = max(0,j-1)
-		while x[j] < xnew[i]:
-			j += 1
-			j1 = j
-		if x[j0] == x[j1]:
-			bnew.append(b[j0])
-		else:
-			bnew.append((b[j0] * (x[j1] - xnew[i]) +
-			b[j1] * (xnew[i] - x[j0])) / (x[j1] - x[j0]))
+	# äquidistante Splineinterpolation
+	tck = ip.splrep(x, b, k=min(3, len(x)-1))
+	bnew = ip.splev(xnew, tck, der=0)
 	
 	# Faltungsfunktion in den Frequenzraum transformieren
-	# die Berechnung von h ist noch falsch !!
-	h = sc.array([f(xi - xnew[0] - 0.5*dx) + f(xnew[-1] - xi + 0.5*dx)
+	# die Berechnung von h ist evtl falsch !
+	h = sc.array([f(xi - xnew[0]) + f(xi - xnew[-1] - dx)
 					for xi in xnew])
 	h = h / h.sum()
 	H = ft.fft(h)
 
 	# noise to signal ratio: größer bei hohen frequenzen
-	nsr = sc.array([5e-4*i**1 for i in range(len(xnew))])
-	# Wiener Filter im Frequenzraum
-	G = H.conj() / (H * H.conj() + nsr)
-	A = G * ft.fft(bnew)
+	#nsr = sc.array([1e-6*i**1. for i in range(len(xnew))])
+	nsr = sc.array([6e-5*i for i in range(len(xnew))])
+	#n = 70
+	#nsr = sc.array(n * [1e4] + [1e-8] + (len(xnew)-1-n)* [1e4])
 
-	return xnew, ft.ifft(A)
+	# Wiener Filter im Frequenzraum
+	G = H / (H * H.conj() + nsr)
+	A = G * ft.fft(bnew)
+	a = ft.ifft(A)
+
+	# Rücktransformation auf x mit Splines
+	tck = ip.splrep(xnew, a, k=min(3, len(x)-1))
+	anew = ip.splev(x, tck, der=0)
+
+	return x, anew
 
 
 
@@ -186,6 +178,19 @@ def falte (x, g, f, xf):
 
 
 
+def fun (x):
+	'''
+	Testfunktion
+	[0,5]
+	'''
+	if x <= 3.:
+		return exp(-(3.*(x-2.))**2)
+	elif x <= 6.:
+		return -53./360*(x-3.)**5 + 31./36*(x-3.)**4 - 151./120*(x-3.)**3
+	else:
+		return 0.
+
+
 
 def test1():
 	'''
@@ -194,33 +199,33 @@ def test1():
 	=> es entstehen Oszillationen
 	'''
 	# Ungleiche x-Wert Verteilung
-	x = sc.concatenate((sc.linspace(1,2,5), sc.linspace(2.1,4,20), sc.linspace(4.3,5,3)), axis=0)
+	x = sc.concatenate((sc.linspace(0.,2.,15), sc.linspace(2.1,4,7), sc.linspace(4.3,6.5,19)), axis=0)
 
 	# Beispielfunktion
-	a = sc.sin(2*x + 0.4*x**2) * (2. - 0.3 * x)
+	a = sc.array([fun(xi) for xi in x])
 	pylab.plot(x,a,"bo-",label="original", markersize=9, markeredgewidth=0.5)
 
 	# Faltungskern
-	f = lambda x: exp( -( 6. * (x) )**2 )
+	f = lambda x: exp( -( 3. * (x) )**4 )
 
 
 	# Falte die Funktion!
 	#b = falte_diskret(x, a, f)
-	b = falte(x, lambda x: sin(2.*x+0.4*x**2) * (2. - 0.3 * x), f, sc.linspace(-2., 2.,81))
+	b = falte(x, fun, f, sc.linspace(-2., 2.,81))
 	pylab.plot(x, b, "ro-", label="gefaltet")
 
 	# Entfalte die Funktion wieder!
 
 	# primitive Inversion
-	c = entfalte(x, b, f)
-	pylab.plot(x, c, "o-", color="#00ff00", label="mat-inv")
+	#c = entfalte(x, b, f)
+	#pylab.plot(x, c, "o-", color="#ffff00", label="mat-inv")
 
 	# wiener deconvolution
-	xnew, d = wiener_deconvolution (x, b, f, 0.043)
-	pylab.plot(xnew, d, "o-", color="#ffff00", label="wiener")
+	xnew, d = wiener_deconvolution (x, b, f, 0.023)
+	pylab.plot(xnew, d, "o-", color="#00ff00", label="Wiener Deconvolution")
 
-	pylab.ylim(-1.5, 1.5)
-	pylab.legend(loc="lower right")
+	pylab.ylim(-1.3, 1.2)
+	pylab.legend(loc="upper right")
 	pylab.show()
 
 
