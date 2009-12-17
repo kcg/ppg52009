@@ -1,0 +1,108 @@
+Messung von Spannung des Poti (x-Achse) und Spannung der LED (y-Achse)
+17.12.2009
+----------------------------------------------------
+
+über 100kOhm Widerstand an LED
+----------------------------------------------------
+0,985V Spannung liegen am Poti an
+
+----------------------------------------------------
+BeleuchtungsLED: 
+Spannung: 
+Strom: 2,68A +/- 0,01
+nach stundenlangem Warmlaufen
+----------------------------------------------------
+Drehung, soweit nicht anders vermerkt per Hand im Uhrzeigersinn
+----------------------------------------------------
+
+Reihenfolge, in der die LEDs verwendet wurden:
+
+375nm
+515nm
+515-525nm
+604nm
+460nm
+395-415nm
+625nm
+525nm
+590nm
+465nm
+600-610nm
+480nm
+585nm
+420nm
+540nm
+610nm
+500-505nm
+400nm
+622nm
+640nm
+588nm
+635nm
+395nm
+545nm
+370-385nm bis hier karl
+625-630nm ab hier andi am drehen
+505nm
+601nm
+620nm
+465-470nm
+grünes gehäuse
+rotes gehä
+585-590nm gelbhaus
+570nm grün
+44000mCandela
+14kmCd
+585-590nm
+----------------------------------------------------
+
+Notation der Dateinamen:
+
+led588nm-1_2.dat
+Allgemein:  ledXXX-a_b.dat
+
+XXX: 	Bezeichnung der LED mit Wellenlänge in nm oder Cd
+	LEDs ohne Angabe werden durch Farbe des Gehäuses benannt.
+	LEDs mit Angabe und farbigem Gehäuse sind ebenfalls gekennzeichnet
+	
+a: Nummer der LED in der Baureihe, hier vermutl. immer 1
+b: Nummer der Messung mit dieser LED
+
+
+
+data0001.dat usw. :
+testläufe
+
+
+
+----------------------------------------------------
+
+Reflexionsgitter:
+2400Linien pro mm 
+
+----------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
