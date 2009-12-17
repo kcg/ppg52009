@@ -95,11 +95,11 @@ for fname in filenames:
 		col = spectral(x)
 	except ValueError:
 		col = "#000000"
-	pylab.plot(U, I, "-", color=col, label=fname[3:-3])
+	pylab.plot(U, I, "-", color=col, label=fname[3:-4])
 
 pylab.xlabel(u"Poti Spannung")
 pylab.ylabel(u"LED Spannung")
-pylab.rcParams.update({'font.size' : 5})
+pylab.rcParams.update({'font.size' : 6})
 pylab.legend(loc=u"best")
 pylab.show()
 
