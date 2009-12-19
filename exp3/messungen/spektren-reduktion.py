@@ -102,8 +102,8 @@ lambda / d = sin(alpha)
 gibts dann:
 lambda / d = sin(phi) - sin(alpha+phi)
 
-z.B. phi = 70°, alpha = 130°
-=> lambda = d * (sin(phi) - sin(alpha+phi)) = 534nm
+z.B. phi = 66°, alpha = 140°
+=> lambda = d * (sin(phi) - sin(alpha+phi)) = 563nm
 '''
 
 

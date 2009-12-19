@@ -1,0 +1,66 @@
+Programmieren mit Python
+========================
+
+Da nun alle von uns einen Einstieg in Python gefunden haben, gibts hier ein paar Tipps und vor allem Links, wie man sinnvoll weitermacht.
+
+Gute Links zum Thema hier mit einfügen!
+
+
+-Grundsätzlich bei allen Funktionen sinnvoll:
+in der Python/iPython Konsole:
+: help(funktionsname)
+: objektname?
+: objektname. # Tabulator zeigt Eingabemöglichkeiten an
+
+
+
+Python allgemein
+================
+
+Python Tutorial: http://docs.python.org/tutorial/
+z.B. über die for-Schleife: http://docs.python.org/tutorial/controlflow.html#for-statements
+Python Referenz (Ausführliche Beschreibung aller Sprachfeatures): http://docs.python.org/reference/
+sehr gute Übersichten:
+http://de.wikibooks.org/wiki/Python-Programmierung
+http://en.wikibooks.org/wiki/Python_Programming
+
+
+
+Plotten mit Matplotlib
+======================
+
+Funktionsübersicht von matplotlib: http://matplotlib.sourceforge.net/
+Recht praktisch hierbei die Gallerie: http://matplotlib.sourceforge.net/gallery.html
+kurzes Kochbuch (zum copy&pasten): http://www.scipy.org/Cookbook/Matplotlib
+Ausführliche Doku zum Speichern: http://matplotlib.sf.net/Matplotlib.pdf
+
+
+
+Wissenschaftliche Funktionen mit Scipy
+======================================
+
+Hauptseite: http://www.scipy.org/
+Ausführliche Dokumentationen (auch zum Speichern): http://docs.scipy.org/doc/
+Besonders hilfreich als schnelle Funktonsübersicht: http://www.scipy.org/Cookbook
+Besipielsweise:
+-least-square-fits: http://www.scipy.org/Cookbook/FittingData
+-Optimierung, Nullstellensuche...: http://docs.scipy.org/doc/scipy/reference/optimize.html
+-fouriertrafo: http://docs.scipy.org/doc/scipy/reference/fftpack.html
+
+
+
+Lineare Algebra
+===============
+
+Linalg bei Scipy: http://docs.scipy.org/doc/scipy/reference/tutorial/linalg.html
+Doku der Numpy-Arrays: http://docs.scipy.org/doc/numpy/reference/arrays.ndarray.html
+linalg-Funktionen: http://www.scipy.org/doc/numpy_api_docs/numpy.linalg.linalg.html
+
+
+
+
+
+Wer an einem freien pythonbasierten Computeralgebra-System interessiert ist:
+http://de.wikipedia.org/wiki/Sage_(Computeralgebrasystem)
+Es ist nicht so gut wie Mathematica, aber wahrscheinlich besser als Maxima.
+
