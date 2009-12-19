@@ -33,21 +33,18 @@ import scipy.fftpack as ft # fourier transformation
 import scipy.interpolate as ip
 
 
-def entfalte (x, b, f):
+def entfalte_matrix (x, b, f, k):
 	'''
 	x: Messstellen
 	b: gemessene Werte
 	f: Faltungsfunktion (muss nicht normiert sein)
+	k: [0,1] Entfaltungsstärke
 	gibt den entfalteten Punktvektor a zurück
 	'''
 
 	n = len(x)
-	
-	# b_i = \sum_j f(x_j - x_i) * a_j
-	# b = A_{ij} * a
-	# a = A_{ij}^{-1} * b
 
-	# Matrix der x-Differenzen D_{ij} = x_j - x_i
+	# Matrix der f-Differenzen A_{ij} = f(x_j - x_i)
 	A = sc.array([[f(x[i] - x[j]) #
 		for j in range(n)] for i in range(n)])
 	# Zeilen normieren
@@ -56,8 +53,16 @@ def entfalte (x, b, f):
 		for j in range(n):
 			A[i][j] /= s[i]
 
-	a = la.solve(A, b)
+	# Gleichungssystem gewichten
+	# Teilweise: A^T * A * a = A^T * b
+	# Teilweise: a = b
+	AA = k * dot(A.T, A) + (1.-k) * sc.eye(n)
+	bb = k * dot(A.T, b) + (1.-k) * b
+
+	a = la.solve(AA, bb)
 	return a
+
+
 
 
 
@@ -139,9 +144,9 @@ def wiener_deconvolution (x, b, f, dx):
 
 	# noise to signal ratio: größer bei hohen frequenzen
 	#nsr = sc.array([1e-6*i**1. for i in range(len(xnew))])
-	nsr = sc.array([6e-5*i for i in range(len(xnew))])
-	#n = 70
-	#nsr = sc.array(n * [1e4] + [1e-8] + (len(xnew)-1-n)* [1e4])
+	#nsr = sc.array([6e-5*i for i in range(len(xnew))])
+	# nimm als Schätzung ein Standard-rauschen
+	nsr = ft.fft(0.002 * sc.random.standard_normal((len(xnew),)))
 
 	# Wiener Filter im Frequenzraum
 	G = H / (H * H.conj() + nsr)
@@ -153,6 +158,7 @@ def wiener_deconvolution (x, b, f, dx):
 	anew = ip.splev(x, tck, der=0)
 
 	return x, anew
+
 
 
 
@@ -199,25 +205,29 @@ def test1():
 	=> es entstehen Oszillationen
 	'''
 	# Ungleiche x-Wert Verteilung
-	x = sc.concatenate((sc.linspace(0.,2.,15), sc.linspace(2.1,4,7), sc.linspace(4.3,6.5,19)), axis=0)
+	x = sc.concatenate((sc.linspace(0.,2.,17), sc.linspace(2.1,4,9), sc.linspace(4.3,6.5,21)), axis=0)
 
 	# Beispielfunktion
 	a = sc.array([fun(xi) for xi in x])
 	pylab.plot(x,a,"bo-",label="original", markersize=9, markeredgewidth=0.5)
 
 	# Faltungskern
-	f = lambda x: exp( -( 3. * (x) )**4 )
+	f = lambda x: exp( -( 2.0 * (x) )**4 )
 
 
 	# Falte die Funktion!
 	#b = falte_diskret(x, a, f)
 	b = falte(x, fun, f, sc.linspace(-2., 2.,81))
+
+	# Rauschen hinzufügen
+	b = b + 0.01 * sc.random.standard_normal((len(b),))
+
 	pylab.plot(x, b, "ro-", label="gefaltet")
 
 	# Entfalte die Funktion wieder!
 
 	# primitive Inversion
-	c = entfalte(x, b, f)
+	c = entfalte_matrix (x, b, f, 0.95)
 	pylab.plot(x, c, "o-", color="#ffff00", label="mat-inv")
 
 	# wiener deconvolution
