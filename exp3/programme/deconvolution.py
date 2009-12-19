@@ -31,6 +31,7 @@ from scipy import dot
 from math import *
 import scipy.fftpack as ft # fourier transformation
 import scipy.interpolate as ip
+import random
 
 
 def entfalte_matrix (x, b, f, k):
@@ -205,7 +206,10 @@ def test1():
 	=> es entstehen Oszillationen
 	'''
 	# Ungleiche x-Wert Verteilung
-	x = sc.concatenate((sc.linspace(0.,2.,17), sc.linspace(2.1,4,9), sc.linspace(4.3,6.5,21)), axis=0)
+	x = [0., 0.1]
+	while x[-1] < 6.5:
+		x.append(x[-1] + min(0.2, max(0.02, random.gauss(x[-1]-x[-2], 0.15))))
+	x = sc.array(x)
 
 	# Beispielfunktion
 	a = sc.array([fun(xi) for xi in x])
@@ -227,7 +231,7 @@ def test1():
 	# Entfalte die Funktion wieder!
 
 	# primitive Inversion
-	c = entfalte_matrix (x, b, f, 0.95)
+	c = entfalte_matrix (x, b, f, 0.92)
 	pylab.plot(x, c, "o-", color="#ffff00", label="mat-inv")
 
 	# wiener deconvolution
