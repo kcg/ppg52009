@@ -1,0 +1,3 @@
+#!/usr/bin/gnuplot -persist
+
+plot "kalibrationsspek.dat" using 2:3 with lines

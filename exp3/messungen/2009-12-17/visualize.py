@@ -46,11 +46,9 @@ for i in os.walk('.'):
 i = 0
 while i < len(filenames):
 	if len(filenames[i]) < 7:
-		filenames = filenames[0:i] + filenames[i+1:-1]
-	elif filenames[i][:3] != "led":
-		filenames = filenames[0:i] + filenames[i+1:-1]
-	elif filenames[i][-4:] != ".dat":
-		filenames = filenames[0:i] + filenames[i+1:-1]
+		del filenames[i]
+	elif filenames[i][:3] != "led" or filenames[i][-4:] != ".dat":
+		del filenames[i]
 	else:
 		i += 1
 
