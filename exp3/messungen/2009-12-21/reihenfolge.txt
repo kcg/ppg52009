@@ -1,0 +1,66 @@
+Messung von Spannung des Poti (x-Achse) und Spannung der LED (y-Achse)
+21.12.2009
+----------------------------------------------------
+
+über 100kOhm Widerstand an LED
+----------------------------------------------------
+-0,8945 Spannung liegen am Poti an
+
+----------------------------------------------------
+BeleuchtungsLED: 
+Spannung: 
+Strom: 2,70A +/- 0,01
+
+----------------------------------------------------
+Drehung, soweit nicht anders vermerkt per Hand im Uhrzeigersinn
+----------------------------------------------------
+
+Reihenfolge, in der die LEDs verwendet wurden:
+
+525
+505
+IR-LEd
+
+
+
+
+Notation der Dateinamen:
+
+led588nm-1_2.dat
+Allgemein:  ledXXX-a_b.dat
+
+XXX: 	Bezeichnung der LED mit Wellenlänge in nm oder Cd
+	LEDs ohne Angabe werden durch Farbe des Gehäuses benannt.
+	LEDs mit Angabe und farbigem Gehäuse sind ebenfalls gekennzeichnet
+	
+a: Nummer der LED in der Baureihe
+b: Nummer der Messung mit dieser LED, falls es beim letzten Mal schon eine Messung gab, wird diese mitgezählt.
+
+
+
+data0001.dat usw. :
+testläufe
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
