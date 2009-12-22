@@ -70,8 +70,15 @@ def readdata(filename, colsep="\t", comment="#"):
 
 
 # Fitfunktion für die Winkelabhängigkeit der Potispannung
+''' Hyperbel passt sogar noch besser:
+def winkel_f(p, x):
+	return p[0] + p[1] * x + p[2] * (sqrt(1. + ((x - p[4]) / p[3])**2) - 1.)
+Startwerte: [-.5,.003,.02,40.,50.]
+'''
+def U_von_winkel(p, x):
+	return p[0] + exp(p[1] * x)
 def winkel_func(p, xlist, ylist):
-	y = [exp(p[0] * x) + p[1] for x in xlist]
+	y = [U_von_winkel(p, x) for x in xlist]
 	return [y[i] - ylist[i] for i in range(len(xlist))]
 
 
@@ -81,24 +88,25 @@ w1 = [(-i[0]+312) for i in data_winkel]
 U1 = [i[1] for i in data_winkel]
 
 # Winkelfunktion fitten
-par1, success = optimize.leastsq(winkel_func, [1.,1.,1.], args=(w1, U1))
+par1, success = optimize.leastsq(winkel_func, [1.,1.], args=(w1, U1))
+
 
 interval = sc.linspace(-20,120,100)
-pl.plot(interval, [exp(par1[0] * u) + par1[1] for u in interval] , "k-", label="Fit: $exp(%.4f\, \cdot \\alpha) %.4f\,$" % (par1[0], par1[1]) )
+pl.plot(interval, [U_von_winkel(par1, a) for a in interval] , "k-", label="Fit: $%.4f + \\mathrm{exp}(%.4f\, \cdot \\alpha)$" % tuple(par1))
 pl.plot(w1, U1, "bo", label="Messung")
 
 # Speichern und zeichnen
 pl.xlabel('Winkel $ \\alpha $ in [deg]')
-pl.ylabel('Spannung U in [mV]')
+pl.ylabel('Spannung $U$ in [mV]')
 pl.legend(loc='upper left')
 pl.gcf().set_size_inches(6, 4)
 pl.savefig("winkel_spannung.pdf")
 pl.show()
 
 
-
-
 # erzeuge Fitfunktion für alpha(U) (II-1)
+def winkel_von_U(U):
+	return optimize.fsolve(lambda a: U_von_winkel(par1, a) - U, 0.)
 
 
 

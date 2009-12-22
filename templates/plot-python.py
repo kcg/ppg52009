@@ -71,7 +71,7 @@ pylab.plot(x, y, "ro", xarray, fitfunc(p1, xarray), "b-")
 pylab.xlabel(u"x-Werte [s]")
 pylab.ylabel(u"y-Werte [m]")
 
-pylab.legend(('Messung', '$%.2f\cdot x^2 + %.2f\cdot x + %.2f$' % (p1[0], p1[1], p1[2])), loc="upper right", numpoints=1)
+pylab.legend(('Messung', '$%.2f\cdot x^2 + %.2f\cdot x + %.2f$' % tuple(p1)), loc="upper right", numpoints=1)
 
 # Speichern
 pylab.gcf().set_size_inches(6, 4)
