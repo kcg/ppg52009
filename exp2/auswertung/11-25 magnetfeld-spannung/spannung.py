@@ -23,7 +23,7 @@ def readdata(filename, colsep="\t", comment="#"):
 	for linetext in ifile.readlines():
 		if linetext[0] == comment:
 			continue
-		linetext = linetext[:-1].strip()
+		linetext = linetext[:-1]
 		line = linetext.split(colsep)
 		if len(line) <= 0:
 			continue

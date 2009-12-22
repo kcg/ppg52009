@@ -5,6 +5,7 @@ import pylab as pl
 import scipy as sc
 from math import *
 import scipy.interpolate as ip
+from scipy import optimize
 
 
 '''
@@ -65,10 +66,34 @@ def readdata(filename, colsep="\t", comment="#"):
 
 
 
-# Drehwinkel in Abhängigkeit von der Poti-Spannung (I-1)
-#data_winkel = readdata("...")
-#w1 = [i[0] for i in data_winkel]
-#U1 = [i[1] for i in data_winkel]
+# Fitfunktion für die Winkelabhängigkeit der Potispannung
+def winkel_func(p, xlist, ylist):
+	y = [exp(p[0] * x) + p[1] for x in xlist]
+	return [y[i] - ylist[i] for i in range(len(xlist))]
+
+
+# Drehwinkel in Abhängigkeit von der Poti-Spannung (I-1) <-- Ich (Karl) probiers mal (I-1 bis II-2)
+data_winkel = readdata("winkel_data.txt")
+w1 = [(-i[0]+312) for i in data_winkel]
+U1 = [i[1] for i in data_winkel]
+
+# Winkelfunktion fitten
+par1, success = optimize.leastsq(winkel_func, [1.,1.,1.], args=(w1, U1))
+
+interval = sc.linspace(-20,120,100)
+pl.plot(interval, [exp(par1[0] * u) + par1[1] for u in interval] , "k-", label="Fit: $exp(%.4f\, \cdot \\alpha) %.4f\,$" % (par1[0], par1[1]) )
+pl.plot(w1, U1, "bo", label="Messung")
+
+# Speichern und zeichnen
+pl.xlabel('Winkel $ \\alpha $ in [deg]')
+pl.ylabel('Spannung U in [mV]')
+pl.legend(loc='upper left')
+pl.gcf().set_size_inches(6, 4)
+pl.savefig("winkel_spannung.pdf")
+pl.show()
+
+
+
 
 # erzeuge Fitfunktion für alpha(U) (II-1)
 
