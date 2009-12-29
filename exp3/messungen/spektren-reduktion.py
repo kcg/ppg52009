@@ -104,9 +104,6 @@ pl.savefig("winkel_spannung.pdf")
 pl.show()
 
 
-# erzeuge Fitfunktion für alpha(U) (II-1)
-def winkel_von_U(U):
-	return optimize.fsolve(lambda a: U_von_winkel(par1, a) - U, 0.)
 
 
 
@@ -117,6 +114,8 @@ def winkel_von_U(U):
 
 
 # erzeuge Fitfunktion für alpha(U) (II-1)
+def winkel_von_U(U):
+	return optimize.fsolve(lambda a: U_von_winkel(par1, a) - U, 0.)
 
 # Intensitätskurven von Spannung auf Winkel mappen -> I(alpha) (II-2)
 
