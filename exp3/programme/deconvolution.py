@@ -82,10 +82,12 @@ def entfalte_matrix (x0, b0, f, dx, k=[1., 0.], l=[]):
 	n = len(x)
 	# gehe von gleichmäßig gebinnten Daten aus
 
-	t1 = time.time()
+	#t1 = time.time()
 	# Matrix der f-Differenzen A_{ij} = f(x_j - x_i) * delta_x
 	d = sc.array([f(dx * (i - n + 1)) for i in range(2 * n - 1)])
 	A = sc.array([d[n-i-1:2*n-i-1] for i in range(n)])
+	# normieren
+	A = A / A.sum(1)
 
 	# Polynomkoeffizient-Extraktionsvektoren
 	# Multipliziert man einen dieser Vektoren mit einem Punktvektor,
@@ -97,7 +99,7 @@ def entfalte_matrix (x0, b0, f, dx, k=[1., 0.], l=[]):
 		[-1., .75, -.3, .05],
 		[1., -.8, .4, -4/35., 1/70.],
 		[-1., 5/6., -10/21., 5/28., -5/126., 1/252.]]
-	t2 = time.time()
+	#t2 = time.time()
 	# Randwerte kontrollieren
 	R = sc.zeros((n,n))
 	wert0 = n; steigung0 = n / 2.
@@ -114,9 +116,10 @@ def entfalte_matrix (x0, b0, f, dx, k=[1., 0.], l=[]):
 			for ii in range(-(i+1), (i+2)):
 				L[j][j+ii] = c[i][abs(ii)]
 		AA += l[i] * dot(L.T, L)
-	t3 = time.time()
+
+	#t3 = time.time()
 	a = la.solve(AA, bb)
-	t4 = time.time()
+	#t4 = time.time()
 	#print "timing:", (t2-t1)/(t4-t1), (t3-t2)/(t4-t1), (t4-t3)/(t4-t1)
 	return x, a
 

@@ -55,6 +55,7 @@ Lineare Algebra
 Linalg bei Scipy: http://docs.scipy.org/doc/scipy/reference/tutorial/linalg.html
 Doku der Numpy-Arrays: http://docs.scipy.org/doc/numpy/reference/arrays.ndarray.html
 linalg-Funktionen: http://www.scipy.org/doc/numpy_api_docs/numpy.linalg.linalg.html
+scipy array tip sheet: http://pages.physics.cornell.edu/~myers/teaching/ComputationalMethods/python/arrays.html
 
 
 
