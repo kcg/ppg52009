@@ -1,0 +1,10 @@
+#!/usr/bin/gnuplot -persist
+
+T = 3000
+h = 6.63e-34
+c = 3e8
+k = 1.38e-23
+
+f(l) = (1 / l**5.) / (exp(h * c / ((l / 1e9) * k * T)) - 1.)
+
+plot [300:800] f(x)
