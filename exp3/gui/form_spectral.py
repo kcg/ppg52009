@@ -11,10 +11,17 @@ import sys, signal, random, time, os, threading
 from PyQt4 import QtGui
 from PyQt4 import QtCore
 
+import scipy as sc
+from math import *
+
 import matplotlib
 from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.backends.backend_qt4agg import NavigationToolbar2QTAgg as NavigationToolbar
 from matplotlib.figure import Figure
+
+from spectral_calc import *
+
+myrand = [random.random() for i in xrange(3*5)]
          
 class FormSpectral (threading.Thread, QtGui.QWidget):
 	def __init__ (self, parent=None):
@@ -45,6 +52,11 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		self.continuous.setFocusPolicy(QtCore.Qt.NoFocus)
 		#self.continous.toggle();	# beginne aktiviert
 		self.connect(self.continuous, QtCore.SIGNAL('stateChanged(int)'), self.toggle_continuous)
+
+		self.smoothlabel = QtGui.QLabel(u"Glättung:", self)
+		self.smoothset = QtGui.QSlider(QtCore.Qt.Horizontal, self)
+		self.smoothset.setToolTip(u"Stärke der Funktionsglättung")
+		self.smoothset.setSliderPosition(50)
 		
 		self.graph = QtGui.QWidget()
 		self.dpi = 70
@@ -61,6 +73,8 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		self.vboxSettings.addWidget(self.refresh)
 		self.vboxSettings.addWidget(self.darkframe)
 		self.vboxSettings.addWidget(self.continuous)
+		self.vboxSettings.addWidget(self.smoothlabel)
+		self.vboxSettings.addWidget(self.smoothset)
 		self.vboxSettings.addStretch(1)
 		self.vboxSettings.addWidget(self.signature)
 		self.settingsGroup.setLayout(self.vboxSettings)
@@ -70,6 +84,9 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		self.main_hbox.addWidget(self.canvas)
 		self.main_hbox.addWidget(self.settingsGroup)
 		self.setLayout(self.main_hbox)
+
+		## Spektren Berechnung vorbereiten
+		self.spec = DataSpectral()
 		
 	def center (self):
 		screen = QtGui.QDesktopWidget().screenGeometry()
@@ -83,7 +100,8 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		self.axes.grid()
 		self.axes.set_xlabel('wavelength $\\lambda$ [nm]')
 		self.axes.set_ylabel('relative spectral power distribution')
-		
+
+
 	def refresh_graph (self):
 		## aktualisiert den Graphen
 		
@@ -92,10 +110,31 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		self.axes.grid()
 		self.axes.set_xlabel('wavelength $\\lambda$ [nm]')
 		self.axes.set_ylabel('relative spectral power distribution')
+
+		# Erzeuge ein Testsignal
+		testfunc = sc.array([0. for i in self.spec.lambdas])
+		for i in range(len(myrand) / 3):
+			testfunc = testfunc + .5*myrand[i/3]*sc.array(sc.exp(-((self.spec.lambdas - (400. + 300 * myrand[1+i/3])) / (10.+200.*myrand[2+i/3]))**2))
+		testfunc /= max(testfunc)
+
+		self.axes.plot(self.spec.lambdas, testfunc, "b-", label="Testspektrum")
+		testsignal = self.spec.make_signal(testfunc)
+		# Signal verrauschen
+		testsignal = sc.array([random.gauss(1.,.003) * i for i in testsignal])
+		self.axes.plot(self.spec.lambdas, self.spec.spectrum_leastsqr(testsignal, exp(-40.+.8*(self.smoothset.value()))), "r-", label="aus LED-Signal errechnet")
+		T = [0., 0.]
+		bbspec = self.spec.spectrum_blackbody(testsignal, T)
+		self.axes.plot(self.spec.lambdas, bbspec, "-", color="#00ee00", label=u"Blackbody $T=%i\,\mathrm{K}$" % (int(T[1]), ))
+
+		self.axes.legend(loc="best")
+		self.axes.set_ylim(-.1, 1.3)
+
 		# Testausgabe:
-		self.axes.plot([300,350,400,450,500,550,600,650,700],[random.random() for i in xrange(9)])
+		#self.axes.plot([300,350,400,450,500,550,600,650,700],[random.random() for i in xrange(9)])
+
 		self.canvas.draw()
-		
+
+
 	def toggle_continuous (self):
 		## de/aktiviert automatische Aktualisierung
 
