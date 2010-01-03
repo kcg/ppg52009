@@ -86,7 +86,7 @@ class DataSpectral():
 		def err(p, signal):
 			return dot(self.A, I(p, self.lambdas)) - signal
 
-		p , success = op.leastsq(err, [1e16, 1e5], args=(input_signal,), maxfev=20000)
+		p, success = op.leastsq(err, [1e16, 1e5], args=(input_signal,), maxfev=2000)
 		temp_output[0], temp_output[1] = p
 		return I(p, self.lambdas)
 

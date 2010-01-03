@@ -56,7 +56,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		self.smoothlabel = QtGui.QLabel(u"Glättung:", self)
 		self.smoothset = QtGui.QSlider(QtCore.Qt.Horizontal, self)
 		self.smoothset.setToolTip(u"Stärke der Funktionsglättung")
-		self.smoothset.setSliderPosition(50)
+		self.smoothset.setSliderPosition(60)
 		
 		self.graph = QtGui.QWidget()
 		self.dpi = 70
@@ -114,17 +114,24 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		# Erzeuge ein Testsignal
 		testfunc = sc.array([0. for i in self.spec.lambdas])
 		for i in range(len(myrand) / 3):
-			testfunc = testfunc + .5*myrand[i/3]*sc.array(sc.exp(-((self.spec.lambdas - (400. + 300 * myrand[1+i/3])) / (10.+200.*myrand[2+i/3]))**2))
+			testfunc = testfunc + .5*myrand[i/3] * sc.array(sc.exp(
+			-((self.spec.lambdas - (400. + 300 * myrand[1+i/3])) / (10.+200.*myrand[2+i/3]))**2))
 		testfunc /= max(testfunc)
 
-		self.axes.plot(self.spec.lambdas, testfunc, "b-", label="Testspektrum")
+		self.axes.plot(self.spec.lambdas, testfunc, "b--", linewidth=4, label="Testspektrum")
 		testsignal = self.spec.make_signal(testfunc)
 		# Signal verrauschen
 		testsignal = sc.array([random.gauss(1.,.003) * i for i in testsignal])
-		self.axes.plot(self.spec.lambdas, self.spec.spectrum_leastsqr(testsignal, exp(-40.+.8*(self.smoothset.value()))), "r-", label="aus LED-Signal errechnet")
-		T = [0., 0.]
-		bbspec = self.spec.spectrum_blackbody(testsignal, T)
-		self.axes.plot(self.spec.lambdas, bbspec, "-", color="#00ee00", label=u"Blackbody $T=%i\,\mathrm{K}$" % (int(T[1]), ))
+
+		T = [0., 0.]; bbspec = self.spec.spectrum_blackbody(testsignal, T)
+		self.axes.plot(self.spec.lambdas, bbspec,
+			"-", color="#00ee00", linewidth=4,
+			label=u"Blackbody $T=%i\,\mathrm{K}$" % (int(T[1]), ))
+
+		self.axes.plot(self.spec.lambdas,
+			self.spec.spectrum_leastsqr(testsignal,
+			exp(-40.+.8*(self.smoothset.value()))), "r-", linewidth=4,
+			label="aus LED-Signal errechnet")
 
 		self.axes.legend(loc="best")
 		self.axes.set_ylim(-.1, 1.3)
