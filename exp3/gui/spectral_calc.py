@@ -7,6 +7,7 @@ from math import *
 import scipy as sc
 import scipy.linalg as la
 import scipy.optimize as op
+import scipy.special as sp
 from scipy import dot
 from file_parse import *
 
@@ -77,9 +78,9 @@ class DataSpectral():
 		sucht ein Schwarzkörperspektrum, das gut aufs Signal passt
 		'''
 
-		h = 6.63e-34
-		c = 3e8
-		k = 1.38e-23
+		h = 6.6261e-34
+		c = 2.9979e8
+		k = 1.3807e-23
 		# p = [faktor, Temperatur]
 		def I(p, l):
 			return p[0] * l**(-5.) / (sc.exp(h * c / ((l / 1e9) * k * p[1])) - 1.)
@@ -90,4 +91,30 @@ class DataSpectral():
 		temp_output[0], temp_output[1] = p
 		return I(p, self.lambdas)
 
+
+
+	def spectrum_polynomial(self, input_signal):
+		'''
+		input_signal: Intensitätswert jeder LED (ca. 16 Werte)
+
+		entwickelt das Signal nach Polynomen
+		dies erzielt in der unmodifizierten Form kaum ein gutes Resultat
+		'''
+
+		# Benutze Legendre-polynome.
+		# Prinzipiell könnte man auch sonst welche nehmen,
+		# aber so ist es numerisch stabiler
+		P = sc.zeros((self.m, self.n))
+		# das Befüllen der Matrix kommt mir noch etwas ineffizient vor ...
+		for j in xrange(self.n):
+			leg = sp.legendre(j)
+			for i in xrange(self.m):
+				P[i][j] = leg(2. * (i + .5) / self.m - 1.)
+		# Errechne Polynomkoeffizienten p
+		p = la.solve(dot(self.A, P), input_signal)
+		# Entferne Terme höherer Ordnung
+		# (das geht nur weil unsere Polynome orthogonal sind)
+		#for i in range(self.n / 2, self.n): p[i] = 0.
+
+		return dot(P, p)
 
