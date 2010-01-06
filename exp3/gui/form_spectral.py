@@ -12,6 +12,7 @@ from PyQt4 import QtGui
 from PyQt4 import QtCore
 
 import scipy as sc
+import pylab as pl
 from math import *
 
 import matplotlib
@@ -20,8 +21,8 @@ from matplotlib.backends.backend_qt4agg import NavigationToolbar2QTAgg as Naviga
 from matplotlib.figure import Figure
 
 from spectral_calc import *
+from simulation import *
 
-myrand = [random.random() for i in xrange(3*5)]
          
 class FormSpectral (threading.Thread, QtGui.QWidget):
 	def __init__ (self, parent=None):
@@ -29,6 +30,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		threading.Thread.__init__(self)
 		
 		self.rlock = threading.Condition()
+		self.pause_continuous = True
 		
 		
 		## Fenstereigenschaften:
@@ -53,11 +55,46 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		#self.continous.toggle();	# beginne aktiviert
 		self.connect(self.continuous, QtCore.SIGNAL('stateChanged(int)'), self.toggle_continuous)
 
-		self.smoothlabel = QtGui.QLabel(u"Glättung:", self)
-		self.smoothset = QtGui.QSlider(QtCore.Qt.Horizontal, self)
-		self.smoothset.setToolTip(u"Stärke der Funktionsglättung")
-		self.smoothset.setSliderPosition(60)
-		
+		# Modus Auswahl
+		self.msGroup = QtGui.QGroupBox(u"mode", self)
+		self.vboxMs = QtGui.QVBoxLayout()
+		self.msGroup.setLayout(self.vboxMs)
+		self.radio_measure = QtGui.QRadioButton(u"measure", self)
+		self.radio_simulate = QtGui.QRadioButton(u"simulate", self)
+		self.vboxMs.addWidget(self.radio_measure)
+		self.vboxMs.addWidget(self.radio_simulate)
+		self.radio_simulate.setChecked(True)
+		self.connect(self.radio_measure, QtCore.SIGNAL('toggled(bool)'), self.toggle_mode_ms)
+		self.connect(self.radio_simulate, QtCore.SIGNAL(
+			'toggled(bool)'), self.toggle_mode_ms)
+
+		# Rekonstruktionsmethode
+		self.cboxMethod = QtGui.QComboBox(self)
+		self.cboxMethod.addItem(u"pseudo-inverse")
+		self.cboxMethod.addItem(u"least-square")
+		self.cboxMethod.addItem(u"blackbody")
+		self.cboxMethod.addItem(u"polynomial")
+
+		# Schieber für Glättungsintensität
+		self.labelSmooth = QtGui.QLabel(u"ls-smoothing:", self)
+		self.sliderSmooth = QtGui.QSlider(QtCore.Qt.Horizontal, self)
+		self.sliderSmooth.setToolTip(u"Stärke der Funktionsglättung")
+		self.sliderSmooth.setSliderPosition(60)
+
+		# Einstellungen der Datensimulation
+		self.simGroup = QtGui.QGroupBox(u"simulation", self)
+		self.vboxSim = QtGui.QVBoxLayout()
+		self.simGroup.setLayout(self.vboxSim)
+		self.simButton = QtGui.QPushButton(u"new spectrum", self)
+		self.vboxSim.addWidget(self.simButton)
+		self.connect(self.simButton, QtCore.SIGNAL('clicked()'), self.sim_spec)
+		self.labelNoise = QtGui.QLabel(u"noise:", self)
+		self.sliderNoise = QtGui.QSlider(QtCore.Qt.Horizontal, self)
+		self.sliderNoise.setSliderPosition(5)
+		self.vboxSim.addWidget(self.labelNoise)
+		self.vboxSim.addWidget(self.sliderNoise)
+
+		# Graph
 		self.graph = QtGui.QWidget()
 		self.dpi = 70
 		self.mplbg = 239.0/255.0, 235.0/255.0, 231.0/255.0
@@ -66,19 +103,22 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		self.canvas.setParent(self.graph)
 		self.axes = self.fig.add_subplot(111)
 		self.draw_initial()
-				
+		
 		## Platziere Elemente:
 		self.settingsGroup = QtGui.QGroupBox('settings', self)
 		self.vboxSettings = QtGui.QVBoxLayout()
 		self.vboxSettings.addWidget(self.refresh)
 		self.vboxSettings.addWidget(self.darkframe)
 		self.vboxSettings.addWidget(self.continuous)
-		self.vboxSettings.addWidget(self.smoothlabel)
-		self.vboxSettings.addWidget(self.smoothset)
+		self.vboxSettings.addWidget(self.msGroup)
+		self.vboxSettings.addWidget(self.cboxMethod)
+		self.vboxSettings.addWidget(self.labelSmooth)
+		self.vboxSettings.addWidget(self.sliderSmooth)
+		self.vboxSettings.addWidget(self.simGroup)
 		self.vboxSettings.addStretch(1)
 		self.vboxSettings.addWidget(self.signature)
 		self.settingsGroup.setLayout(self.vboxSettings)
-		
+
 		self.main_hbox = QtGui.QHBoxLayout()
 		self.main_hbox.addStretch(1)
 		self.main_hbox.addWidget(self.canvas)
@@ -87,7 +127,8 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 
 		## Spektren Berechnung vorbereiten
 		self.spec = DataSpectral()
-		
+
+
 	def center (self):
 		screen = QtGui.QDesktopWidget().screenGeometry()
 		size =  self.geometry()
@@ -111,33 +152,46 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		self.axes.set_xlabel('wavelength $\\lambda$ [nm]')
 		self.axes.set_ylabel('relative spectral power distribution')
 
-		# Erzeuge ein Testsignal
-		testfunc = sc.array([0. for i in self.spec.lambdas])
-		for i in range(len(myrand) / 3):
-			testfunc = testfunc + .5*myrand[i/3] * sc.array(sc.exp(
-			-((self.spec.lambdas - (400. + 300 * myrand[1+i/3])) / (10.+200.*myrand[2+i/3]))**2))
-		testfunc /= max(testfunc)
+		if self.radio_measure.isChecked():
+			# Testausgabe:
+			self.axes.plot([300,350,400,450,500,550,600,650,700],[random.random() for i in xrange(9)])
+		else:
+			try:
+				self.simulation.make_signal(self.spec.A, self.noise_from_slider())
+			except AttributeError:
+				# Erzeuge ein Testsignal
+				self.simulation = DataSimulation(
+					self.spec.lambdas, self.spec.A, self.noise_from_slider())
 
-		self.axes.plot(self.spec.lambdas, testfunc, "b--", linewidth=4, label="Testspektrum")
-		testsignal = self.spec.make_signal(testfunc)
-		# Signal verrauschen
-		testsignal = sc.array([random.gauss(1.,.003) * i for i in testsignal])
+			# Testsignal
+			self.axes.plot(self.spec.lambdas, self.simulation.spectrum,
+				"--", color="#0000ff", linewidth=4,
+				label=u"test spectrum")
 
-		T = [0., 0.]; bbspec = self.spec.spectrum_blackbody(testsignal, T)
-		self.axes.plot(self.spec.lambdas, bbspec,
-			"-", color="#00ee00", linewidth=4,
-			label=u"Blackbody $T=%i\,\mathrm{K}$" % (int(T[1]), ))
+			if self.cboxMethod.currentText() == u"pseudo-inverse":
+				self.axes.plot(self.spec.lambdas,
+					self.spec.spectrum_pinv(self.simulation.signal), "r-",
+					linewidth=4, label="pseudo-inverse")
+			elif self.cboxMethod.currentText() == u"least-square":
+				self.axes.plot(self.spec.lambdas,
+					self.spec.spectrum_leastsqr(self.simulation.signal,
+					exp(-40.+.8*(self.sliderSmooth.value()))), "r-",
+					linewidth=4, label="least-square")
+			elif self.cboxMethod.currentText() == u"blackbody":
+				T = [0., 0.]
+				bbspec = self.spec.spectrum_blackbody(self.simulation.signal, T)
+				self.axes.plot(self.spec.lambdas, bbspec,
+					"r-", linewidth=4,
+					label=u"blackbody $T=%i\,\mathrm{K}$" % (int(T[1]), ))
+			elif self.cboxMethod.currentText() == u"polynomial":
+				self.axes.plot(self.spec.lambdas,
+					self.spec.spectrum_polynomial(self.simulation.signal), "r-",
+					linewidth=4, label="polynomial")
 
-		self.axes.plot(self.spec.lambdas,
-			self.spec.spectrum_leastsqr(testsignal,
-			exp(-40.+.8*(self.smoothset.value()))), "r-", linewidth=4,
-			label="aus LED-Signal errechnet")
+			self.axes.set_ylim(-.1, 1.3)
+			self.axes.legend(loc="best")
 
-		self.axes.legend(loc="best")
-		self.axes.set_ylim(-.1, 1.3)
 
-		# Testausgabe:
-		#self.axes.plot([300,350,400,450,500,550,600,650,700],[random.random() for i in xrange(9)])
 
 		self.canvas.draw()
 
@@ -156,13 +210,37 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		## nimmt Dunkelbild auf
 		
 		print "dark: not implemented yet"
+
+
+	def toggle_mode_ms(self, checked):
+		if self.pause_continuous:
+			self.refresh_graph()
+
+
+	def noise_from_slider(self):
+		return .4 * (self.sliderNoise.value() / 100.)**2
+
+
+	def sim_spec(self):
+		## simuliert ein neues Spektrum
+		try:
+			test = self.simulation
+		except AttributeError:
+			# Erzeuge ein Testsignal
+			self.simulation = DataSimulation(self.spec.lambdas,
+				self.spec.A, self.noise_from_slider())
+		else:
+			self.simulation.make_spec()
+			self.simulation.make_signal(self.spec.A, self.noise_from_slider())
+
+		if self.pause_continuous:
+			self.refresh_graph()
+
 		
 	def run (self):
 		while 1:
 			if not self.pause_continuous:
 				self.refresh_graph()
-				time.sleep(0.1)
-			else:
-				time.sleep(0.1)
+			time.sleep(.1)
 		
 
