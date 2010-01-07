@@ -99,14 +99,15 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		self.vboxSim.addWidget(self.valueNoise)
 		self.vboxSim.addWidget(self.sliderNoise)
 
-		# Graph
+		# Graph (Spektrum)
 		self.graph = QtGui.QWidget()
 		self.dpi = 70
 		self.mplbg = self.palette().background().color().getRgbF()
 		self.fig = Figure((50.0, 50.0), dpi=self.dpi, facecolor=self.mplbg, edgecolor=self.mplbg)
 		self.canvas = FigureCanvas(self.fig)
 		self.canvas.setParent(self.graph)
-		self.axes = self.fig.add_subplot(111)
+		self.axes = self.fig.add_subplot(211)
+		self.axes2 = self.fig.add_subplot(212) # Graph (Wellenlängen-Signal)
 		self.draw_initial()
 		
 		## Platziere Elemente:
@@ -148,6 +149,11 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		self.axes.grid()
 		self.axes.set_xlabel('wavelength $\\lambda$ [nm]')
 		self.axes.set_ylabel('relative spectral power distribution')
+		
+		self.axes2.plot([300,700],[0,1.1], "w+")         
+		self.axes2.grid()
+		self.axes2.set_xlabel('wavelength $\\lambda$ [nm]')
+		self.axes2.set_ylabel('intensity')
 
 
 	def refresh_graph (self):
