@@ -106,8 +106,8 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		self.fig = Figure((50.0, 50.0), dpi=self.dpi, facecolor=self.mplbg, edgecolor=self.mplbg)
 		self.canvas = FigureCanvas(self.fig)
 		self.canvas.setParent(self.graph)
-		self.axes = self.fig.add_subplot(211)
-		self.axes2 = self.fig.add_subplot(212) # Graph (Wellenlängen-Signal)
+		self.axes = self.fig.add_axes([0.1, 0.35, 0.8, 0.6])#add_subplot(211)
+		self.axes2 = self.fig.add_axes([0.1, 0.1, 0.8, 0.15])#subplot(414) # Graph (Wellenlängen-Signal)
 		self.draw_initial()
 		
 		## Platziere Elemente:
@@ -160,6 +160,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		## aktualisiert den Graphen
 		
 		self.axes.clear()
+		self.axes2.clear()
 		self.draw_initial()
 
 		if self.radio_measure.isChecked():
