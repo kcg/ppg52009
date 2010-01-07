@@ -49,6 +49,10 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		self.darkframe.setFocusPolicy(QtCore.Qt.NoFocus)
 		self.connect(self.darkframe, QtCore.SIGNAL('clicked()'), self.take_dark_frame)
 		
+		self.saveplot = QtGui.QPushButton('save plot', self)
+		self.saveplot.setFocusPolicy(QtCore.Qt.NoFocus)
+		self.connect(self.saveplot, QtCore.SIGNAL('clicked()'), self.save_plot)
+		
 		self.continuous = QtGui.QCheckBox('continuous mode', self)
 		self.continuous.setFocusPolicy(QtCore.Qt.NoFocus)
 		#self.continous.toggle();	# beginne aktiviert
@@ -88,13 +92,12 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		self.simButton = QtGui.QPushButton(u"new spectrum", self)
 		self.vboxSim.addWidget(self.simButton)
 		self.connect(self.simButton, QtCore.SIGNAL('clicked()'), self.sim_spec)
-		self.labelNoise = QtGui.QLabel(u"noise:", self)
 		self.sliderNoise = QtGui.QSlider(QtCore.Qt.Horizontal, self)
 		self.sliderNoise.setSliderPosition(5)
-		self.valueNoise = QtGui.QLabel(str(self.noise_from_slider()),self)
-		self.vboxSim.addWidget(self.labelNoise)
-		self.vboxSim.addWidget(self.sliderNoise)
+		self.valueNoise = QtGui.QLabel(u"noise: " + str(round(self.noise_from_slider(),5)),self)
+		self.connect(self.sliderNoise, QtCore.SIGNAL('valueChanged(int)'), self.noise_from_slider)
 		self.vboxSim.addWidget(self.valueNoise)
+		self.vboxSim.addWidget(self.sliderNoise)
 
 		# Graph
 		self.graph = QtGui.QWidget()
@@ -111,6 +114,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		self.vboxSettings = QtGui.QVBoxLayout()
 		self.vboxSettings.addWidget(self.refresh)
 		self.vboxSettings.addWidget(self.darkframe)
+		self.vboxSettings.addWidget(self.saveplot)
 		self.vboxSettings.addWidget(self.continuous)
 		self.vboxSettings.addWidget(self.msGroup)
 		self.vboxSettings.addWidget(self.cboxMethod)
@@ -120,6 +124,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		self.vboxSettings.addStretch(1)
 		self.vboxSettings.addWidget(self.signature)
 		self.settingsGroup.setLayout(self.vboxSettings)
+		
 
 		self.main_hbox = QtGui.QHBoxLayout()
 		self.main_hbox.addStretch(1)
@@ -213,6 +218,13 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		## nimmt Dunkelbild auf
 		
 		print "dark: not implemented yet"
+		
+		
+	def save_plot(self):
+		## speichert Plot als Screenshot auf Festplatte
+
+		#pl.gcf().set_size_inches(6, 4)
+		self.fig.savefig("screenshot.pdf")
 
 
 	def toggle_mode_ms(self, checked):
@@ -221,9 +233,9 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 
 
 	def noise_from_slider(self):
-		value = .4 * (self.sliderNoise.value() / 100.)**2
+		value = .4 * (self.sliderNoise.value() / 99.)**2
 		try:
-			self.valueNoise.setText(str(value))
+			self.valueNoise.setText(u"noise: " + str(round(value,5)))
 		except:
 			pass
 		return value
