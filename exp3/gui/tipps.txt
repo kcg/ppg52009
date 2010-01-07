@@ -1,0 +1,8 @@
+Hilfreiche Tutorials:
+=====================
+
+http://zetcode.com/tutorials/pyqt4/
+http://eli.thegreenplace.net/files/prog_code/qt_mpl_bars.py.txt
+http://matplotlib.sourceforge.net/examples/user_interfaces/embedding_in_qt4.html
+http://de.wikibooks.org/wiki/Python_unter_Linux:_Qt4
+http://qt.nokia.com/doc/4.6/qtgui.html
