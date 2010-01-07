@@ -224,7 +224,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		## speichert Plot als Screenshot auf Festplatte
 
 		#pl.gcf().set_size_inches(6, 4)
-		self.fig.savefig("screenshot.pdf")
+		self.fig.savefig(os.path.relpath(str(QtGui.QFileDialog.getSaveFileName(self, "save graph"))))
 
 
 	def toggle_mode_ms(self, checked):
