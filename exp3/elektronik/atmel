@@ -1,0 +1,121 @@
+#! /usr/bin/env python
+# -*- coding: utf8 -*-
+
+# Skript für das Programmieren von AVR Atmels über ISP
+# verwendet die parallele Schnittstelle (parport0)
+# unterstützte Typen: AtMega8
+# ausführbar mit: "sudo python atmel [check] [erase] [type=mega8] [clk=1,4,8,extern/e] [programmcode.c]"
+# benötigte Pakete: uisp, avr-libc, binutils-avr, gcc-avr
+# v 0.5 11122009
+
+import sys
+import os
+
+clock		= 0		# Taktraten-Flag
+controller	= "atmega8"	# Controller-Typ
+write		= True		# Schreiben-Flag
+programm	= ""		# Name des Programmcodes
+
+def help ():
+# gibt die Hilfe aus, beendet das Programm
+	print "\033[0;31mParameter:\033[0m"
+	print "erase\tDer Flash des Controllers wird gelöscht"
+	print "check\tÜberprüft auf angeschlossenen Controller"
+	print "type\tSetze Controllertyp\n\tmega8, mega168 (default: AtMega8)"
+	print "clk\tTaktrate des Controllers setzen (MHz)\n\t1, 4, 8, extern (default: keine Änderung)"
+	print "compile\tKompiliert ohne auf den Controller zu schreiben"
+	print ""
+	sys.exit(-1)
+
+def avrgcc ():
+# compiliert das Programm
+	print "\033[0;32mKompiliere Programm und bereite Übertragung vor...\033[0m"
+	os.system("avr-gcc -g -mmcu="+controller+" -Wall -Wstrict-prototypes -Os -mcall-prologues -Os -c "+program+".c")
+	os.system("avr-gcc -g -mmcu="+controller+" -Wall -Wstrict-prototypes -Os -mcall-prologues -o "+program+".out -Wl,-Map,"+program+".map "+program+".o")
+	os.system("avr-objcopy -R .eeprom -O ihex "+program+".out "+program+".hex")
+
+def uisp (option):
+# schreibt auf den atmel
+	if option == "check":
+		print "\033[0;32mAngeschlossener Controller:\033[0m"	
+		os.system("uisp -dprog=dapa")
+	elif option == "del":
+		print "\033[0;32mLösche Daten des Microcontrollers...\033[0m"
+		os.system("uisp -dprog=dapa --erase")
+	elif option == "fuse":
+		print "\033[0;32mStelle per Fuse-Bit\033[0m",
+		if clock == 0:
+			return ()
+		elif clock == -1:
+			print "\033[0;32mauf einen externen Oszillator ein...\033[0m"
+			os.system("uisp -dprog=dapa --wr_fuse_l=0xee")
+		elif clock == 1:
+			print "\033[0;32mden internen Oszillator auf 1 MHz ein...\033[0m"
+			os.system("uisp -dprog=dapa --wr_fuse_l=0xe1")
+		elif clock == 4:
+			print "\033[0;32mden internen Oszillator auf 4 MHz ein...\033[0m"
+			os.system("uisp -dprog=dapa --wr_fuse_l=0xe3")
+		elif clock == 8:
+			print "\033[0;32mden internen Oszillator auf 8 MHz ein...\033[0m"
+			os.system("uisp -dprog=dapa --wr_fuse_l=0xe4")
+			
+	elif option == "prog":
+		print "\033[0;32mÜbertrage Programm...\033[0m"
+		os.system("uisp -dprog=dapa --erase")
+		os.system("uisp --upload if="+program+".hex -dprog=dapa  -v=3 --hash=32")
+
+def clean ():
+# löscht tempräre Dateien
+	os.system("rm -f *.o *.map *.out *.hex")
+
+# main
+if len (sys.argv) == 1:
+	help()
+
+for i in xrange(len(sys.argv)-1):
+# sys.argv[], beginnend bei [1]
+	command = sys.argv[i+1]
+	
+	if "check" in command:
+		uisp("check")
+
+	elif "erase" in command:
+		uisp("del")
+
+	elif "type" in command:
+		print "\033[0;31mControllertyp in dieser Version nicht wählbar\033[0m\n"
+		exit(-1)
+
+	elif "clk" in command:
+		if command[4:] == "extern" or command[4:] == "e":
+			clock = -1
+		elif command[4:] == "1":
+			clock = 1
+		elif command[4:] == "4":
+			clock = 4
+		elif command[4:] == "8":
+			clock = 8
+		else:
+			print "\033[0;31mTaktrate '"+command[4:]+"' wird nicht unterstützt\033[0m\n"
+			exit(-1)
+		uisp("fuse")
+	
+	elif "compile" in command:
+		write = False
+
+	elif ".c" in command:
+		program = command[:-2]
+		avrgcc()
+		if not write:
+			continue
+		uisp("prog")
+		clean()
+		
+	elif "help" in command:
+		help()
+
+	else:
+		print "\033[0;31mVerstehe das "+str(i+1)+". Argument nicht\033[0m"
+		
+print "\033[0;32mFertig\033[0m\n"
+
