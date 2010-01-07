@@ -7,6 +7,7 @@ import scipy as sc
 import scipy.linalg as la
 import scipy.optimize as op
 import scipy.special as sp
+import scipy.interpolate as ip
 from scipy import dot
 from file_parse import *
 
@@ -95,7 +96,7 @@ class DataSpectral():
 
 		# TODO: Startwerte müssen vorberechnet werden
 		# sonst konvergierts oft nicht
-		p, success = op.leastsq(err, [1e16, 1e5], args=(input_signal,), maxfev=1800)
+		p, success = op.leastsq(err, [1e16, 8e4], args=(input_signal,), maxfev=2000)
 		temp_output[0], temp_output[1] = p[0], abs(p[1])
 		return I(p, self.lambdas)
 
@@ -123,6 +124,27 @@ class DataSpectral():
 		# Entferne Terme höherer Ordnung
 		# (das geht nur weil unsere Polynome orthogonal sind)
 		#for i in range(self.n / 2, self.n): p[i] = 0.
+
+		return dot(P, p)
+
+
+
+	def spectrum_spline(self, input_signal, k=3):
+		'''
+		input_signal: Intensitätswert jeder LED (ca. 16 Werte)
+
+		entwickelt das Signal in einen Spline vom Grad k
+		'''
+
+		P = sc.zeros((self.m, self.n))
+		for j in xrange(self.n):
+			e = sc.zeros(self.n)
+			e[j] = 1.
+			spline = ip.splrep(sc.linspace(self.lambdas[0], self.lambdas[-1], self.n), e, k=min(k, self.n-1))
+			for i in xrange(self.m):
+				P[i][j] = ip.splev(self.lambdas[i], spline)
+		# Errechne Koeffizienten p
+		p = la.solve(dot(self.A, P), input_signal)
 
 		return dot(P, p)
 

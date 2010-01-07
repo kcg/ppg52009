@@ -74,6 +74,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		self.cboxMethod.addItem(u"least-square")
 		self.cboxMethod.addItem(u"blackbody")
 		self.cboxMethod.addItem(u"polynomial")
+		self.cboxMethod.addItem(u"spline")
 
 		# Schieber für Glättungsintensität
 		self.labelSmooth = QtGui.QLabel(u"ls-smoothing:", self)
@@ -97,7 +98,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		# Graph
 		self.graph = QtGui.QWidget()
 		self.dpi = 70
-		self.mplbg = 239.0/255.0, 235.0/255.0, 231.0/255.0
+		self.mplbg = self.palette().background().color().getRgbF()
 		self.fig = Figure((50.0, 50.0), dpi=self.dpi, facecolor=self.mplbg, edgecolor=self.mplbg)
 		self.canvas = FigureCanvas(self.fig)
 		self.canvas.setParent(self.graph)
@@ -170,13 +171,13 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 
 			if self.cboxMethod.currentText() == u"pseudo-inverse":
 				self.axes.plot(self.spec.lambdas,
-					self.spec.spectrum_pinv(self.simulation.signal), "r-",
-					linewidth=4, label="pseudo-inverse")
+					self.spec.spectrum_pinv(self.simulation.signal),
+					"r-", linewidth=4, label="pseudo-inverse")
 			elif self.cboxMethod.currentText() == u"least-square":
 				self.axes.plot(self.spec.lambdas,
 					self.spec.spectrum_leastsqr(self.simulation.signal,
-					exp(-40.+.8*(self.sliderSmooth.value()))), "r-",
-					linewidth=4, label="least-square")
+					exp(-40.+.8*(self.sliderSmooth.value()))),
+					"r-", linewidth=4, label="least-square")
 			elif self.cboxMethod.currentText() == u"blackbody":
 				T = [0., 0.]
 				bbspec = self.spec.spectrum_blackbody(self.simulation.signal, T)
@@ -185,10 +186,14 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 					label=u"blackbody $T=%i\,\mathrm{K}$" % (int(T[1]), ))
 			elif self.cboxMethod.currentText() == u"polynomial":
 				self.axes.plot(self.spec.lambdas,
-					self.spec.spectrum_polynomial(self.simulation.signal), "r-",
-					linewidth=4, label="polynomial")
+					self.spec.spectrum_polynomial(self.simulation.signal),
+					"r-", linewidth=4, label="polynomial")
+			elif self.cboxMethod.currentText() == u"spline":
+				self.axes.plot(self.spec.lambdas,
+					self.spec.spectrum_spline(self.simulation.signal),
+					"r-", linewidth=4, label="spline")
 
-			self.axes.set_ylim(-.1, 1.3)
+			self.axes.set_ylim(-.19, 1.4)
 			self.axes.legend(loc="best")
 
 
