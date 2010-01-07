@@ -28,8 +28,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 	def __init__ (self, parent=None):
 		QtGui.QWidget.__init__ (self, parent)
 		threading.Thread.__init__(self)
-		
-		self.rlock = threading.Condition()
+
 		self.pause_continuous = True
 		
 		
@@ -92,8 +91,10 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		self.labelNoise = QtGui.QLabel(u"noise:", self)
 		self.sliderNoise = QtGui.QSlider(QtCore.Qt.Horizontal, self)
 		self.sliderNoise.setSliderPosition(5)
+		self.valueNoise = QtGui.QLabel(str(self.noise_from_slider()),self)
 		self.vboxSim.addWidget(self.labelNoise)
 		self.vboxSim.addWidget(self.sliderNoise)
+		self.vboxSim.addWidget(self.valueNoise)
 
 		# Graph
 		self.graph = QtGui.QWidget()
@@ -138,7 +139,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 	def draw_initial (self):
 		## zeichnet den Startbildschirm
 
-		boarder = self.axes.plot([300,700],[0,1.1], "w+")         
+		self.axes.plot([300,700],[0,1.1], "w+")         
 		self.axes.grid()
 		self.axes.set_xlabel('wavelength $\\lambda$ [nm]')
 		self.axes.set_ylabel('relative spectral power distribution')
@@ -148,10 +149,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		## aktualisiert den Graphen
 		
 		self.axes.clear()
-		boarder = self.axes.plot([300,700],[0,1.1], "w+")         
-		self.axes.grid()
-		self.axes.set_xlabel('wavelength $\\lambda$ [nm]')
-		self.axes.set_ylabel('relative spectral power distribution')
+		self.draw_initial()
 
 		if self.radio_measure.isChecked():
 			# Testausgabe:
@@ -223,7 +221,12 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 
 
 	def noise_from_slider(self):
-		return .4 * (self.sliderNoise.value() / 100.)**2
+		value = .4 * (self.sliderNoise.value() / 100.)**2
+		try:
+			self.valueNoise.setText(str(value))
+		except:
+			pass
+		return value
 
 
 	def sim_spec(self):
