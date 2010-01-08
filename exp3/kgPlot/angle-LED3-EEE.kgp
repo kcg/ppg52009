@@ -1,0 +1,6 @@
+!KGPLOTFILE2
+TAB1 "J:\Alexander\Uni\Erlangen\Physik - Projektpraktikum\03- LED Spektrum\kgPlot\Neuer Ordner" 0 "data"  0 0 0
+TAB2 1000000 -1 2  0 0 0
+TAB3 { HP_34401A dev0 "Angle" 13 [ kgGPIB.dll "C:\Programme\Uni Erlangen\kgPlot\plugins\kgGPIB.dll" ] [ 0 1.000000 1.000000 ] HP_34401A dev1 "LED" 16 [ kgGPIB.dll "C:\Programme\Uni Erlangen\kgPlot\plugins\kgGPIB.dll" ] [ 1 1.000000 0.100000 ] } 0 0 0
+TAB4 { 0 "Angle" "dev0" 2 0 #2730 1 "LED" "dev1" 2 0 #11143680 } 40.0 2 
+PROTECTION 0 0 ""

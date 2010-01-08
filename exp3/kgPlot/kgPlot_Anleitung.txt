@@ -1,0 +1,21 @@
+Kurzanleitung für KG Plot:
+
+- KG Plot starten
+- über Setting (das obere) - Öffnen die "angle-LED3-EEE.kgp" Config Datei laden. 
+  Da sind unsere Messgeräte schon mit den entsprechneden Ports geladen.
+- bei Setting (das untere) können die Einstellungen verändert werden.
+    	- Files: Standartpfad zum Abspeichern einstellen, da steht noch der von mir drin.
+	- Devices: Messgerät anklicken und unten Messbereich umstellen. 
+                    Evtl. geht der neue Messbereich erst, wenn einmal eine Messung gestartet wurde.
+
+- Tastenkürzel:
+	- R: 		Beginn der Aufzeichnung
+	- M: 		Bildausschnitt an Messwerte anpassen
+	- 1 bis 5:	verschiedene Darstellungsarten der Messwerte
+	  bewährt: 	4: mittelgroße Punkte mit Linien verbunden
+	- W: 		während der Messung: Anzeige wird zurückgesetzt; Datenaufzeichnung dabei aber NICHT unterbrochen
+	- Strg + H:	Ende der Aufzeichung 	
+
+
+mfg
+Axi
