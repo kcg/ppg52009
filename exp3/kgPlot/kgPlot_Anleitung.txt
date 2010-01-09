@@ -19,3 +19,7 @@ Kurzanleitung für KG Plot:
 
 mfg
 Axi
+
+
+Ergänzung: 	Wenn man die Config in kgPlot lädt, ohne dass die eingestellten Messgeräte 
+		angeschlossen sind, stürzt das Programm ab. Ist wohl normal..
