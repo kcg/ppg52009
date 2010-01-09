@@ -73,6 +73,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 
 		# Rekonstruktionsmethode
 		self.cboxMethod = QtGui.QComboBox(self)
+		self.cboxMethod.addItem(u"exact+smooth")
 		self.cboxMethod.addItem(u"pseudo-inverse")
 		self.cboxMethod.addItem(u"least-square")
 		self.cboxMethod.addItem(u"blackbody")
@@ -145,15 +146,16 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 	def draw_initial (self):
 		## zeichnet den Startbildschirm
 
-		self.axes.plot([300,700],[0,1.1], "w+")         
+		self.axes.plot([300,700],[0,1.1], "w+")
 		self.axes.grid()
 		self.axes.set_xlabel('wavelength $\\lambda$ [nm]')
 		self.axes.set_ylabel('relative spectral power distribution')
 		
-		self.axes2.plot([300,700],[0,1.1], "w+")         
+		self.axes2.plot([0,15],[0,1.1], "w+")
+		self.axes2.set_xlim(-.5, 15.5)
 		self.axes2.grid()
-		self.axes2.set_xlabel('wavelength $\\lambda$ [nm]')
-		self.axes2.set_ylabel('intensity')
+		self.axes2.set_xlabel('channel')
+		self.axes2.set_ylabel('signal')
 
 
 	def refresh_graph (self):
@@ -202,11 +204,15 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 				self.axes.plot(self.spec.lambdas,
 					self.spec.spectrum_spline(self.simulation.signal),
 					"r-", linewidth=4, label="spline")
+			elif self.cboxMethod.currentText() == u"exact+smooth":
+				self.axes.plot(self.spec.lambdas,
+					self.spec.spectrum_smooth(self.simulation.signal),
+					"r-", linewidth=4, label="exact and as smooth as possible")
 
 			self.axes.set_ylim(-.19, 1.4)
 			self.axes.legend(loc="best")
 
-
+		self.axes2.set_xlim(-.5, 15.5)
 
 		self.canvas.draw()
 
@@ -268,6 +274,6 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		while 1:
 			if not self.pause_continuous:
 				self.refresh_graph()
-			time.sleep(.1)
+			time.sleep(.5)
 		
 

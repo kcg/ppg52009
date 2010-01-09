@@ -36,13 +36,13 @@ class DataSpectral():
 
 		# Pseudoinverse
 		self.PINV = la.pinv(A)
+		# Singulärwertzerlegung
+		self.V = la.svd(A)[2]
 
 		# Glättungskern
-		S = -sc.eye(self.m);
-		S[0][0] = S[-1][-1] = 0.
-		for i in range(1, self.m-1):
-			S[i][i-1] = S[i][i+1] = .5
-		self.STS = dot(S.T, S)
+		self.S = .5 * (sc.eye(self.m-2, self.m, 0) + sc.eye(self.m-2, self.m, 2))
+		self.S -= sc.eye(self.m-2, self.m, 1)
+		self.STS = dot(self.S.T, self.S)
 
 
 
@@ -147,4 +147,21 @@ class DataSpectral():
 		p = la.solve(dot(self.A, P), input_signal)
 
 		return dot(P, p)
+
+
+	def spectrum_smooth(self, input_signal):
+		'''
+		input_signal: Intensitätswert jeder LED (ca. 16 Werte)
+		erzeugt eine exakte Lösung mit minimaler Gesamtkrümmung
+		(analog zur Pseudoinversen, die minimale Gesamtnorm erzeugt)
+		funktioniert nur mit m >= n
+		'''
+
+		# Eine spezielle Lösung:
+		l = dot(self.PINV, input_signal)
+		# Lösungen der homogenen Gleichung
+		L = self.V[self.n:, :].T
+		return l - dot(L, la.lstsq(dot(self.S, L), dot(self.S, l))[0])
+
+
 
