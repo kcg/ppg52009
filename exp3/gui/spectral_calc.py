@@ -21,6 +21,8 @@ class DataSpectral():
 		"led588nm-1_1.dat", "led600-610nm-1.dat", "led620nm-1.dat",
 		"led635nm-1.dat", "led625-630nm-1.dat", "led640nm-1.dat"]
 
+		self.names = [i[3:-4] for i in leds]
+
 		self.n = len(leds)
 		A = []
 		for led in leds:
@@ -32,6 +34,8 @@ class DataSpectral():
 		self.lambdas = sc.array([i[0] for i in readdata("led_spektren/" + leds[0])])
 		# Absorptionskurven
 		self.A = sc.array(A)
+		self.weights = self.A.sum(1)
+		self.led_colors = dot(self.A, self.lambdas) / self.weights
 
 		# Rechne ein paar aufwändige Sachen aus, die wir später öfters brauchen
 		self.AT = self.A.T
