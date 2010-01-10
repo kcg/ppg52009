@@ -20,6 +20,7 @@ class DataSpectral():
 		"led525nm-1.dat", "led585-590nm-1.dat", "led570nmGruenH-1.dat",
 		"led588nm-1_1.dat", "led600-610nm-1.dat", "led620nm-1.dat",
 		"led635nm-1.dat", "led625-630nm-1.dat", "led640nm-1.dat"]
+
 		self.n = len(leds)
 		A = []
 		for led in leds:
@@ -29,16 +30,16 @@ class DataSpectral():
 
 		# Wellenlängen
 		self.lambdas = sc.array([i[0] for i in readdata("led_spektren/" + leds[0])])
-		# Aborptionskurven
+		# Absorptionskurven
 		self.A = sc.array(A)
+
+		# Rechne ein paar aufwändige Sachen aus, die wir später öfters brauchen
 		self.AT = self.A.T
 		self.ATA = dot(self.AT, self.A)
-
+		# Singulärwertzerlegung
+		self.SVD  = la.svd(A)
 		# Pseudoinverse
 		self.PINV = la.pinv(A)
-		# Singulärwertzerlegung
-		self.V = la.svd(A)[2]
-
 		# Glättungskern
 		self.S = .5 * (sc.eye(self.m-2, self.m, 0) + sc.eye(self.m-2, self.m, 2))
 		self.S -= sc.eye(self.m-2, self.m, 1)
@@ -160,7 +161,9 @@ class DataSpectral():
 		# Eine spezielle Lösung:
 		l = dot(self.PINV, input_signal)
 		# Lösungen der homogenen Gleichung
-		L = self.V[self.n:, :].T
+		L = self.SVD[2][self.n:, :].T
+		# ziehe von der speziellen Lösung eine Linearkombination der
+		# homogenen Lösungen so ab, dass damit die Krümmung minimiert wird
 		return l - dot(L, la.lstsq(dot(self.S, L), dot(self.S, l))[0])
 
 

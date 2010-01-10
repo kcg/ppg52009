@@ -33,7 +33,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		
 		
 		## Fenstereigenschaften:
-		self.setWindowTitle('spectral analyzer 0.5')
+		self.setWindowTitle('spectral analyzer 0.6')
 		self.resize(800, 500)
 		self.center()
 		self.setWindowIcon(QtGui.QIcon('icons/spectrum.png'))
@@ -151,11 +151,8 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		self.axes.set_xlabel('wavelength $\\lambda$ [nm]')
 		self.axes.set_ylabel('relative spectral power distribution')
 		
-		self.axes2.plot([0,15],[0,1.1], "w+")
-		self.axes2.set_xlim(-.5, 15.5)
-		self.axes2.grid()
 		self.axes2.set_xlabel('channel')
-		self.axes2.set_ylabel('signal')
+		self.axes2.set_ylabel('relative signal')
 
 
 	def refresh_graph (self):
@@ -212,7 +209,23 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 			self.axes.set_ylim(-.19, 1.4)
 			self.axes.legend(loc="best")
 
-		self.axes2.set_xlim(-.5, 15.5)
+			#Signalanzeige der einzelnen LEDs
+			led_label = ["14mCd", "44kmCd", "500nm", "525nm", "570nm", "585nm", "588nm", "600nm", "620nm", "625nm", "635nm", "640nm"]
+			x = [i for i in xrange(1,13)]
+			y = self.simulation.signal
+			maxi = max(y)
+			y = y/maxi
+			colors = []
+			for i in led_label:
+				try:
+					j = float(i[0:3])
+					colors.append(self.spectral(j))
+				except ValueError:
+					colors.append("#373737")					
+			self.axes2.bar(x, y, width=0.9, color=colors, align="center", label="max: "+str(round(maxi,2)))
+			self.axes2.set_xticks(xrange(1,13), minor=False)
+			self.axes2.set_xticklabels(led_label, fontdict=None, minor=False, rotation=45)
+			self.axes2.legend(loc="best")
 
 		self.canvas.draw()
 
@@ -275,5 +288,35 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 			if not self.pause_continuous:
 				self.refresh_graph()
 			time.sleep(.5)
+			
+			
+	def spectral(self, lamb):
+		red = 0.; green = 0.; blue = 0.
+		if lamb < 400.:
+			pass
+		elif lamb <= 470.:
+			blue = (lamb-400.) / (470. - 400.)
+			red = (lamb-400.) / (470. - 400.) * ( 1. - (lamb-400.) / (470. - 400.))
+		elif lamb <= 525.:
+			blue = (525. - lamb) / (525. - 470.)
+			green = (lamb - 470.) / (525. - 470.)
+		elif lamb <= 575.:
+			green = 1.
+			red = (lamb - 525.) / (575. - 525.)
+		elif lamb <= 640.:
+			red = 1.
+			green = (640. - lamb) / (640. - 575.)
+		elif lamb <= 700.:
+			red = (700. - lamb) / (700. - 640.)
+		red = hex(int(255.*red))[2:]
+		green = hex(int(255.*green))[2:]
+		blue = hex(int(255.*blue))[2:]
+		while len(red) < 2:
+			red = "0" + red
+		while len(green) < 2:
+			green = "0" + green
+		while len(blue) < 2:
+			blue = "0" + blue
+		return "#" + red + green + blue
 		
 
