@@ -1,0 +1,91 @@
+------------------------------------------------------------------
+Messung von Spannung des Poti (x-Achse) und Spannung der LED (y-Achse)
+11.01.2010
+----------------------------------------------------
+Messung mit Halogenlampe
+Nennwerte: 12V, 50W
+
+angelegt:
+Spannung: 12V ??
+Strom 4,8A
+----------------------------------------------------
+über 100kOhm Widerstand an LED
+----------------------------------------------------
+ca. -0,8945 Spannung liegen am Poti an???
+eigentlich wie beim letzten Mal
+----------------------------------------------------
+Drehung, soweit nicht anders vermerkt per Hand im Uhrzeigersinn
+----------------------------------------------------
+mit Op-Amp, Widerstand ca. 100k ...
+----------------------------------------------------
+Reihenfolge, in der die LEDs verwendet wurden:
+
+mit Angabe der Polung, keine Angabe = kurz oben
+
+640nm 		kurz oben 	beim schwarzen anschluss
+850nm 		lang oben
+370-385		3Messungen: kurz (mit Fehler), lang, kurz
+375nm
+395nm
+395-415nm 	-  schlechte Werte später besser
+400nm
+420nm 		-  schlechte Werte später besser
+460nm
+465nm 		-  schlechte Werte später besser
+465-470nm
+480nm
+500-505nm
+505nm 		leuchtet grün im betrieb
+515nm
+515-525nm
+525nm
+540nm 		nicht markiert, nicht geschliffen
+585-590nm
+588nm
+600-610nm
+610nm
+620nm
+625-630nm
+635nm 		(evtl 636nm unlesbar)
+photodiode (sf4)
+44000
+
+
+Nachmesungen mit guten Werten
+465nm
+420nm   
+395-415nm 
+
+----------------------------------------------------
+Notation der Dateinamen:
+
+led588nm-1_2-h.dat
+Allgemein:  ledXXX-a_b-h.dat
+
+XXX: 	Bezeichnung der LED mit Wellenlänge in nm oder Cd
+	LEDs ohne Angabe werden durch Farbe des Gehäuses benannt.
+	LEDs mit Angabe und farbigem Gehäuse sind ebenfalls gekennzeichnet
+	
+a: 	Nummer der LED in der Baureihe.   1.LED: Krepp-band, 2.LED: Tesa, 3.LED: keine Markierung
+b: 	Nummer der Messung mit dieser LED, Messungen vom letzten Mal werden NICHT (!) mitgezählt
+-h : 	Messung mit der Halogenlampe
+
+
+data...... .dat: Testmessungen
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
