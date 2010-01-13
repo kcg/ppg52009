@@ -11,8 +11,9 @@ import sys, signal, random, time, os, threading
 from PyQt4 import QtGui
 from PyQt4 import QtCore
 
-import scipy as sc
 import pylab as pl
+import scipy as sc
+import scipy.optimize as op
 from math import *
 
 import matplotlib
@@ -76,15 +77,17 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		self.cboxMethod = QtGui.QComboBox(self)
 		self.cboxMethod.addItem(u"exact+smooth")
 		self.cboxMethod.addItem(u"pseudo-inverse")
+		self.cboxMethod.addItem(u"optimize")
 		self.cboxMethod.addItem(u"least-square")
 		self.cboxMethod.addItem(u"blackbody")
 		self.cboxMethod.addItem(u"polynomial")
 		self.cboxMethod.addItem(u"spline")
 
 		# Schieber für Glättungsintensität
-		self.labelSmooth = QtGui.QLabel(u"ls-smoothing:", self)
+		self.labelSmooth = QtGui.QLabel(u"smoothing:", self)
 		self.sliderSmooth = QtGui.QSlider(QtCore.Qt.Horizontal, self)
 		self.sliderSmooth.setToolTip(u"Stärke der Funktionsglättung")
+		self.sliderSmooth.setMaximum(100)
 		self.sliderSmooth.setSliderPosition(60)
 
 		# Einstellungen der Datensimulation
@@ -95,7 +98,8 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		self.vboxSim.addWidget(self.simButton)
 		self.connect(self.simButton, QtCore.SIGNAL('clicked()'), self.sim_spec)
 		self.sliderNoise = QtGui.QSlider(QtCore.Qt.Horizontal, self)
-		self.sliderNoise.setSliderPosition(5)
+		self.sliderNoise.setMaximum(100)
+		self.sliderNoise.setSliderPosition(10)
 		self.valueNoise = QtGui.QLabel(u"noise: " + str(round(self.noise_from_slider(),5)),self)
 		self.connect(self.sliderNoise, QtCore.SIGNAL('valueChanged(int)'), self.noise_from_slider)
 		self.vboxSim.addWidget(self.valueNoise)
@@ -180,33 +184,31 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 				label=u"test spectrum")
 
 			if self.cboxMethod.currentText() == u"pseudo-inverse":
-				self.axes.plot(self.spec.lambdas,
-					self.spec.spectrum_pinv(self.simulation.signal),
-					"r-", linewidth=4, label="pseudo-inverse")
+				y = self.spec.spectrum_pinv(self.simulation.signal)
+				text = u"pseudo-inverse"
 			elif self.cboxMethod.currentText() == u"least-square":
-				self.axes.plot(self.spec.lambdas,
-					self.spec.spectrum_leastsqr(self.simulation.signal,
-					exp(-40.+.8*(self.sliderSmooth.value()))),
-					"r-", linewidth=4, label="least-square")
+				y = self.spec.spectrum_leastsqr(self.simulation.signal,
+					exp(-40.+.8*(self.sliderSmooth.value())))
+				text = u"least-square"
 			elif self.cboxMethod.currentText() == u"blackbody":
 				T = [0., 0.]
-				bbspec = self.spec.spectrum_blackbody(self.simulation.signal, T)
-				self.axes.plot(self.spec.lambdas, bbspec,
-					"r-", linewidth=4,
-					label=u"blackbody $T=%i\,\mathrm{K}$" % (int(T[1]), ))
+				y = self.spec.spectrum_blackbody(self.simulation.signal, T)
+				text = u"blackbody $T=%i\,\mathrm{K}$" % (int(T[1]), )
 			elif self.cboxMethod.currentText() == u"polynomial":
-				self.axes.plot(self.spec.lambdas,
-					self.spec.spectrum_polynomial(self.simulation.signal),
-					"r-", linewidth=4, label="polynomial")
+				y = self.spec.spectrum_polynomial(self.simulation.signal)
+				text = "polynomial"
 			elif self.cboxMethod.currentText() == u"spline":
-				self.axes.plot(self.spec.lambdas,
-					self.spec.spectrum_spline(self.simulation.signal),
-					"r-", linewidth=4, label="spline")
+				y = self.spec.spectrum_spline(self.simulation.signal)
+				text = "spline"
 			elif self.cboxMethod.currentText() == u"exact+smooth":
-				self.axes.plot(self.spec.lambdas,
-					self.spec.spectrum_smooth(self.simulation.signal),
-					"r-", linewidth=4, label="exact and as smooth as possible")
+				y = self.spec.spectrum_smooth(self.simulation.signal)
+				text = "exact and as smooth as possible"
+			elif self.cboxMethod.currentText() == u"optimize":
+				y = self.spec.spectrum_optimize(self.simulation.signal,
+					self.sliderSmooth.value() / float(self.sliderSmooth.maximum()))
+				text = "nonlinear optimized"
 
+			self.axes.plot(self.spec.lambdas, y, "r-", linewidth=4, label=text)
 			self.axes.set_ylim(-.19, 1.4)
 			self.axes.legend(loc="best")
 
@@ -261,7 +263,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 
 
 	def noise_from_slider(self):
-		value = .4 * (self.sliderNoise.value() / 99.)**2
+		value = .4 * (self.sliderNoise.value() / float(self.sliderSmooth.maximum()))**2
 		try:
 			self.valueNoise.setText(u"noise: " + str(round(value,5)))
 		except:
