@@ -1,0 +1,3 @@
+\select@language {ngerman}
+\contentsline {section}{\numberline {1}Messung der Absorptionsspektren}{3}{section.1}
+\contentsline {section}{\numberline {2}Bau des Spektrometers}{3}{section.2}

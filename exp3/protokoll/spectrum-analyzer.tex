@@ -1,0 +1,108 @@
+\documentclass[11pt]{scrartcl}
+\usepackage[utf8]{inputenc} % Kodierung der Textdatei mit Sonderzeichen
+\usepackage[ngerman]{babel} % Sprache fuer Inhaltsverzeichnis etc.
+\usepackage{amssymb} % Mathematische Symbole
+\usepackage{amsmath} % Mehr mathematische Konstrukte
+\usepackage{graphicx} % Um Bilder einbinden zu koennen
+\usepackage{float} % fuer \begin{figure}[H]
+\usepackage{icomma} % laesst das Komma als Dezimaltrennzeichen interpretieren
+\usepackage{fix-cm} % für die große Titelschrift
+\usepackage[pdftex]{hyperref} % Hyperlinks im Dokument
+\hypersetup{colorlinks=true, linkcolor=black, citecolor=black, filecolor=black, urlcolor=black, pdftitle={Spektren Analysator - Projektpraktikum 09/10 Gruppe 5}}
+
+
+\newcommand{\unit}[1]{\ensuremath{\,\mathrm{#1}}} % Einheiten schreiben sich immer aufrecht!
+\newcommand{\degr}{\ensuremath{^\circ}}
+\newcommand{\cel}{\ensuremath{\degr\mathrm{C}}}
+\newcommand{\dif}{\ensuremath{\mathrm{d}}}
+\newcommand{\pdif}[2]{\ensuremath{\frac{\partial#1}{\partial#2}}}
+\newcommand{\ee}[1]{\ensuremath{\cdot\! 10^{#1}}}
+\newcommand{\abb}[1]{\hyperref[#1]{Abb.~\ref{#1}}}
+\newcommand{\tab}[1]{\hyperref[#1]{Tabelle~\ref{#1}}}
+
+\setlength{\parindent}{1em}
+\setlength{\parskip}{0.5\baselineskip}
+
+
+\title{Spektren Analysator - Gruppe 5 WS 09/10, Projektpraktikum der Uni Erlangen}
+\date{07.12.2009 -- 15.01.2010}
+\author{Michele Collodo, Andreas Glossner, Karl-Christoph G\"odel, Bastian Hacker, Maria Obst, Alexander Wagner, David Winnekens}
+
+
+
+\begin{document}
+\sloppy % laesst Latex nicht ueber den Rand rausschreiben
+\thispagestyle{empty}
+\large{Projektpraktikum WS 09/10}
+\hfill
+\raisebox{-1.4cm}{\includegraphics[width=5cm]{images/fau.pdf}}
+\\[8\baselineskip]
+\begin{center}
+{\fontsize{36}{54}\textbf{Spektren Analysator}}
+\\[2\baselineskip]
+{\Large 07.12.2009 -- 15.01.2010}
+\\[7\baselineskip]
+{\huge\textbf{PPG 5}}
+\\[0.5\baselineskip]
+{\large\textbf{
+Michele Collodo,
+Andreas Glossner,\\
+Karl-Christoph G\"odel,
+Bastian Hacker,\\
+Maria Obst,
+Alexander Wagner,
+David Winnekens}\\
+Tutor: Xiaoyue Jin}
+\vfill
+
+
+
+\small{\url{http://pp.physik.uni-erlangen.de/groups/ws0910/ppg5/ppg5\_start.html}}
+\end{center}
+\newpage
+
+
+
+\tableofcontents
+\vfill
+
+
+
+\begin{abstract}
+Bla
+\end{abstract}
+\newpage
+
+
+
+\section{Messung der Absorptionsspektren}
+
+% Versuchsaufbau
+%% Lichtquelle, LED vs. Halogen
+%% Gitter, Prinzip, optischer Strahlengang
+%% Winkelmessung (Poti)
+
+% Reduktion der Spektren
+%% Fit der Winkelfunktion
+%% Entfaltung
+
+% Vergleich mit den Emissionsspekren
+
+
+
+\section{Bau des Spektrometers}
+% Funktionsprinzip Übersicht
+
+% Elektronik
+%% Funktionsprinzip OpAmps etc.
+%% Schaltplan
+
+% Software: Berechnung der Spektren mit unserem Gerät
+%% Funktionsübersicht und Erklärung der Bedienung
+%% Algorithmik zur Auswertung
+
+
+
+
+\end{document}
+
