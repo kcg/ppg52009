@@ -183,10 +183,7 @@ class DataSpectral():
 		'''
 
 		def err(s):
-			err_signal = ((dot(self.A, s) - input_signal)**2).mean()
-			mean = input_signal.mean()
-			if mean != 0.:
-				err_signal *= s.mean() / mean
+			err_signal = (((dot(self.A, s) - input_signal) / self.weights)**2).mean() * s.mean()
 			err_zero = ((sc.absolute(s) - s) ** 2).mean() / 4.
 			err_smooth = ((s[1:-1] - .5 * (s[2:] + s[:-2])) ** 2).sum()
 			return (smooth**2 * err_smooth + (1. - smooth)**2 * (err_signal)) / (smooth**2 + (1. - smooth)**2) + err_zero
