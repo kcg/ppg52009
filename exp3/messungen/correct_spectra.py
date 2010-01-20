@@ -9,6 +9,10 @@ import scipy.interpolate
 from matplotlib import colors as clr
 
 
+# Zeigt einzelne Spektren an
+# lässt manuelle Grenzwerte eingeben, ab welchen die Intensität
+# zur Null hin interpoliert wird.
+
 
 def readdata(filename, colsep="\t", comment="#"):
 	ifile = open(filename, "r")
@@ -38,19 +42,8 @@ def readdata(filename, colsep="\t", comment="#"):
 		data.append(row)
 	return(data)
 
-# Dateien im Verzeichnis suchen
-filenames = []
-for i in os.walk('.'):
-	filenames = i[2];
-	break;
-i = 0
-while i < len(filenames):
-	if len(filenames[i]) < 7:
-		del filenames[i]
-	elif filenames[i][:3] != "led" or filenames[i][-4:] != ".dat":
-		del filenames[i]
-	else:
-		i += 1
+
+
 
 
 def spectral(lamb):
@@ -87,34 +80,73 @@ def spectral(lamb):
 
 	return (red, green, blue, alpha)
 
+
+
+# Dateien im Verzeichnis suchen
+filenames = []
+for i in os.walk('.'):
+	filenames = i[2];
+	break;
+i = 0
+while i < len(filenames):
+	if len(filenames[i]) < 7:
+		del filenames[i]
+	elif filenames[i][:3] != "led" or filenames[i][-4:] != ".dat":
+		del filenames[i]
+	else:
+		i += 1
 filenames.sort()
 filenames.reverse()
+
+
 j = 0
 while True:
 	pl.clf()
-	for k in range(len(filenames)):
-		fname = filenames[k]
-		data = readdata(fname)
-		U = [i[0] for i in data]
-		I = [i[1] for i in data]
+	fname = filenames[j]
+	data = readdata(fname)
+	l = [int(i[0]) for i in data]
+	I = [i[1] for i in data]
 
-		try:
-			x = float(fname[3:6])
-			col = spectral(x)[:3]
-		except ValueError:
-			col = "#000000"
-		if (k == j):
-			pl.plot(U, I, "-", color=col, label=fname[3:-4], linewidth=4)
-		else:
-			pl.plot(U, I, "-", color=col, label=fname[3:-4])
+	try:
+		x = float(fname[3:6])
+		col = spectral(x)[:3]
+	except ValueError:
+		col = "#000000"
+	pl.plot(l, I, "-", color=col, label=fname[3:-4])
 
 	pl.xlabel(u"Poti Spannung")
 	pl.ylabel(u"LED Spannung")
 	pl.xlim(345., 675.)
-	pl.ylim(-.3, 6.)
 	pl.rcParams.update({'font.size' : 9})
 	pl.legend(loc=u"best", ncol=5)
 	pl.show()
 	j = (j + 1) % len(filenames)
-	nix = raw_input("press enter...")
+	print fname
+	nix = raw_input("nullen einfügen=n: ")
+	if nix == "n":
+		a = int(raw_input("0: "))
+		b = int(raw_input("erhalten: "))
+		ofile = open(fname, "w")
+		ofile.write("# " + fname + "\n")
+		ofile.write("# Spalte1: Wellenlänge [nm]\n")
+		ofile.write("# Spalte2: Intensität\n")
+		for i in range(len(l)):
+			if (l[i] - b) * (b - a) > 0.:
+				ofile.write(str(l[i]) + "\t%.6f\n" % (I[i],))
+			elif (l[i] - a) * (a - b) >= 0.:
+				ofile.write(str(l[i]) + "\t0.000000\n")
+			else:
+				ofile.write(str(l[i]) + "\t%.6f\n" % ((l[i] - a) / float(b - a) * I[b-l[0]],))
+		ofile.close()
+
+
+
+
+
+
+
+
+
+
+
 

@@ -32,6 +32,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		threading.Thread.__init__(self)
 
 		self.pause_continuous = True
+		self.xrange = (345., 675.)
 		
 		
 		## Fenstereigenschaften:
@@ -152,10 +153,12 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		## zeichnet den Startbildschirm
 
 		self.axes.plot([300,700],[0,1.1], "w+")
+		self.axes.set_xlim(self.xrange)
 		self.axes.grid()
 		self.axes.set_xlabel('wavelength $\\lambda$ [nm]')
 		self.axes.set_ylabel('relative spectral power distribution')
 		
+		self.axes2.set_xlim(.4, 16 + .6)
 		self.axes2.set_xlabel('channel')
 		self.axes2.set_ylabel('relative signal')
 
@@ -209,12 +212,13 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 				text = "nonlinear optimized"
 
 			self.axes.plot(self.spec.lambdas, y, "r-", linewidth=4, label=text)
+			self.axes.set_xlim(self.xrange)
 			self.axes.set_ylim(-.19, 1.4)
 			self.axes.legend(loc="best")
 
 			#Signalanzeige der einzelnen LEDs
-			led_label = ["14mCd", "44kmCd", "500nm", "525nm", "570nm", "585nm", "588nm", "600nm", "620nm", "625nm", "635nm", "640nm"]
-			x = [i for i in xrange(1,13)]
+			led_label = ["375nm", "395nm", "468nmnm", "480nm", "503nm", "505nm", "515nm", "525nm", "540nm", "588nm", "588nm", "605nm", "620nm", "628nm", "635nm", "640nm"]
+			x = [i for i in xrange(1, self.spec.n + 1)]
 			y = self.simulation.signal / self.spec.weights
 			maxi = max(self.simulation.signal)
 			y = y / max(y)
@@ -227,7 +231,8 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 					colors.append(spectral(self.spec.led_colors[i]))
 			#colors = [spectral(i) for i in self.spec.led_colors]
 			self.axes2.bar(x, y, width=0.9, color=colors, align="center", label="max: "+str(round(maxi,2)))
-			self.axes2.set_xticks(xrange(1,13), minor=False)
+			self.axes2.set_xlim(.4, self.spec.n + .6)
+			self.axes2.set_xticks(range(1, self.spec.n+1), minor=False)
 			self.axes2.set_xticklabels(led_label, fontdict=None, minor=False, rotation=45)
 			self.axes2.legend(loc="best")
 

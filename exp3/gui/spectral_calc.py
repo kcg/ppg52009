@@ -17,10 +17,7 @@ class DataSpectral():
 	def __init__ (self):
 
 		# lies die LED Sensitivitäten in den Arbeitsspeicher 
-		leds = ["led14mCd-1.dat", "led44kmCd-1.dat", "led500-505nm-1.dat",
-		"led525nm-1.dat", "led585-590nm-1.dat", "led570nmGruenH-1.dat",
-		"led588nm-1_1.dat", "led600-610nm-1.dat", "led620nm-1.dat",
-		"led635nm-1.dat", "led625-630nm-1.dat", "led640nm-1.dat"]
+		leds = ["led375nm-1_1-h.dat", "led395nm-1_1-h.dat", "led465-470nm-1_2-h.dat", "led480nm-1_1-h.dat", "led500-505nm-1_1-h.dat", "led505nm-1_1-h.dat", "led515nm-1_1-h.dat", "led525nm-1_1-h.dat", "led540nm-2_1-h.dat", "led585-590nm-1_1-h.dat", "led588nm-1_1-h.dat", "led600-610nm-1_1-h.dat", "led620nm-1_1-h.dat", "led625-630nm-1_1-h.dat", "led635nm-1_1-h.dat", "led640nm-1_3-h.dat"]
 
 		self.names = [i[3:-4] for i in leds]
 

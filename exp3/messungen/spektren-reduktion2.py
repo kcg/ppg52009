@@ -515,7 +515,7 @@ pl.savefig("spektren_mit_halogen.pdf")
 
 
 # fertige LED-Absorptionsspektren I(lambda) ausgeben (III-1)
-lambda_fertig = sc.array(range(417, 670 + 1))
+lambda_fertig = sc.array(range(350, 670 + 1))
 for i in range(len(spektren_fertig)):
 	tck = ip.splrep(lambda_d, spektren_fertig[i], k=1)
 	spektrum = ip.splev(lambda_fertig, tck)
