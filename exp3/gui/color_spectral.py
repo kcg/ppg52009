@@ -9,7 +9,7 @@ def spectral(lamb):
 	'''
 	Berechnet eine rgba-Farbe aus Wellenlängen
 	'''
-	l = [380., 400., 470., 535., 580., 650., 750.]
+	l = [360., 400., 470., 535., 580., 650., 750.]
 	#   UV, violett, blau, grün, gelb, rot,  IR
 
 	red = 0.; green = 0.; blue = 0.; alpha = 1.

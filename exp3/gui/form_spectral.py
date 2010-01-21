@@ -217,7 +217,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 			self.axes.legend(loc="best")
 
 			#Signalanzeige der einzelnen LEDs
-			led_label = ["375nm", "395nm", "468nmnm", "480nm", "503nm", "505nm", "515nm", "525nm", "540nm", "588nm", "588nm", "605nm", "620nm", "628nm", "635nm", "640nm"]
+			led_label = ["375nm", "395nm", "468nm", "480nm", "503nm", "505nm", "515nm", "525nm", "540nm", "588nm", "588nm", "605nm", "620nm", "628nm", "635nm", "640nm"]
 			x = [i for i in xrange(1, self.spec.n + 1)]
 			y = self.simulation.signal / self.spec.weights
 			maxi = max(self.simulation.signal)
