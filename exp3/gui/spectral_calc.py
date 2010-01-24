@@ -25,11 +25,23 @@ class DataSpectral():
 		A = []
 		for led in leds:
 			data = readdata("led_spektren/" + led)
-			A.append([i[1] for i in data])		
-		self.m = len(A[0])
+			A.append([i[1] for i in data])
+		A = sc.array(A)
 
 		# Wellenlängen
-		self.lambdas = sc.array([i[0] for i in readdata("led_spektren/" + leds[0])])
+		lambdas = [i[0] for i in readdata("led_spektren/" + leds[0])]
+
+		# Binning vergrößern -> schnellere Berechnung
+		bin = 7
+		B = []; l = []
+		for i in range(len(lambdas) / bin):
+			l.append(sum(lambdas[bin * i:bin * (i + 1)]) / float(bin))
+			B.append(sc.reshape(sc.mean(A[:,bin * i:bin * (i + 1)], 1), (self.n, 1)))
+		A = sc.concatenate(tuple(B), 1)
+
+		self.lambdas = sc.array(l)
+		self.m = len(self.lambdas)
+
 		# Absorptionskurven
 		self.A = sc.array(A)
 		self.weights = self.A.sum(1)
@@ -50,7 +62,7 @@ class DataSpectral():
 
 
 
-	def spectrum_leastsqr(self, input_signal, smoothing=1e4):
+	def spectrum_leastsqr(self, input_signal, smooth=.5):
 		'''
 		input_signal: Intensitätswert jeder LED (ca. 16 Werte)
 
@@ -64,8 +76,12 @@ class DataSpectral():
 		'''
 
 		# Vorsicht! Offensichtlich ist das numerisch instabil!
-		return la.solve(self.ATA + smoothing * self.STS,
-			dot(self.AT, input_signal))
+		#return la.solve(self.ATA + smoothing * self.STS,
+		#	dot(self.AT, input_signal))
+		# etwas stabiler aber langsamer:
+		smooth = smooth**4 / (smooth**4 + (1. - smooth)**4)
+		return dot(la.pinv(self.ATA * (1. - smooth) + smooth * self.m * self.STS),
+			dot(self.AT * (1. - smooth), input_signal))
 
 
 
@@ -179,13 +195,14 @@ class DataSpectral():
 		und eine Glatte Kurve zu erzeugen
 		'''
 
+		smooth = smooth**2 / (smooth**2 + (1. - smooth)**2)
 		def err(s):
 			err_signal = (((dot(self.A, s) - input_signal) / self.weights)**2).mean() * s.mean()
 			err_zero = ((sc.absolute(s) - s) ** 2).mean() / 4.
-			err_smooth = ((s[1:-1] - .5 * (s[2:] + s[:-2])) ** 2).sum()
-			return (smooth**2 * err_smooth + (1. - smooth)**2 * (err_signal)) / (smooth**2 + (1. - smooth)**2) + err_zero
+			err_smooth = ((s[1:-1] - .5 * (s[2:] + s[:-2])) ** 2).mean()
+			return smooth * err_smooth + (1. - smooth) * (err_signal) + err_zero
 
-		spectrum = op.fmin_bfgs(err, self.spectrum_smooth(input_signal))
+		spectrum = op.fmin_bfgs(err, self.spectrum_smooth(input_signal), disp=0)
 
 		return spectrum
 

@@ -76,13 +76,13 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 
 		# Rekonstruktionsmethode
 		self.cboxMethod = QtGui.QComboBox(self)
+		self.cboxMethod.addItem(u"least-square")
+		self.cboxMethod.addItem(u"optimize")
 		self.cboxMethod.addItem(u"exact+smooth")
 		self.cboxMethod.addItem(u"pseudo-inverse")
-		self.cboxMethod.addItem(u"optimize")
-		self.cboxMethod.addItem(u"least-square")
 		self.cboxMethod.addItem(u"blackbody")
-		self.cboxMethod.addItem(u"polynomial")
 		self.cboxMethod.addItem(u"spline")
+		self.cboxMethod.addItem(u"polynomial")
 
 		# Schieber für Glättungsintensität
 		self.labelSmooth = QtGui.QLabel(u"smoothing:", self)
@@ -191,7 +191,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 				text = u"pseudo-inverse"
 			elif self.cboxMethod.currentText() == u"least-square":
 				y = self.spec.spectrum_leastsqr(self.simulation.signal,
-					exp(-40.+.8*(self.sliderSmooth.value())))
+					self.sliderSmooth.value() / (1. + self.sliderSmooth.maximum()))
 				text = u"least-square"
 			elif self.cboxMethod.currentText() == u"blackbody":
 				T = [0., 0.]
