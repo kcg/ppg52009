@@ -1,0 +1,31 @@
+Die Traegheitsmomente sind:
+
+
+I_{\textnormal{Vollzylinder-parallel}}=1/2 \cdot R_{\textnormal{Vollzylinder}}^2 \cdot M_{\textnormal{Vollzylinder}}
+
+
+
+I_{\textnormal{Vollzylinder-senkrecht}}=1/2 \cdot R_{\textnormal{{\textnormal{Vollzylinder}}}})^2 \cdot M_{\textnormal{Vollzylinder}} +1/12 \cdot M_{\textnormal{Vollzylinder}} \cdot L_{\textnormal{Vollzylinder}}^2+a_{\textnormal{Vollzylinder}}^2 \cdot M_{\textnormal{Vollzylinder}}
+
+
+
+I_{\textnormal{Hohlzylinder}})=1/2 \cdot M \cdot (R_{\textnormal{innen}}^2)+R_{\textnormal{aussen}}^2)
+
+
+
+I_{\textnormal{duenner, langer Stab}})=1/12 \cdot M_{\textnormal{duenner, langer Stab}} \cdot L^2
+
+
+
+I_{\textnormal{Quader}})=1/12 \cdot M_{\textnormal{Quader}})= \cdot (b^2+l^2)
+
+
+
+
+Daraus ergibt sich mit den obigen Werten:
+
+
+
+I_{\textnormal{Vollzylinder-parallel}}=2.7 \cdot 10^{-5} \unit{kg\m^2}
+
+restliche Werte liegne noch im PP und kommen morgen rein.
