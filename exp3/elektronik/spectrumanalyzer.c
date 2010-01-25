@@ -24,7 +24,7 @@
 #define	SW1		PD3
 #define	SW2		PD2
 
-#define R_FAC		10.0	//TODO!!
+#define R_FAC		9.0	//TODO!!
 
 
 
@@ -218,8 +218,8 @@ int main (void)
 	uint8_t i;
 	uint8_t j;
 	
-	uint8_t mul_r		= 0;	// 1: V_ref = 1, 0: 5 V_ref = 5
-	uint8_t mul_a		= 0;	// 1: 1=1M (R) 0: 1=100kV (!R)
+	uint8_t mul_a		= 0;	// 1: V_ref = 1, 0: 5 V_ref = 5
+	uint8_t mul_r		= 1;	// 1: 1=1M (R) 0: 1=100k (!R)
 	
 	uart_puts("spectral 0.5\n\r");
 	PORTD |= (1 << LED_IO);
@@ -233,8 +233,7 @@ int main (void)
    		if (task == '!')
    		// Leds ausmessen und Werte senden
    		{
-   			uart_putc(':');
-   			for (i = 0; i <= 8; i++)
+   			for (i = 0; i < 8; i++)
    			{
    				for (in_type = 0; in_type <= 1; in_type++)
    				{
@@ -242,12 +241,12 @@ int main (void)
 					{
 						value = adc(in_type);
 					
-						if ((mul_r == 1 && mul_a == 1) && value <= 20)
+/*						if ((mul_r == 1 && mul_a == 1) && value <= 20)
 						{
 							mul_r = switch_magnitude (0);
 							// r -> 0, a -> 1
 						}
-						else if ((mul_r == 0 && mul_a == 1) && value <= 20)
+*/						if ((mul_r == 0 && mul_a == 1) && value <= 20)
 						{
 							mul_a = switch_aref (0);
 							// r -> 0, a -> 0
@@ -257,15 +256,15 @@ int main (void)
 							mul_a = switch_aref (1);
 							// r -> 0, a -> 1
 						}
-						else if ((mul_r == 0 && mul_a == 1) && value >= 1000)
+/*						else if ((mul_r == 0 && mul_a == 1) && value >= 1000)
 						{
 							mul_r = switch_magnitude (1);
 							// r -> 1, a -> 1
 						}
-						_delay_ms(1);
+*/						_delay_ms(1);
 					}	
 					val =  (float) adc(in_type);
-					if (!mul_r)	val *= R_FAC;
+//					if (!mul_r)	val *= R_FAC;
 					if (!mul_a)	val *= aref_factor;
 					uart_putf(val);
 					uart_putc(';');	
@@ -282,7 +281,7 @@ int main (void)
    		else if (task == '?')
    		// Identifikation
    		{
-   			uart_puts("spectral-analyzer 0.1 up and running\n\r");
+   			uart_puts("spectral\n\r");
    		}
 
 	} // end while
