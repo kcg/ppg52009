@@ -1,11 +1,9 @@
 #FTM-ProVis Lite Text File
-
 #Document: Raw Data 
 #Date and Time: 18.01.2010  16:33:26-979:629 
 #Measurement: I=10.0  A=1  DCC=0  N=CTS 
 #X-Data: Wavelength [nm]
 #Y-Data: Counts
-
 #Data:
 185.22	67.0
 186.06	67.0
@@ -1031,4 +1029,3 @@
 1019.28	59.0
 1020.05	61.0
 1020.83	59.0
-

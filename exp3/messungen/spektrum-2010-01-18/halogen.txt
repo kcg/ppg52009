@@ -1,12 +1,12 @@
-FTM-ProVis Lite Text File
-
-Document: spek1.pspec - [Raw Data] 
-Date and Time: 18.01.2010  16:26:56-829:202 
-Measurement: I=5.0  A=1  DCC=0  N=CTS 
-X-Data: Wavelength [nm]
-Y-Data: Counts
-
-Data:
+#FTM-ProVis Lite Text File
+#
+#Document: spek1.pspec - [Raw Data] 
+#Date and Time: 18.01.2010  16:26:56-829:202 
+#Measurement: I=5.0  A=1  DCC=0  N=CTS 
+#X-Data: Wavelength [nm]
+#Y-Data: Counts
+#
+#Data:
 185.22	72.0
 186.06	67.0
 186.89	68.0
@@ -1031,4 +1031,3 @@ Data:
 1019.28	184.0
 1020.05	181.0
 1020.83	179.0
-

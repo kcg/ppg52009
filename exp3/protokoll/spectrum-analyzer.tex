@@ -18,6 +18,8 @@
 \newcommand{\pdif}[2]{\ensuremath{\frac{\partial#1}{\partial#2}}}
 \newcommand{\ee}[1]{\ensuremath{\cdot 10^{#1}}}
 \newcommand{\hypref}[2]{\hyperref[#2]{{#1}~\ref{#2}}}
+\newcommand{\abb}[1]{\hyperref[#1]{Abb.~\ref{#1}}}
+\newcommand{\tab}[1]{\hyperref[#1]{Tabelle~\ref{#1}}}
 
 \setlength{\parindent}{1em}
 \setlength{\parskip}{0.5\baselineskip}
@@ -77,16 +79,49 @@ Bla
 
 \subsection{Aufbau und Funktionsweise einer LED}
 Die Leuchtdiode, kurz LED (für engl. "Light Emitting Diode") ist eine Halbleiter-Diode die es ermöglicht elektrische Energie in Licht verschiedener Wellenlängen umzuwandeln.\\
-Da im vorliegenden Projekt nur bedrahtete LEDs als Absorber verwendet wurden, wird im Folgenden nur der Aufbau dieser Leuchtdioden-Bauform dargestellt. Die prinzipielle Funktionsweise ist jedoch bei fast allen Bauarten identisch. Lässt man durch Anode und Kathode der LED einen Strom in Durchlassrichtung fließen, so beginnt der Halbleiter in einer von Material und Dotierung abhängigen Wellenlänge zu strahlen. Für Leuchtdioden im sichtbaren Spektralbereich, wie sie hier verwendet wurden, kommt meist eine Galliumverbindung zum Einsatz.\\
-Das Funktionsprinzip einer LED basiert auf dem Aufbau des Chips, der aus zwei verschieden dotierten Halbleiterschichten besteht. In der p-dotierten Schicht befindet sich ein Überschuss an positiven Ladungsträgern (Löcher), in der n-dotierten Schicht überwiegen negativ geladenen Teilchen (Elektronen). Wird nun ein Strom in Durchlassrichtung an den Chip angelegt, können Elektronen und Löcher am p-n-Übergang rekombinieren. Da sich die Elektronen im n-dotierten Halbleiter im Leitungsband befinden und auf das energetisch niedriger liegende Valenzband der p-dotierten Schicht wechsel, wo rekombinieren, wird ein fester Energiebetrag frei, der in Form eines Photons abgestrahlt wird. Die Energie dieses Photons entspricht der Bandlücke zwischen Valenzband und Leitungsband. Somit ergibt sich die Wellenlänge des emittierten Photons wie folgt:
+Da im vorliegenden Projekt nur bedrahtete LEDs als Absorber verwendet wurden, wird im Folgenden nur der Aufbau dieser Leuchtdioden-Bauform dargestellt. Die prinzipielle Funktionsweise ist jedoch bei fast allen Bauarten identisch. Lässt man durch Anode und Kathode der LED einen Strom in Durchlassrichtung fließen, so beginnt der Halbleiter in einer von Material und Dotierung abhängigen Wellenlänge zu strahlen. Für Leuchtdioden im sichtbaren Spektralbereich, wie sie hier verwendet wurden, kommt meist eine Galliumverbindung zum Einsatz.
+
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{images/ledaufbau.jpg}
+\end{center}
+\vspace{-1.5\baselineskip}
+\caption{Aufbau einer bedrahteten Leuchtdiode}
+\label{LED-Aufbau}
+\end{figure}
+
+Das Funktionsprinzip einer LED basiert auf dem Aufbau des Chips, der aus zwei verschieden dotierten Halbleiterschichten besteht. In der p-dotierten Schicht befindet sich ein Überschuss an positiven Ladungsträgern (Löcher), in der n-dotierten Schicht überwiegen negativ geladenen Teilchen (Elektronen). Wird nun ein Strom in Durchlassrichtung an den Chip angelegt, können Elektronen und Löcher am p-n-Übergang rekombinieren. Da sich die Elektronen im n-dotierten Halbleiter im Leitungsband befinden und auf das energetisch niedriger liegende Valenzband der p-dotierten Schicht wechseln, wo sie rekombinieren, wird ein fester Energiebetrag frei, der in Form eines Photons abgestrahlt wird. 
+
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{images/band.jpg}
+\end{center}
+\vspace{-1.5\baselineskip}
+\caption{Baenderstruktur der Halbleitergrenzschicht}
+\label{Baendermodell}
+\end{figure}
+
+Die Energie dieses Photons entspricht der Bandlücke zwischen Valenzband und Leitungsband. Somit ergibt sich die Wellenlänge des emittierten Photons wie folgt:
  \[ \lambda = \frac{h \cdot c}{\Delta E_{Bandluecke}} \]
 Dabei bezeichnet $h$ das Plancksche Wirkungsquatum und $c$ die Phasengeschwindigkeit des Lichts.
 
 \subsection{Umkehrung des Effekts - LEDs in der Absorption}
 In diesem Versuch sollten jedoch die LEDs nicht als Lichtemitter, sondern als Absorber dienen. Es wurde also versucht, die Funktionsweise der Lichtdioden umzukehren. \\
-Bei Bestrahlung der LEDs mit Licht kann eine Spannung und ein Strom am Halbleiter abgegriffen werden. Besonderes Interesse gilt der Abhängigkeit dieses Stromes von der Wellenlänge des eingestrahlten Lichtes, je nach Farbe (Emissionswellenlänge) der LED. Da die Lichtdioden auch in der Absorption wellenlängenabhängig sind, ist es möglich aus mehreren Lichtdioden, die den gesamten visuellen Spektralbereich abdecken, ein Spektrometer für optische Spektren zu konstruieren.
+Bei Bestrahlung der LEDs mit Licht kann eine Spannung und ein Strom am Halbleiter abgegriffen werden. Besonderes Interesse gilt der Abhängigkeit dieses Stromes von der Wellenlänge des eingestrahlten Lichtes, je nach Farbe (Emissionswellenlänge) der LED. Da die Leuchtdioden auch in der Absorption wellenlängenabhängig sind, ist es möglich aus mehreren LEDs, die den gesamten visuellen Spektralbereich abdecken, ein Spektrometer für optische Spektren zu konstruieren.
 
 \subsection{Vergleich von Emissions- und Absorptionsspektren}
+Es stellt sich jedoch die Frage, wie Absorptions- und Emissionsspektrum der Leuchtdiode zusammenhängen.
+Trägt man Absorptions- und Emissionskurve in einem Diagramm auf, ist gut zu erkennen, dass das Absorptionsspektrum gegenüber der Emission blauverschoben ist. Die Verschiebung $\Delta \lambda$ ist jedoch bei verschiedenen LEDs unterschiedlich stark.
+
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=0.9\textwidth]{images/absorp-emit.pdf}
+\end{center}
+\vspace{-1.5\baselineskip}
+\caption{Absorptions- (durchgezogen) und Emissionsspektren (gestrichelt) verschiedener LEDs}
+\label{Absorption und Emission von LEDs}
+\end{figure}
+
 %% Allg. was wir machen wollen, etwas Theorie 	Karl
 %% Vergleich mit den Emissionsspekren}
 
@@ -99,7 +134,18 @@ Bei Bestrahlung der LEDs mit Licht kann eine Spannung und ein Strom am Halbleite
 %%\subsubsection{Gitter, Prinzip, optischer Strahlengang} %%optischer Strahlengang ist unten eingebaut. Deshalb auch die Idee, die subsubsections weg zu lassen.
 Zur Erzeugung eines Spektrums gibt es diverse Möglichkeiten. Es stellte sich aber heraus, dass die Verwendung eines Prismas aufgrund der geringen Winkelausdehnung des erzeugten Spektrums für uns wenig lohnenswert ist. Ebenso mussten wir trotz langen Experimentierens und unter Verwendung verschiedener Linsenanordnungen auch auf ein Transmissionsgitter verzichten, da die Intensität des Spektrums nicht stark genug war. Folglich griffen wir auf ein holographisches Reflexionsgitter zurück.\\%%Gitterkonstante und Winkelausdehnung des Spektrums angeben
 %%\subsubsection{Winkelmessung} %%--- Eher "Wellenlängenbestimmung" oder dergleichen?! Da wir dadurch ja die momentan gemessene Wellenlänge bestimmen möchten
-Für die Auswertung der Messdaten ist es von grundlegender Bedeutung, zu wissen welcher Wellenlänge die gemessene Intensität zuzuordnen ist. Um dies zu erreichen wurde folgendes Vorgehen gewählt: Durch die Verwendung eines Refelxionsgitters und dessen Justierung derart, dass der Strahlengang in einer zum optischen Tisch parallelen Ebene verläuft, lässt sich die Wellenlänge durch Formel XXX leicht in den Winkel zwischen ein- und ausfallendem Strahl umrechnen. Da ein manuelles Auslesen der Intensität und dessen zugehörigem Winkel ein aussichtsloses Unterfangen darstellen würde, benutzten wir ein Drehpotentiometer zur automatischen Auswertung des momentanen Winkels. Dieses wurde so auf dem Tisch positioniert, dass die Drehachse möglichst genau unter dem Mittelpunkt des Gitters ist, also dem Punkt, an welchem sich ein- und ausfallender Strahl treffen. Desweiteren wurde der Dreharm, an dessen äußerstem Ende sich der Halter für die LEDs befindet, mit der Drehachse verbunden, sodass das Schwenken des Armes den Widerstand des Potentiometeres ändert. Anschließen wurde in $2^\circ$-Intervallen der Winkel und die Spannung am Potentiometer notiert. Wiederholtes Messen dieser Spannungs-Winkel-Abhängigkeit zeigte eine sehr gut Reproduzierbarkeit. Lediglich beim Wechsel des Drehsinns zeigte sich ein Offset, sodass entschlossen wurde alle Messungen immer mit Drehung im Uhrzeigersinn durchzuführen.\\
+Für die Auswertung der Messdaten ist es von grundlegender Bedeutung, zu wissen welcher Wellenlänge die gemessene Intensität zuzuordnen ist. Um dies zu erreichen wurde folgendes Vorgehen gewählt: Durch die Verwendung eines Refelxionsgitters und dessen Justierung derart, dass der Strahlengang in einer zum optischen Tisch parallelen Ebene verläuft, lässt sich die Wellenlänge durch Formel XXX leicht in den Winkel zwischen ein- und ausfallendem Strahl umrechnen. Da ein manuelles Auslesen der Intensität und dessen zugehörigem Winkel ein aussichtsloses Unterfangen darstellen würde, benutzten wir ein Drehpotentiometer zur automatischen Auswertung des momentanen Winkels. Dieses wurde so auf dem Tisch positioniert, dass die Drehachse möglichst genau unter dem Mittelpunkt des Gitters ist, also dem Punkt, an welchem sich ein- und ausfallender Strahl treffen. Desweiteren wurde der Dreharm, an dessen äußerstem Ende sich der Halter für die LEDs befindet, mit der Drehachse verbunden, sodass das Schwenken des Armes den Widerstand des Potentiometeres ändert.
+
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{images/setup.jpg}
+\end{center}
+\vspace{-1.5\baselineskip}
+\caption{Versuchsaufbau}
+\label{Versuchsaufbau}
+\end{figure}
+
+Anschließen wurde in $2^\circ$-Intervallen der Winkel und die Spannung am Potentiometer notiert. Wiederholtes Messen dieser Spannungs-Winkel-Abhängigkeit zeigte eine sehr gut Reproduzierbarkeit. Lediglich beim Wechsel des Drehsinns zeigte sich ein Offset, sodass entschlossen wurde alle Messungen immer mit Drehung im Uhrzeigersinn durchzuführen.\\
 Somit konnten wir die momentane Spannung am Potentiometer auslesen lassen, was uns den Winkel gibt und somit die Wellenlänge berechnen lässt.
 
 
