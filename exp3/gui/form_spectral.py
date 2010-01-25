@@ -24,6 +24,7 @@ from matplotlib.figure import Figure
 from spectral_calc import *
 from simulation import *
 from color_spectral import spectral
+import readserial
 
          
 class FormSpectral (threading.Thread, QtGui.QWidget):
@@ -33,6 +34,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 
 		self.pause_continuous = True
 		self.xrange = (345., 675.)
+		self.ser = readserial.ReadSerial()
 		
 		
 		## Fenstereigenschaften:
@@ -171,8 +173,60 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		self.draw_initial()
 
 		if self.radio_measure.isChecked():
-			# Testausgabe:
-			self.axes.plot([300,350,400,450,500,550,600,650,700],[random.random() for i in xrange(9)])
+#			# Testausgabe:
+#			self.axes.plot([300,350,400,450,500,550,600,650,700],[random.random() for i in xrange(9)])
+
+			signal = sc.array(self.ser.get_data())
+
+
+			if self.cboxMethod.currentText() == u"pseudo-inverse":
+				y = self.spec.spectrum_pinv(signal)
+				text = u"pseudo-inverse"
+			elif self.cboxMethod.currentText() == u"least-square":
+				y = self.spec.spectrum_leastsqr(signal,
+					self.sliderSmooth.value() / (1. + self.sliderSmooth.maximum()))
+				text = u"least-square"
+			elif self.cboxMethod.currentText() == u"blackbody":
+				T = [0., 0.]
+				y = self.spec.spectrum_blackbody(signal, T)
+				text = u"blackbody $T=%i\,\mathrm{K}$" % (int(T[1]), )
+			elif self.cboxMethod.currentText() == u"polynomial":
+				y = self.spec.spectrum_polynomial(self.simulation.signal)
+				text = "polynomial"
+			elif self.cboxMethod.currentText() == u"spline":
+				y = self.spec.spectrum_spline(signal)
+				text = "spline"
+			elif self.cboxMethod.currentText() == u"exact+smooth":
+				y = self.spec.spectrum_smooth(signal)
+				text = "exact and as smooth as possible"
+			elif self.cboxMethod.currentText() == u"optimize":
+				y = self.spec.spectrum_optimize(signal,
+					self.sliderSmooth.value() / float(self.sliderSmooth.maximum()))
+				text = "nonlinear optimized"
+
+			self.axes.plot(self.spec.lambdas, y, "r-", linewidth=4, label=text)
+			self.axes.set_xlim(self.xrange)
+			self.axes.legend(loc="best")
+			
+			led_label = ["375nm", "395nm", "468nm", "480nm", "503nm", "505nm", "515nm", "525nm", "540nm", "588nm", "588nm", "605nm", "620nm", "628nm", "635nm", "640nm"]
+			x = [i for i in xrange(1, self.spec.n + 1)]
+			y = signal# / self.spec.weights
+			maxi = max(signal)
+			y = y / max(y)
+			colors = []
+			for i in range(len(led_label)):
+				try:
+					j = float(led_label[i][0:3])
+					colors.append(spectral(j))
+				except ValueError:
+					colors.append(spectral(self.spec.led_colors[i]))
+			#colors = [spectral(i) for i in self.spec.led_colors]
+			self.axes2.bar(x, y, width=0.9, color=colors, align="center", label="max: "+str(round(maxi,2)))
+			self.axes2.set_xlim(.4, self.spec.n + .6)
+			self.axes2.set_xticks(range(1, self.spec.n+1), minor=False)
+			self.axes2.set_xticklabels(led_label, fontdict=None, minor=False, rotation=45)
+			self.axes2.legend(loc="best")
+			
 		else:
 			try:
 				self.simulation.make_signal(self.spec.A, self.noise_from_slider())
