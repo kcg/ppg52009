@@ -11,6 +11,7 @@ import scipy.special as sp
 import scipy.interpolate as ip
 from scipy import dot
 from file_parse import *
+from color_spectral import spectral
 
 
 class DataSpectral():
@@ -18,6 +19,8 @@ class DataSpectral():
 
 		# lies die LED Sensitivitäten in den Arbeitsspeicher 
 		leds = ["led375nm-1_1-h.dat", "led395nm-1_1-h.dat", "led465-470nm-1_2-h.dat", "led480nm-1_1-h.dat", "led500-505nm-1_1-h.dat", "led505nm-1_1-h.dat", "led515nm-1_1-h.dat", "led525nm-1_1-h.dat", "led540nm-2_1-h.dat", "led585-590nm-1_1-h.dat", "led588nm-1_1-h.dat", "led600-610nm-1_1-h.dat", "led620nm-1_1-h.dat", "led625-630nm-1_1-h.dat", "led635nm-1_1-h.dat", "led640nm-1_3-h.dat"]
+
+		self.led_label = ["375nm", "395nm", "468nm", "480nm", "503nm", "505nm", "515nm", "525nm", "540nm", "588nm", "588nm", "605nm", "620nm", "628nm", "635nm", "640nm"]
 
 		self.names = [i[3:-4] for i in leds]
 
@@ -32,7 +35,7 @@ class DataSpectral():
 		lambdas = [i[0] for i in readdata("led_spektren/" + leds[0])]
 
 		# Binning vergrößern -> schnellere Berechnung
-		bin = 7
+		bin = 5
 		B = []; l = []
 		for i in range(len(lambdas) / bin):
 			l.append(sum(lambdas[bin * i:bin * (i + 1)]) / float(bin))
@@ -46,6 +49,13 @@ class DataSpectral():
 		self.A = sc.array(A)
 		self.weights = self.A.sum(1)
 		self.led_colors = dot(self.A, self.lambdas) / self.weights
+		self.print_colors = []
+		for i in range(len(self.led_label)):
+			try:
+				j = float(self.led_label[i][0:3])
+				self.print_colors.append(spectral(j))
+			except ValueError:
+				self.print_colors.append(spectral(self.spec.led_color[i]))
 
 		# Rechne ein paar aufwändige Sachen aus, die wir später öfters brauchen
 		self.AT = self.A.T
@@ -79,7 +89,7 @@ class DataSpectral():
 		#return la.solve(self.ATA + smoothing * self.STS,
 		#	dot(self.AT, input_signal))
 		# etwas stabiler aber langsamer:
-		smooth = smooth**4 / (smooth**4 + (1. - smooth)**4)
+		smooth = smooth**5 / (smooth**5 + (1. - smooth)**5)
 		return dot(la.pinv(self.ATA * (1. - smooth) + smooth * self.m * self.STS),
 			dot(self.AT * (1. - smooth), input_signal))
 
