@@ -173,10 +173,15 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		self.axes2.clear()
 		self.draw_initial()
 
+		print "refreshing"
 		if self.radio_measure.isChecked():
 			# Modus: Messen
 			signal = sc.array(self.ser.get_data())
-			if self.dark != None:
+			print "signal =", signal
+			if signal.shape[0] != self.spec.n:
+				print u"erhalte kein vollständiges Signal!!\n"
+			if self.dark != None and self.dark.shape == signal.shape:
+				print "dark wird abgezogen"
 				signal = signal - self.dark
 		else:
 			# Modus: Simulation
@@ -192,51 +197,52 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 				"--", color="#0000ff", linewidth=4,
 				label=u"test spectrum")
 			
-
+		
 		# Spektrum Plotten
-		if self.cboxMethod.currentText() == u"pseudo-inverse":
-			y = self.spec.spectrum_pinv(signal)
-			text = u"pseudo-inverse"
-		elif self.cboxMethod.currentText() == u"least-square":
-			y = self.spec.spectrum_leastsqr(signal,
-				self.sliderSmooth.value() / (1. + self.sliderSmooth.maximum()))
-			text = u"least-square"
-		elif self.cboxMethod.currentText() == u"blackbody":
-			T = [0., 0.]
-			y = self.spec.spectrum_blackbody(signal, T)
-			text = u"blackbody $T=%i\,\mathrm{K}$" % (int(T[1]), )
-		elif self.cboxMethod.currentText() == u"polynomial":
-			y = self.spec.spectrum_polynomial(self.simulation.signal)
-			text = "polynomial"
-		elif self.cboxMethod.currentText() == u"spline":
-			y = self.spec.spectrum_spline(signal)
-			text = "spline"
-		elif self.cboxMethod.currentText() == u"exact+smooth":
-			y = self.spec.spectrum_smooth(signal)
-			text = "exact and as smooth as possible"
-		elif self.cboxMethod.currentText() == u"optimize":
-			y = self.spec.spectrum_optimize(signal,
-				self.sliderSmooth.value() / float(self.sliderSmooth.maximum()))
-			text = "nonlinear optimized"
+		if signal.shape[0] == self.spec.n:
+			if self.cboxMethod.currentText() == u"pseudo-inverse":
+				y = self.spec.spectrum_pinv(signal)
+				text = u"pseudo-inverse"
+			elif self.cboxMethod.currentText() == u"least-square":
+				y = self.spec.spectrum_leastsqr(signal,
+					self.sliderSmooth.value() / (1. + self.sliderSmooth.maximum()))
+				text = u"least-square"
+			elif self.cboxMethod.currentText() == u"blackbody":
+				T = [0., 0.]
+				y = self.spec.spectrum_blackbody(signal, T)
+				text = u"blackbody $T=%i\,\mathrm{K}$" % (int(T[1]), )
+			elif self.cboxMethod.currentText() == u"polynomial":
+				y = self.spec.spectrum_polynomial(self.simulation.signal)
+				text = "polynomial"
+			elif self.cboxMethod.currentText() == u"spline":
+				y = self.spec.spectrum_spline(signal)
+				text = "spline"
+			elif self.cboxMethod.currentText() == u"exact+smooth":
+				y = self.spec.spectrum_smooth(signal)
+				text = "exact and as smooth as possible"
+			elif self.cboxMethod.currentText() == u"optimize":
+				y = self.spec.spectrum_optimize(signal,
+					self.sliderSmooth.value() / float(self.sliderSmooth.maximum()))
+				text = "nonlinear optimized"
 
-		self.axes.plot(self.spec.lambdas, y, "r-", linewidth=4, label=text)
-		self.axes.set_xlim(self.xrange)
-		self.axes.legend(loc="best")
+			self.axes.plot(self.spec.lambdas, y, "r-", linewidth=4, label=text)
+			self.axes.set_xlim(self.xrange)
+			self.axes.legend(loc="best")
 
 
-		# Signal Plotten
-		x = [i for i in xrange(1, self.spec.n + 1)]
-		y = signal
-		# Auf unterschiedliche Gesamtintensitäten normieren
-		y = y / self.spec.weights
-		maxi = max(signal)
-		y = y / max(y)
+			# Signal Plotten
+			x = [i for i in xrange(1, self.spec.n + 1)]
+			y = signal
+			# Auf unterschiedliche Gesamtintensitäten normieren
+			y = y# / self.spec.weights
+			maxi = max(signal)
+			y = y / max(y)
 
-		self.axes2.bar(x, y, width=0.9, color=self.spec.print_colors, align="center", label="max: "+str(round(maxi,2)))
-		self.axes2.set_xlim(.4, self.spec.n + .6)
-		self.axes2.set_xticks(range(1, self.spec.n+1), minor=False)
-		self.axes2.set_xticklabels(self.spec.led_label, fontdict=None, minor=False, rotation=45)
-		self.axes2.legend(loc="best")
+			self.axes2.bar(x, y, width=0.9, color=self.spec.print_colors, align="center", label="max: "+str(round(maxi,2)))
+			self.axes2.set_xlim(.4, self.spec.n + .6)
+			self.axes2.set_xticks(range(1, self.spec.n+1), minor=False)
+			self.axes2.set_xticklabels(self.spec.led_label, fontdict=None, minor=False, rotation=45)
+			self.axes2.legend(loc="best")
 
 		self.canvas.draw()
 
