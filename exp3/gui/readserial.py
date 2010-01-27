@@ -15,8 +15,7 @@ class ReadSerial ():
 		self.adc_lower_limit	= 30
 		self.data_lenght	= 200
 		
-		self.ser = serial.Serial(0, self.baudrate, bytesize=serial.EIGHTBITS, parity=serial.PARITY_NONE, \
-			stopbits=serial.STOPBITS_ONE, timeout=1, xonxoff=0, rtscts=0)
+		self.ser = serial.Serial(0, self.baudrate, bytesize=serial.EIGHTBITS, parity=serial.PARITY_NONE, stopbits=serial.STOPBITS_ONE, timeout=1, xonxoff=0, rtscts=0)
 			
 		# Teste Hardware:	
 #		self.ser.write("?")
