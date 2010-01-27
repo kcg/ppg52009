@@ -92,6 +92,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		self.cboxMethod.addItem(u"exact+smooth")
 		self.cboxMethod.addItem(u"pseudo-inverse")
 		self.cboxMethod.addItem(u"blackbody")
+		self.cboxMethod.addItem(u"gauss")
 		self.cboxMethod.addItem(u"spline")
 		self.cboxMethod.addItem(u"polynomial")
 
@@ -263,6 +264,9 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 				y = self.spec.spectrum_optimize(signal,
 					self.sliderSmooth.value() / float(self.sliderSmooth.maximum()))
 				text = "nonlinear optimized"
+			elif self.cboxMethod.currentText() == u"gauss":
+				y = self.spec.spectrum_gauss_single(signal)
+				text = "single gauss"
 
 			self.axes.plot(self.spec.lambdas, y, "r-", linewidth=4, label=text)
 			self.axes.set_xlim(self.xrange)

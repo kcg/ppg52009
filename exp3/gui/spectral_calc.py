@@ -218,3 +218,28 @@ class DataSpectral():
 
 
 
+	def spectrum_gauss_single(self, input_signal):
+		'''
+		input_signal: Intensitätswert jeder LED (ca. 16 Werte)
+		erzeugt eine optimale Gaußkurve
+		'''
+
+		s = input_signal / self.weights
+		mean0 = dot(s, self.led_colors) / sc.sum(s, 0)
+		sigma0 = sqrt(dot(s, self.led_colors**2) / sc.sum(s, 0) - mean0 ** 2)
+		def gauss((mean, sigma, height)):
+			if sigma == 0.:
+				return sc.zeros(len(x))
+			else:
+				return height * sc.exp(- ((self.lambdas - mean) / sigma) ** 2)
+		def err((mean, sigma, height)):
+			return dot(self.A, gauss((mean, sigma, height))) - input_signal
+		g1 = gauss((mean0, sigma0, 1))
+		s2 = dot(self.A, g1)
+		height0 = dot(s2, input_signal) / dot(s2, s2)
+
+		p, success = op.leastsq(err, x0=(mean0, sigma0, height0), maxfev=80)
+		return gauss(p)
+
+
+
