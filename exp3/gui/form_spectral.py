@@ -31,13 +31,18 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		QtGui.QWidget.__init__ (self, parent)
 		threading.Thread.__init__(self)
 
+		# Generelle Initialisierungen
 		self.pause_continuous = True
 		self.xrange = (345., 675.)
 		self.ser = readserial.ReadSerial()
 		
-		
+		## Spektren Berechnung vorbereiten
+		self.spec = DataSpectral()
+		self.dark = sc.zeros(self.spec.n)
+		self.bright = self.spec.weights
+
 		## Fenstereigenschaften:
-		self.setWindowTitle('spectral analyzer 0.6')
+		self.setWindowTitle('spectral analyzer 0.7')
 		self.resize(800, 500)
 		self.center()
 		self.setWindowIcon(QtGui.QIcon('icons/spectrum.png'))
@@ -50,21 +55,26 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		self.connect(self.refresh, QtCore.SIGNAL('clicked()'), self.refresh_graph)
 		
 		self.darkframe = QtGui.QPushButton('dark frame', self)
-		self.darkframe.setFocusPolicy(QtCore.Qt.NoFocus)
 		self.connect(self.darkframe, QtCore.SIGNAL('clicked()'), self.take_dark_frame)
 		
-		self.saveplot = QtGui.QPushButton('save plot', self)
-		self.saveplot.setFocusPolicy(QtCore.Qt.NoFocus)
-		self.connect(self.saveplot, QtCore.SIGNAL('clicked()'), self.save_plot)
+		self.brightframe = QtGui.QPushButton('bright frame', self)
+		self.connect(self.brightframe, QtCore.SIGNAL('clicked()'), self.take_bright_frame)
 		
 		self.continuous = QtGui.QCheckBox('continuous mode', self)
 		self.continuous.setFocusPolicy(QtCore.Qt.NoFocus)
-		#self.continous.toggle();	# beginne aktiviert
 		self.connect(self.continuous, QtCore.SIGNAL('stateChanged(int)'), self.toggle_continuous)
+
+		self.toggle_dark = QtGui.QCheckBox('use darkframe', self)
+		self.toggle_dark.setDisabled(True)
+		self.toggle_bright = QtGui.QCheckBox('use bright frame', self)
+		self.toggle_bright.setDisabled(True)
+		self.toggle_weights = QtGui.QCheckBox('use weights', self)
+		self.toggle_weights.setChecked(True)
 
 		# Modus Auswahl
 		self.msGroup = QtGui.QGroupBox(u"mode", self)
 		self.vboxMs = QtGui.QVBoxLayout()
+		self.vboxMs.setSpacing(0)
 		self.msGroup.setLayout(self.vboxMs)
 		self.radio_measure = QtGui.QRadioButton(u"measure", self)
 		self.radio_simulate = QtGui.QRadioButton(u"simulate", self)
@@ -114,37 +124,64 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		self.fig = Figure((50.0, 50.0), dpi=self.dpi, facecolor=self.mplbg, edgecolor=self.mplbg)
 		self.canvas = FigureCanvas(self.fig)
 		self.canvas.setParent(self.graph)
+		self.canvas.setMinimumSize(160, 200)
 		self.axes = self.fig.add_axes([0.1, 0.35, 0.8, 0.6])#add_subplot(211)
 		self.axes2 = self.fig.add_axes([0.1, 0.1, 0.8, 0.15])#subplot(414) # Graph (Wellenlängen-Signal)
 		self.draw_initial()
 		
 		## Platziere Elemente:
-		self.settingsGroup = QtGui.QGroupBox('settings', self)
-		self.vboxSettings = QtGui.QVBoxLayout()
-		self.vboxSettings.addWidget(self.refresh)
-		self.vboxSettings.addWidget(self.darkframe)
-		self.vboxSettings.addWidget(self.saveplot)
-		self.vboxSettings.addWidget(self.continuous)
-		self.vboxSettings.addWidget(self.msGroup)
-		self.vboxSettings.addWidget(self.cboxMethod)
-		self.vboxSettings.addWidget(self.labelSmooth)
-		self.vboxSettings.addWidget(self.sliderSmooth)
-		self.vboxSettings.addWidget(self.simGroup)
-		self.vboxSettings.addStretch(1)
-		self.vboxSettings.addWidget(self.signature)
-		self.settingsGroup.setLayout(self.vboxSettings)
+		# Anzeigensteuerung
+		self.displayGroup = QtGui.QGroupBox('display', self)
+		self.vboxDisplay = QtGui.QVBoxLayout()
+		self.vboxDisplay.addWidget(self.refresh)
+		self.vboxDisplay.addWidget(self.darkframe)
+		self.vboxDisplay.addWidget(self.brightframe)
+		self.vboxDisplay.addWidget(self.continuous)
+		self.vboxDisplay.addWidget(self.toggle_dark)
+		self.vboxDisplay.addWidget(self.toggle_bright)
+		self.vboxDisplay.addWidget(self.toggle_weights)
+		self.vboxDisplay.addStretch(1)
+		self.displayGroup.setLayout(self.vboxDisplay)
+
+		# Rekonstruktionssteuerung
+		self.reconstructionGroup = QtGui.QGroupBox('reconstruction', self)
+		self.vboxReconstruction = QtGui.QVBoxLayout()
+		self.vboxReconstruction.addWidget(self.cboxMethod)
+		self.vboxReconstruction.addWidget(self.labelSmooth)
+		self.vboxReconstruction.addWidget(self.sliderSmooth)
+		self.vboxReconstruction.addStretch(1)
+		self.reconstructionGroup.setLayout(self.vboxReconstruction)
+
+		# Speicherbutton
+		self.saveplot = QtGui.QPushButton('save plot', self)
+		self.saveplot.setFocusPolicy(QtCore.Qt.NoFocus)
+		self.connect(self.saveplot, QtCore.SIGNAL('clicked()'), self.save_plot)
+
+
+		self.control_ScrollArea = QtGui.QScrollArea()
+		self.control_box = QtGui.QGroupBox()
+		self.control_ScrollArea.setWidget(self.control_box)
+		self.control_ScrollArea.setWidgetResizable(True)
+		self.control_ScrollArea.setMinimumSize(200, 200)
+		self.control_ScrollArea.setFrameStyle(0)
+		self.control_vbox = QtGui.QVBoxLayout()
+		self.control_vbox.setMargin(4)
+		self.control_box.setLayout(self.control_vbox)
+		self.control_vbox.addWidget(self.displayGroup)
+		self.control_vbox.addWidget(self.msGroup)
+		self.control_vbox.addWidget(self.reconstructionGroup)
+		self.control_vbox.addWidget(self.simGroup)
+		self.control_vbox.addWidget(self.saveplot)
+		self.control_vbox.addWidget(self.signature)
+		self.control_vbox.addStretch(1)
 		
 
 		self.main_hbox = QtGui.QHBoxLayout()
+		self.main_hbox.setMargin(4)
 		self.main_hbox.addStretch(1)
 		self.main_hbox.addWidget(self.canvas)
-		self.main_hbox.addWidget(self.settingsGroup)
+		self.main_hbox.addWidget(self.control_ScrollArea)
 		self.setLayout(self.main_hbox)
-
-		## Spektren Berechnung vorbereiten
-		self.spec = DataSpectral()
-
-		self.dark = None
 
 
 	def center (self):
@@ -161,7 +198,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		self.axes.set_xlabel('wavelength $\\lambda$ [nm]')
 		self.axes.set_ylabel('relative spectral power distribution')
 		
-		self.axes2.set_xlim(.4, 16 + .6)
+		self.axes2.set_xlim(.4, self.spec.n + .6)
 		self.axes2.set_xlabel('channel')
 		self.axes2.set_ylabel('relative signal')
 
@@ -172,17 +209,19 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		self.axes.clear()
 		self.axes2.clear()
 		self.draw_initial()
-
 		print "refreshing"
+
 		if self.radio_measure.isChecked():
 			# Modus: Messen
 			signal = sc.array(self.ser.get_data())
 			print "signal =", signal
 			if signal.shape[0] != self.spec.n:
-				print u"erhalte kein vollständiges Signal!!\n"
-			if self.dark != None and self.dark.shape == signal.shape:
-				print "dark wird abgezogen"
+				print u"Eingangssignal ({0}) != Absorptionskurven ({1})\n".format(signal.shape[0], self.spec.n)
+			if self.dark.shape == signal.shape and self.toggle_dark.isChecked():
 				signal = signal - self.dark
+			if self.bright.shape == signal.shape and self.toggle_bright.isChecked():
+				signal = signal / self.bright
+
 		else:
 			# Modus: Simulation
 			try:
@@ -234,7 +273,8 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 			x = [i for i in xrange(1, self.spec.n + 1)]
 			y = signal
 			# Auf unterschiedliche Gesamtintensitäten normieren
-			y = y# / self.spec.weights
+			if self.toggle_weights.isChecked():
+				y = y / self.spec.weights
 			maxi = max(signal)
 			y = y / max(y)
 
@@ -260,6 +300,12 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 	def take_dark_frame (self):
 		## nimmt Dunkelbild auf
 		self.dark = sc.array(self.ser.get_data())
+		self.toggle_dark.setEnabled(True)
+		
+	def take_bright_frame (self):
+		## nimmt Hellbild auf
+		self.bright = sc.array(self.ser.get_data())
+		self.toggle_bright.setEnabled(True)
 		
 		
 	def save_plot(self):
@@ -270,7 +316,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 
 
 	def toggle_mode_ms(self, checked):
-		if self.pause_continuous:
+		if checked and self.pause_continuous:
 			self.refresh_graph()
 
 
