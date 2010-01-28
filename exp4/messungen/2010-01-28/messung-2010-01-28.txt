@@ -1,0 +1,31 @@
+----------------------------------------------------
+Messung der Drehung des Stabs
+28.01.2010
+----------------------------------------------------
+----------------------------------------------------
+Das Stab wurde am D. 27.01.2010  aufgehängt, 
+die Messung fand am 28.01.2010 um ca. 14.15h statt.
+----------------------------------------------------
+Messwerte befinden sich in der Datei 4-speichenrad.txt
+----------------------------------------------------
+Messintervall der Lichtschranken: 20ms (lt. Cassy)
+----------------------------------------------------
+Aufgezeichnete Messwerte:
+Zeit - Ereignisse A1
+
+Die Ereigniszähler wurden vor dem Durchbrennen des Fadens auf Null zurückgestellt
+und zählt alle Durchgänge zusammen.
+----------------------------------------------------
+Lichtschranke NA1 befindet sich südlich des Aufhängungspunkts
+Lichtschranke NB1 wurde abgebaut
+----------------------------------------------------
+Die Lichtschranke wird durch das Speichenrad ausgelöst. 
+Der Abstand der Speichen beträgt 10°
+----------------------------------------------------
+Der Stab war vor dem Durchbrennen ca. in Nord-Südrichtung ausgerichtet.
+----------------------------------------------------
+Keine Magnete mehr an Stab oder Lichtschranken.
+Der Rückholmechanismus mit dem Gummizug war deaktiviert.
+----------------------------------------------------
+Sehr schnelle Drehung, mehrfacher Wechsel der Drehrichtung
+----------------------------------------------------
