@@ -43,7 +43,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 
 		## Fenstereigenschaften:
 		self.setWindowTitle('spectral analyzer 0.7')
-		self.resize(800, 500)
+		self.resize(900, 700)
 		self.center()
 		self.setWindowIcon(QtGui.QIcon('icons/spectrum.png'))
 
@@ -60,9 +60,10 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		self.brightframe = QtGui.QPushButton('bright frame', self)
 		self.connect(self.brightframe, QtCore.SIGNAL('clicked()'), self.take_bright_frame)
 		
-		self.continuous = QtGui.QCheckBox('continuous mode', self)
+		self.continuous = QtGui.QPushButton('start', self)
 		self.continuous.setFocusPolicy(QtCore.Qt.NoFocus)
-		self.connect(self.continuous, QtCore.SIGNAL('stateChanged(int)'), self.toggle_continuous)
+		self.continuous.setIcon(QtGui.QIcon('start.png'))
+		self.connect(self.continuous, QtCore.SIGNAL('clicked()'), self.toggle_continuous)
 
 		self.toggle_dark = QtGui.QCheckBox('use darkframe', self)
 		self.toggle_dark.setDisabled(True)
@@ -299,6 +300,13 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 			self.start()
 		
 		self.pause_continuous = not self.pause_continuous
+		
+		if not self.pause_continuous:
+			self.continuous.setText("stop")
+			self.continuous.setIcon(QtGui.QIcon('stop.png'))
+		else:
+			self.continuous.setText("start")
+			self.continuous.setIcon(QtGui.QIcon('start.png'))
 		
 		
 	def take_dark_frame (self):

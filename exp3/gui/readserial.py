@@ -10,12 +10,15 @@ class ReadSerial ():
 	def __init__ (self):
 	
 		self.baudrate		= 9600
-		self.read_delay 	= 2.0
+		self.read_delay 	= 0.5
 		self.adc_upper_limit	= 1000
 		self.adc_lower_limit	= 30
 		self.data_lenght	= 200
 		
-		self.ser = serial.Serial(0, self.baudrate, bytesize=serial.EIGHTBITS, parity=serial.PARITY_NONE, stopbits=serial.STOPBITS_ONE, timeout=1, xonxoff=0, rtscts=0)
+		try:
+			self.ser = serial.Serial(0, self.baudrate, bytesize=serial.EIGHTBITS, parity=serial.PARITY_NONE, stopbits=serial.STOPBITS_ONE, timeout=1, xonxoff=0, rtscts=0)
+		except:
+			print "Warning: Hardware offline... "
 			
 		# Teste Hardware:	
 #		self.ser.write("?")
