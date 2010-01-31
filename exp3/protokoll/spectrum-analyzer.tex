@@ -131,17 +131,32 @@ Tr\"agt man Absorptions- und Emissionskurve in einem Diagramm auf, ist gut zu er
 \subsection{Versuchsaufbau}
 %subsubsections wohl lieber weglassen, aber zur Meinungsbildung erst noch drinnen gelassen???	
 \subsubsection{Lichtquelle} %%Axi
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=1\textwidth]{images/quellspektren.pdf}
+\end{center}
+\vspace{-1.5\baselineskip}
+\caption{Die beiden verwendeten Weißlichtquellen im Vergleich, gemessen mit dem professionellen Spektrometer der Optiker}
+\label{fig:lichtquelle}
+\end{figure}
 Die gew\"ahlte Lichtquelle sollte ein m\"oglichst breites Spektrum mit bekannter Intensit\"atsverteilung aufweisen. Da nur wenige verl\"a\ss{}liche Angaben bez\"uglich des jeweiligen Spektrums der Lampen zu finden waren, wurde beschlo\ss{}en das Spektrum der Lichtquelle mit einem entsprechenden Ger\"at im Institut f\"ur Optik zu ermitteln.
 
 Zun\"achst wurde ein Verbund von 4 wei\ss{}en LEDs, die mit einem L\"ufter gek\"uhlt werden, als Lichtquelle f\"ur die Absorptionsmessung der sp\"ateren Mess-LEDs gew\"ahlt. Als Ergebnis der vier im Quadrat angeordneten LEDs wei\ss{}t deren aufgef\"achertes Spektrum waagrechte, dunkle Streifen auf, die von den Bereichen zwischen den LEDs stammen. Bei der Messung mu\ss{}te deshalb darauf geachtet werden, dass diese Zonen geringerer Intensit\"at zun\"achst durch Defokussieren des Aufbaus mithilfe der eingebauten Linsen verkleinert wurden und anschlie\ss{}end die LEDs die verbleibenden Streifen nicht kreuzen. Dies h\"atte entsprechende Verringerungen in der Intensit\"at des Absorptionsspektrums zur Folge, welche die Messdaten verf\"alschen w\"urden.
 
-Bei der Auswertung wurde festgestellt, da\ss{} die erste Lichtquelle sehr wenig Intensit\"at im UV-Bereich emittiert. F\"ur die weiteren Messungen diente deshalb eine 50W Halogenlampe ohne UV-Filter als Lichtquelle. Diese zeigte st\"arkere Intensit\"at im UV-Bereich. Da die Halogenlampe mit etwas erh\"ohter Stromst\"arke betrieben wurde und Temperaturen um $200\cel$ erreichen kann, war eine gute Bel\"uftung und ausreichender Abstand hitzeempfindlicher Teile auch hier wichtig.
+Bei der Auswertung wurde festgestellt, da\ss{} die Weißlicht-LED Lichtquelle sehr wenig Intensit\"at im UV-Bereich emittiert (siehe \hypref{Abb.}{fig:lichtquelle}). F\"ur die weiteren Messungen diente deshalb eine 50W Halogenlampe ohne UV-Filter als Lichtquelle. Diese zeigte st\"arkere Intensit\"at im UV-Bereich. Trotz ihrer Nennstromstärke von $4\unit{A}$ brannte die Halogenlampe erst bei $5,3\unit{A}$ durch, so dass wir sie bei $4,7\unit{A}$ betrieben um möglichst viel Intensität auch noch im UV-Bereich zu erhalten. Da die Halogenlampe durchaus Temperaturen um $200\cel$ erreichen kann, war eine gute Bel\"uftung und ausreichender Abstand hitzeempfindlicher Teile auch hier wichtig.
+
+Im Plot der Weißlichtspektren wird neben der erwarteten Intensitätsverteilung auch eine Charakteristik des Spektrometers der Optiker erkennbar, wie z.B. die Delle bei $564\unit{nm}$. Dies ist ein Problem für spätere Kalibrierungen mit diesem Spektrum, da wir eigentlich davon ausgegangen sind dass es die Spektren unverfälscht wiedergibt.
 
 \subsubsection{Strahlengang und Messaufbau} %%optischer Strahlengang ist unten eingebaut. Deshalb auch die Idee, die subsubsections weg zu lassen.
-Zur Erzeugung eines Spektrums gibt es diverse M\"oglichkeiten. Es stellte sich aber heraus, dass die Verwendung eines Prismas aufgrund der geringen Winkelausdehnung des erzeugten Spektrums f\"ur uns wenig lohnenswert ist. Ebenso mussten wir trotz langen Experimentierens und unter Verwendung verschiedener Linsenanordnungen auch auf ein Transmissionsgitter verzichten, da die Intensit\"at des Spektrums nicht stark genug war. Folglich griffen wir auf ein holographisches Reflexionsgitter zur\"uck.\\%%Gitterkonstante und Winkelausdehnung des Spektrums angeben
-%%\subsubsection{Winkelmessung} %%--- Eher "Wellenl\"angenbestimmung" oder dergleichen?! Da wir dadurch ja die momentan gemessene Wellenl\"ange bestimmen m\"ochten
-F\"ur die Auswertung der Messdaten ist es von grundlegender Bedeutung, zu wissen welcher Wellenl\"ange die gemessene Intensit\"at zuzuordnen ist. Um dies zu erreichen wurde folgendes Vorgehen gew\"ahlt: Durch die Verwendung eines Refelxionsgitters und dessen Justierung derart, dass der Strahlengang in einer zum optischen Tisch parallelen Ebene verl\"auft, l\"asst sich die Wellenl\"ange durch Formel XXX leicht in den Winkel zwischen ein- und ausfallendem Strahl umrechnen. Da ein manuelles Auslesen der Intensit\"at und dessen zugeh\"origem Winkel ein aussichtsloses Unterfangen darstellen w\"urde, benutzten wir ein Drehpotentiometer zur automatischen Auswertung des momentanen Winkels. Dieses wurde so auf dem Tisch positioniert, dass die Drehachse m\"oglichst genau unter dem Mittelpunkt des Gitters ist, also dem Punkt, an welchem sich ein- und ausfallender Strahl treffen. Desweiteren wurde der Dreharm, an dessen \"Au\ss{}erstem Ende sich der Halter f\"ur die LEDs befindet, mit der Drehachse verbunden, sodass das Schwenken des Armes den Widerstand des Potentiometeres \"andert.
+Zur Erzeugung eines Spektrums gibt es diverse M\"oglichkeiten. Es stellte sich aber heraus, dass die Verwendung eines Prismas aufgrund der geringen Winkelausdehnung des erzeugten Spektrums f\"ur uns wenig lohnenswert ist. Ebenso mussten wir trotz langen Experimentierens und unter Verwendung verschiedener Linsenanordnungen auch auf ein Transmissionsgitter verzichten, da die Intensit\"at des Spektrums nicht stark genug war. Folglich griffen wir auf ein holographisches Reflexionsgitter zur\"uck, welches mit einer Gitterkonstanten von $d=2400\unit{\text{Linien}/mm}$ ein sehr breites Spektrum erzeugt .%%Gitterkonstante und Winkelausdehnung des Spektrums angeben 2400/mm
 
+%%\subsubsection{Winkelmessung} %%--- Eher "Wellenl\"angenbestimmung" oder dergleichen?! Da wir dadurch ja die momentan gemessene Wellenl\"ange bestimmen m\"ochten
+F\"ur die Auswertung der Messdaten ist es von grundlegender Bedeutung, zu wissen welcher Wellenl\"ange die gemessene Intensit\"at zuzuordnen ist. Um dies zu erreichen wurde folgendes Vorgehen gew\"ahlt: Durch die Verwendung eines Refelxionsgitters und dessen Justierung derart, dass der Strahlengang in einer zum optischen Tisch parallelen Ebene verl\"auft, l\"asst sich die Wellenl\"ange durch \hypref{Formel}{eq:gitter} leicht in den Winkel zwischen ein- und ausfallendem Strahl $\alpha$ umrechnen mit dem Drehwinkel des Gitters $\varphi = 65,8\degr$.
+\begin{equation}
+\frac{\lambda}{d} = \sin(\varphi) - \sin(\alpha + \varphi)
+\label{eq:gitter}
+\end{equation}
+Da ein manuelles Auslesen der Intensit\"at und dessen zugeh\"origem Winkel ein aussichtsloses Unterfangen darstellen w\"urde, benutzten wir ein Drehpotentiometer zur automatischen Auswertung des momentanen Winkels. Dieses wurde so auf dem Tisch positioniert, dass die Drehachse m\"oglichst genau unter dem Mittelpunkt des Gitters ist, also dem Punkt, an welchem sich ein- und ausfallender Strahl treffen. Desweiteren wurde der Dreharm, an dessen \"Au\ss{}erstem Ende sich der Halter f\"ur die LEDs befindet, mit der Drehachse verbunden, sodass das Schwenken des Armes den Widerstand des Potentiometeres \"andert.
 \begin{figure}[ht]
 \begin{center}
 \includegraphics[width=0.8\textwidth]{images/setup.jpg}
@@ -154,13 +169,88 @@ F\"ur die Auswertung der Messdaten ist es von grundlegender Bedeutung, zu wissen
 Anschließen wurde in $2^\circ$-Intervallen der Winkel und die Spannung am Potentiometer notiert. Wiederholtes Messen dieser Spannungs-Winkel-Abhängigkeit zeigte eine sehr gut Reproduzierbarkeit. Lediglich beim Wechsel des Drehsinns zeigte sich ein Offset, sodass entschlossen wurde alle Messungen immer mit Drehung im Uhrzeigersinn durchzuführen.
 
 Somit konnten wir die momentane Spannung am Potentiometer auslesen lassen, was uns den Winkel gibt und somit die Wellenlänge berechnen lässt.
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{images/winkel_spannung.pdf}
+\end{center}
+\vspace{-1.5\baselineskip}
+\caption{Die Potentiometerspannung in Abhängigkeit vom Drehwinkel}
+\label{winkel_spannung}
+\end{figure}
+
 
 
 \subsection{Reduktion der Spektren}
-%% Fit der Winkelfunktion
-%% Entfaltung                 Basti
+Aus den aufgenommenen Rohdaten konnten wir mit Hilfe eines hierzu erstellten 500-Zeilen Python Skripts die benötigten Spektren $I(\lambda)$ berechnen.
+Die elektronisch per Computer gemessenen Daten waren Wertepaare von Potentiometerspannung und Absorptions-LED Spannung über einen Lastwiderstand von $100\unit{k\Omega}$.
 
+Als ersten Schritt wurden die Potentiometerspannungen mit Hilfe der in \hypref{Abb.}{winkel_spannung} gefundenen invertierbaren Funktion in Drehwinkel umgerechnet.
+Der Winkelbereich des optischen Spektrums lag zwischen $111\degr$ und $158\degr$ (siehe \hypref{Abb.}{Versuchsaufbau}), wo wir die Potentiometercharakteristik sehr gut vermessen hatten.
+Als nächstes wurden die Winkel mit Hilfe von \hypref{Gleichung}{eq:gitter} in Wellenlängen umgerechnet. Da der Drehwinkel $\varphi$ des Gitters allerdings schwierig zu messen war, wurde das Interferenzmaximum erster Ordnung, bei dem sich das Gitter wie ein Spiegel verhält, mit aufgezeichnet und aus dessen Lage in der Software der Drehwinkel ausgerechnet. Zusätzlich mussten die Intensitätswerte nach dem Transformationssatz skaliert werden, weil die Wellenlängen nicht gleichmäßig über den Winkelbereich verteilt sind:
+\begin{equation}
+I(\lambda) = I(\alpha(\lambda)) \;/\; \frac{\dif\lambda}{\dif\alpha}
+\end{equation}
 
+\subsubsection{Entfaltung der Spektren}
+Im nächsten Schritt wurde versucht, die Spektren zu entfalten.
+Unsere Lichtquelle war natürlich keine Punktquelle und mit dem Linsensystem gelang es auch nicht, die Glühlampe auf einen sehr kleinen Punkt abzubilden.
+Infolgedessen würde eine scharfe Spektrallinie als verwaschener Peak erscheinen und von der Absorptions-LED entsprechend aufgenommen werden. Unser gesamtes Spektrum wird somit etwas verbreitert und unscharf gemacht.
+Mathematisch gesehen ist das eine Faltung und zwar mit der Punktantwort des optischen Systems als Faltungskern.
+Unser Ziel war es also, diese Operation rückgängig zu machen, also eine Entfaltung der Spektren durchzuführen.
+
+Die Punktantwort des Systems konnte relativ einfach bestimmt werden, indem die Intensitätsverteilung um das 0. Interferenzmaximum herum gemessen wurde.
+Die Entfaltung selbst ist jedoch eine relativ schwierige Operation, da nicht unbedingt eine eindeutige Lösung existiert, und kleine Fehler im Signal überinterpretiert und zu großen Fehlern in der Lösung führen können.
+
+Somit haben wir verschiedene Algorithmen ausprobiert und auf ihre Tauglichkeit überprüft.
+Ein vielversprechender Ansatz war die "`Wiender Deconvolution"'.
+Diese nutzt aus, dass die Faltung im Fourierraum einer Multiplikation entspricht, wodurch man zum Entfalten eine Division im Fourierraum durchführen muss.
+Zur Unterdrückung von zu starken Rauscheffekten geht noch eine Abschätzung der Fehler im jeweiligen Frequenzbereich mit ein.
+Leider mussten wir aber feststellen, dass das Verfahren insgesamt nicht die erwünschten Ergebnisse liefern konnte, vor allem die verschiedenen Frequenzterme sich immer auf das ganze Spektrum auswirken.
+Das Glätten von Oszillationen an einer Stelle führte gleichzeitig auch zu Verfälschungen an spitzen Peaks.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=1\textwidth]{images/spektren_mit_halogen.pdf}
+\end{center}
+\vspace{-1.5\baselineskip}
+\caption{Reduktion der gemessenen LED-Absorptionsspektren}
+\label{fig:reduktion}
+\end{figure}
+Der zweite Ansatz führte auf Matrizen.
+Da wir ohnehin auf diskretisierten Daten arbeiten, kann man die Faltung auch als Matrix-Multiplikation interpretieren.
+Die Entfaltung entspricht dann einer Invertierung.
+Die direkte Invertierung ist aber wieder völlig unbrauchbar, da extrem starke Oszillationen entstehen.
+In der Tat wären diese eine Lösung des Entfaltungsproblems, nur eben nicht die gesuchte.
+Zur Unterdrückung der Oszillationen haben wir nun die Methode der kleinsten Quadrate instrumentalisiert.
+Nach dem bekannten Trick, an ein Matrixgleichungssystem einfach von links die transponierte Matrix anzumultiplizieren kann man noch zusätzliche Terme hinzuaddieren, die dann bei der Lösung des Systems mit minimiert werden.
+In diesem Fall addiert man die Matrix, welche für jeden $x$-Wert die Krümmung ausrechnet, so dass das System so aussieht:
+\begin{equation}
+(A^t A + K^t K)\cdot x = A^t\cdot b
+\qquad\qquad
+K = \alpha\cdot
+\begin{pmatrix} 
+  1 &	-2 &	1 &	&	\\
+  &	\ddots&	\ddots&	\ddots&	\\
+  &	&	1 &	-2 &	1
+\end{pmatrix} 
+\end{equation}
+Hierbei ist $A$ die Faltungsmatrix, die aufgrund der endlichen Faltungsbreite eine Bandstruktur aufweist, $K$ die Krümmungsmatrix mit einstellbarem Vorfaktor $\alpha$, $b$ das gemessene Spektrum und $x$ die Lösung des entfalteten Spektrums.
+Die so erzeugten Lösungen erschienen relativ brauchbar.
+Anstatt von $K$ wurden auch Matrizen probiert, die auf Terme höherer Ordnung reagieren, was aber zu keinem signifikant besserem Ergebnis geführt hat.
+Nachteilig an so einem linearen Verfahren ist natürlich, dass negative Lösungen an einigen Stellen nicht unterdrückt werden können.
+
+Am Ende zeigte sich, dass die Absorptionsspektren relativ breit sind im Vergleich zum Faltungskern.
+Der Effekt der Faltung ist also relativ gering wenn man bedenkt dass dieser auch nur an Stellen auftritt, wo die Funktion gekrümmt ist.
+Letztlich wäre es also kein großer Fehler gewesen, die Faltung komplett zu vernachlässigen und die Spektren ohne Entfaltung zu übernehmen.
+
+Zwischen den einzelnen Schritten mussten die Daten für manche Operationen auf ein äquidistantes Gitter gebinnt werden, was einfach mit linearer Interpolation durchgeführt wurde.
+Als letzten Schritt wurde berücksichtigt, dass das eingestrahlte Spektrum nicht gleichhell in allen Wellenlängen war.
+Die Spektren wurden nun einfach noch durch die Intensität der jeweiligen Lichtquelle (\hypref{Abb.}{fig:lichtquelle}) geteilt.
+Am Rand des Spektralbereichs, wo die Intensität gering war, sieht man daher auch die größten Fehler.
+Weiterhin fällt auf, dass die gemessenen Lichquellen ein bestimmtes Muster enthalten, was bei unseren Messungen aber nicht vorhanden war, und daher invers aufgeprägt wurde.
+Dieser Fehler kann fast nur an dem kommerziellen Kalibrations\-spektrometer liegen.
+
+Die Fertig reduzierten Absorptions\-spektren sind in \hypref{Abb.}{fig:reduktion} dargestellt.
 
 
 

@@ -48,23 +48,27 @@ def spectral(lamb):
 
 def readdata(filename, colsep="\t", comment="#"):
 	ifile = open(filename, "r")
-	data = []
+	data = []; l = 0
 	for linetext in ifile.readlines():
+		l += 1
 		if linetext[0] == comment:
 			continue
-		linetext = linetext[:-1]
+		linetext = linetext[:-1].strip()
+		if linetext == "": continue
 		line = linetext.split(colsep)
-		if len(line) <= 0:
-			continue
+		if len(line) <= 0: continue
 		row = []
 		for i in line:
 			try:
 				x = float(i)
 				row.append(x)
 			except ValueError:
-				print i, "is not a float"
+				print 'File "' + filename + '",',
+				print 'line ' + str(l) + ':',
+				print '"' + i + '" is not a float'
 				row.append(0.)
 		data.append(row)
+	ifile.close()
 	return(data)
 
 
@@ -98,7 +102,7 @@ for k in range(0, len(data_emitt)):
 	maximum = max(y_em[k])	# auf "1" normieren
 	y_em[k] = y_em[k]/maximum
 	
-	ax.plot(x_em[k], y_em[k], "--", color=spectral(int(col[k])) )
+	ax.plot(x_em[k], y_em[k], "--", color=spectral(int(col[k])), linewidth=4)
 	
 	
 # Absorb-Daten verarbeiten
@@ -112,16 +116,16 @@ for k in range(0, len(data_absorb)):
 	maximum = max(y_ab[k])	# auf "1" normieren
 	y_ab[k] = y_ab[k]/maximum
 	
-	ax.plot(x_ab[k], y_ab[k], "-", color=spectral(int(col[k])), label=(str(col[k])+" nm"))
+	ax.plot(x_ab[k], y_ab[k], "-", color=spectral(int(col[k])), label=(str(col[k])+" nm"), linewidth=4)
 
 
                   
-p.xlabel('Wellenlaenge $\lambda$ in [nm]')
-p.ylabel('normierte Intensitaet')
-p.xlim(300,800)
+p.xlabel(u'Wellenlänge $\lambda\; [\\mathrm{nm}]$')
+p.ylabel(u'normierte Intensität')
+p.xlim(300,740)
 p.ylim(0,1.2)
 
-p.legend(loc='best')  # Legende
+p.legend(loc='upper center', ncol=3)
 
 
 
@@ -129,6 +133,4 @@ p.legend(loc='best')  # Legende
 p.gcf().set_size_inches(9, 6)
 p.savefig("absorp-emit.pdf")
 
-# Anzeigen
-p.show()
 

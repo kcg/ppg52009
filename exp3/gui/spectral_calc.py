@@ -234,8 +234,7 @@ class DataSpectral():
 				return height * sc.exp(- ((self.lambdas - mean) / sigma) ** 2)
 		def err((mean, sigma, height)):
 			return dot(self.A, gauss((mean, sigma, height))) - input_signal
-		g1 = gauss((mean0, sigma0, 1))
-		s2 = dot(self.A, g1)
+		s2 = dot(self.A, gauss((mean0, sigma0, 1)))
 		height0 = dot(s2, input_signal) / dot(s2, s2)
 
 		p, success = op.leastsq(err, x0=(mean0, sigma0, height0), maxfev=80)

@@ -124,21 +124,22 @@ U1 = [i[1] for i in data_winkel]
 # Winkelfunktion fitten
 par1, success = optimize.leastsq(winkel_func, [1.,1.], args=(w1, U1))
 
-interval = sc.linspace(min(0, min(w1)-5.),max(w1)+5.,100)
+interval = sc.linspace(min(10, min(w1)-5.),max(w1)+5.,100)
 '''
+pl.rcParams['figure.subplot.bottom'] = 0.11
+pl.rcParams['figure.subplot.top'] = 0.96
 pl.plot(interval, [U_von_winkel(par1, a) for a in interval] , "k-", label="Fit: $%.4f + \\mathrm{exp}(%.4f\cdot\, \\alpha)$" % tuple(par1))
 pl.plot(w1, U1, "bo", label="Messung")
 
 # Speichern und zeichnen
-pl.xlabel('Winkel $ \\alpha $ in [deg]')
-pl.ylabel('Spannung $U$ in [mV]')
+pl.xlabel('Winkel $ \\alpha $ in $\\mathrm{deg}$')
+pl.ylabel('Spannung $U$ in $\\mathrm{V}$')
 pl.legend(loc='upper left')
 pl.gcf().set_size_inches(6, 4)
 pl.savefig("winkel_spannung.pdf")
 pl.show()
 pl.clf()
 '''
-
 
 
 
@@ -238,6 +239,13 @@ for sp in spektren1:
 alpha_zero = sum_wU / sum_U
 phi = 90. - alpha_zero / 2.
 print u"phi = %.1f°" % (phi,)
+
+
+
+
+# Intensitätskurven nach dem Transformationssatz skalieren (II-8)
+for i in range(len(spektren)):
+	spektren[i][1] = sc.array([spektren[i][1][j] / abs(cos(radians(spektren[i][0][j] + phi))) for j in range(len(spektren[i][0]))])
 
 
 
@@ -376,6 +384,7 @@ z.B. phi = 66°, alpha = 140°
 => lambda = d * (sin(phi) - sin(alpha+phi)) = 563nm
 '''
 def lambda_von_alpha(alpha):
+	# d in Nanometer
 	d = 1e6 / 2400.
 	return d * (sin(radians(phi)) - sin(radians(alpha + phi)))
 
@@ -395,12 +404,6 @@ for i in range(len(spektren_d)):
 	pl.plot(lambda_d, spektren_d[i], "-", color=col)
 pl.show()
 '''
-
-
-
-
-# Intensitätskurven nach dem Transformationssatz skalieren (II-8)
-# ?
 
 
 
@@ -471,7 +474,7 @@ for i in range(len(spektren_s)):
 		spektrum = ip.splev(lambda_plot, tck)
 		pl.plot(lambda_plot, spektrum, "-", color=col)
 pl.xlim(l_range[0], l_range[1])
-pl.ylim(0., .11)
+pl.ylim(0., .12)
 pl.grid(True)
 
 pl.subplot(312)
@@ -501,7 +504,7 @@ for i in range(len(spektren_fertig)):
 	pl.plot(lambda_plot, spektrum, "-", color=col)
 
 pl.xlim(l_range[0], l_range[1])
-pl.ylim(0., 2.1)
+pl.ylim(0., 2.4)
 pl.title("Reduzierte Spektren")
 pl.xlabel(u"Wellenlänge [nm]")
 pl.grid(True)

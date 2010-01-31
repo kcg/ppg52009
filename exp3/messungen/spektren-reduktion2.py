@@ -243,6 +243,13 @@ print u"phi = %.1f°" % (phi,)
 
 
 
+# Intensitätskurven nach dem Transformationssatz skalieren (II-8)
+for i in range(len(spektren)):
+	spektren[i][1] = sc.array([spektren[i][1][j] / abs(cos(radians(spektren[i][0][j] + phi))) for j in range(len(spektren[i][0]))])
+
+
+
+
 # führe Binning der Winkel ein
 bin_alpha = 0.1 # Grad
 
@@ -376,8 +383,8 @@ lambda / d = sin(phi) - sin(alpha+phi)
 z.B. phi = 66°, alpha = 140°
 => lambda = d * (sin(phi) - sin(alpha+phi)) = 563nm
 '''
+d = 1e6 / 2400.
 def lambda_von_alpha(alpha):
-	d = 1e6 / 2400.
 	return d * (sin(radians(phi)) - sin(radians(alpha + phi)))
 
 
@@ -396,12 +403,6 @@ for i in range(len(spektren_d)):
 	pl.plot(lambda_d, spektren_d[i], "-", color=col)
 pl.show()
 '''
-
-
-
-
-# Intensitätskurven nach dem Transformationssatz skalieren (II-8)
-# ?
 
 
 
@@ -472,7 +473,7 @@ for i in range(len(spektren_s)):
 		spektrum = ip.splev(lambda_plot, tck)
 		pl.plot(lambda_plot, spektrum, "-", color=col)
 pl.xlim(l_range[0], l_range[1])
-pl.ylim(0., .52)
+pl.ylim(0., .65)
 pl.grid(True)
 
 pl.subplot(312)
@@ -502,7 +503,7 @@ for i in range(len(spektren_fertig)):
 	pl.plot(lambda_plot, spektrum, "-", color=col)
 
 pl.xlim(l_range[0], l_range[1])
-pl.ylim(0., 15.5)
+pl.ylim(0., 20)
 pl.title("Reduzierte Spektren")
 pl.xlabel(u"Wellenlänge [nm]")
 pl.grid(True)
