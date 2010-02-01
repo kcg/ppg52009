@@ -89,7 +89,7 @@ Da im vorliegenden Projekt nur bedrahtete LEDs als Absorber verwendet wurden, wi
 \label{LED-Aufbau}
 \end{figure}
 
-Das Funktionsprinzip einer LED basiert auf dem Aufbau des Chips, der aus zwei verschieden dotierten Halbleiterschichten besteht. In der p-dotierten Schicht befindet sich ein Überschuss an positiven Ladungsträgern (Löcher), in der n-dotierten Schicht überwiegen negativ geladenen Teilchen (Elektronen). Wird nun ein Strom in Durchlassrichtung an den Chip angelegt, können Elektronen und Löcher am p-n-Übergang rekombinieren. Da sich die Elektronen im n-dotierten Halbleiter im Leitungsband befinden und auf das energetisch niedriger liegende Valenzband der p-dotierten Schicht wechsel, wo rekombinieren, wird ein fester Energiebetrag frei, der in Form eines Photons abgestrahlt wird.
+Das Funktionsprinzip einer LED basiert auf dem Aufbau des Chips, der aus zwei verschieden dotierten Halbleiterschichten besteht. In der p-dotierten Schicht befindet sich ein Überschuss an positiven Ladungsträgern (Löcher), in der n-dotierten Schicht überwiegen negativ geladenen Teilchen (Elektronen). Wird nun ein Strom in Durchlassrichtung an den Chip angelegt, können Elektronen und Löcher am p-n-Übergang rekombinieren. Da sich die Elektronen im n-dotierten Halbleiter im Leitungsband befinden und auf das energetisch niedriger liegende Valenzband der p-dotierten Schicht wechseln, wo sie mit den Löchern rekombinieren, wird ein fester Energiebetrag frei, der in Form eines Photons abgestrahlt wird.
 
 \begin{figure}[ht]
 \begin{center}
@@ -107,11 +107,14 @@ Dabei bezeichnet $h$ das Plancksche Wirkungsquatum und $c$ die Phasengeschwindig
 \subsection{Umkehrung des Effekts - LEDs in der Absorption}
 In diesem Versuch sollten jedoch die LEDs nicht als Lichtemitter, sondern als Absorber dienen. Es wurde also versucht, die Funktionsweise der Lichtdioden umzukehren.
 
-Bei Bestrahlung der LEDs mit Licht kann eine Spannung und ein Strom am Halbleiter abgegriffen werden. Besonderes Interesse gilt der Abhängigkeit dieses Stromes von der Wellenlänge des eingestrahlten Lichtes, je nach Farbe (Emissionswellenlänge) der LED. Da die Lichtdioden auch in der Absorption wellenlängenabhängig sind, ist es möglich aus mehreren Lichtdioden, die den gesamten visuellen Spektralbereich abdecken, ein Spektrometer für optische Spektren zu konstruieren.
+Bei Bestrahlung der LEDs mit Licht kann eine Spannung und ein Strom am Halbleiter abgegriffen werden. Besonderes Interesse gilt der Abhängigkeit dieses Stromes von der Wellenlänge des eingestrahlten Lichtes, je nach Farbe (Emissionswellenlänge) der LED. Da die Lichtdioden auch in der Absorption wellenlängenabhängig sind, ist es möglich aus mehreren Lichtdioden, die den gesamten visuellen Spektralbereich abdecken, ein Spektrometer für optische Spektren zu konstruieren.\\
+Doch was passiert bei der Bestrahlung der LED durch Licht genügender Energie? Treffen Photonen auf die n-p-Grenzschicht des Halbleiterchips, werden dort Elektron-Loch-Paare erzeugt. Durch die Diffusionsspannung wandern die Elektronen in die p-dotierte Schicht, die positiven Löcher in die n-dotierte Zone, wodurch ein Stromfluss entsteht.
 
 \subsection{Vergleich von Emissions- und Absorptionsspektren}
 Es stellt sich jedoch die Frage, wie Absorptions- und Emissionsspektrum der Leuchtdiode zusammenh\"angen.
-Tr\"agt man Absorptions- und Emissionskurve in einem Diagramm auf, ist gut zu erkennen, dass das Absorptionsspektrum gegen\"uber der Emission blauverschoben ist (\hypref{Abb.}{Absorption und Emission von LEDs}). Die Verschiebung $\Delta \lambda$ ist jedoch bei verschiedenen LEDs unterschiedlich stark.
+Es ist zu erwarten, dass die LED in der Absorption erst eine Spannung liefert, wenn die Energie der eingestrahlten Photonen mindestens dem Bandlückenabstand entspricht.
+Tr\"agt man Absorptions- und Emissionskurve in einem Diagramm auf, ist gut zu erkennen, dass das Absorptionsspektrum gegen\"uber der Emission blauverschoben ist (\hypref{Abb.}{Absorption und Emission von LEDs}), und somit die LED erst auf das eingestrahlte Licht reagiert, wenn die Energie der Bandlücke weit überschritten ist. Quantitativ fällt die Verschiebung $\Delta \lambda$ bei verschiedenen LEDs jedoch unterschiedlich stark aus.
+Ein konkreter Zusammenhang zur Wellenlänge der Leuchtdiode oder zum Halbleitermaterial konnte jedoch nicht gefunden werden.
 
 \begin{figure}[ht]
 \begin{center}
@@ -166,18 +169,26 @@ Da ein manuelles Auslesen der Intensit\"at und dessen zugeh\"origem Winkel ein a
 \label{Versuchsaufbau}
 \end{figure}
 
-Anschließen wurde in $2^\circ$-Intervallen der Winkel und die Spannung am Potentiometer notiert. Wiederholtes Messen dieser Spannungs-Winkel-Abhängigkeit zeigte eine sehr gut Reproduzierbarkeit. Lediglich beim Wechsel des Drehsinns zeigte sich ein Offset, sodass entschlossen wurde alle Messungen immer mit Drehung im Uhrzeigersinn durchzuführen.
+Anschließen wurde in $2^\circ$-Intervallen der Winkel und die Spannung am Potentiometer notiert. Wiederholtes Messen dieser Spannungs-Winkel-Abhängigkeit zeigte eine sehr gut Reproduzierbarkeit. Lediglich beim Wechsel des Drehsinns zeigte sich ein Offset, so dass entschlossen wurde alle Messungen immer mit Drehung im Uhrzeigersinn durchzuführen.
 
 Somit konnten wir die momentane Spannung am Potentiometer auslesen lassen, was uns den Winkel gibt und somit die Wellenlänge berechnen lässt.
 \begin{figure}[ht]
 \begin{center}
-\includegraphics[width=0.8\textwidth]{images/winkel_spannung.pdf}
+\includegraphics[width=0.8\textwidth]{images/poti-reflexgitter.jpg}
+\end{center}
+\vspace{-1.5\baselineskip}
+\caption{Das Reflexionsgitter zur Erzeugung des Spektrums und das Potentiometer zur Winkelmessung}
+\label{winkel_spannung}
+\end{figure}
+
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{images/winkel_spannung_grob.pdf}
 \end{center}
 \vspace{-1.5\baselineskip}
 \caption{Die Potentiometerspannung in Abhängigkeit vom Drehwinkel}
 \label{winkel_spannung}
 \end{figure}
-
 
 
 \subsection{Reduktion der Spektren}
