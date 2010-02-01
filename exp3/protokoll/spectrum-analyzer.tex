@@ -202,10 +202,10 @@ Die Punktantwort des Systems konnte relativ einfach bestimmt werden, indem die I
 Die Entfaltung selbst ist jedoch eine relativ schwierige Operation, da nicht unbedingt eine eindeutige Lösung existiert, und kleine Fehler im Signal überinterpretiert und zu großen Fehlern in der Lösung führen können.
 
 Somit haben wir verschiedene Algorithmen ausprobiert und auf ihre Tauglichkeit überprüft.
-Ein vielversprechender Ansatz war die "`Wiender Deconvolution"'.
+Ein vielversprechender Ansatz war die "`Wiener Deconvolution"'.
 Diese nutzt aus, dass die Faltung im Fourierraum einer Multiplikation entspricht, wodurch man zum Entfalten eine Division im Fourierraum durchführen muss.
 Zur Unterdrückung von zu starken Rauscheffekten geht noch eine Abschätzung der Fehler im jeweiligen Frequenzbereich mit ein.
-Leider mussten wir aber feststellen, dass das Verfahren insgesamt nicht die erwünschten Ergebnisse liefern konnte, vor allem die verschiedenen Frequenzterme sich immer auf das ganze Spektrum auswirken.
+Leider mussten wir aber feststellen, dass das Verfahren insgesamt nicht die erwünschten Ergebnisse liefern konnte, vor allem weil die verschiedenen Frequenzterme sich immer auf das ganze Spektrum auswirken.
 Das Glätten von Oszillationen an einer Stelle führte gleichzeitig auch zu Verfälschungen an spitzen Peaks.
 
 \begin{figure}[H]
@@ -223,7 +223,7 @@ Die direkte Invertierung ist aber wieder völlig unbrauchbar, da extrem starke O
 In der Tat wären diese eine Lösung des Entfaltungsproblems, nur eben nicht die gesuchte.
 Zur Unterdrückung der Oszillationen haben wir nun die Methode der kleinsten Quadrate instrumentalisiert.
 Nach dem bekannten Trick, an ein Matrixgleichungssystem einfach von links die transponierte Matrix anzumultiplizieren kann man noch zusätzliche Terme hinzuaddieren, die dann bei der Lösung des Systems mit minimiert werden.
-In diesem Fall addiert man die Matrix, welche für jeden $x$-Wert die Krümmung ausrechnet, so dass das System so aussieht:
+In diesem Fall addiert man die Matrix, welche für jeden $x$-Wert die Krümmung ausrechnet, so dass das System wie folgt aussieht:
 \begin{equation}
 (A^t A + K^t K)\cdot x = A^t\cdot b
 \qquad\qquad

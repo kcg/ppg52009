@@ -83,7 +83,8 @@ for lampe in ["LED", "halogen"]:
 	for i in range(1, len(lampe_lambda)):
 		c1 = spectral(lampe_lambda[i-1])
 		c2 = (c1[0] * c1[3], c1[1] * c1[3], c1[2] * c1[3])
-		a.plot(lampe_lambda[i-1:i+1], lampe_I[i-1:i+1], "-", linewidth=2, color=c2)
+		if lampe_lambda[i] >= 350. and lampe_lambda[i-1] <= 750.:
+			a.plot(lampe_lambda[i-1:i+1], lampe_I[i-1:i+1], "-", linewidth=2, color=c2)
 
 
 a.annotate(u'Weiße LED', xy=(630, 0.15), horizontalalignment='left', verticalalignment='bottom', fontsize=16)
