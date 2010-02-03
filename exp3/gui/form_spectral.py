@@ -43,7 +43,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 
 		## Fenstereigenschaften:
 		self.setWindowTitle('spectral analyzer 0.7')
-		self.resize(900, 700)
+		self.resize(950, 680)
 		self.center()
 		self.setWindowIcon(QtGui.QIcon('icons/spectrum.png'))
 
@@ -62,7 +62,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		
 		self.continuous = QtGui.QPushButton('start', self)
 		self.continuous.setFocusPolicy(QtCore.Qt.NoFocus)
-		self.continuous.setIcon(QtGui.QIcon('start.png'))
+		self.continuous.setIcon(QtGui.QIcon('icons/start.png'))
 		self.connect(self.continuous, QtCore.SIGNAL('clicked()'), self.toggle_continuous)
 
 		self.toggle_dark = QtGui.QCheckBox('use darkframe', self)
@@ -81,7 +81,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		self.radio_simulate = QtGui.QRadioButton(u"simulate", self)
 		self.vboxMs.addWidget(self.radio_measure)
 		self.vboxMs.addWidget(self.radio_simulate)
-		self.radio_simulate.setChecked(True)
+		self.radio_measure.setChecked(True)
 		self.connect(self.radio_measure, QtCore.SIGNAL('toggled(bool)'), self.toggle_mode_ms)
 		self.connect(self.radio_simulate, QtCore.SIGNAL(
 			'toggled(bool)'), self.toggle_mode_ms)
@@ -311,10 +311,10 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		
 		if not self.pause_continuous:
 			self.continuous.setText("stop")
-			self.continuous.setIcon(QtGui.QIcon('stop.png'))
+			self.continuous.setIcon(QtGui.QIcon('icons/stop.png'))
 		else:
 			self.continuous.setText("start")
-			self.continuous.setIcon(QtGui.QIcon('start.png'))
+			self.continuous.setIcon(QtGui.QIcon('icons/start.png'))
 		
 		
 	def take_dark_frame (self):

@@ -7,6 +7,7 @@ import os
 from math import *
 import scipy.interpolate
 from matplotlib import colors as clr
+import random
 
 
 
@@ -90,14 +91,14 @@ for fname in filenames:
 
 	try:
 		x = float(fname[3:6])
-		col = spectral(x)
+#		col = spectral(x)
 	except ValueError:
 		col = "#000000"
-	pylab.plot(U, I, "-", color=col, label=fname[3:-4])
+	pylab.plot(U, I, random.choice(["--","-","-.",":",]),linewidth=1+random.randint(1,4), label=fname[3:-4])
 
 pylab.xlabel(u"Poti Spannung")
 pylab.ylabel(u"LED Spannung")
-pylab.rcParams.update({'font.size' : 6})
-pylab.legend(loc=u"best")
+pylab.rcParams.update({'font.size' : 10})
+pylab.legend(loc=u"best", ncol=5)
 pylab.show()
 
