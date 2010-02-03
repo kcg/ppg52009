@@ -277,6 +277,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 			if peak > 0. and self.radio_measure.isChecked():
 				y /= peak				
 
+			# Spektrum zeichnen
 			self.axes.plot(self.spec.lambdas, y, "r-", linewidth=4, label=text)
 			self.axes.set_xlim(self.xrange)
 			self.axes.legend(loc="best")
@@ -289,8 +290,10 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 			if self.toggle_weights.isChecked():
 				y = y / self.spec.weights
 			maxi = max(signal)
-			y = y / max(y)
+			if max(y) > 0:
+				y = y / max(y)
 
+			# Balkendiagramm zeichnen
 			self.axes2.bar(x, y, width=0.9, color=self.spec.print_colors, align="center", label="max: "+str(round(maxi,2)))
 			self.axes2.set_xlim(.4, self.spec.n + .6)
 			self.axes2.set_xticks(range(1, self.spec.n+1), minor=False)
