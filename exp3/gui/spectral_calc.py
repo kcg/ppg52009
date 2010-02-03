@@ -239,7 +239,7 @@ class DataSpectral():
 			return gauss(p)
 		except (ValueError, ZeroDivisionError):
 			print "error fitting gauss"
-			return sc.zeros(len(x))
+			return sc.zeros(self.m)
 
 
 

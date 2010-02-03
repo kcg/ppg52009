@@ -218,9 +218,14 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 			print "signal =", signal
 			if signal.shape[0] != self.spec.n:
 				print u"Eingangssignal ({0}) != Absorptionskurven ({1})\n".format(signal.shape[0], self.spec.n)
-			if self.dark.shape == signal.shape and self.toggle_dark.isChecked():
+
+			dark = (self.dark.shape == signal.shape and self.toggle_dark.isChecked())
+			bright = (self.bright.shape == signal.shape and self.toggle_bright.isChecked())
+			if dark and bright:
+				signal = (signal - self.dark) / (self.bright - self.dark)
+			elif dark:
 				signal = signal - self.dark
-			if self.bright.shape == signal.shape and self.toggle_bright.isChecked():
+			elif bright:
 				signal = signal / self.bright
 
 		else:
