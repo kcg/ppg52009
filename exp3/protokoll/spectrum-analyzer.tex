@@ -236,7 +236,7 @@ Zur Unterdrückung der Oszillationen haben wir nun die Methode der kleinsten Qua
 Nach dem bekannten Trick, an ein Matrixgleichungssystem einfach von links die transponierte Matrix anzumultiplizieren kann man noch zusätzliche Terme hinzuaddieren, die dann bei der Lösung des Systems mit minimiert werden.
 In diesem Fall addiert man die Matrix, welche für jeden $x$-Wert die Krümmung ausrechnet, so dass das System wie folgt aussieht:
 \begin{equation}
-(A^t A + K^t K)\cdot x = A^t\cdot b
+A\cdot x = b
 \qquad\qquad
 K = \alpha\cdot
 \begin{pmatrix} 
@@ -244,6 +244,10 @@ K = \alpha\cdot
   &	\ddots&	\ddots&	\ddots&	\\
   &	&	1 &	-2 &	1
 \end{pmatrix} 
+\end{equation}
+\begin{equation}
+\Rightarrow\qquad
+b \approx (A^t A + K^t K)^{-1}\cdot  A^t b
 \end{equation}
 Hierbei ist $A$ die Faltungsmatrix, die aufgrund der endlichen Faltungsbreite eine Bandstruktur aufweist, $K$ die Krümmungsmatrix mit einstellbarem Vorfaktor $\alpha$, $b$ das gemessene Spektrum und $x$ die Lösung des entfalteten Spektrums.
 Die so erzeugten Lösungen erschienen relativ brauchbar.

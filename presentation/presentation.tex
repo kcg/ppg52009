@@ -4,7 +4,7 @@
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{ragged2e}
-\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 \usepackage{sidecap}
 
@@ -99,13 +99,41 @@ schaltplan
 \frame
 {
 \frametitle{Software}
-flussdiagramm
+\begin{block}{Python Programm zur Auswertung und Anzeige der Spektren}
+\begin{itemize}
+\item Einlesen der Messwerte "uber die serielle Schnittstelle
+\item Berechnung des Spektrums:\\[.5\baselineskip]
+Finde Spektrum $\vec{\lambda}$ mit
+\[
+\begin{pmatrix}
+\text{Absorptionskurve ~1}\\
+\vdots\\
+\text{Absorptionskurve 16}
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+\lambda_1\\
+\vdots\\
+\vdots\\
+\lambda_k
+\end{pmatrix}
+=
+\begin{pmatrix}
+\text{Signal ~1}\\
+\vdots\\
+\text{Signal 16}
+\end{pmatrix}
+\]
+
+\item Grafische Ausgabe
+\end{itemize}
+\end{block}
 }
-\subsection[]{Ergebnisse}
+\subsection[]{Messung}
 \frame
 {
-\frametitle{Ergebnisse}
-laberlaber
+\frametitle{Messung}
+Mit dem Spektrometer lassen sich verschiedene Lichtquellen vermessen.
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
