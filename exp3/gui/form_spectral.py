@@ -211,7 +211,6 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		self.axes.clear()
 		self.axes2.clear()
 		self.draw_initial()
-		print "refreshing"
 
 		if self.radio_measure.isChecked():
 			# Modus: Messen
@@ -268,6 +267,10 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 			elif self.cboxMethod.currentText() == u"gauss":
 				y = self.spec.spectrum_gauss_single(signal)
 				text = "single gauss"
+
+			peak = max(y)
+			if peak > 0. and self.radio_measure.isChecked():
+				y /= peak				
 
 			self.axes.plot(self.spec.lambdas, y, "r-", linewidth=4, label=text)
 			self.axes.set_xlim(self.xrange)

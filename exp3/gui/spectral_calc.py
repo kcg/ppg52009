@@ -224,6 +224,7 @@ class DataSpectral():
 		erzeugt eine optimale Gaußkurve
 		'''
 
+>>>>>>>>>>>>>>>>>>>> File 1
 		s = input_signal / self.weights
 		if sc.sum(s, 0) <= 0.:
 			mean0 = 500.
@@ -239,7 +240,23 @@ class DataSpectral():
 			if sigma == 0.:
 				return sc.zeros(len(x))
 			else:
+>>>>>>>>>>>>>>>>>>>> File 2
+		s = input_signal / self.weights
+		mean0 = dot(s, self.led_colors) / sc.sum(s, 0)
+		sigma0 = sqrt(dot(s, self.led_colors**2) / sc.sum(s, 0) - mean0 ** 2)
+		def gauss((mean, sigma, height)):
+			if sigma == 0.:
+				return sc.zeros(len(x))
+			else:
+>>>>>>>>>>>>>>>>>>>> File 3
+		try:
+			s = input_signal / self.weights
+			mean0 = dot(s, self.led_colors) / sc.sum(s, 0)
+			sigma0 = sqrt(dot(s, self.led_colors**2) / sc.sum(s, 0) - mean0 ** 2)
+			def gauss((mean, sigma, height)):
+<<<<<<<<<<<<<<<<<<<<
 				return height * sc.exp(- ((self.lambdas - mean) / sigma) ** 2)
+>>>>>>>>>>>>>>>>>>>> File 1
 		def err((mean, sigma, height)):
 			return dot(self.A, gauss((mean, sigma, height))) - input_signal
 		s2 = dot(self.A, gauss((mean0, sigma0, 1)))
@@ -250,6 +267,26 @@ class DataSpectral():
 
 		p, success = op.leastsq(err, x0=(mean0, sigma0, height0), maxfev=80)
 		return gauss(p)
+>>>>>>>>>>>>>>>>>>>> File 2
+		def err((mean, sigma, height)):
+			return dot(self.A, gauss((mean, sigma, height))) - input_signal
+		s2 = dot(self.A, gauss((mean0, sigma0, 1)))
+		height0 = dot(s2, input_signal) / dot(s2, s2)
+
+		p, success = op.leastsq(err, x0=(mean0, sigma0, height0), maxfev=80)
+		return gauss(p)
+>>>>>>>>>>>>>>>>>>>> File 3
+			def err((mean, sigma, height)):
+				return dot(self.A, gauss((mean, sigma, height))) - input_signal
+			s2 = dot(self.A, gauss((mean0, sigma0, 1)))
+			height0 = dot(s2, input_signal) / dot(s2, s2)
+
+			p, success = op.leastsq(err, x0=(mean0, sigma0, height0), maxfev=80)
+			return gauss(p)
+		except (ValueError, ZeroDivisionError):
+			print "error fitting gauss"
+			return sc.zeros(len(x))
+<<<<<<<<<<<<<<<<<<<<
 
 
 
