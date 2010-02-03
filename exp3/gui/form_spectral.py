@@ -43,7 +43,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 
 		## Fenstereigenschaften:
 		self.setWindowTitle('spectral analyzer 0.7')
-		self.resize(900, 700)
+		self.resize(950, 680)
 		self.center()
 		self.setWindowIcon(QtGui.QIcon('icons/spectrum.png'))
 
@@ -81,7 +81,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		self.radio_simulate = QtGui.QRadioButton(u"simulate", self)
 		self.vboxMs.addWidget(self.radio_measure)
 		self.vboxMs.addWidget(self.radio_simulate)
-		self.radio_simulate.setChecked(True)
+		self.radio_measure.setChecked(True)
 		self.connect(self.radio_measure, QtCore.SIGNAL('toggled(bool)'), self.toggle_mode_ms)
 		self.connect(self.radio_simulate, QtCore.SIGNAL(
 			'toggled(bool)'), self.toggle_mode_ms)

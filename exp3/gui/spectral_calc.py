@@ -225,8 +225,16 @@ class DataSpectral():
 		'''
 
 		s = input_signal / self.weights
-		mean0 = dot(s, self.led_colors) / sc.sum(s, 0)
-		sigma0 = sqrt(dot(s, self.led_colors**2) / sc.sum(s, 0) - mean0 ** 2)
+		if sc.sum(s, 0) <= 0.:
+			mean0 = 500.
+			sigma0 = 100.
+		else:
+			mean0 = dot(s, self.led_colors) / sc.sum(s, 0)
+			sig = dot(s, self.led_colors**2) / sc.sum(s, 0) - mean0 ** 2
+			if sig <= 0.:
+				sigma0 = sqrt(dot(s, self.led_colors**2) / sc.sum(s, 0) - mean0 ** 2)
+			else:
+				sigma0 = 100.
 		def gauss((mean, sigma, height)):
 			if sigma == 0.:
 				return sc.zeros(len(x))
@@ -235,7 +243,10 @@ class DataSpectral():
 		def err((mean, sigma, height)):
 			return dot(self.A, gauss((mean, sigma, height))) - input_signal
 		s2 = dot(self.A, gauss((mean0, sigma0, 1)))
-		height0 = dot(s2, input_signal) / dot(s2, s2)
+		if dot(s2, s2) == 0.:
+			height0 = 1.
+		else:
+			height0 = dot(s2, input_signal) / dot(s2, s2)
 
 		p, success = op.leastsq(err, x0=(mean0, sigma0, height0), maxfev=80)
 		return gauss(p)

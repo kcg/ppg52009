@@ -1,6 +1,6 @@
 // SPEKTRUM ANALYZER
 // Controller: Atmega8; Taktrate: extern, 14.75 MHz Quarz; Baudrate: 9600
-// Version: 10012010
+// Version: 28012010
 
 #include "avr/io.h"
 #include <avr/interrupt.h>
@@ -8,7 +8,7 @@
 
 #define F_CPU 14745600UL 		// 14.75 MHz Quarz
 #include <util/delay.h>
-
+ 
 #define UART_UBRR_CALC(BAUD_,FREQ_) ((FREQ_)/((BAUD_)*16L)-1) 
 #define UART_BAUD_RATE		9600
 #define UART_BUFFER		10
@@ -18,15 +18,10 @@
 #define LED_ADC_1	1
 #define AREF_ADC	5
 #define SW_AREF		PD6
-#define SW_R		PD5
 #define LED_IO		PD7
 #define	SW0		PD4
 #define	SW1		PD3
 #define	SW2		PD2
-
-#define R_FAC		9.0	//TODO!!
-
-
 
 uint8_t uart_buffer[UART_BUFFER]; 
 int8_t	uart_count  = 0;
@@ -105,20 +100,6 @@ uint16_t adc (uint8_t admux)
 	return val;
 }
 
-uint8_t switch_magnitude (uint8_t state)
-// Schaltet den globalen Verstärkungsfaktor (R)
-{
-	if (state == 0)
-	{
-		PORTD &= ~(1 << SW_R);
-		_delay_ms(1);
-		return 0;
-	}
-	PORTD |= (1 << SW_R);
-	_delay_ms(1);
-	return 1;
-}
-
 uint8_t switch_aref (uint8_t state)
 // Schaltet zwischen den AREF-Spannungen
 {
@@ -185,7 +166,6 @@ inline float get_aref_factor (uint8_t aref_state)
 // gibt den Verstärkungsfaktor (AREF) zurück
 {
 	switch_aref (1);
-	_delay_ms(1);
 	float value0 = adc(AREF_ADC);
 	return (1024.0 / value0);
 	switch_aref(aref_state);
@@ -194,9 +174,7 @@ inline float get_aref_factor (uint8_t aref_state)
 void init (void)
 // initialisiere alle Ein/Ausgänge
 {
-	// Ausgänge aktivieren;
 	DDRD |= (1 << SW_AREF);
-	DDRD |= (1 << SW_R);
 	DDRD |= (1 << LED_IO);
 	DDRD |= (1 << SW0);
 	DDRD |= (1 << SW1);
@@ -209,21 +187,17 @@ void init (void)
 int main (void)
 {
 	init();
-	
 	uint8_t task;
 	float aref_factor	= get_aref_factor(1);
-	float val;
+	float val = 0;
 	uint8_t in_type		= 0;
 	uint8_t value		= 0;
 	uint8_t i;
-	uint8_t j;
 	
-	uint8_t mul_a		= 0;	// 1: V_ref = 1, 0: 5 V_ref = 5
-	uint8_t mul_r		= 1;	// 1: 1=1M (R) 0: 1=100k (!R)
+	uint8_t mul_a		= 0;	// 1: V_ref = 5, 0: V_ref = 1
 	
-	uart_puts("spectral 0.5\n\r");
+	// aktiviere Status-Led
 	PORTD |= (1 << LED_IO);
-	
 	
 	while (1)
    	{
@@ -235,37 +209,21 @@ int main (void)
    		{
    			for (i = 0; i < 8; i++)
    			{
+   				switch_led (i);
    				for (in_type = 0; in_type <= 1; in_type++)
    				{
-					for (j = 0; j < 2; j++)
+   					value = adc(in_type);
+					if (mul_a == 1 && value <= 20)
 					{
-						value = adc(in_type);
-					
-/*						if ((mul_r == 1 && mul_a == 1) && value <= 20)
-						{
-							mul_r = switch_magnitude (0);
-							// r -> 0, a -> 1
-						}
-*/						if ((mul_r == 0 && mul_a == 1) && value <= 20)
-						{
-							mul_a = switch_aref (0);
-							// r -> 0, a -> 0
-						}
-						else if ((mul_r == 0 && mul_a == 0) && value >= 1000)
-						{
-							mul_a = switch_aref (1);
-							// r -> 0, a -> 1
-						}
-/*						else if ((mul_r == 0 && mul_a == 1) && value >= 1000)
-						{
-							mul_r = switch_magnitude (1);
-							// r -> 1, a -> 1
-						}
-*/						_delay_ms(1);
-					}	
+						mul_a = switch_aref (0);
+					}
+					else if (mul_a == 0 && value >= 1000)
+					{
+						mul_a = switch_aref (1);
+					}
+
 					val =  (float) adc(in_type);
-//					if (!mul_r)	val *= R_FAC;
-					if (!mul_a)	val *= aref_factor;
+					if (mul_a)	val *= aref_factor;
 					uart_putf(val);
 					uart_putc(';');	
 				}
@@ -281,8 +239,7 @@ int main (void)
    		else if (task == '?')
    		// Identifikation
    		{
-   			uart_puts("spectral\n\r");
+   			uart_puts("spectral-analyzer up and running\n\r");
    		}
-
 	} // end while
 } // end main
