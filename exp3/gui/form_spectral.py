@@ -62,7 +62,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		
 		self.continuous = QtGui.QPushButton('start', self)
 		self.continuous.setFocusPolicy(QtCore.Qt.NoFocus)
-		self.continuous.setIcon(QtGui.QIcon('start.png'))
+		self.continuous.setIcon(QtGui.QIcon('icons/start.png'))
 		self.connect(self.continuous, QtCore.SIGNAL('clicked()'), self.toggle_continuous)
 
 		self.toggle_dark = QtGui.QCheckBox('use darkframe', self)
@@ -306,10 +306,10 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		
 		if not self.pause_continuous:
 			self.continuous.setText("stop")
-			self.continuous.setIcon(QtGui.QIcon('stop.png'))
+			self.continuous.setIcon(QtGui.QIcon('icons/stop.png'))
 		else:
 			self.continuous.setText("start")
-			self.continuous.setIcon(QtGui.QIcon('start.png'))
+			self.continuous.setIcon(QtGui.QIcon('icons/start.png'))
 		
 		
 	def take_dark_frame (self):
