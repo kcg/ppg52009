@@ -315,6 +315,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 			# Balkendiagramm zeichnen
 			self.axes2.bar(x, y, width=0.9, color=self.spec.print_colors, align="center")
 			self.axes2.set_xlim(.4, self.spec.n0 + .6)
+			self.axes2.set_ylim(max(-.5, 1.1 * min(y)), 1.1*max(y))
 			self.axes2.set_xticks(range(1, self.spec.n0+1), minor=False)
 			self.axes2.set_xticklabels(self.spec.led_label, fontdict=None, minor=False, rotation=45)
 			self.axes2.legend(loc="best")
@@ -362,7 +363,6 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 			# Nimm Kalibrierung mit Schwarzkörperlampe an
 			theoretical_signal = sc.dot(self.spec.A0, self.spec.blackbody(3000.))
 			bright /= theoretical_signal / theoretical_signal.mean()
-			print theoretical_signal / theoretical_signal.mean()
 			bright += self.spec.dark
 			self.spec.bright = bright
 			brightfile = open("led_spektren/bright.dat", "w")
