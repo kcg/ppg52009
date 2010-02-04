@@ -17,14 +17,13 @@ from color_spectral import spectral
 class DataSpectral():
 	def __init__ (self):
 
-		# lies die LED Sensitivitäten in den Arbeitsspeicher 
-		leds = ["led375nm-1_1-h.dat", "led395nm-1_1-h.dat", "led465-470nm-1_2-h.dat", "led480nm-1_1-h.dat", "led500-505nm-1_1-h.dat", "led505nm-1_1-h.dat", "led515nm-1_1-h.dat", "led525nm-1_1-h.dat", "led540nm-2_1-h.dat", "led585-590nm-1_1-h.dat", "led588nm-1_1-h.dat", "led600-610nm-1_1-h.dat", "led620nm-1_1-h.dat", "led625-630nm-1_1-h.dat", "led635nm-1_1-h.dat", "led640nm-1_3-h.dat"]
-
-		self.led_label = ["375nm", "395nm", "468nm", "480nm", "503nm", "505nm", "515nm", "525nm", "540nm", "588nm", "588nm", "605nm", "620nm", "628nm", "635nm", "640nm"]
-
+		# lies die LED Sensitivitäten in den Arbeitsspeicher
+		ledlist = readdata("led_spektren/list.dat", getFloats=False)
+		leds = [i[0] for i in ledlist]
+		self.led_label = [i[1] for i in ledlist]
 		self.names = [i[3:-4] for i in leds]
 
-		self.n = len(leds)
+		self.n0 = len(leds)
 		A = []
 		for led in leds:
 			data = readdata("led_spektren/" + led)
@@ -39,36 +38,73 @@ class DataSpectral():
 		B = []; l = []
 		for i in range(len(lambdas) / bin):
 			l.append(sum(lambdas[bin * i:bin * (i + 1)]) / float(bin))
-			B.append(sc.reshape(sc.mean(A[:,bin * i:bin * (i + 1)], 1), (self.n, 1)))
+			B.append(sc.reshape(sc.mean(A[:,bin * i:bin * (i + 1)], 1), (self.n0, 1)))
 		A = sc.concatenate(tuple(B), 1)
 
 		self.lambdas = sc.array(l)
 		self.m = len(self.lambdas)
+		self.use = range(self.n0)
 
 		# Absorptionskurven
-		self.A = sc.array(A)
-		self.weights = self.A.sum(1)
-		self.led_colors = dot(self.A, self.lambdas) / self.weights
-		self.print_colors = []
+		self.A0 = sc.array(A)
+		self.weights = self.A0.sum(1)
+		self.led_colors = dot(self.A0, self.lambdas) / self.weights
+		self.print_colors0 = []
 		for i in range(len(self.led_label)):
 			try:
 				j = float(self.led_label[i][0:3])
-				self.print_colors.append(spectral(j))
+				self.print_colors0.append(spectral(j))
 			except ValueError:
-				self.print_colors.append(spectral(self.spec.led_color[i]))
+				self.print_colors0.append(spectral(self.led_colors[i]))
 
-		# Rechne ein paar aufwändige Sachen aus, die wir später öfters brauchen
-		self.AT = self.A.T
-		self.ATA = dot(self.AT, self.A)
-		# Singulärwertzerlegung
-		self.SVD  = la.svd(A)
-		# Pseudoinverse
-		self.PINV = la.pinv(A)
+		# Dunkel- und Hellbild laden
+		self.dark = sc.zeros(self.n0)
+		self.bright = self.weights
+		try:
+			dark_dat = readdata("led_spektren/dark.dat")
+			dark = [i[0] for i in dark_dat]
+			if len(dark) == self.n0:
+				self.dark = dark
+				print "darkframe loaded"
+		except IOError:
+			pass
+		try:
+			bright_dat = readdata("led_spektren/bright.dat")
+			bright = [i[0] for i in bright_dat]
+			if len(bright) == self.n0:
+				self.brigh = bright
+				print "brightframe loaded"
+		except IOError:
+			pass
+
+		self.make_matrices()
+
 		# Glättungskern
 		self.S = .5 * (sc.eye(self.m-2, self.m, 0) + sc.eye(self.m-2, self.m, 2))
 		self.S -= sc.eye(self.m-2, self.m, 1)
 		self.STS = dot(self.S.T, self.S)
 
+
+
+	def make_matrices(self):
+		A = self.A0.copy()
+		self.print_colors = self.print_colors0[:]
+		for i in range(self.n0):
+			A[i, :] *= (self.bright[i] - self.dark[i]) / sum(A[i, :])
+			if self.use.count(i) == 0:
+				# Balkenfarbe entsättigen
+				mean = sum(self.print_colors0[i]) / 3.
+				self.print_colors[i] =  tuple([.3 * self.print_colors0[i][j] + .7 * mean for j in range(3)])
+		self.A = A[self.use, :]
+		self.n = self.A.shape[0]
+
+		# Rechne ein paar aufwändige Sachen aus, die wir später öfters brauchen
+		self.AT = self.A.T
+		self.ATA = dot(self.AT, self.A)
+		# Singulärwertzerlegung
+		self.SVD  = la.svd(self.A)
+		# Pseudoinverse
+		self.PINV = la.pinv(self.A)
 
 
 
@@ -106,6 +142,12 @@ class DataSpectral():
 
 
 
+	def blackbody(self, T):
+		h = 6.6261e-34
+		c = 2.9979e8
+		k = 1.3807e-23
+		return 5e30 * self.lambdas**(-5.) / (T**4 * (sc.exp(h * c / ((self.lambdas / 1e9) * k * T)) - 1.))
+
 	def spectrum_blackbody(self, input_signal, temp_output):
 		'''
 		input_signal: Intensitätswert jeder LED (ca. 16 Werte)
@@ -114,20 +156,15 @@ class DataSpectral():
 		sucht ein Schwarzkörperspektrum, das gut aufs Signal passt
 		'''
 
-		h = 6.6261e-34
-		c = 2.9979e8
-		k = 1.3807e-23
-		# p = [faktor, Temperatur]
-		def I(p, l):
-			return p[0] * l**(-5.) / (sc.exp(h * c / ((l / 1e9) * k * abs(p[1]))) - 1.)
 		def err(p, signal):
-			return dot(self.A, I(p, self.lambdas)) - signal
+			print p[0]
+			return dot(self.A, p[0] * self.blackbody(abs(p[1]))) - signal
 
 		# TODO: Startwerte müssen vorberechnet werden
 		# sonst konvergierts oft nicht
-		p, success = op.leastsq(err, [1e16, 8e4], args=(input_signal,), maxfev=2000)
+		p, success = op.leastsq(err, [1., 6e3], args=(input_signal,), maxfev=2000)
 		temp_output[0], temp_output[1] = p[0], abs(p[1])
-		return I(p, self.lambdas)
+		return p[0] * self.blackbody(abs(p[1]))
 
 
 
@@ -225,9 +262,9 @@ class DataSpectral():
 		'''
 
 		try:
-			s = input_signal / self.weights
-			mean0 = dot(s, self.led_colors) / sc.sum(s, 0)
-			sigma0 = sqrt(dot(s, self.led_colors**2) / sc.sum(s, 0) - mean0 ** 2)
+			s = input_signal / self.weights[self.use]
+			mean0 = dot(s, self.led_colors[self.use]) / sc.sum(s, 0)
+			sigma0 = sqrt(dot(s, self.led_colors[self.use]**2) / sc.sum(s, 0) - mean0 ** 2)
 			def gauss((mean, sigma, height)):
 				return height * sc.exp(- ((self.lambdas - mean) / sigma) ** 2)
 			def err((mean, sigma, height)):

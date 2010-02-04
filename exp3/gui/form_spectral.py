@@ -38,11 +38,9 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		
 		## Spektren Berechnung vorbereiten
 		self.spec = DataSpectral()
-		self.dark = sc.zeros(self.spec.n)
-		self.bright = self.spec.weights
 
 		## Fenstereigenschaften:
-		self.setWindowTitle('spectral analyzer 0.7')
+		self.setWindowTitle('spectral analyzer 0.8')
 		self.resize(950, 680)
 		self.center()
 		self.setWindowIcon(QtGui.QIcon('icons/spectrum.png'))
@@ -59,6 +57,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		
 		self.brightframe = QtGui.QPushButton('bright frame', self)
 		self.connect(self.brightframe, QtCore.SIGNAL('clicked()'), self.take_bright_frame)
+		self.brightframe.setToolTip(u"Nimmt ein Hellbild auf unter der Annahme eines schwarzen Strahlers mit 3200K")
 		
 		self.continuous = QtGui.QPushButton('start', self)
 		self.continuous.setFocusPolicy(QtCore.Qt.NoFocus)
@@ -66,9 +65,9 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		self.connect(self.continuous, QtCore.SIGNAL('clicked()'), self.toggle_continuous)
 
 		self.toggle_dark = QtGui.QCheckBox('use darkframe', self)
-		self.toggle_dark.setDisabled(True)
+		#self.toggle_dark.setDisabled(True)
 		self.toggle_bright = QtGui.QCheckBox('use bright frame', self)
-		self.toggle_bright.setDisabled(True)
+		#self.toggle_bright.setDisabled(True)
 		self.toggle_weights = QtGui.QCheckBox('use weights', self)
 		self.toggle_weights.setChecked(True)
 
@@ -154,6 +153,23 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		self.vboxReconstruction.addStretch(1)
 		self.reconstructionGroup.setLayout(self.vboxReconstruction)
 
+		# Aktivierung
+		self.activationGroup = QtGui.QGroupBox('activation', self)
+		self.gridActivation = QtGui.QGridLayout()
+		self.gridActivation.setHorizontalSpacing(0)
+		self.activationGroup.setLayout(self.gridActivation)
+		self.checkboxes_spectra = []
+		for i in range(self.spec.n0):
+			c = QtGui.QCheckBox(self)
+			c.setMinimumWidth(3)
+			c.setChecked(True)
+			# Farben einstellen
+			#c.palette().setBrush(0, QtGui.QColor(255, 0, 0))
+			self.checkboxes_spectra.append(c)
+			self.gridActivation.addWidget(c, i/8, i%8)
+			self.connect(c, QtCore.SIGNAL('toggled(bool)'), self.check_spectra)
+			
+
 		# Speicherbutton
 		self.saveplot = QtGui.QPushButton('save plot', self)
 		self.saveplot.setFocusPolicy(QtCore.Qt.NoFocus)
@@ -173,6 +189,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		self.control_vbox.addWidget(self.msGroup)
 		self.control_vbox.addWidget(self.reconstructionGroup)
 		self.control_vbox.addWidget(self.simGroup)
+		self.control_vbox.addWidget(self.activationGroup)
 		self.control_vbox.addWidget(self.saveplot)
 		self.control_vbox.addWidget(self.signature)
 		self.control_vbox.addStretch(1)
@@ -219,22 +236,16 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 			if signal.shape[0] != self.spec.n:
 				print u"Eingangssignal ({0}) != Absorptionskurven ({1})\n".format(signal.shape[0], self.spec.n)
 
-			dark = (self.dark.shape == signal.shape and self.toggle_dark.isChecked())
-			bright = (self.bright.shape == signal.shape and self.toggle_bright.isChecked())
-			if dark and bright:
-				signal = (signal - self.dark) / (self.bright - self.dark)
-			elif dark:
-				signal = signal - self.dark
-			elif bright:
-				signal = signal / self.bright
+			if self.dark.shape == signal.shape and self.toggle_dark.isChecked():
+				signal -= self.spec.dark
 
 		else:
 			# Modus: Simulation
 			try:
-				self.simulation.make_signal(self.spec.A, self.noise_from_slider())
+				self.simulation.make_signal(self.spec.A0, self.noise_from_slider())
 			except AttributeError:
 				self.simulation = DataSimulation(
-					self.spec.lambdas, self.spec.A, self.noise_from_slider())
+					self.spec.lambdas, self.spec.A0, self.noise_from_slider())
 			signal = self.simulation.signal
 
 			# Simuliertes Spektrum Plotten
@@ -244,33 +255,34 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 			
 		
 		# Spektrum Plotten
-		if signal.shape[0] == self.spec.n:
+		if signal.shape[0] == self.spec.n0:
+			sig = signal[self.spec.use]
 			if self.cboxMethod.currentText() == u"pseudo-inverse":
-				y = self.spec.spectrum_pinv(signal)
+				y = self.spec.spectrum_pinv(sig)
 				text = u"pseudo-inverse"
 			elif self.cboxMethod.currentText() == u"least-square":
-				y = self.spec.spectrum_leastsqr(signal,
+				y = self.spec.spectrum_leastsqr(sig,
 					self.sliderSmooth.value() / (1. + self.sliderSmooth.maximum()))
 				text = u"least-square"
 			elif self.cboxMethod.currentText() == u"blackbody":
 				T = [0., 0.]
-				y = self.spec.spectrum_blackbody(signal, T)
+				y = self.spec.spectrum_blackbody(sig, T)
 				text = u"blackbody $T=%i\,\mathrm{K}$" % (int(T[1]), )
 			elif self.cboxMethod.currentText() == u"polynomial":
-				y = self.spec.spectrum_polynomial(self.simulation.signal)
+				y = self.spec.spectrum_polynomial(self.simulation.sig)
 				text = "polynomial"
 			elif self.cboxMethod.currentText() == u"spline":
-				y = self.spec.spectrum_spline(signal)
+				y = self.spec.spectrum_spline(sig)
 				text = "spline"
 			elif self.cboxMethod.currentText() == u"exact+smooth":
-				y = self.spec.spectrum_smooth(signal)
+				y = self.spec.spectrum_smooth(sig)
 				text = "exact and as smooth as possible"
 			elif self.cboxMethod.currentText() == u"optimize":
-				y = self.spec.spectrum_optimize(signal,
+				y = self.spec.spectrum_optimize(sig,
 					self.sliderSmooth.value() / float(self.sliderSmooth.maximum()))
 				text = "nonlinear optimized"
 			elif self.cboxMethod.currentText() == u"gauss":
-				y = self.spec.spectrum_gauss_single(signal)
+				y = self.spec.spectrum_gauss_single(sig)
 				text = "single gauss"
 
 			peak = max(y)
@@ -284,7 +296,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 
 
 			# Signal Plotten
-			x = [i for i in xrange(1, self.spec.n + 1)]
+			x = [i for i in xrange(1, self.spec.n0 + 1)]
 			y = signal
 			# Auf unterschiedliche Gesamtintensitäten normieren
 			if self.toggle_weights.isChecked():
@@ -293,10 +305,17 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 			if max(y) > 0:
 				y = y / max(y)
 
+			# Legende im Balkendiagramm
+			maxn = 0
+			for i in range(len(signal)):
+				if signal[i] > signal[maxn]:
+					maxn = i
+			self.axes2.bar(x[0], 0., width=0., color=self.spec.print_colors[maxn], align="center", label="max: "+str(round(maxi,1)))
+
 			# Balkendiagramm zeichnen
-			self.axes2.bar(x, y, width=0.9, color=self.spec.print_colors, align="center", label="max: "+str(round(maxi,2)))
-			self.axes2.set_xlim(.4, self.spec.n + .6)
-			self.axes2.set_xticks(range(1, self.spec.n+1), minor=False)
+			self.axes2.bar(x, y, width=0.9, color=self.spec.print_colors, align="center")
+			self.axes2.set_xlim(.4, self.spec.n0 + .6)
+			self.axes2.set_xticks(range(1, self.spec.n0+1), minor=False)
 			self.axes2.set_xticklabels(self.spec.led_label, fontdict=None, minor=False, rotation=45)
 			self.axes2.legend(loc="best")
 
@@ -322,13 +341,35 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		
 	def take_dark_frame (self):
 		## nimmt Dunkelbild auf
-		self.dark = sc.array(self.ser.get_data())
-		self.toggle_dark.setEnabled(True)
+		self.pause_continuous = True
+		time.sleep(.1)
+		dark = sc.array(self.ser.get_data())
+		if len(dark) == self.spec.n0:
+			self.spec.dark = dark
+			darkfile = open("led_spektren/dark.dat", "w")
+			for i in dark:
+				darkfile.write(str(i) + "\n")
+			print "Dunkelbild gespeichert"
+
 		
 	def take_bright_frame (self):
 		## nimmt Hellbild auf
-		self.bright = sc.array(self.ser.get_data())
-		self.toggle_bright.setEnabled(True)
+		self.pause_continuous = True
+		time.sleep(.1)
+		bright = sc.array(self.ser.get_data())
+		if len(bright) == self.spec.n0:
+			bright -= self.spec.dark
+			# Nimm Kalibrierung mit Schwarzkörperlampe an
+			bright /= sc.dot(self.spec.A0, self.spec.blackbody(3200.))
+			bright /= bright.mean()
+			bright += self.spec.dark
+			self.spec.bright = bright
+			brightfile = open("led_spektren/bright.dat", "w")
+			for i in bright:
+				brightfile.write(str(i) + "\n")
+			self.spec.make_matrices()
+			print "Hellbild gespeichert"
+
 		
 		
 	def save_plot(self):
@@ -341,6 +382,15 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 	def toggle_mode_ms(self, checked):
 		if checked and self.pause_continuous:
 			self.refresh_graph()
+
+	def check_spectra(self, checked):
+		spectra = []
+		for i in range(len(self.checkboxes_spectra)):
+			if self.checkboxes_spectra[i].isChecked():
+				spectra.append(i)
+		if spectra != self.spec.use:
+			self.spec.use = spectra
+			self.spec.make_matrices()
 
 
 	def noise_from_slider(self):

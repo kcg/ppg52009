@@ -1,7 +1,7 @@
 # -*- coding:utf8 -*-
 
 
-def readdata(filename, colsep="\t", comment="#"):
+def readdata(filename, colsep="\t", comment="#", getFloats=True):
 	ifile = open(filename, "r")
 	data = []
 	for linetext in ifile.readlines():
@@ -20,11 +20,14 @@ def readdata(filename, colsep="\t", comment="#"):
 			continue
 		row = []
 		for i in line:
-			try:
-				x = float(i)
-				row.append(x)
-			except ValueError:
-				print i, "is not a float"
-				row.append(0.)
+			if getFloats:
+				try:
+					x = float(i)
+					row.append(x)
+				except ValueError:
+					print i, "is not a float"
+					row.append(0.)
+			else:
+				row.append(i)
 		data.append(row)
 	return(data)
