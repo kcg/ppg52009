@@ -362,6 +362,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 			bright -= self.spec.dark
 			# Nimm Kalibrierung mit Schwarzkörperlampe an
 			theoretical_signal = sc.dot(self.spec.A0, self.spec.blackbody(3000.))
+			theoretical_signal /= self.A0.sum(1)
 			bright /= theoretical_signal / theoretical_signal.mean()
 			bright += self.spec.dark
 			self.spec.bright = bright

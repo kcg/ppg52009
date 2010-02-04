@@ -91,7 +91,7 @@ class DataSpectral():
 		self.print_colors = self.print_colors0[:]
 		for i in range(self.n0):
 			if simulation == False:
-				A[i, :] *= (self.bright[i] - self.dark[i]) / sum(A[i, :])**2
+				A[i, :] *= (self.bright[i] - self.dark[i]) / sum(A[i, :])
 			if self.use.count(i) == 0:
 				# Balkenfarbe entsättigen
 				mean = sum(self.print_colors0[i]) / 3.
