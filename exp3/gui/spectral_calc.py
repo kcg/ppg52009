@@ -64,16 +64,16 @@ class DataSpectral():
 			dark_dat = readdata("led_spektren/dark.dat")
 			dark = [i[0] for i in dark_dat]
 			if len(dark) == self.n0:
-				self.dark = dark
-				print "darkframe loaded"
+				self.dark = sc.array(dark)
+				print "darkframe loaded", self.dark
 		except IOError:
 			pass
 		try:
 			bright_dat = readdata("led_spektren/bright.dat")
 			bright = [i[0] for i in bright_dat]
 			if len(bright) == self.n0:
-				self.brigh = bright
-				print "brightframe loaded"
+				self.brigh = sc.array(bright)
+				print "brightframe loaded", self.bright
 		except IOError:
 			pass
 
@@ -86,11 +86,12 @@ class DataSpectral():
 
 
 
-	def make_matrices(self):
+	def make_matrices(self, simulation=False):
 		A = self.A0.copy()
 		self.print_colors = self.print_colors0[:]
 		for i in range(self.n0):
-			A[i, :] *= (self.bright[i] - self.dark[i]) / sum(A[i, :])
+			if simulation == False:
+				A[i, :] *= (self.bright[i] - self.dark[i]) / sum(A[i, :])
 			if self.use.count(i) == 0:
 				# Balkenfarbe entsättigen
 				mean = sum(self.print_colors0[i]) / 3.
