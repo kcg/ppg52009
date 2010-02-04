@@ -236,7 +236,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 			if signal.shape[0] != self.spec.n:
 				print u"Eingangssignal ({0}) != Absorptionskurven ({1})\n".format(signal.shape[0], self.spec.n)
 
-			if self.dark.shape == signal.shape and self.toggle_dark.isChecked():
+			if self.spec.dark.shape == signal.shape and self.toggle_dark.isChecked():
 				signal -= self.spec.dark
 
 		else:
@@ -299,8 +299,8 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 			x = [i for i in xrange(1, self.spec.n0 + 1)]
 			y = signal
 			# Auf unterschiedliche Gesamtintensitäten normieren
-			if self.toggle_weights.isChecked():
-				y = y / self.spec.weights
+			if self.toggle_bright.isChecked():
+				y = y / (self.spec.bright - self.spec.dark)
 			maxi = max(signal)
 			if max(y) > 0:
 				y = y / max(y)
@@ -342,7 +342,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 	def take_dark_frame (self):
 		## nimmt Dunkelbild auf
 		self.pause_continuous = True
-		time.sleep(.1)
+		time.sleep(.4)
 		dark = sc.array(self.ser.get_data())
 		if len(dark) == self.spec.n0:
 			self.spec.dark = dark
@@ -355,13 +355,14 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 	def take_bright_frame (self):
 		## nimmt Hellbild auf
 		self.pause_continuous = True
-		time.sleep(.1)
+		time.sleep(.4)
 		bright = sc.array(self.ser.get_data())
 		if len(bright) == self.spec.n0:
 			bright -= self.spec.dark
 			# Nimm Kalibrierung mit Schwarzkörperlampe an
-			bright /= sc.dot(self.spec.A0, self.spec.blackbody(3200.))
-			bright /= bright.mean()
+			theoretical_signal = sc.dot(self.spec.A0, self.spec.blackbody(3000.))
+			bright /= theoretical_signal / theoretical_signal.mean()
+			print theoretical_signal / theoretical_signal.mean()
 			bright += self.spec.dark
 			self.spec.bright = bright
 			brightfile = open("led_spektren/bright.dat", "w")
@@ -380,6 +381,11 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 
 
 	def toggle_mode_ms(self, checked):
+		if checked:
+			if self.radio_measure.isChecked():
+				self.spec.make_matrices(simulation=False)
+			else:
+				self.spec.make_matrices(simulation=True)
 		if checked and self.pause_continuous:
 			self.refresh_graph()
 
