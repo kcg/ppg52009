@@ -1,0 +1,19 @@
+# Enthält alle verwendeten LEDs
+# Spalte1: Dateiname
+# Spalte2: Bezeichnung
+led375nm-1_1-h.dat	375nm
+led395nm-1_1-h.dat	395nm
+led465-470nm-1_2-h.dat	468nm
+led480nm-1_1-h.dat	480nm
+led500-505nm-1_1-h.dat	503nm
+led505nm-1_1-h.dat	505nm
+led515nm-1_1-h.dat	515nm
+led525nm-1_1-h.dat	525nm
+led540nm-2_1-h.dat	540nm
+led585-590nm-1_1-h.dat	588nm
+led588nm-1_1-h.dat	588nm
+led600-610nm-1_1-h.dat	605nm
+led620nm-1_1-h.dat	620nm
+led625-630nm-1_1-h.dat	628nm
+led635nm-1_1-h.dat	635nm
+led640nm-1_3-h.dat	640nm

@@ -4,7 +4,7 @@
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{ragged2e}
-\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 \usepackage{sidecap}
 
@@ -18,7 +18,7 @@
 
 \title[Abschlusspr\"asentation]{Abschlusspr\"asentation PPG5}
 \subtitle{WS 2009 / 2010}
-\author[PPG5]{Michele Collodo, Andreas Glossner, Karl-Christoph G\"odel, Bastian Hacker, Maria Obst, Alexander Wagner, David Winnekens}
+\author[PPG5]{Michele Collodo, Andreas Glossner, Karl-Christoph G\"odel,\\Bastian Hacker, Maria Obst, Alexander Wagner, David Winnekens}
 \date{04. Februar 2010}
 
 \begin{document}
@@ -76,36 +76,59 @@
 \begin{figure}
 \begin{center}
 \includegraphics[width=0.8\textwidth]{./images/prIMG_7244bh}
-\caption{kontinuierliche Winkelmessung}
+\caption{Kontinuierliche Winkelmessung}
 \end{center}
 \end{figure}
 }
 \frame
 {
-\frametitle{Elektronik I}
+\frametitle{Elektronik}
 \begin{figure}
 \begin{center}
-\includegraphics[width=0.8\textwidth]{./images/prIMG_7253crop.jpg}
-\caption{Fertige Platine}
+\includegraphics[width=0.8\textwidth]{./images/elektronik-final.jpg}
+\caption{Das fertige LED-Spektrometer}
 \end{center}
 \end{figure}
 }
-\frame
-{
-\frametitle{Elektronik II}
-% Schaltplan einfuegen
-schaltplan
-}
+
 \frame
 {
 \frametitle{Software}
-flussdiagramm
+\begin{block}{Python Programm zur Auswertung und Anzeige der Spektren}
+\begin{itemize}
+\item Einlesen der Messwerte "uber die serielle Schnittstelle
+\item Berechnung des Spektrums:\\[.5\baselineskip]
+Finde Spektrum $\vec{\lambda}$ mit
+\[
+\begin{pmatrix}
+\text{Absorptionskurve ~1}\\
+\vdots\\
+\text{Absorptionskurve 16}
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+\lambda_1\\
+\vdots\\
+\vdots\\
+\lambda_k
+\end{pmatrix}
+=
+\begin{pmatrix}
+\text{Signal ~1}\\
+\vdots\\
+\text{Signal 16}
+\end{pmatrix}
+\]
+
+\item Grafische Ausgabe
+\end{itemize}
+\end{block}
 }
-\subsection[]{Ergebnisse}
+\subsection[]{Messung}
 \frame
 {
-\frametitle{Ergebnisse}
-laberlaber
+\frametitle{Messung}
+Mit dem Spektrometer lassen sich verschiedene Lichtquellen vermessen.
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -132,16 +155,17 @@ laberlaber
 \end{center}
 \end{figure}
 }
-\subsection[]{Erdrotation}
+\subsection[]{Direkte Messung der Erdrotation}
 \frame
 {
-\frametitle{Erdrotation}
+\frametitle{Direkte Messung der Erdrotation}
 %\begin{SCfigure}
 \begin{figure}
 \begin{center}
-\includegraphics[width=0.4\textwidth]{./images/prIMG_7266.jpg}
-%\caption{Pendel zur Messung der Erdrotation}
+\includegraphics[width=0.8\textwidth]{./images/stab-gauss.jpg}
+\caption{Rotierender Stab mit variablem Tr\"agheitsmoment}
 %% des geht noch net wirklich, entweder des endgueltige bild is quer oder ich ueberleg mir dann was wenns so weit is...
+%%% Querbild, etz gehts-Axi
 \end{center}
 \end{figure}
 %\end{SCfigure}

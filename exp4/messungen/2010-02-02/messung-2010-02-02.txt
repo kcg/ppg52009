@@ -1,0 +1,32 @@
+----------------------------------------------------
+Messung der Drehung des Stabs
+02.02.2010
+----------------------------------------------------
+----------------------------------------------------
+Das Stab wurde am 01.02.2010  aufgehängt, 
+die Messung fand am 02.02.2010 um ca. 13.10h statt.
+----------------------------------------------------
+Messwerte befinden sich in der Datei 6-zuschnell.txt
+----------------------------------------------------
+Messintervall der Lichtschranken: 20ms (lt. Cassy)
+----------------------------------------------------
+Aufgezeichnete Messwerte:
+Zeit - Ereignisse A1
+
+Der Ereigniszähler wurden vor dem Durchbrennen des Fadens auf Null zurückgestellt
+und zählt alle Durchgänge zusammen.
+----------------------------------------------------
+Lichtschranke NA1 befindet sich südlich des Aufhängungspunkts
+Lichtschranke NB1 wurde abgebaut
+----------------------------------------------------
+Die Lichtschranke wird durch das Speichenrad ausgelöst. 
+Der Abstand der Speichen beträgt 10°
+----------------------------------------------------
+Der Stab war vor dem Durchbrennen ca. in Nord-Süd Richtung aufgehängt
+----------------------------------------------------
+Keine Magnete mehr an Stab oder Lichtschranken.
+Der Rückholmechanismus mit dem Gummizug war abgebaut.
+----------------------------------------------------
+Sehr schnelle Drehung, mehrfacher Wechsel der Drehrichtung, dazwischen kurze Stops
+----------------------------------------------------
+Der Eisenstab wurde durch einen Messingstab ersetzt. 

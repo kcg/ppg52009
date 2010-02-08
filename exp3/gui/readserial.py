@@ -10,7 +10,7 @@ class ReadSerial ():
 	def __init__ (self):
 	
 		self.baudrate		= 9600
-		self.read_delay 	= 0.5
+		self.read_delay 	= 0.2
 		self.adc_upper_limit	= 1000
 		self.adc_lower_limit	= 30
 		self.data_lenght	= 200
