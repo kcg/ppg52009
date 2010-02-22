@@ -241,7 +241,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 			if self.spec.dark.shape == signal.shape and self.toggle_dark.isChecked():
 				signal -= self.spec.dark
 				# keine negativen Werte zulassen
-				for i in len(range(signal)):
+				for i in range(len(signal)):
 					if signal[i] < 0.:
 						signal[i] = 0.
 				
@@ -328,7 +328,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 			# Balkendiagramm zeichnen
 			self.axes2.bar(x, y, width=0.9, color=self.spec.print_colors, align="center")
 			self.axes2.set_xlim(.4, self.spec.n0 + .6)
-			self.axes2.set_ylim(max(-.5, 1.1 * min(y)), 1.1*max(y))
+			self.axes2.set_ylim(0., 1.1*max(max(y), 8.))
 			self.axes2.set_xticks(range(1, self.spec.n0+1), minor=False)
 			self.axes2.set_xticklabels(self.spec.led_label, fontdict=None, minor=False, rotation=45)
 			self.axes2.legend(loc="best")

@@ -72,11 +72,16 @@ class DataSpectral():
 			pass
 		try:
 			bright_dat = readdata("led_spektren/bright.dat")
-			bright = [i[0] for i in bright_dat]
-			bright_theo = [i[1] for i in bright_dat]
-			if len(bright) == self.n0 and len(bright_theo) == self.n0:
-				self.brigh = sc.array(bright)
-				print "brightframe loaded", self.bright
+			try:
+				bright = [i[0] for i in bright_dat]
+				print bright
+				bright_theo = [i[1] for i in bright_dat]
+				if len(bright) == self.n0 and len(bright_theo) == self.n0:
+					self.bright = sc.array(bright)
+					self.bright_theo = sc.array(bright_theo)
+					print "brightframe loaded", self.bright
+			except IndexError:
+				print "error loading bright frame"
 		except IOError:
 			pass
 
