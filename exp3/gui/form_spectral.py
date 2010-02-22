@@ -236,8 +236,23 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 			if signal.shape[0] != self.spec.n:
 				print u"Eingangssignal ({0}) != Absorptionskurven ({1})\n".format(signal.shape[0], self.spec.n)
 
+			bright = self.spec.bright
+			# Dunkelbild einrechnen
 			if self.spec.dark.shape == signal.shape and self.toggle_dark.isChecked():
 				signal -= self.spec.dark
+				# keine negativen Werte zulassen
+				for i in len(range(signal)):
+					if signal[i] < 0.:
+						signal[i] = 0.
+				
+				if bright.shape == signal.shape:
+					bright -= self.spec.dark
+			
+			# Hellbild einrechnen
+			if bright.shape == signal.shape and self.toggle_bright.isChecked():
+				signal /= bright
+				if self.spec.bright_theo.shape == signal.shape:
+					signal /= self.spec.bright_theo
 
 		else:
 			# Modus: Simulation
@@ -252,7 +267,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 			self.axes.plot(self.spec.lambdas, self.simulation.spectrum,
 				"--", color="#0000ff", linewidth=4,
 				label=u"test spectrum")
-			
+		
 		
 		# Spektrum Plotten
 		if signal.shape[0] == self.spec.n0:
@@ -299,8 +314,6 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 			x = [i for i in xrange(1, self.spec.n0 + 1)]
 			y = signal
 			# Auf unterschiedliche Gesamtintensitäten normieren
-			if self.toggle_bright.isChecked():
-				y = y / (self.spec.bright - self.spec.dark)
 			maxi = max(signal)
 			if max(y) > 0:
 				y = y / max(y)
@@ -360,17 +373,15 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		time.sleep(.4)
 		bright = sc.array(self.ser.get_data())
 		if len(bright) == self.spec.n0:
-			bright -= self.spec.dark
 			# Nimm Kalibrierung mit Schwarzkörperlampe an
 			theoretical_signal = sc.dot(self.spec.A0, self.spec.blackbody(3000.))
-			theoretical_signal /= self.A0.sum(1)
-			bright /= theoretical_signal / theoretical_signal.mean()
-			bright += self.spec.dark
+			theoretical_signal /= theoretical_signal.mean()
 			self.spec.bright = bright
 			print "signal_bright =", bright
 			brightfile = open("led_spektren/bright.dat", "w")
-			for i in bright:
-				brightfile.write(str(i) + "\n")
+			for i in range(len(bright)):
+				brightfile.write(str(bright[i]) + "\t")
+				brightfile.write(str(theoretical_signal[i]) + "\n")
 			self.spec.make_matrices()
 			print "Hellbild gespeichert"
 

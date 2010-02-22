@@ -58,8 +58,10 @@ class DataSpectral():
 				self.print_colors0.append(spectral(self.led_colors[i]))
 
 		# Dunkel- und Hellbild laden
-		self.dark = sc.zeros(self.n0)
-		self.bright = self.weights
+		self.dark = sc.zeros(self.n0) # Absolute Messwerte dunkel
+		self.bright = self.weights # Absolute Messwerte hell
+		# normierte theoretische Helligkeit der Kalibrationsquelle
+		self.bright_theo = sc.ones(self.n0)
 		try:
 			dark_dat = readdata("led_spektren/dark.dat")
 			dark = [i[0] for i in dark_dat]
@@ -71,7 +73,8 @@ class DataSpectral():
 		try:
 			bright_dat = readdata("led_spektren/bright.dat")
 			bright = [i[0] for i in bright_dat]
-			if len(bright) == self.n0:
+			bright_theo = [i[1] for i in bright_dat]
+			if len(bright) == self.n0 and len(bright_theo) == self.n0:
 				self.brigh = sc.array(bright)
 				print "brightframe loaded", self.bright
 		except IOError:
