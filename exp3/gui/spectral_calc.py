@@ -39,14 +39,14 @@ class DataSpectral():
 		for i in range(len(lambdas) / bin):
 			l.append(sum(lambdas[bin * i:bin * (i + 1)]) / float(bin))
 			B.append(sc.reshape(sc.mean(A[:,bin * i:bin * (i + 1)], 1), (self.n0, 1)))
-		A = sc.concatenate(tuple(B), 1)
+		A0 = sc.concatenate(tuple(B), 1)
 
 		self.lambdas = sc.array(l)
 		self.m = len(self.lambdas)
 		self.use = range(self.n0)
 
 		# Absorptionskurven
-		self.A0 = sc.array(A)
+		self.A0 = sc.array(A0)
 		self.weights = self.A0.sum(1)
 		self.led_colors = dot(self.A0, self.lambdas) / self.weights
 		self.print_colors0 = []
@@ -74,7 +74,6 @@ class DataSpectral():
 			bright_dat = readdata("led_spektren/bright.dat")
 			try:
 				bright = [i[0] for i in bright_dat]
-				print bright
 				bright_theo = [i[1] for i in bright_dat]
 				if len(bright) == self.n0 and len(bright_theo) == self.n0:
 					self.bright = sc.array(bright)
@@ -99,6 +98,7 @@ class DataSpectral():
 		self.print_colors = self.print_colors0[:]
 		for i in range(self.n0):
 			if simulation == False:
+				# Normiere die Spektren (Zeilen)
 				A[i, :] /= sum(A[i, :])
 			if self.use.count(i) == 0:
 				# Balkenfarbe entsättigen

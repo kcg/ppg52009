@@ -253,6 +253,9 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 				signal /= bright
 				if self.spec.bright_theo.shape == signal.shape:
 					signal *= self.spec.bright_theo
+			else:
+				# Teile durch gleichen Faktor wie die Zeilen der Matrix spec.A
+				signal /= self.spec.weights
 
 		else:
 			# Modus: Simulation
@@ -301,7 +304,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 				text = "single gauss"
 
 			peak = max(y)
-			if peak > 0. and self.radio_measure.isChecked():
+			if peak > 0.:
 				y /= peak				
 
 			# Spektrum zeichnen
@@ -312,23 +315,25 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 
 			# Signal Plotten
 			x = [i for i in xrange(1, self.spec.n0 + 1)]
-			y = signal
+			signal2 = signal
 			# Auf unterschiedliche Gesamtintensitäten normieren
 			maxi = max(signal)
-			if max(y) > 0:
-				y = y / max(y)
+			if max(signal2) > 0:
+				signal2 = signal / max(signal)
+				if not self.radio_measure.isChecked():
+					signal2 = signal / max(max(signal), 8)
 
 			# Legende im Balkendiagramm
-			maxn = 0
+			maxn = 0 # Nummer des intensivsten Kanals
 			for i in range(len(signal)):
 				if signal[i] > signal[maxn]:
 					maxn = i
 			self.axes2.bar(x[0], 0., width=0., color=self.spec.print_colors[maxn], align="center", label="max: "+str(round(maxi,1)))
 
 			# Balkendiagramm zeichnen
-			self.axes2.bar(x, y, width=0.9, color=self.spec.print_colors, align="center")
+			self.axes2.bar(x, signal2, width=0.9, color=self.spec.print_colors, align="center")
 			self.axes2.set_xlim(.4, self.spec.n0 + .6)
-			self.axes2.set_ylim(0., 1.1*max(y))
+			self.axes2.set_ylim(0., 1.1)
 			self.axes2.set_xticks(range(1, self.spec.n0+1), minor=False)
 			self.axes2.set_xticklabels(self.spec.led_label, fontdict=None, minor=False, rotation=45)
 			self.axes2.legend(loc="best")
@@ -374,7 +379,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		bright = sc.array(self.ser.get_data())
 		if len(bright) == self.spec.n0:
 			# Nimm Kalibrierung mit Schwarzkörperlampe an
-			theoretical_signal = sc.dot(self.spec.A0, self.spec.blackbody(3000.))
+			theoretical_signal = sc.dot(self.spec.A, self.spec.blackbody(3000.))
 			theoretical_signal /= theoretical_signal.mean()
 			self.spec.bright = bright
 			print "signal_bright =", bright
