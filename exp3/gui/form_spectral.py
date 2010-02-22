@@ -348,6 +348,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		if len(dark) == self.spec.n0:
 			self.spec.dark = dark
 			darkfile = open("led_spektren/dark.dat", "w")
+			print "signal_dark =", dark
 			for i in dark:
 				darkfile.write(str(i) + "\n")
 			print "Dunkelbild gespeichert"
@@ -366,6 +367,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 			bright /= theoretical_signal / theoretical_signal.mean()
 			bright += self.spec.dark
 			self.spec.bright = bright
+			print "signal_bright =", bright
 			brightfile = open("led_spektren/bright.dat", "w")
 			for i in bright:
 				brightfile.write(str(i) + "\n")
