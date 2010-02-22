@@ -252,7 +252,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 			if bright.shape == signal.shape and self.toggle_bright.isChecked():
 				signal /= bright
 				if self.spec.bright_theo.shape == signal.shape:
-					signal /= self.spec.bright_theo
+					signal *= self.spec.bright_theo
 
 		else:
 			# Modus: Simulation
@@ -328,7 +328,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 			# Balkendiagramm zeichnen
 			self.axes2.bar(x, y, width=0.9, color=self.spec.print_colors, align="center")
 			self.axes2.set_xlim(.4, self.spec.n0 + .6)
-			self.axes2.set_ylim(0., 1.1*max(max(y), 8.))
+			self.axes2.set_ylim(0., 1.1*max(y))
 			self.axes2.set_xticks(range(1, self.spec.n0+1), minor=False)
 			self.axes2.set_xticklabels(self.spec.led_label, fontdict=None, minor=False, rotation=45)
 			self.axes2.legend(loc="best")

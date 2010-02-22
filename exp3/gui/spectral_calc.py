@@ -99,7 +99,7 @@ class DataSpectral():
 		self.print_colors = self.print_colors0[:]
 		for i in range(self.n0):
 			if simulation == False:
-				A[i, :] *= (self.bright[i] - self.dark[i]) / sum(A[i, :])
+				A[i, :] /= sum(A[i, :])
 			if self.use.count(i) == 0:
 				# Balkenfarbe entsättigen
 				mean = sum(self.print_colors0[i]) / 3.
@@ -166,7 +166,6 @@ class DataSpectral():
 		'''
 
 		def err(p, signal):
-			print p[0]
 			return dot(self.A, p[0] * self.blackbody(abs(p[1]))) - signal
 
 		# TODO: Startwerte müssen vorberechnet werden
