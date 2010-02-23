@@ -236,10 +236,11 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 			if signal.shape[0] != self.spec.n:
 				print u"Eingangssignal ({0}) != Absorptionskurven ({1})\n".format(signal.shape[0], self.spec.n)
 
-			bright = self.spec.bright
+			bright = self.spec.bright.copy()
 			# Dunkelbild einrechnen
 			if self.spec.dark.shape == signal.shape and self.toggle_dark.isChecked():
 				signal -= self.spec.dark
+				print "dark abgezogen:", signal
 				# keine negativen Werte zulassen
 				for i in range(len(signal)):
 					if signal[i] < 0.:
@@ -251,6 +252,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 			# Hellbild einrechnen
 			if bright.shape == signal.shape and self.toggle_bright.isChecked():
 				signal /= bright
+				print "relatives signal:", signal
 				if self.spec.bright_theo.shape == signal.shape:
 					signal *= self.spec.bright_theo
 			else:
