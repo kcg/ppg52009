@@ -1,0 +1,27 @@
+# Standard LED 5mm transparent 640nm
+# Strom durch Halogenquelle: ca. 3A
+# Spalte1: Einstrahlwinkel in Grad
+# Spalte2: Spannung in mV am 100K Widerstand
+-80.	1.
+-70.	1.3
+-60.	1.4
+-50.	1.4
+-40.	1.8
+-30.	3.
+-25.	4.8
+-20.	58.
+-15.	115.
+-10.	151.
+-5.	443.
+0.	638.
+5.	609.
+10.	173.
+15.	129.
+20.	65.
+25.	11.
+30.	3.
+40.	2.
+50.	1.5
+60.	1.5
+70.	1.3
+80.	0.8

@@ -1,0 +1,29 @@
+# SMD LED plcc-2 transparent, flaches Gehäuse
+# Strom durch Halogenquelle: ca. 4A
+# Spalte1: Einstrahlwinkel in Grad
+# Spalte2: Spannung in mV am 100K Widerstand
+-90.	4.
+-80.	101.
+-70.	298.
+-60.	500.
+-50.	656.
+-40.	767.
+-30.	833.
+-25.	852.
+-20.	871.
+-15.	881.
+-10.	894.
+-5.	891.
+0.	905.
+5.	892.
+10.	871.
+15.	854.
+20.	823.
+25.	789.
+30.	748.
+40.	662.
+50.	555.
+60.	415.
+70.	258.
+80.	89.
+90.	7.
