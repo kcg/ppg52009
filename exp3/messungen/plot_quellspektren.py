@@ -117,12 +117,12 @@ for lampe in ["LED", "halogen"]:
 for i in range(1, len(lampe_lambda)):
 	c1 = spectral(lampe_lambda[i-1])
 	x1 = 1.
-	x2 = .7
+	x2 = .65
 	c2 = tuple(1.+x1*(1.+c1[3]*(sc.array(c1[:3])-1.)-1.))
 	c3 = tuple(1.+x2*(1.+c1[3]*(sc.array(c1[:3])-1.)-1.))
 	if lampe_lambda[i] >= 350. and lampe_lambda[i-1] <= 750.:
-		a.plot(2 * [lampe_lambda[i]], [0., min(lampe_I["LED"][i], lampe_I["halogen"][i])], "-", linewidth=2, color=c2)
-		a.plot(2 * [lampe_lambda[i]], [min(lampe_I["LED"][i], lampe_I["halogen"][i]), max(lampe_I["LED"][i], lampe_I["halogen"][i])], "-", linewidth=2, color=c3)
+		a.plot(2 * [lampe_lambda[i]], [0., min(lampe_I["LED"][i], lampe_I["halogen"][i])], "-", linewidth=1.1, color=c2)
+		a.plot(2 * [lampe_lambda[i]], [min(lampe_I["LED"][i], lampe_I["halogen"][i]), max(lampe_I["LED"][i], lampe_I["halogen"][i])], "-", linewidth=1.1, color=c3)
 
 # schwarze Konturen
 for lampe in ["LED", "halogen"]:
