@@ -164,11 +164,20 @@ F\"ur die Auswertung der Messdaten ist es von grundlegender Bedeutung, zu wissen
 Da ein manuelles Auslesen der Intensit\"at und dessen zugeh\"origem Winkel ein aussichtsloses Unterfangen darstellen w\"urde, benutzten wir ein Drehpotentiometer zur automatischen Auswertung des momentanen Winkels. Dieses wurde so auf dem Tisch positioniert, dass die Drehachse m\"oglichst genau unter dem Mittelpunkt des Gitters ist, also dem Punkt, an welchem sich ein- und ausfallender Strahl treffen. Desweiteren wurde der Dreharm, an dessen \"Au\ss{}erstem Ende sich der Halter f\"ur die LEDs befindet, mit der Drehachse verbunden, sodass das Schwenken des Armes den Widerstand des Potentiometeres \"andert.
 \begin{figure}[ht]
 \begin{center}
-\includegraphics[width=0.8\textwidth]{images/setup.jpg}
+\includegraphics[width=1.\textwidth]{images/setup.jpg}
 \end{center}
 \vspace{-1.5\baselineskip}
 \caption{Versuchsaufbau}
-\label{Versuchsaufbau}
+\label{Versuchsaufbau schematisch}
+\end{figure}
+
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=1.\textwidth]{images/aufbau_spektrum.jpg}
+\end{center}
+\vspace{-1.5\baselineskip}
+\caption{Versuchsaufbau komplett}
+\label{fig:aufbau_spektrum}
 \end{figure}
 
 Anschließen wurde in $2^\circ$-Intervallen der Winkel und die Spannung am Potentiometer notiert. Wiederholtes Messen dieser Spannungs-Winkel-Abhängigkeit zeigte eine sehr gut Reproduzierbarkeit. Lediglich beim Wechsel des Drehsinns zeigte sich ein Offset, so dass entschlossen wurde alle Messungen immer mit Drehung im Uhrzeigersinn durchzuführen.
@@ -274,6 +283,7 @@ Die Fertig reduzierten Absorptions\-spektren sind in \hypref{Abb.}{fig:reduktion
 \section{Bau des Spektrometers}
 \subsection{Funktionsprinzip Übersicht} %Basti
 
+
 \subsection{Elektronik}
 %% Funktionsprinzip OpAmps etc.			Michele, Maria
 %% Schaltplan
@@ -282,26 +292,19 @@ Die Fertig reduzierten Absorptions\-spektren sind in \hypref{Abb.}{fig:reduktion
 % Software: Berechnung der Spektren mit unserem Gerät
 %% Funktionsübersicht und Erklärung der Bedienung
 %% Algorithmik zur Auswertung					Basti
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=1.\textwidth]{images/screenshot.png}
+\end{center}
+\vspace{-1.5\baselineskip}
+\caption{Unser Python Programm mit QT-Oberfläche im Simulationsbetrieb}
+\label{fig:screenschot}
+\end{figure}
+
 
 
 \section{Fazit} %Andi
 
 
-\newpage
-\section{Autorenverzeichnis}
-\begin{tabular}{|l|l|}
-\hline
-\emph{Autor} & \emph{Kapitel}\\
-\hline
-Michele Collodo & \\
-Andreas Glossner & \\
-Karl-Christoph G\"odel & \\
-Bastian Hacker & \\
-Maria Obst & \\
-Alexander Wagner & \\
-David Winnekens &  \\
-Wickie Pedia & Recherchen \\
-\hline
-\end{tabular}
 \end{document}
 

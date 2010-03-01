@@ -69,7 +69,7 @@ def spectral(lamb):
 
 
 
-
+# erste Version
 a = pl.subplot(111)
 for lampe in ["LED", "halogen"]:
 	lampe_data = readdata("kalibrationsspektrum/" + {"halogen":"halogen", "LED":"kalibrationsspek"}[lampe] + ".dat")
@@ -98,5 +98,53 @@ pl.ylabel(u"Intensität")
 pl.gcf().set_size_inches(7, 5)
 pl.savefig("quellspektren.pdf")
 
+
+# zweite Version
+a = pl.subplot(111)
+
+lampe_lambda = None; lampe_I = {}
+
+# farbiger Hintergrund
+for lampe in ["LED", "halogen"]:
+	lampe_data = readdata("kalibrationsspektrum/" + {"halogen":"halogen", "LED":"kalibrationsspek"}[lampe] + ".dat")
+	k = 0
+	if lampe == "LED":
+		k = 1
+	lampe_lambda = sc.array([i[0+k] for i in lampe_data])
+	lampe_I[lampe] = sc.array([i[1+k] for i in lampe_data])
+	lampe_I[lampe] /= max(lampe_I[lampe])
+	
+for i in range(1, len(lampe_lambda)):
+	c1 = spectral(lampe_lambda[i-1])
+	x1 = 1.
+	x2 = .7
+	c2 = tuple(1.+x1*(1.+c1[3]*(sc.array(c1[:3])-1.)-1.))
+	c3 = tuple(1.+x2*(1.+c1[3]*(sc.array(c1[:3])-1.)-1.))
+	if lampe_lambda[i] >= 350. and lampe_lambda[i-1] <= 750.:
+		a.plot(2 * [lampe_lambda[i]], [0., min(lampe_I["LED"][i], lampe_I["halogen"][i])], "-", linewidth=2, color=c2)
+		a.plot(2 * [lampe_lambda[i]], [min(lampe_I["LED"][i], lampe_I["halogen"][i]), max(lampe_I["LED"][i], lampe_I["halogen"][i])], "-", linewidth=2, color=c3)
+
+# schwarze Konturen
+for lampe in ["LED", "halogen"]:
+	lampe_data = readdata("kalibrationsspektrum/" + {"halogen":"halogen", "LED":"kalibrationsspek"}[lampe] + ".dat")
+	k = 0
+	if lampe == "LED":
+		k = 1
+	lampe_lambda = sc.array([i[0+k] for i in lampe_data])
+	lampe_I = sc.array([i[1+k] for i in lampe_data])
+	lampe_I /= max(lampe_I)
+	a.plot(lampe_lambda, lampe_I, "k-", linewidth=5)
+
+
+a.annotate(u'Weiße LED', xy=(630, 0.15), horizontalalignment='left', verticalalignment='bottom', fontsize=16)
+a.annotate(u'Halogenlampe', xy=(630, 0.8), horizontalalignment='left', verticalalignment='bottom', fontsize=16)
+pl.title(u"Weißlichtquellen")
+pl.xlim(250, 850)
+pl.ylim(0, 1.1)
+pl.xlabel(u"Wellenlänge [nm]")
+pl.ylabel(u"Intensität")
+
+pl.gcf().set_size_inches(7, 5)
+pl.savefig("quellspektren2.pdf")
 
 
