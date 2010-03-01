@@ -285,6 +285,23 @@ class DataSpectral():
 		except (ValueError, ZeroDivisionError):
 			print "error fitting gauss"
 			return sc.zeros(self.m)
+			
+			
+	def spectrum_discrete(self, input_signal):
+		'''
+		input_signal: Intensitätswert jeder LED (ca. 16 Werte)
+		geht von einem Spektrum aus 16 konstanten Werten aus
+		'''
+
+		P = sc.zeros((self.m, self.n))
+		# Spektrum in gleich große Intervalle einteilen
+		for i in xrange(self.m):
+			P[i][min(self.n * i / self.m, self.n - 1)] = 1.
+		
+		# Errechne Koeffizienten
+		p = la.solve(dot(self.A, P), input_signal)
+
+		return dot(P, p)
 
 
 

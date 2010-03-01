@@ -95,6 +95,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		self.cboxMethod.addItem(u"gauss")
 		self.cboxMethod.addItem(u"spline")
 		self.cboxMethod.addItem(u"polynomial")
+		self.cboxMethod.addItem(u"discrete")
 
 		# Schieber für Glättungsintensität
 		self.labelSmooth = QtGui.QLabel(u"smoothing:", self)
@@ -262,10 +263,10 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		else:
 			# Modus: Simulation
 			try:
-				self.simulation.make_signal(self.spec.A0, self.noise_from_slider())
+				self.simulation.make_signal(self.spec.A, self.noise_from_slider())
 			except AttributeError:
 				self.simulation = DataSimulation(
-					self.spec.lambdas, self.spec.A0, self.noise_from_slider())
+					self.spec.lambdas, self.spec.A, self.noise_from_slider())
 			signal = self.simulation.signal
 
 			# Simuliertes Spektrum Plotten
@@ -304,14 +305,18 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 			elif self.cboxMethod.currentText() == u"gauss":
 				y = self.spec.spectrum_gauss_single(sig)
 				text = "single gauss"
+			elif self.cboxMethod.currentText() == u"discrete":
+				y = self.spec.spectrum_discrete(sig)
+				text = "discrete values"
 
 			peak = max(y)
-			if peak > 0.:
-				y /= peak				
+			if peak > 0. and self.radio_measure.isChecked():
+				y /= peak
 
 			# Spektrum zeichnen
 			self.axes.plot(self.spec.lambdas, y, "r-", linewidth=4, label=text)
 			self.axes.set_xlim(self.xrange)
+			self.axes.set_ylim(0., 1.2)
 			self.axes.legend(loc="best")
 
 
