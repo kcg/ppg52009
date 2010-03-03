@@ -1,0 +1,13 @@
+\select@language {ngerman}
+\contentsline {section}{\numberline {1}Einleitung}{3}{section.1}
+\contentsline {section}{\numberline {2}Grundprinzip - Tr\"agheitsmoment}{3}{section.2}
+\contentsline {section}{\numberline {3}Bau des Drehstabs}{3}{section.3}
+\contentsline {subsection}{\numberline {3.1}Material}{3}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Aufh\"angung}{3}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Klappmechanismus}{3}{subsection.3.3}
+\contentsline {section}{\numberline {4}Messungen}{4}{section.4}
+\contentsline {subsection}{\numberline {4.1}Berechnungen im Vorraus}{4}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Cassymessungen}{4}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Videomessungen}{5}{subsection.4.3}
+\contentsline {section}{\numberline {5}Verbesserungsvorschl\IeC {\"a}ge}{7}{section.5}
+\contentsline {section}{\numberline {6}Fazit}{7}{section.6}
