@@ -21,6 +21,7 @@
 
 \setlength{\parindent}{1em}
 \setlength{\parskip}{0.5\baselineskip}
+\graphicspath{{images/}}
 
 
 \title{LED-Spektrometer - Gruppe 5 WS 09/10, Projektpraktikum der Uni Erlangen}
@@ -84,7 +85,7 @@ Da im vorliegenden Projekt nur bedrahtete LEDs als Absorber verwendet wurden, wi
 
 \begin{figure}[ht]
 \begin{center}
-\includegraphics[width=0.8\textwidth]{images/ledaufbau.jpg}
+\includegraphics[width=0.8\textwidth]{ledaufbau.jpg}
 \end{center}
 \vspace{-1.5\baselineskip}
 \caption{Aufbau einer bedrahteten Leuchtdiode}
@@ -95,7 +96,7 @@ Das Funktionsprinzip einer LED basiert auf dem Aufbau des Chips, der aus zwei ve
 
 \begin{figure}[ht]
 \begin{center}
-\includegraphics[width=0.8\textwidth]{images/band.jpg}
+\includegraphics[width=0.8\textwidth]{band.jpg}
 \end{center}
 \vspace{-1.5\baselineskip}
 \caption{Baenderstruktur der Halbleitergrenzschicht}
@@ -120,7 +121,7 @@ Ein konkreter Zusammenhang zur Wellenlänge der Leuchtdiode oder zum Halbleiterm
 
 \begin{figure}[ht]
 \begin{center}
-\includegraphics[width=0.9\textwidth]{images/absorp-emit.pdf}
+\includegraphics[width=0.9\textwidth]{absorp-emit.pdf}
 \end{center}
 \vspace{-1.5\baselineskip}
 \caption{Absorptions- (durchgezogen) und Emissionsspektren (gestrichelt) verschiedener LEDs}
@@ -138,13 +139,13 @@ Ein konkreter Zusammenhang zur Wellenlänge der Leuchtdiode oder zum Halbleiterm
 \subsubsection{Lichtquelle} %%Axi
 \begin{figure}[ht]
 \begin{center}
-\includegraphics[width=1\textwidth]{images/quellspektren.pdf}
+\includegraphics[width=1\textwidth]{quellspektren.pdf}
 \end{center}
 \vspace{-1.5\baselineskip}
 \caption{Die beiden verwendeten Weißlichtquellen im Vergleich, gemessen mit dem professionellen Spektrometer der Optiker}
 \label{fig:lichtquelle}
 \end{figure}
-Die gew\"ahlte Lichtquelle sollte ein m\"oglichst breites Spektrum mit bekannter Intensit\"atsverteilung aufweisen. Da nur wenige verl\"a\ss{}liche Angaben bez\"uglich des jeweiligen Spektrums der Lampen zu finden waren, wurde beschlo\ss{}en das Spektrum der Lichtquelle mit einem entsprechenden Ger\"at im Institut f\"ur Optik zu ermitteln.
+Die gew\"ahlte Lichtquelle sollte ein m\"oglichst breites Spektrum mit bekannter Intensit\"atsverteilung aufweisen. Da nur wenige verl\"a\ss{}liche Angaben bez\"uglich des jeweiligen Spektrums der Lampen zu finden waren, wurde beschlossen das Spektrum der Lichtquelle mit einem entsprechenden Ger\"at im Institut f\"ur Optik zu ermitteln.
 
 Zun\"achst wurde ein Verbund von 4 wei\ss{}en LEDs, die mit einem L\"ufter gek\"uhlt werden, als Lichtquelle f\"ur die Absorptionsmessung der sp\"ateren Mess-LEDs gew\"ahlt. Als Ergebnis der vier im Quadrat angeordneten LEDs wei\ss{}t deren aufgef\"achertes Spektrum waagrechte, dunkle Streifen auf, die von den Bereichen zwischen den LEDs stammen. Bei der Messung mu\ss{}te deshalb darauf geachtet werden, dass diese Zonen geringerer Intensit\"at zun\"achst durch Defokussieren des Aufbaus mithilfe der eingebauten Linsen verkleinert wurden und anschlie\ss{}end die LEDs die verbleibenden Streifen nicht kreuzen. Dies h\"atte entsprechende Verringerungen in der Intensit\"at des Absorptionsspektrums zur Folge, welche die Messdaten verf\"alschen w\"urden.
 
@@ -164,7 +165,7 @@ F\"ur die Auswertung der Messdaten ist es von grundlegender Bedeutung, zu wissen
 Da ein manuelles Auslesen der Intensit\"at und dessen zugeh\"origem Winkel ein aussichtsloses Unterfangen darstellen w\"urde, benutzten wir ein Drehpotentiometer zur automatischen Auswertung des momentanen Winkels. Dieses wurde so auf dem Tisch positioniert, dass die Drehachse m\"oglichst genau unter dem Mittelpunkt des Gitters ist, also dem Punkt, an welchem sich ein- und ausfallender Strahl treffen. Desweiteren wurde der Dreharm, an dessen \"Au\ss{}erstem Ende sich der Halter f\"ur die LEDs befindet, mit der Drehachse verbunden, sodass das Schwenken des Armes den Widerstand des Potentiometeres \"andert.
 \begin{figure}[ht]
 \begin{center}
-\includegraphics[width=1.\textwidth]{images/setup.jpg}
+\includegraphics[width=1.\textwidth]{setup.jpg}
 \end{center}
 \vspace{-1.5\baselineskip}
 \caption{Versuchsaufbau schematisch}
@@ -173,7 +174,7 @@ Da ein manuelles Auslesen der Intensit\"at und dessen zugeh\"origem Winkel ein a
 
 \begin{figure}[ht]
 \begin{center}
-\includegraphics[width=1.\textwidth]{images/aufbau_spektrum.jpg}
+\includegraphics[width=1.\textwidth]{aufbau_spektrum.jpg}
 \end{center}
 \vspace{-1.5\baselineskip}
 \caption{Versuchsaufbau komplett}
@@ -185,7 +186,7 @@ Anschließen wurde in $2^\circ$-Intervallen der Winkel und die Spannung am Poten
 Somit konnten wir die momentane Spannung am Potentiometer auslesen lassen, was uns den Winkel gibt und somit die Wellenlänge berechnen lässt.
 \begin{figure}[ht]
 \begin{center}
-\includegraphics[width=0.8\textwidth]{images/poti-reflexgitter.jpg}
+\includegraphics[width=0.8\textwidth]{poti-reflexgitter.jpg}
 \end{center}
 \vspace{-1.5\baselineskip}
 \caption{Das Reflexionsgitter zur Erzeugung des Spektrums und das Potentiometer zur Winkelmessung}
@@ -194,7 +195,7 @@ Somit konnten wir die momentane Spannung am Potentiometer auslesen lassen, was u
 
 \begin{figure}[ht]
 \begin{center}
-\includegraphics[width=0.8\textwidth]{images/winkel_spannung.pdf}
+\includegraphics[width=0.8\textwidth]{winkel_spannung.pdf}
 \end{center}
 \vspace{-1.5\baselineskip}
 \caption{Die Potentiometerspannung in Abhängigkeit vom Drehwinkel}
@@ -232,7 +233,7 @@ Das Glätten von Oszillationen an einer Stelle führte gleichzeitig auch zu Verf
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=1\textwidth]{images/spektren_mit_halogen.pdf}
+\includegraphics[width=1\textwidth]{spektren_mit_halogen.pdf}
 \end{center}
 \vspace{-1.5\baselineskip}
 \caption{Reduktion der gemessenen LED-Absorptionsspektren}
@@ -283,18 +284,29 @@ Die Fertig reduzierten Absorptions\-spektren sind in \hypref{Abb.}{fig:reduktion
 
 
 \section{Bau des Spektrometers}
+
+
+
 \subsection{Funktionsprinzip Übersicht} %Basti
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=1\textwidth]{programmablauf.pdf}
+\end{center}
+\vspace{-1.5\baselineskip}
+\caption{Skizze des Programmablaufs}
+\label{fig:programmablauf}
+\end{figure}
 
 
 \subsection{Elektronik}
 %% Michele, Maria
 %% v 0.1, wird noch erweitert
 
-Um die Photoströme aller 16 LEDs auf einfache Weise gleichzeitug messen zu können, haben wir in der Elektronikwerkstatt zwei Platinen ätzen lassen (siehe \ref{fig:electronics}).
+Um die Photoströme aller 16 LEDs auf einfache Weise gleichzeitig messen zu können, haben wir in der Elektronikwerkstatt zwei Platinen ätzen lassen (siehe \hypref{Abb.}{fig:electronics}).
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=1.\textwidth]{images/platinen.jpg}
+\includegraphics[width=1.\textwidth]{platinen.jpg}
 \end{center}
 \vspace{-1.5\baselineskip}
 \caption{Elektronik zum Messen der Photströme der LEDs}
@@ -302,10 +314,10 @@ Um die Photoströme aller 16 LEDs auf einfache Weise gleichzeitug messen zu kön
 \end{figure}
 
 Auf der LED-Platine (größere Platine mir brauner Färbung) befinden sich zentral die Sensor-LED-Matrix.
-Um die Photoströme der LEDs (typ. $100 \unit{nA}$) in eine messbare Spannung umsetzen zu können verwenden wir uns ein Transimpedanzverstärker-Schaltungen (siehe \ref{fig:transimp}), welche im wesentlichen aus den die LEDs umgebenden Operationsverstärker bestehen.
+Um die Photoströme der LEDs (typ. $100 \unit{nA}$) in eine messbare Spannung umsetzen zu können verwenden wir uns ein Transimpedanzverstärker-Schaltungen (siehe \hypref{Abb.}{fig:transimp}), welche im wesentlichen aus den die LEDs umgebenden Operationsverstärker bestehen.
 Die durch den Photostrom hervorgerufene Spannung am Ausgang des Verstärkers ist hierbei äquivalent zur Spannung, die an einem Ohmschen Widerstand abfallen würde
 \begin{equation*}
-U_{\text{mess}} = R_{\text{Transimpedanzverstärker}} \cdot I_{\text{Photo}},
+U_{\text{mess}} = R_{\text{Transimpedanzverstärker}} \cdot I_{\text{Photo}}\,,
 \end{equation*}
 der große Vorteil dieser aufwendigeren Schaltung liegt aber darin, dass der Widerstand, der parallel zur LED anliegt, vernachlässigbar ist. Somit werden die LEDs praktisch kurzgeschlossen, wodurch verhindert wird, dass weiter Phänomene wie der wellenlängenabhängige Lichtelektrische Effekt
 \begin{equation*}
@@ -315,7 +327,7 @@ die Ergebisse verfälschen können. Wir verwenden für alle LEDs einen Messwider
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=0.3\textwidth]{images/transimpedanz.png}
+\includegraphics[width=0.3\textwidth]{transimpedanz.png}
 \end{center}
 \vspace{-1.5\baselineskip}
 \caption{Transimpedanzverstärker}
@@ -332,7 +344,7 @@ Auf der Digital-Platine (kleinere Platine mit grauer Färbung) befindet sich der
 %% Algorithmik zur Auswertung					Basti
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=1.\textwidth]{images/screenshot.png}
+\includegraphics[width=1.\textwidth]{screenshot.png}
 \end{center}
 \vspace{-1.5\baselineskip}
 \caption{Unser Python Programm mit QT-Oberfläche im Simulationsbetrieb}
