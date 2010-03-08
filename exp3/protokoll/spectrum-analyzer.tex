@@ -71,29 +71,32 @@ Tutor: Xiaoyue Jin}
 
 \begin{abstract} %Andi
 Verschiedenfarbige Leuchtdioden zeigen in der Absorption ihre größte Empfindlichkeit in einem zur Emissionswellenlänge leicht blauverschobenen Bereich. Ziel des Projekts war es nun, diesen in einer Vormessung nachgewiesenen Effekt zu nutzen, um ein Spektrometer aus verschiedenfarbigen LEDs zu konstruieren. 
-Dabei wurden zunächst die Absorptionskurven verschiedener Leuchtdioden mit Hilfe einer Halogenlampe bekannten Spektrums ermittelt. Anschließend diente eine Anordung von 16 dieser LEDs als eigentliches Spektrometer. Das Spektrum einer unbekannten Lichtquelle im optischen Bereich konnte dann mit einer eigens entwickelten Auswertesoftware durch Entfaltung der Absorptionskurven ermittelt werden. Am Ende gelang es so, ein Spektrometer zu entwickeln, das vor allem bei Quellen mit schwarzkörperähnlicher Abstrahlcharakteristik gute Resultate liefert. Gegenwärtig wird das Gerät unter Verwendung kleinerer SMD-Bauteile neu konstruiert und optimiert. 
+Dabei wurden zunächst die Absorptionskurven verschiedener Leuchtdioden mit einem Gitterspektrum ermittelt. Anschließend diente eine Anordnung von 16 dieser LEDs als eigentliches Spektrometer. Das Spektrum einer unbekannten Lichtquelle im optischen Bereich konnte dann mit einer eigens entwickelten Auswertesoftware durch Entfaltung der Absorptionskurven ermittelt werden. Am Ende gelang es so, ein Spektrometer zu entwickeln, das vor allem bei Quellen mit glatten Spektren gute Resultate liefert. Gegenwärtig wird das Gerät unter Verwendung kleinerer SMD-Bauteile neu konstruiert und optimiert. 
 \end{abstract}
 \newpage
 
 \section{Einleitung} %Andi
-
 Spektrometer sind in verschiedensten Bereichen der Physik von hoher Bedeutung. Die Astronomie hat der Spektralanalyse weite Teile ihrer erzielten Durchbrüche zu verdanken und die Bedeutung von Spektren in der Optik muss nicht gesondert hervorgehoben werden. So finden heute  Spektrometer etwa im James Webb Space Telescope oder in der Röntgenastronomie Anwendung. Im Projekt war es nun das Ziel, ein solches für die Physik enorm bedeutsames Gerät zu konstruieren. Die Idee, dies unter Ausnutzung der unterschiedlichen Absorptionseigenschaften von verschiedenfarbigen Leuchtdioden zu versuchen, erschien schon aus einem sehr pragmatischen Grund vorteilhaft: Kommerziell wäre ein solches Gerät verhältnismäßig kostengünstig herzustellen, auch wenn der im Projekt verwendete Versuchsaufbau wohl eher dem Gegenwert eines Kleinwagens entspricht (bspw. empfindliche Spannungsmessgeräte für die Vormessungen, welche im serienreifen Spektrographen nicht mehr benötigt werden).
 
+
+
 \section{Grundgedanke des Versuchs}
+%% Allg. was wir machen wollen, etwas Theorie 	Karl
+
 
 \subsection{Aufbau und Funktionsweise einer LED}
 Die Leuchtdiode, kurz LED (für engl. "`Light Emitting Diode"') ist eine Halbleiter-Diode, die es ermöglicht elektrische Energie in Licht verschiedener Wellenlängen umzuwandeln.
 
-Da im vorliegenden Projekt nur bedrahtete LEDs als Absorber verwendet wurden, wird im Folgenden nur der Aufbau dieser Leuchtdioden-Bauform dargestellt. Die prinzipielle Funktionsweise ist jedoch bei fast allen Bauarten identisch. Lässt man durch Anode und Kathode der LED einen Strom in Durchlassrichtung fließen, so beginnt der Halbleiter in einer von Material und Dotierung abhängigen Wellenlänge zu strahlen. Für Leuchtdioden im sichtbaren Spektralbereich, wie sie hier verwendet wurden, kommt meist eine Galliumverbindung zum Einsatz.
-
 \begin{figure}[ht]
 \begin{center}
-\includegraphics[width=0.8\textwidth]{ledaufbau.jpg}
+\includegraphics[width=0.8\textwidth]{ledaufbau.png}
 \end{center}
 \vspace{-1.5\baselineskip}
 \caption{Aufbau einer bedrahteten Leuchtdiode}
 \label{LED-Aufbau}
 \end{figure}
+
+Da im vorliegenden Projekt nur bedrahtete LEDs als Absorber verwendet wurden, wird im Folgenden nur der Aufbau dieser Leuchtdioden-Bauform dargestellt. Die prinzipielle Funktionsweise ist jedoch bei fast allen Bauarten identisch. Lässt man durch Anode und Kathode der LED einen Strom in Durchlassrichtung fließen, so beginnt der Halbleiter in einer von Material und Dotierung abhängigen Wellenlänge zu strahlen. Für Leuchtdioden im sichtbaren Spektralbereich, wie sie hier verwendet wurden, kommt meist eine Galliumverbindung zum Einsatz.
 
 Das Funktionsprinzip einer LED basiert auf dem Aufbau des Chips, der aus zwei verschieden dotierten Halbleiterschichten besteht. In der p-dotierten Schicht befindet sich ein Überschuss an positiven Ladungsträgern (Löcher), in der n-dotierten Schicht überwiegen negativ geladenen Teilchen (Elektronen). Wird nun ein Strom in Durchlassrichtung an den Chip angelegt, können Elektronen und Löcher am p-n-Übergang rekombinieren. Da sich die Elektronen im n-dotierten Halbleiter im Leitungsband befinden und auf das energetisch niedriger liegende Valenzband der p-dotierten Schicht wechseln, wo sie mit den Löchern rekombinieren, wird ein fester Energiebetrag frei, der in Form eines Photons abgestrahlt wird.
 
@@ -102,27 +105,25 @@ Das Funktionsprinzip einer LED basiert auf dem Aufbau des Chips, der aus zwei ve
 \includegraphics[width=0.8\textwidth]{band.jpg}
 \end{center}
 \vspace{-1.5\baselineskip}
-\caption{Baenderstruktur der Halbleitergrenzschicht}
+\caption{B"anderstruktur der Halbleitergrenzschicht}
 \label{Baendermodell}
 \end{figure}
 
 Die Energie dieses Photons entspricht der Bandlücke zwischen Valenzband und Leitungsband. Somit ergibt sich die Wellenlänge des emittierten Photons wie folgt:
  \[ \lambda = \frac{h \cdot c}{\Delta E_{\text{Bandlücke}}} \]
-Dabei bezeichnet $h$ das Plancksche Wirkungsquatum und $c$ die Phasengeschwindigkeit des Lichts.
+Dabei bezeichnet $h$ das Plancksche Wirkungsquantum und $c$ die Phasengeschwindigkeit des Lichts.
+
 
 \subsection{Umkehrung des Effekts - LEDs in der Absorption}
-In diesem Versuch sollten jedoch die LEDs nicht als Lichtemitter, sondern als Absorber dienen. Es wurde also versucht, die Funktionsweise der Lichtdioden umzukehren.
+In diesem Versuch sollten jedoch die LEDs nicht als Lichtemitter, sondern als Absorber dienen. Es wurde also versucht, die Funktionsweise der Leuchtdioden umzukehren.
 
-Bei Bestrahlung der LEDs mit Licht kann eine Spannung und ein Strom am Halbleiter abgegriffen werden. Besonderes Interesse gilt der Abhängigkeit dieses Stromes von der Wellenlänge des eingestrahlten Lichtes, je nach Farbe (Emissionswellenlänge) der LED. Da die Lichtdioden auch in der Absorption wellenlängenabhängig sind, ist es möglich aus mehreren Lichtdioden, die den gesamten visuellen Spektralbereich abdecken, ein Spektrometer für optische Spektren zu konstruieren.\\
+Bei Bestrahlung der LEDs mit Licht kann eine Spannung und ein Strom am Halbleiter abgegriffen werden. Besonderes Interesse gilt der Abhängigkeit dieses Stromes von der Wellenlänge des eingestrahlten Lichtes, je nach Farbe (Emissionswellenlänge) der LED. Da die Leuchtdioden auch in der Absorption wellenlängenabhängig sind, ist es möglich aus mehreren Leuchtdioden, die den gesamten visuellen Spektralbereich abdecken, ein Spektrometer für optische Spektren zu konstruieren.
+
 Doch was passiert bei der Bestrahlung der LED durch Licht genügender Energie? Treffen Photonen auf die n-p-Grenzschicht des Halbleiterchips, werden dort Elektron-Loch-Paare erzeugt. Durch die Diffusionsspannung wandern die Elektronen in die p-dotierte Schicht, die positiven Löcher in die n-dotierte Zone, wodurch ein Stromfluss entsteht.
 
-\subsection{Vergleich von Emissions- und Absorptionsspektren}
-Es stellt sich jedoch die Frage, wie Absorptions- und Emissionsspektrum der Leuchtdiode zusammenh\"angen.
-Es ist zu erwarten, dass die LED in der Absorption erst eine Spannung liefert, wenn die Energie der eingestrahlten Photonen mindestens dem Bandlückenabstand entspricht.
-Tr\"agt man Absorptions- und Emissionskurve in einem Diagramm auf, ist gut zu erkennen, dass das Absorptionsspektrum gegen\"uber der Emission blauverschoben ist (\hypref{Abb.}{Absorption und Emission von LEDs}) und somit die LED erst auf das eingestrahlte Licht reagiert, wenn die Energie der Bandlücke weit überschritten ist. Quantitativ fällt die Verschiebung $\Delta \lambda$ bei verschiedenen LEDs jedoch unterschiedlich stark aus.
-Ein konkreter Zusammenhang zur Wellenlänge der Leuchtdiode oder zum Halbleitermaterial konnte jedoch nicht gefunden werden.
 
-\begin{figure}[ht]
+\subsection{Vergleich von Emissions- und Absorptionsspektren}
+\begin{figure}[!b]
 \begin{center}
 \includegraphics[width=0.9\textwidth]{absorp-emit.pdf}
 \end{center}
@@ -130,9 +131,11 @@ Ein konkreter Zusammenhang zur Wellenlänge der Leuchtdiode oder zum Halbleiterm
 \caption{Absorptions- (durchgezogen) und Emissionsspektren (gestrichelt) verschiedener LEDs}
 \label{Absorption und Emission von LEDs}
 \end{figure}
-
-%% Allg. was wir machen wollen, etwas Theorie 	Karl
-%% Vergleich mit den Emissionsspekren}
+%% Vergleich mit den Emissionsspekren
+Es stellt sich jedoch die Frage, wie Absorptions- und Emissionsspektrum der Leuchtdiode zusammenh\"angen.
+Es ist zu erwarten, dass die LED in der Absorption erst eine Spannung liefert, wenn die Energie der eingestrahlten Photonen mindestens dem Bandlückenabstand entspricht.
+Tr\"agt man Absorptions- und Emissionskurve in einem Diagramm auf, ist gut zu erkennen, dass das Absorptionsspektrum gegen\"uber der Emission blauverschoben ist (\hypref{Abb.}{Absorption und Emission von LEDs}) und somit die LED erst auf das eingestrahlte Licht reagiert, wenn die Energie der Bandlücke weit überschritten ist. Quantitativ fällt die Verschiebung $\Delta \lambda$ bei verschiedenen LEDs jedoch unterschiedlich stark aus.
+Ein konkreter Zusammenhang zur Wellenlänge der Leuchtdiode oder zum Halbleitermaterial konnte jedoch nicht gefunden werden.
 
 
 
@@ -142,7 +145,8 @@ Ein konkreter Zusammenhang zur Wellenlänge der Leuchtdiode oder zum Halbleiterm
 \subsection{Versuchsaufbau}
 %subsubsections wohl lieber weglassen, aber zur Meinungsbildung erst noch drinnen gelassen???	
 \subsubsection{Lichtquelle} %%Axi
-\begin{figure}[ht]
+
+\begin{figure}[!b]
 \begin{center}
 \includegraphics[width=1\textwidth]{quellspektren.pdf}
 \end{center}
@@ -150,6 +154,7 @@ Ein konkreter Zusammenhang zur Wellenlänge der Leuchtdiode oder zum Halbleiterm
 \caption{Die beiden verwendeten Weißlichtquellen im Vergleich, gemessen mit dem professionellen Spektrometer der Optiker}
 \label{fig:lichtquelle}
 \end{figure}
+
 Die gew\"ahlte Lichtquelle sollte ein m\"oglichst breites Spektrum mit bekannter Intensit\"atsverteilung aufweisen. Da nur wenige verlässliche Angaben bez\"uglich des jeweiligen Spektrums der Lampen zu finden waren, wurde beschlossen das Spektrum der Lichtquelle mit einem entsprechenden Ger\"at im Institut f\"ur Optik zu ermitteln.
 
 Zun\"achst wurde ein Verbund von vier wei\ss{}en LEDs, die mit einem L\"ufter gek\"uhlt wurden, als Lichtquelle f\"ur die Absorptionsmessung der sp\"ateren Mess-LEDs gew\"ahlt. Als Ergebnis der vier im Quadrat angeordneten LEDs wei\ss{}t deren aufgef\"achertes Spektrum waagrechte, dunkle Streifen auf, die von den Bereichen zwischen den LEDs stammen. Bei der Messung musste deshalb darauf geachtet werden, dass diese Zonen geringerer Intensit\"at zun\"achst durch Defokussieren des Aufbaus mithilfe der eingebauten Linsen verkleinert wurden und anschlie\ss{}end die LEDs die verbleibenden Streifen nicht kreuzten. Dies h\"atte entsprechende Verringerungen in der Intensit\"at des Absorptionsspektrums zur Folge, welche die Messdaten verf\"alschen w\"urden.
@@ -158,7 +163,10 @@ Bei der Auswertung wurde festgestellt, dass die Weißlicht-LED-Lichtquelle sehr 
 
 Im Plot der Weißlichtspektren wird neben der erwarteten Intensitätsverteilung auch eine Charakteristik des Spektrometers der Optiker erkennbar, wie z.B. die Delle bei $564\unit{nm}$. Dies ist ein Problem für spätere Kalibrierungen mit diesem Spektrum, da wir eigentlich davon ausgegangen sind, dass es die Spektren unverfälscht wiedergibt.
 
+
 \subsubsection{Strahlengang und Messaufbau} %%optischer Strahlengang ist unten eingebaut. Deshalb auch die Idee, die subsubsections weg zu lassen.
+Zur Erzeugung eines Spektrums gibt es diverse M\"oglichkeiten. Es stellte sich aber heraus, dass die Verwendung eines Prismas aufgrund der geringen Winkelausdehnung des erzeugten Spektrums f\"ur uns wenig lohnenswert ist. Ebenso mussten wir trotz langen Experimentierens und unter Verwendung verschiedener Linsenanordnungen auch auf ein Transmissionsgitter verzichten, da die Intensit\"at des Spektrums nicht stark genug war. Folglich griffen wir auf ein holographisches Reflexionsgitter zur\"uck, welches mit einer Gitterkonstanten von $d=2400\unit{\text{Linien}/mm}$ ein sehr breites Spektrum erzeugt.%%Gitterkonstante und Winkelausdehnung des Spektrums angeben 2400/mm
+
 \begin{figure}[ht]
 \begin{center}
 \includegraphics[width=1.\textwidth]{setup.jpg}
@@ -167,7 +175,6 @@ Im Plot der Weißlichtspektren wird neben der erwarteten Intensitätsverteilung 
 \caption{Versuchsaufbau schematisch}
 \label{Versuchsaufbau}
 \end{figure}
-Zur Erzeugung eines Spektrums gibt es diverse M\"oglichkeiten. Es stellte sich aber heraus, dass die Verwendung eines Prismas aufgrund der geringen Winkelausdehnung des erzeugten Spektrums f\"ur uns wenig lohnenswert ist. Ebenso mussten wir trotz langen Experimentierens und unter Verwendung verschiedener Linsenanordnungen auch auf ein Transmissionsgitter verzichten, da die Intensit\"at des Spektrums nicht stark genug war. Folglich griffen wir auf ein holographisches Reflexionsgitter zur\"uck, welches mit einer Gitterkonstanten von $d=2400\unit{\text{Linien}/mm}$ ein sehr breites Spektrum erzeugt.%%Gitterkonstante und Winkelausdehnung des Spektrums angeben 2400/mm
 
 %%\subsubsection{Winkelmessung} %%--- Eher "Wellenl\"angenbestimmung" oder dergleichen?! Da wir dadurch ja die momentan gemessene Wellenl\"ange bestimmen m\"ochten
 F\"ur die Auswertung der Messdaten ist es von grundlegender Bedeutung zu wissen welcher Wellenl\"ange die gemessene Intensit\"at zuzuordnen ist. Um dies zu erreichen wurde folgendes Vorgehen gew\"ahlt: Durch die Verwendung eines Refelxionsgitters und dessen Justierung derart, dass der Strahlengang in einer zum optischen Tisch parallelen Ebene verl\"auft, l\"asst sich die Wellenl\"ange durch \hypref{Formel}{eq:gitter} leicht in den Winkel $\alpha$ zwischen ein- und ausfallendem Strahl umrechnen.
@@ -176,7 +183,7 @@ F\"ur die Auswertung der Messdaten ist es von grundlegender Bedeutung zu wissen 
 \label{eq:gitter}
 \end{equation}
 Hierbei ist $\varphi = 65,8\degr$ der Drehwinkel des Gitters.\\
-Da ein manuelles Auslesen der Intensit\"at und dessen zugeh\"origem Winkel ein aussichtsloses Unterfangen darstellen w\"urde, benutzten wir ein Drehpotentiometer zur automatischen Auswertung des momentanen Winkels. Dieses wurde so auf dem Tisch positioniert, dass die Drehachse m\"oglichst genau unter dem Mittelpunkt des Gitters ist, also dem Punkt, an welchem sich ein- und ausfallender Strahl treffen. Des Weiteren wurde der Dreharm, an dessen äu\ss{}erstem Ende sich der Halter f\"ur die LEDs befindet, mit der Drehachse verbunden, sodass das Schwenken des Armes den Widerstand des Potentiometeres \"andert.
+Da ein manuelles Auslesen der Intensit\"at und dessen zugeh\"origem Winkel ein aussichtsloses Unterfangen darstellen w\"urde, benutzten wir ein Drehpotentiometer zur automatischen Auswertung des momentanen Winkels. Dieses wurde so auf dem Tisch positioniert, dass die Drehachse m\"oglichst genau unter dem Mittelpunkt des Gitters ist, also dem Punkt, an welchem sich ein- und ausfallender Strahl treffen. Des Weiteren wurde der Dreharm, an dessen äu\ss{}erstem Ende sich der Halter f\"ur die LEDs befindet, mit der Drehachse verbunden, sodass das Schwenken des Armes den Widerstand des Potentiometers \"andert.
 
 \begin{figure}[ht]
 \begin{center}
@@ -190,13 +197,14 @@ Da ein manuelles Auslesen der Intensit\"at und dessen zugeh\"origem Winkel ein a
 Anschließend wurde in $2^\circ$-Intervallen der Winkel und die Spannung am Potentiometer notiert. Wiederholtes Messen dieser Spannungs-Winkel-Abhängigkeit zeigte eine sehr gute Reproduzierbarkeit. Lediglich beim Wechsel des Drehsinns zeigte sich ein Offset, sodass entschlossen wurde alle Messungen immer mit Drehung im Uhrzeigersinn durchzuführen.
 
 Somit konnten wir die momentane Spannung am Potentiometer auslesen lassen, was uns den Winkel gibt und somit die Wellenlänge berechnen lässt.
+
 \begin{figure}[ht]
 \begin{center}
 \includegraphics[width=0.8\textwidth]{poti-reflexgitter.jpg}
 \end{center}
 \vspace{-1.5\baselineskip}
 \caption{Das Reflexionsgitter zur Erzeugung des Spektrums und das Potentiometer zur Winkelmessung}
-\label{winkel_spannung}
+\label{fig:poti-reflexgitter}
 \end{figure}
 
 \begin{figure}[ht]
@@ -213,14 +221,6 @@ Somit konnten wir die momentane Spannung am Potentiometer auslesen lassen, was u
 \subsection{Reduktion der Spektren}
 Aus den aufgenommenen Rohdaten konnten wir mit Hilfe eines hierzu erstellten 500-Zeilen Python Skripts die benötigten Spektren $I(\lambda)$ berechnen.
 Die elektronisch per Computer gemessenen Daten waren Wertepaare von Potentiometerspannung und Absorptions-LED-Spannung über einen Lastwiderstand von $100\unit{k\Omega}$.
-\begin{figure}[h]
-\begin{center}
-\includegraphics[width=1\textwidth]{spektren_mit_halogen.pdf}
-\end{center}
-\vspace{-1.5\baselineskip}
-\caption{Reduktion der gemessenen LED-Absorptionsspektren}
-\label{fig:reduktion}
-\end{figure}
 
 Als erster Schritt wurden die Potentiometerspannungen mit Hilfe der in \hypref{Abb.}{winkel_spannung} gefundenen invertierbaren Funktion in Drehwinkel umgerechnet.
 Der Winkelbereich des optischen Spektrums lag zwischen $111\degr$ und $158\degr$ (siehe \hypref{Abb.}{Versuchsaufbau}), wo wir die Potentiometercharakteristik sehr gut vermessen hatten.
@@ -238,6 +238,15 @@ Unser Ziel war es also, diese Operation rückgängig zu machen, also eine Entfal
 
 Die Punktantwort des Systems konnte relativ einfach bestimmt werden, indem die Intensitätsverteilung um das nullte Interferenzmaximum herum gemessen wurde.
 Die Entfaltung selbst ist jedoch eine relativ schwierige Operation, da nicht unbedingt eine eindeutige Lösung existiert und kleine Fehler im Signal überinterpretiert und zu großen Fehlern in der Lösung führen können.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[height=20cm]{spektren_mit_halogen.pdf}
+\end{center}
+\vspace{-1.5\baselineskip}
+\caption{Reduktion der gemessenen LED-Absorptionsspektren}
+\label{fig:reduktion}
+\end{figure}
 
 Somit haben wir verschiedene Algorithmen ausprobiert und auf ihre Tauglichkeit überprüft.
 Ein vielversprechender Ansatz war die "`Wiener Deconvolution"'.
@@ -304,14 +313,13 @@ Dennoch tragen die Signale genug Information über das gesamte Spektrum, um es i
 Das fertige Spektrum wird dann als Diagramm am Bildschirm des Computers angezeigt.
 
 
-
 \subsection{Elektronik}
 %% Michele, Maria
 %% v 0.1, wird noch erweitert
 
 Um die Photoströme aller 16 LEDs auf einfache Weise gleichzeitig messen zu können, haben wir in der Elektronikwerkstatt zwei Platinen ätzen lassen (siehe \hypref{Abb.}{fig:electronics}).
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \begin{center}
 \includegraphics[width=1.\textwidth]{platinen.jpg}
 \end{center}
@@ -348,14 +356,6 @@ Auf der Digitalplatine (kleinere Platine mit grauer Färbung) befindet sich der 
 \subsection{Auswertungsprogramm} % Basti
 % Software: Berechnung der Spektren mit unserem Gerät
 %% Funktionsübersicht und Erklärung der Bedienung
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=1.\textwidth]{screenshot.png}
-\end{center}
-\vspace{-1.5\baselineskip}
-\caption{Unser Python Programm mit QT-Oberfläche im Simulationsbetrieb}
-\label{fig:screenschot}
-\end{figure}
 Unsere Auswertungssoftware wurde in Python geschrieben, was den geringsten Programmieraufwand bei solch einer wenig zeitaufwändigen Anwendung versprach.
 Im Messbetrieb fordert das Programm vom Controller in manuellen oder regelmäßigen Zeitintervallen von ca. 500\,ms Messwerte an.
 Diese bestehen aus einem Vektor mit 16 Einträgen, die bereits auf Ganzzahlen zwischen 0 und 1000 digitalisiert sind.
@@ -365,10 +365,20 @@ Zur Korrektur des Offsets wurde eine Dunkelbild-Funktion integriert.
 Dabei nimmt man eine Messung bei abgedeckten Dioden auf.
 Die Werte werden zur späteren Verwendung gespeichert und im Messvorgang jeweils von den aktuellen Werten subtrahiert.
 Auch eine Helligkeitsanpassung an die tatsächlich gemessenen Werte wurde durchgeführt, indem mit einem Baustrahler Licht eingestrahlt wurde und dessen Spektrum näherungsweise als bekanntes Schwarzkörperspektrum angenommen wurde.
-Somit können alle Messwerte noch durch diesen Vergleichswert geteilt werden und veränderte Messcharakteristiken der Dioden durch die Elektronik oder sonstige Effekte werden korrigiert.
+Somit können alle Messwerte noch durch diesen Vergleichswert geteilt werden und veränderte Mess\-charakteristiken der Dioden durch die Elektronik oder sonstige Effekte werden korrigiert.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=1.\textwidth]{screenshot.png}
+\end{center}
+\vspace{-1.5\baselineskip}
+\caption{Unser Python Programm mit QT-Oberfläche im Simulationsbetrieb}
+\label{fig:screenshot}
+\end{figure}
 
 Zum Test der Algorithmen wurde ein Simulationsmodus eingebaut, der beliebige Spektren würfelt, Messsignale mit einstellbaren Fehlern erzeugt und dann versucht die Spektren wieder zu rekonstruieren.
 Damit konnten wir sowohl Funktion und Qualität der Berechnungsmethoden von vornherein abschätzen.
+
 \begin{figure}[ht]
 \begin{center}
 \includegraphics[width=1\textwidth]{programmablauf.pdf}
@@ -378,20 +388,11 @@ Damit konnten wir sowohl Funktion und Qualität der Berechnungsmethoden von vorn
 \label{fig:programmablauf}
 \end{figure}
 
-
 %% Algorithmik zur Auswertung					Basti
 \subsubsection{Berechnung des Spektrums}
 Die Berechnung eines Spektrums aus den Messwerten ist praktisch das Herzstück unserer Software und bot uns großen Spielraum für mathematische Tüfteleien.
 Ein komplettes Spektrum besitzt natürlich unendlich viele Freiheitsgrade, für die wir aber nur 16 Zwangsbedingungen besitzen.
 Daher muss man zusätzliche Annahmen in das System stecken, wofür es unzählige Möglichkeiten gibt, von welchen wir eine ganze Reihe getestet haben.
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=1\textwidth]{matrix_A.pdf}
-\end{center}
-\vspace{-1.5\baselineskip}
-\caption{Bildliche Darstellung der Absorptionskurvenmatrix $A$. Jede Absorptionskurve ist auf 1 normiert.}
-\label{fig:matrixA}
-\end{figure}
 
 Unsere Ausgangsdaten waren also neben dem Vektor der Messwerte $b$ die Absorptionsspektren in Form einer Matrix $A$, gebinnt auf 1\,nm Intervalle zwischen 350 und 670\,nm. Außerdem wissen wir, wie die Messung mathematisch zustande kommt, nämlich:
 \begin{equation}
@@ -405,20 +406,29 @@ A =
 \end{pmatrix},
 \end{equation}
 wobei der Vektor $x$ das gesuchte Spektrum ist und die Matrix $A$ nicht quadratisch und somit auch nicht invertierbar ist.
-Problematisch ist außerdem, dass die Absorptionskurven in der Matrix sehr breit und im kurzwelligen Bereich sehr änhlich sind (siehe \hypref{Abb.}{fig:matrixA}).
-Der Bereich zwischen 420--470\,nm ist zudem nur schlecht abgedeckt, was an der sogenannten "`Green Gap"' liegen dürfte, also dem Problem, dass es im grünen Emissionsbereich vom 540--580\,nm noch keine effizienten Leuchtdioden gibt.\footnote{\href{http://www.pro-physik.de/Phy/pdfstart.do?mid=3\&articleid=51055\&recordid=51193}{Physik Journal 1/2010 S. 25f.}}
+Problematisch ist außerdem, dass die Absorptionskurven in der Matrix sehr breit und im kurzwelligen Bereich sehr ähnlich sind (siehe \hypref{Abb.}{fig:matrixA}).
+Der Bereich zwischen 420--470\,nm ist zudem nur schlecht abgedeckt, was an der sogenannten "`Green Gap"' liegen dürfte, also dem Problem, dass es im grünen Emissionsbereich vom 540--580\,nm noch keine effizienten Leuchtdioden gibt.\footnote{\href{http://www.pro-physik.de/Phy/pdfstart.do?mid=3&articleid=51055&recordid=51193}{Physik Journal 1/2010 S. 25f.}}
 
-\subsubsection{Lineare Rekonstruktionsalgorithmen}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=1\textwidth]{matrix_A.pdf}
+\end{center}
+\vspace{-1.5\baselineskip}
+\caption{Bildliche Darstellung der Absorptionskurvenmatrix $A$. Jede Absorptionskurve ist auf 1 normiert.}
+\label{fig:matrixA}
+\end{figure}
+
+\subsubsection{Exakte Rekonstruktionsalgorithmen}
 Die naheliegendste Methode zur Verringerung der Freiheitsgrade ist natürlich die Vergrößerung der Binbreiten, so dass das Spektrum nur noch an 16 unabhängigen Punkten betrachtet wird.
 Die Matrix $A$ ist dann tatsächlich invertierbar und liefert immer eine Lösung $x = A^{-1}\cdot b$.
 Das Ergebnis ist allerdings völlig unbrauchbar, da die Werte schon bei geringen Messfehlern von unter 1\%, wovon man in der Praxis nur träumen kann, anfangen extrem zu oszillieren und selbst bei fehlerlosen Werten in der Simulation wurde des Spektrum oft nur an sehr wenigen Stellen korrekt wiedergegeben.
-Wahrscheinlich ist die Annahme einer konstanten Intensität innerhalb eines Bins einfach schon zu problematisch und die Breite unserer Absorptionskurven macht die Matrix schon fast singulär.
+Wahrscheinlich ist die Annahme einer konstanten Intensität innerhalb eines Bins einfach schon zu problematisch und die Ähnlichkeit der Absorptionskurven macht die Matrix schon fast singulär.
 
-Die nächste einfache Idee war dann, die Oszillationen zu verhindern, indem von allen Lösungen diejenige mit dem geringsten Betragsquadrat genommen wird, also Multiplikation von $b$ mit der Pseudoinversen.
+Die nächste einfache Idee war dann, die Oszillationen zu verhindern, indem von allen Lösungen des fein gebinnten Systems diejenige mit dem geringsten Betragsquadrat genommen wird, also Multiplikation von $b$ mit der Pseudoinversen.
 Die Lösung funktioniert schon erstaunlich gut und außerdem effizient, weil die Pseudoinverse nur einmal erzeugt werden muss.
 Trotzdem ist das Verfahren aber noch recht anfällig gegenüber Fehlern in den Messwerten und zeigt außerdem wiederkehrende Muster, die von den Absorptionskurven abhängen.
 
-Daher war es ein weiterer Fortschnitt nicht die Gesamtnorm des Spektrums, sondern stattdessen die Gesamtkrümmung zu minimieren.
+Daher war es ein weiterer Fortschritt nicht die Gesamtnorm des Spektrums, sondern stattdessen die Gesamtkrümmung zu minimieren.
 Hierzu benötigt man eine spezielle Lösung $l$ des Systems.
 Daraufhin wird eine Basis $L$ des Kerns von $A$ mit der Singulärwertzerlegung erzeugt, dann zusammen mit einer Krümmungsmatrix $K$ wie in \hypref{Abschnitt}{sec:entfaltung} die betragsminimale Lösung des Systems $KL\cdot m = Kl$ und schlussendlich die Lösung $x = l - L\cdot m$.
 In Python geht das alles in nur drei Zeilen.
@@ -427,13 +437,38 @@ Das Ergebnis ist nochmal besser als die anderen, oszilliert aber auch bei Messfe
 Andere Ansätze die Lösung in verschiedenste Basen, wie Polynome oder Splines, zu entwickeln waren meistens noch problematischer.
 Wir mussten also festhalten, dass die Absorptionskurven einfach zu breit, die Matrix $A$ zu schlecht konditioniert und die Problemstellung zu empfindlich gegenüber Fehlern ist, um exakte Lösungen sinnvoll verwenden zu können.
 
-\subsubsection{Nichlineare Rekonstruktionsalgorithmen}
+\subsubsection{Nichtexakte Rekonstruktionsalgorithmen}
 Entfernt man sich von der Bedingung, das System exakt zu lösen, so lässt sich beispielsweise die Krümmung der Lösungskurve weiter verringern.
+Hierzu kann man die Summe aus Abstandsquadraten zu den Messwerten und der Krümmung der Lösungskurve minimieren und beide Aspekte variabel gewichten.
+Die Lösung gewinnt man dann mit
+\begin{equation}
+x = (A^tA+\beta\cdot K^tK)^{-1}\cdot A^t\,b
+\qquad\qquad
+\beta\in\mathbb{R}
+\end{equation}
+mit der bekannten Krümmungsmatrix $K$ und einem Parameter $\beta$ den man zur Laufzeit anpassen kann.
+Bei kleinem $\beta$ und mittelgroßer Binzahl zeigt dieses Verfahren, dass es numerisch nicht unbegrenzt stabil ist.
+Wir haben es deshalb mit einem mathematisch äquivalenten Singulärwertverfahren ersetzt.
+Durch den variablen Parameter war dieses Verfahren schon sehr universell einsetzbar, da man die Glättung an die Fehlerrate der Messwerte anpassen konnte und so immer ein vernünftiges Signal erhielt.
 
-...
+Weitere Verbesserungen konnten wir nur erreichen indem wir uns von den linearen Matrizenverfahren trennten.
+Viele Ungenauigkeiten und Oszillationen in der Lösungskurve können nämlich verringert werden, wenn die Zusatzbedingung nichtnegativer Intensitätswerte mit beachtet wird.
+Unser Ansatz bestand nun einfach darin, eine Zielfunktion zu Definieren, welche sowohl die Abstände vom Lösungsvektor als auch die Krümmung so wie die negativen Werte gewichtet und quadratisch zusammenaddiert.
+Diese Funktion wird an einen Minimierungsalgorithmus übergeben, der die optimale Lösung sucht.
+Prinzipbedingt braucht dieses Verfahren erheblich mehr Rechenzeit als die anderen, weil die Lösung sehr oft neu ausgerechnet werden muss bis die Konvergenz erreicht ist.
+In \hypref{Abb.}{fig:screenshot} wird dieses Verfahren verwendet, und man sieht dass das Originalspektrum bis auf kleinere Oszillationen schon recht gut erreicht wird.
+Auch wenn die Möglichkeiten zur Verbesserung noch groß sind, haben wir es vorerst bei diesem Verfahren belassen.
 
-
-
+Für spezielle Lichtquellen lohnt es sich außerdem, noch mehr Informationen aus dem Spektrum zu holen.
+Von annähernd schwarzen Strahlern lässt sich mit dem Spektrometer die Effektivtemperatur mit einem passenden Schwarzkörperspektrum ermitteln.
+In diesem Modus fittet der Computer ein Planck-Spektrum $I(\lambda)$ mit den beiden Parametern Temperatur und Skalierungsfaktor auf die Messdaten so dass der Fehler
+\begin{equation}
+\left(
+A\cdot I(\lambda)
+\right)^2
+\end{equation}
+minimal wird.
+Zur Vermessung von monochromatischen Strahlern haben wird das gleiche mit einer Gaußkurve implementiert.
 
 
 
