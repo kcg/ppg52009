@@ -135,6 +135,8 @@ Ein konkreter Zusammenhang zur Wellenlänge der Leuchtdiode oder zum Halbleiterm
 %% Vergleich mit den Emissionsspekren}
 
 
+
+\FloatBarrier
 \section{Messung der Absorptionsspektren}
 
 \subsection{Versuchsaufbau}
@@ -157,6 +159,14 @@ Bei der Auswertung wurde festgestellt, dass die Weißlicht-LED-Lichtquelle sehr 
 Im Plot der Weißlichtspektren wird neben der erwarteten Intensitätsverteilung auch eine Charakteristik des Spektrometers der Optiker erkennbar, wie z.B. die Delle bei $564\unit{nm}$. Dies ist ein Problem für spätere Kalibrierungen mit diesem Spektrum, da wir eigentlich davon ausgegangen sind, dass es die Spektren unverfälscht wiedergibt.
 
 \subsubsection{Strahlengang und Messaufbau} %%optischer Strahlengang ist unten eingebaut. Deshalb auch die Idee, die subsubsections weg zu lassen.
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=1.\textwidth]{setup.jpg}
+\end{center}
+\vspace{-1.5\baselineskip}
+\caption{Versuchsaufbau schematisch}
+\label{Versuchsaufbau}
+\end{figure}
 Zur Erzeugung eines Spektrums gibt es diverse M\"oglichkeiten. Es stellte sich aber heraus, dass die Verwendung eines Prismas aufgrund der geringen Winkelausdehnung des erzeugten Spektrums f\"ur uns wenig lohnenswert ist. Ebenso mussten wir trotz langen Experimentierens und unter Verwendung verschiedener Linsenanordnungen auch auf ein Transmissionsgitter verzichten, da die Intensit\"at des Spektrums nicht stark genug war. Folglich griffen wir auf ein holographisches Reflexionsgitter zur\"uck, welches mit einer Gitterkonstanten von $d=2400\unit{\text{Linien}/mm}$ ein sehr breites Spektrum erzeugt.%%Gitterkonstante und Winkelausdehnung des Spektrums angeben 2400/mm
 
 %%\subsubsection{Winkelmessung} %%--- Eher "Wellenl\"angenbestimmung" oder dergleichen?! Da wir dadurch ja die momentan gemessene Wellenl\"ange bestimmen m\"ochten
@@ -167,14 +177,6 @@ F\"ur die Auswertung der Messdaten ist es von grundlegender Bedeutung zu wissen 
 \end{equation}
 Hierbei ist $\varphi = 65,8\degr$ der Drehwinkel des Gitters.\\
 Da ein manuelles Auslesen der Intensit\"at und dessen zugeh\"origem Winkel ein aussichtsloses Unterfangen darstellen w\"urde, benutzten wir ein Drehpotentiometer zur automatischen Auswertung des momentanen Winkels. Dieses wurde so auf dem Tisch positioniert, dass die Drehachse m\"oglichst genau unter dem Mittelpunkt des Gitters ist, also dem Punkt, an welchem sich ein- und ausfallender Strahl treffen. Des Weiteren wurde der Dreharm, an dessen äu\ss{}erstem Ende sich der Halter f\"ur die LEDs befindet, mit der Drehachse verbunden, sodass das Schwenken des Armes den Widerstand des Potentiometeres \"andert.
-\begin{figure}[ht]
-\begin{center}
-\includegraphics[width=1.\textwidth]{setup.jpg}
-\end{center}
-\vspace{-1.5\baselineskip}
-\caption{Versuchsaufbau schematisch}
-\label{Versuchsaufbau}
-\end{figure}
 
 \begin{figure}[ht]
 \begin{center}
@@ -404,7 +406,7 @@ A =
 \end{equation}
 wobei der Vektor $x$ das gesuchte Spektrum ist und die Matrix $A$ nicht quadratisch und somit auch nicht invertierbar ist.
 Problematisch ist außerdem, dass die Absorptionskurven in der Matrix sehr breit und im kurzwelligen Bereich sehr änhlich sind (siehe \hypref{Abb.}{fig:matrixA}).
-Der Bereich zwischen 420--470\,nm ist zudem nur schlecht abgedeckt, was an der sogenannten "`green gap"' liegen dürfte, also dem Problem, dass es im grünen Emissionsbereich vom 540--580\,nm noch keine effizienten Leuchtdioden gibt.\footnote{\href{http://www.pro-physik.de/Phy/pdfstart.do?mid=3\&articleid=51055\&recordid=51193}{Physik Journal 1/2010 S. 25f.}}
+Der Bereich zwischen 420--470\,nm ist zudem nur schlecht abgedeckt, was an der sogenannten "`Green Gap"' liegen dürfte, also dem Problem, dass es im grünen Emissionsbereich vom 540--580\,nm noch keine effizienten Leuchtdioden gibt.\footnote{\href{http://www.pro-physik.de/Phy/pdfstart.do?mid=3\&articleid=51055\&recordid=51193}{Physik Journal 1/2010 S. 25f.}}
 
 \subsubsection{Lineare Rekonstruktionsalgorithmen}
 Die naheliegendste Methode zur Verringerung der Freiheitsgrade ist natürlich die Vergrößerung der Binbreiten, so dass das Spektrum nur noch an 16 unabhängigen Punkten betrachtet wird.
