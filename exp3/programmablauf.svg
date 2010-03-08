@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.0"
+   width="500"
+   height="280"
+   id="svg2">
+  <defs
+     id="defs4">
+    <marker
+       refX="0"
+       refY="0"
+       orient="auto"
+       id="Arrow1Mend"
+       style="overflow:visible">
+      <path
+         d="M 0,0 L 5,-5 L -12.5,0 L 5,5 L 0,0 z"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         id="path3236"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none" />
+    </marker>
+  </defs>
+  <g
+     id="layer1">
+    <path
+       d="M 100,1 L 100,279 L 400,279 L 400,1 L 100,1 z M 100,21 L 400,21"
+       id="path2383"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <text
+       x="251.06641"
+       y="14.5"
+       id="text3162"
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:cmr10;-inkscape-font-specification:cmr10 Medium"><tspan
+         x="251.06641"
+         y="14.5"
+         id="tspan3164">Auswertungsprogramm</tspan></text>
+    <text
+       x="454.55051"
+       y="20"
+       id="text3176"
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:cmr10;-inkscape-font-specification:cmr10 Medium"><tspan
+         x="454.55051"
+         y="20"
+         id="tspan3180">Online</tspan><tspan
+         x="454.55051"
+         y="37.5"
+         id="tspan3184">Messung</tspan><tspan
+         x="454.55051"
+         y="55"
+         id="tspan3218">mit der</tspan><tspan
+         x="454.55051"
+         y="72.5"
+         id="tspan3220">Elektronik</tspan></text>
+    <g
+       transform="translate(6.1058807,0)"
+       id="g4070">
+      <rect
+         width="128.57143"
+         height="40"
+         x="116"
+         y="36"
+         id="rect3188"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         x="179.69881"
+         y="52"
+         id="text3192"
+         xml:space="preserve"
+         style="font-size:14px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:120.00000477%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:cmr10;-inkscape-font-specification:cmr10 Bold"><tspan
+           x="179.69881"
+           y="52"
+           id="tspan3194">Absorptionskurven</tspan><tspan
+           x="179.69881"
+           y="68.800003"
+           id="tspan3200">(Matrix <tspan
+   id="tspan3202"
+   style="font-size:14px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:120.00000477%;writing-mode:lr-tb;text-anchor:middle;font-family:cmmi10;-inkscape-font-specification:cmmi10 Medium">A</tspan>)</tspan></text>
+    </g>
+    <g
+       transform="translate(-6.6472168,0)"
+       id="g4097">
+      <rect
+         width="96"
+         height="40"
+         x="288"
+         y="36"
+         id="rect3190"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         x="335.74487"
+         y="52"
+         id="text3196"
+         xml:space="preserve"
+         style="font-size:14px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:120.00000477%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:cmr10;-inkscape-font-specification:cmr10 Bold"><tspan
+           x="335.74487"
+           y="52"
+           id="tspan3198">16 Messwerte</tspan><tspan
+           x="335.74487"
+           y="68.800003"
+           id="tspan3204">(Vektor <tspan
+   id="tspan3206"
+   style="font-size:14px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:120.00000477%;writing-mode:lr-tb;text-anchor:middle;font-family:cmmi10;-inkscape-font-specification:cmmi10 Medium">b</tspan>)</tspan></text>
+    </g>
+    <path
+       d="M 44,89 C 44,106 62.707097,101.89448 78,90 C 96,76 99.156727,56 112,56 L 119,56"
+       id="path3222"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       d="M 348.71428,140.35715 C 348.73197,154.79864 302.804,166.50817 246.14286,166.50817 C 189.48171,166.50817 143.55374,154.79864 143.57143,140.35715 C 143.55374,125.91566 189.48171,114.20613 246.14286,114.20613 C 302.804,114.20613 348.73197,125.91566 348.71428,140.35715 z"
+       transform="translate(4.2857132,-16.357147)"
+       id="path4004"
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <g
+       transform="translate(4,0.214279)"
+       id="g4108">
+      <path
+         d="M 244,218 C 244,229.59798 217.13708,239 184,239 C 150.86292,239 124,229.59798 124,218 C 124,206.40202 150.86292,197 184,197 C 217.13708,197 244,206.40202 244,218 L 244,218 z"
+         transform="translate(-8,28.785721)"
+         id="path4022"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         x="175.88477"
+         y="240"
+         id="text4026"
+         xml:space="preserve"
+         style="font-size:14px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:cmr10;-inkscape-font-specification:cmr10 Medium"><tspan
+           x="175.88477"
+           y="240"
+           id="tspan4028">Anzeige</tspan><tspan
+           x="175.88477"
+           y="257.5"
+           id="tspan4036">des Spektrums</tspan></text>
+    </g>
+    <rect
+       width="96"
+       height="32"
+       x="132"
+       y="178"
+       id="rect4038"
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <text
+       x="179.73633"
+       y="198"
+       id="text4040"
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:120.00000477%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:cmr10;-inkscape-font-specification:cmr10 Medium"><tspan
+         x="179.73633"
+         y="198"
+         id="tspan4044">Spektrum <tspan
+   id="tspan4281"
+   style="font-size:14px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:120.00000477%;writing-mode:lr-tb;text-anchor:middle;font-family:cmmi10;-inkscape-font-specification:cmmi10 Medium">x</tspan></tspan></text>
+    <path
+       d="M 180,210 L 180,223"
+       id="path4048"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       d="M 182,76.631345 C 182,88.631345 206.54036,78.689952 214.65387,89.505076 L 220,96.631345"
+       id="path4050"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       d="M 332,76 C 332,92 364,96 364,124 C 364,168 320,181 320,216 L 320,223"
+       id="path4054"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       d="M 250,150 C 250,168 180,152 180,169 L 180,176"
+       id="path4056"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       d="M 570,24 C 570,48.300529 550.30053,68 526,68 C 501.69947,68 482,48.300529 482,24 C 482,-0.30052899 501.69947,-20 526,-20 C 550.30053,-20 570,-0.30052899 570,24 L 570,24 z"
+       transform="translate(-71,21)"
+       id="path4064"
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <g
+       id="g4077">
+      <text
+         x="44.576172"
+         y="24"
+         id="text3168"
+         xml:space="preserve"
+         style="font-size:14px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:cmr10;-inkscape-font-specification:cmr10 Medium"><tspan
+           x="44.576172"
+           y="24"
+           id="tspan3170">Offline</tspan><tspan
+           x="44.576172"
+           y="41.5"
+           id="tspan4058">Messung</tspan><tspan
+           x="44.576172"
+           y="59"
+           id="tspan3172">der LED-</tspan><tspan
+           x="44.576172"
+           y="76.5"
+           id="tspan3212">kurven</tspan></text>
+      <path
+         d="M 570,24 C 570,48.300529 550.30053,68 526,68 C 501.69947,68 482,48.300529 482,24 C 482,-0.30052899 501.69947,-20 526,-20 C 550.30053,-20 570,-0.30052899 570,24 L 570,24 z"
+         transform="translate(-481,21)"
+         id="path4068"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+    <path
+       d="M 455,89 C 455,106 436.2929,101.89448 421,90 C 403,76 399.84327,56 387,56 L 380,56"
+       id="path4104"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <g
+       transform="translate(-0.3571429,1.9642857)"
+       id="g4396">
+      <text
+         x="253.99498"
+         y="122.21429"
+         id="text4006"
+         xml:space="preserve"
+         style="font-size:14px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:120.00000477%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:cmr10;-inkscape-font-specification:cmr10 Bold"><tspan
+           x="253.99498"
+           y="122.21429"
+           id="tspan4008">Rekonstruktion des Spektrums</tspan><tspan
+           x="256.33289"
+           y="139.01428"
+           id="tspan4010">(<tspan
+   id="tspan4014"
+   style="font-size:14px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:120.00000477%;writing-mode:lr-tb;text-anchor:middle;font-family:cmr10;-inkscape-font-specification:cmr10 Bold"><tspan
+   id="tspan4140"
+   style="font-size:14px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:120.00000477%;writing-mode:lr-tb;text-anchor:middle;font-family:cmmi10;-inkscape-font-specification:cmmi10 Medium">Ax</tspan>=<tspan
+   id="tspan4142"
+   style="font-size:14px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:120.00000477%;writing-mode:lr-tb;text-anchor:middle;font-family:cmmi10;-inkscape-font-specification:cmmi10 Medium">b</tspan>   =   <tspan
+   id="tspan4144"
+   style="font-size:14px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:120.00000477%;writing-mode:lr-tb;text-anchor:middle;font-family:cmmi10;-inkscape-font-specification:cmmi10 Medium">x</tspan></tspan> )    </tspan></text>
+      <path
+         d="M 262.16029,132.47351 L 267.16029,135.47351 L 262.16029,138.69672"
+         id="path4122"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.60000002;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+    <g
+       transform="translate(144,0.214279)"
+       id="g4124">
+      <path
+         d="M 244,218 C 244,229.59798 217.13708,239 184,239 C 150.86292,239 124,229.59798 124,218 C 124,206.40202 150.86292,197 184,197 C 217.13708,197 244,206.40202 244,218 L 244,218 z"
+         transform="translate(-8,28.785721)"
+         id="path4126"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         x="175.88477"
+         y="240"
+         id="text4128"
+         xml:space="preserve"
+         style="font-size:14px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:cmr10;-inkscape-font-specification:cmr10 Medium"><tspan
+           x="175.88477"
+           y="240"
+           id="tspan4130">Anzeige</tspan><tspan
+           x="175.88477"
+           y="257.5"
+           id="tspan4132">der Messwerte</tspan></text>
+    </g>
+    <path
+       d="M 318,76.522153 C 318,88.522153 293.45964,78.58076 285.34613,89.395884 L 280,96.522149"
+       id="path4134"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  </g>
+</svg>
