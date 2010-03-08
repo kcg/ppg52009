@@ -7,6 +7,7 @@
 \usepackage{float} % fuer \begin{figure}[H]
 \usepackage{icomma} % laesst das Komma als Dezimaltrennzeichen interpretieren
 \usepackage{fix-cm} % für die große Titelschrift
+\usepackage{placeins} % laesst Bilder nicht über eine \FloatBarrier hinausrutschen
 \usepackage[pdftex]{hyperref} % Hyperlinks im Dokument
 \hypersetup{colorlinks=true, linkcolor=black, citecolor=black, filecolor=black, urlcolor=black, pdftitle={LED-Spektrometer - Projektpraktikum 09/10 Gruppe 5}}
 
@@ -81,7 +82,7 @@ Spektrometer sind sind in verschiedensten Bereichen der Physik von überragender
 \section{Grundgedanke des Versuchs}
 
 \subsection{Aufbau und Funktionsweise einer LED}
-Die Leuchtdiode, kurz LED (für engl. "Light Emitting Diode") ist eine Halbleiter-Diode die es ermöglicht elektrische Energie in Licht verschiedener Wellenlängen umzuwandeln.
+Die Leuchtdiode, kurz LED (für engl. "`Light Emitting Diode"') ist eine Halbleiter-Diode die es ermöglicht elektrische Energie in Licht verschiedener Wellenlängen umzuwandeln.
 
 Da im vorliegenden Projekt nur bedrahtete LEDs als Absorber verwendet wurden, wird im Folgenden nur der Aufbau dieser Leuchtdioden-Bauform dargestellt. Die prinzipielle Funktionsweise ist jedoch bei fast allen Bauarten identisch. Lässt man durch Anode und Kathode der LED einen Strom in Durchlassrichtung fließen, so beginnt der Halbleiter in einer von Material und Dotierung abhängigen Wellenlänge zu strahlen. Für Leuchtdioden im sichtbaren Spektralbereich, wie sie hier verwendet wurden, kommt meist eine Galliumverbindung zum Einsatz.
 
@@ -205,9 +206,18 @@ Somit konnten wir die momentane Spannung am Potentiometer auslesen lassen, was u
 \end{figure}
 
 
+\FloatBarrier
 \subsection{Reduktion der Spektren}
 Aus den aufgenommenen Rohdaten konnten wir mit Hilfe eines hierzu erstellten 500-Zeilen Python Skripts die benötigten Spektren $I(\lambda)$ berechnen.
 Die elektronisch per Computer gemessenen Daten waren Wertepaare von Potentiometerspannung und Absorptions-LED Spannung über einen Lastwiderstand von $100\unit{k\Omega}$.
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=1\textwidth]{spektren_mit_halogen.pdf}
+\end{center}
+\vspace{-1.5\baselineskip}
+\caption{Reduktion der gemessenen LED-Absorptionsspektren}
+\label{fig:reduktion}
+\end{figure}
 
 Als ersten Schritt wurden die Potentiometerspannungen mit Hilfe der in \hypref{Abb.}{winkel_spannung} gefundenen invertierbaren Funktion in Drehwinkel umgerechnet.
 Der Winkelbereich des optischen Spektrums lag zwischen $111\degr$ und $158\degr$ (siehe \hypref{Abb.}{Versuchsaufbau}), wo wir die Potentiometercharakteristik sehr gut vermessen hatten.
@@ -216,7 +226,7 @@ Als nächstes wurden die Winkel mit Hilfe von \hypref{Gleichung}{eq:gitter} in W
 I(\lambda) = I(\alpha(\lambda)) \;/\; \frac{\dif\lambda}{\dif\alpha}
 \end{equation}
 
-\subsubsection{Entfaltung der Spektren}
+\subsubsection{Entfaltung der Spektren}\label{sec:entfaltung}
 Im nächsten Schritt wurde versucht, die Spektren zu entfalten.
 Unsere Lichtquelle war natürlich keine Punktquelle und mit dem Linsensystem gelang es auch nicht, die Glühlampe auf einen sehr kleinen Punkt abzubilden.
 Infolgedessen würde eine scharfe Spektrallinie als verwaschener Peak erscheinen und von der Absorptions-LED entsprechend aufgenommen werden. Unser gesamtes Spektrum wird somit etwas verbreitert und unscharf gemacht.
@@ -233,14 +243,6 @@ Zur Unterdrückung von zu starken Rauscheffekten geht noch eine Abschätzung der
 Leider mussten wir aber feststellen, dass das Verfahren insgesamt nicht die erwünschten Ergebnisse liefern konnte, vor allem weil die verschiedenen Frequenzterme sich immer auf das ganze Spektrum auswirken.
 Das Glätten von Oszillationen an einer Stelle führte gleichzeitig auch zu Verfälschungen an spitzen Peaks.
 
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=1\textwidth]{spektren_mit_halogen.pdf}
-\end{center}
-\vspace{-1.5\baselineskip}
-\caption{Reduktion der gemessenen LED-Absorptionsspektren}
-\label{fig:reduktion}
-\end{figure}
 Der zweite Ansatz führte auf Matrizen.
 Da wir ohnehin auf diskretisierten Daten arbeiten, kann man die Faltung auch als Matrix-Multiplikation interpretieren.
 Die Entfaltung entspricht dann einer Invertierung.
@@ -285,19 +287,19 @@ Die Fertig reduzierten Absorptions\-spektren sind in \hypref{Abb.}{fig:reduktion
 
 
 
+\FloatBarrier
 \section{Bau des Spektrometers}
+Im zweiten Teil unseres Projektes konstruierten wir ein funktionsfähiges Gerät, welches die nun bekannten Eigenschaften der Leuchtdioden benutzt, um beliebige Spektren auszumessen und darzustellen.
 
 
+\subsection{Funktionsprinzip} %Basti
+Die am besten geeigneten  Leuchtdioden wurden hierzu nebeneinander auf eine Platine gelötet, die im späteren Messvorgang mit einer unbekannten Lichtquelle beleuchtet werden kann.
+Über entsprechende Bauelemente wird das Signal aller 16 Dioden einzeln gemessen, verstärkt und in kurzen Zeitintervallen über die serielle Schnittstelle an den PC gesendet.
 
-\subsection{Funktionsprinzip Übersicht} %Basti
-\begin{figure}[ht]
-\begin{center}
-\includegraphics[width=1\textwidth]{programmablauf.pdf}
-\end{center}
-\vspace{-1.5\baselineskip}
-\caption{Skizze des Programmablaufs}
-\label{fig:programmablauf}
-\end{figure}
+Diese Signale stellen aber noch kein Spektrum dar! Schließlich deckt jede einzelne Diode nicht nur einen kleinen Bereich des Spektrums ab, sondern hat eine breite, individuelle Empfindlichkeitskurve, die mit den anderen Kurven überlappt.
+Dennoch tragen die Signale genug Information über das gesamte Spektrum, um es in der Software mit einem mathematischen Algorithmus wieder zu rekonstruieren.
+Das fertige Spektrum wird dann als Diagramm am Bildschirm des Computers angezeigt.
+
 
 
 \subsection{Elektronik}
@@ -306,12 +308,12 @@ Die Fertig reduzierten Absorptions\-spektren sind in \hypref{Abb.}{fig:reduktion
 
 Um die Photoströme aller 16 LEDs auf einfache Weise gleichzeitig messen zu können, haben wir in der Elektronikwerkstatt zwei Platinen ätzen lassen (siehe \hypref{Abb.}{fig:electronics}).
 
-\begin{figure}[H]
+\begin{figure}[h]
 \begin{center}
 \includegraphics[width=1.\textwidth]{platinen.jpg}
 \end{center}
 \vspace{-1.5\baselineskip}
-\caption{Elektronik zum Messen der Photströme der LEDs}
+\caption{Selbstkonstruierte Elektronik zum Messen der Photströme der LEDs}
 \label{fig:electronics}
 \end{figure}
 
@@ -340,10 +342,9 @@ die Ergebisse verfälschen können. Wir verwenden für alle LEDs einen Messwider
 Auf der Digital-Platine (kleinere Platine mit grauer Färbung) befindet sich der in C programmierte Mikrocontroller, der Pegelwandler für die Kommunikation mit dem PC sowie die Spannungsversorgung. Die Spannungen der LEDs werden über einen integrierten 10-bit ADC gemessen, wobei wir durch dynamische Anpassung des Messbereichs über einen Analogschalter Photoströme im Bereich von $10 \unit{nA}$ bis $300 \unit{\mu A}$ messen können. Der Controller übernimmt zudem die Übertragung der Messwerte über die serielle Schnittstelle an den PC.
 
 
-\subsection{Auswertungsprogramm}
+\subsection{Auswertungsprogramm} % Basti
 % Software: Berechnung der Spektren mit unserem Gerät
 %% Funktionsübersicht und Erklärung der Bedienung
-%% Algorithmik zur Auswertung					Basti
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=1.\textwidth]{screenshot.png}
@@ -352,6 +353,72 @@ Auf der Digital-Platine (kleinere Platine mit grauer Färbung) befindet sich der
 \caption{Unser Python Programm mit QT-Oberfläche im Simulationsbetrieb}
 \label{fig:screenschot}
 \end{figure}
+Unsere Auswertungssoftware wurde in Python geschrieben, was den geringsten Programmieraufwand bei solch einer wenig zeitkritischen Anwendung versprach.
+Im Messbetrieb fordert das Programm vom Controller in manuellen oder regelmäßigen Zeitintervallen von ca. 500\,ms Messwerte an.
+Diese bestehen aus einem Vektor mit 16 Einträgen, die bereits auf ein Ganzzahlen zwischen 0--1000 digitalisiert sind.
+Jeder dieser Einträge war mit einem Offset von etwa 17 behaftet und hellere Lichtquellen nutzten den Messbereich relativ gut aus, wobei einige der schwächeren Mess-LEDs leider nur Signale von wenigen Einheiten lieferten.
+
+Zur Korrektur des Offsets wurde eine Dunkelbild-Funktion integriert.
+Dabei nimmt man eine Messung bei abgedeckten Dioden auf.
+Die Werte werden zur späteren Verwendung gespeichert und im Messvorgang jeweils von den aktuellen Werten subtrahiert.
+Auch eine Helligkeitsanpassung an die tatsächlich gemessenen Werte wurde durchgeführt, indem mit einem Baustrahler Licht eingestrahlt wurde, und dessen Spektrum näherungsweise als bekanntes Schwarzkörperspektrum angenommen wurde.
+Somit können alle Messwerte noch durch diesen Vergleichswert geteilt werden, und veränderte Messcharakteristiken der Dioden durch die Elektronik oder sonstige Effekte werden korrigiert.
+
+Zum Test der Algorithmen wurde ein Simulationsmodus eingebaut, der beliebige Spektren würfelt, Messsignale mit einstellbaren Fehlern erzeugt, und dann versucht die Spektren wieder zu rekonstruieren.
+Damit konnten wir sowohl Funktion und Qualität der Berechnungsmethoden von vornherein abschätzen.
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=1\textwidth]{programmablauf.pdf}
+\end{center}
+\vspace{-1.5\baselineskip}
+\caption{Skizze des Programmablaufs}
+\label{fig:programmablauf}
+\end{figure}
+
+\subsubsection{Rekonstruktionsalgorithmus}
+%% Algorithmik zur Auswertung					Basti
+Die Berechnung eines Spektrums aus den Messwerten ist praktisch das Herzstück unserer Software, und bot uns großen Spielraum für mathematische Tüfteleien.
+Ein komplettes Spektrum besitzt natürlich unendlich viele Freiheitsgrade, für die wir aber nur 16 Zwangsbedingungen besitzen.
+Daher muss man zusätzliche Annahmen in das System stecken, wofür es unzählige Möglichkeiten gibt, von welchen wir eine ganze Reihe ausgetestet haben.
+
+Unsere Ausgangsdaten waren also neben dem Vektor der Messwerte $b$ die Absorptionsspektren in Form einer Matrix $A$, gebinnt auf 1\,nm Intervalle zwischen 350 und 670 Nanometer. Außerdem wissen wir, wie die Messung mathematisch zustande kommt, nämlich:
+\begin{equation}
+A\cdot x = b
+\qquad\qquad
+A =
+\begin{pmatrix}
+\cdots \text{Absorptionskurve 1} \cdots \\
+\vdots \\
+\cdots \text{Absorptionskurve $n$} \cdots
+\end{pmatrix}
+\end{equation}
+wobei der Vektor $x$ das gesuchte Spektrum ist und die Matrix $A$ nicht quadratisch und somit auch nicht invertierbar ist.
+
+Die naheliegendste Methode ist natürlich die Verringerung der Freiheitsgrade durch Vergrößerung der Binbreiten, so dass das Spektrum nur noch an 16 unabhängigen Punkten betrachtet wird.
+Die Matrix $A$ ist dann tatsächlich invertierbar und liefert immer eine Lösung $x = A^{-1}\cdot b$.
+Das Ergebnis ist allerdings völlig unbrauchbar, da die Werte schon bei geringen Messfehlern unter 1\%, wovon man in der Praxis nur träumen kann, extrem zu oszillieren anfangen, und selbst bei fehlerlosen Werten in der Simulation wurde des Spektrum oft nur an sehr wenigen Stellen korrekt wiedergegeben.
+Wahrscheinlich ist die Annahme einer konstanten Intensität innerhalb eines Bins einfach schon zu problematisch und die Breite unserer Absorptionskurven macht die Matrix schon fast singulär.
+
+Die nächste einfach Idee war dann, die Oszillationen zu verhindern, indem von allen Lösungen diejenige mit dem geringsten Betragsquadrat genommen wird, also Multiplikation von $b$ mit der Pseudoinversen.
+Die Lösung funktioniert schon erstaunlich gut, und außerdem effizient weil die Pseudoinverse nur einmal erzeugt werden muss.
+Trotzdem ist das Verfahren aber noch recht anfällig gegenüber Fehlern in den Messwerten und zeigt außerdem wiederkehrende Muster, die von den Absorptionkurven abhängen.
+
+Daher war es ein weiterer Fortschnitt, nicht die Gesamtnorm des Spektrums, sondern stattdessen die Gesamtkrümmung zu minimieren.
+Hierzu benötigt man eine spezielle Lösung $l$ des Systems.
+Daraufhin wird eine Basis $L$ des Kerns von $A$ mit der Singulärwertzerlegung erzeugt, dann zusammen mit einer Krümmungsmatrix $K$ wie in \hypref{Abschnitt}{sec:entfaltung} die betragsminimale Lösung des Systems $KL\cdot m = Kl$ und schlussendlich die Lösung $x = l - L\cdot m$.
+In Python geht das alles in nur drei Zeilen.
+Das Ergebnis ist nochmal besser als die anderen, oszilliert aber auch bei Messfehlern über 1\% recht stark und ist deshalb nicht robust genug.
+
+Andere Ansätze, die Lösung in verschiedenste Basen, wie Polynome oder Splines zu entwickeln, waren meistens noch problematischer.
+Wir mussten also festhalten, dass die Absorptionskurven einfach zu breit, die Matrix $A$ zu schlecht konditioniert und die Probelemstellung zu empfindlich gegenüber Fehlern ist, um exakte Lösungen sinnvoll verwenden zu können.
+
+Entfernt man sich von der Bedingung, das System exakt zu lösen, so lässt sich beispielsweise die Krümmung der Lösungskurve weiter verringern.
+
+...
+
+
+
+
 
 
 

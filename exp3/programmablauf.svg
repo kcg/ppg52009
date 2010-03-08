@@ -110,7 +110,7 @@
        id="path3222"
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <path
-       d="M 348.71428,140.35715 A 102.57143,26.142857 0 1 1 143.57143,140.35715 A 102.57143,26.142857 0 1 1 348.71428,140.35715 z"
+       d="M 348.71428,140.35715 C 348.73197,154.79864 302.804,166.50817 246.14286,166.50817 C 189.48171,166.50817 143.55374,154.79864 143.57143,140.35715 C 143.55374,125.91566 189.48171,114.20613 246.14286,114.20613 C 302.804,114.20613 348.73197,125.91566 348.71428,140.35715 z"
        transform="translate(4.2857132,-16.357147)"
        id="path4004"
        style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
@@ -118,7 +118,7 @@
        transform="translate(4,0.214279)"
        id="g4108">
       <path
-         d="M 244,218 A 60,21 0 1 1 124,218 A 60,21 0 1 1 244,218 z"
+         d="M 244,218 C 244,229.59798 217.13708,239 184,239 C 150.86292,239 124,229.59798 124,218 C 124,206.40202 150.86292,197 184,197 C 217.13708,197 244,206.40202 244,218 L 244,218 z"
          transform="translate(-8,28.785721)"
          id="path4022"
          style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
@@ -170,7 +170,7 @@
        id="path4056"
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <path
-       d="M 570,24 A 44,44 0 1 1 482,24 A 44,44 0 1 1 570,24 z"
+       d="M 570,24 C 570,48.300529 550.30053,68 526,68 C 501.69947,68 482,48.300529 482,24 C 482,-0.30052899 501.69947,-20 526,-20 C 550.30053,-20 570,-0.30052899 570,24 L 570,24 z"
        transform="translate(-71,21)"
        id="path4064"
        style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
@@ -195,29 +195,11 @@
            y="76.5"
            id="tspan3212">kurven</tspan></text>
       <path
-         d="M 570,24 A 44,44 0 1 1 482,24 A 44,44 0 1 1 570,24 z"
+         d="M 570,24 C 570,48.300529 550.30053,68 526,68 C 501.69947,68 482,48.300529 482,24 C 482,-0.30052899 501.69947,-20 526,-20 C 550.30053,-20 570,-0.30052899 570,24 L 570,24 z"
          transform="translate(-481,21)"
          id="path4068"
          style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     </g>
-    <text
-       x="454.55051"
-       y="20"
-       id="text4085"
-       xml:space="preserve"
-       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:cmr10;-inkscape-font-specification:cmr10 Medium"><tspan
-         x="454.55051"
-         y="20"
-         id="tspan4087">Online</tspan><tspan
-         x="454.55051"
-         y="37.5"
-         id="tspan4089">Messung</tspan><tspan
-         x="454.55051"
-         y="55"
-         id="tspan4091">mit der</tspan><tspan
-         x="454.55051"
-         y="72.5"
-         id="tspan4093">Elektronik</tspan></text>
     <path
        d="M 455,89 C 455,106 436.2929,101.89448 421,90 C 403,76 399.84327,56 387,56 L 380,56"
        id="path4104"
@@ -246,7 +228,7 @@
    id="tspan4144"
    style="font-size:14px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:120.00000477%;writing-mode:lr-tb;text-anchor:middle;font-family:cmmi10;-inkscape-font-specification:cmmi10 Medium">x</tspan></tspan> )    </tspan></text>
       <path
-         d="M 259.87917,132.47351 L 264.87917,135.47351 L 259.87917,138.69672"
+         d="M 262.16029,132.47351 L 267.16029,135.47351 L 262.16029,138.69672"
          id="path4122"
          style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.60000002;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     </g>
@@ -254,7 +236,7 @@
        transform="translate(144,0.214279)"
        id="g4124">
       <path
-         d="M 244,218 A 60,21 0 1 1 124,218 A 60,21 0 1 1 244,218 z"
+         d="M 244,218 C 244,229.59798 217.13708,239 184,239 C 150.86292,239 124,229.59798 124,218 C 124,206.40202 150.86292,197 184,197 C 217.13708,197 244,206.40202 244,218 L 244,218 z"
          transform="translate(-8,28.785721)"
          id="path4126"
          style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
