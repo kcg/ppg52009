@@ -218,8 +218,8 @@ Somit konnten wir die momentane Spannung am Potentiometer auslesen lassen, was u
 
 
 \FloatBarrier
-\subsection{Reduktion der Spektren}
-Aus den aufgenommenen Rohdaten konnten wir mit Hilfe eines hierzu erstellten 500-Zeilen Python Skripts die benötigten Spektren $I(\lambda)$ berechnen.
+\subsection{Reduktion der Absorptionskurven}
+Aus den aufgenommenen Rohdaten konnten wir mit Hilfe eines hierzu erstellten 500-Zeilen Python Skripts die benötigten Absorptionskurven $I(\lambda)$ berechnen.
 Die elektronisch per Computer gemessenen Daten waren Wertepaare von Potentiometerspannung und Absorptions-LED-Spannung über einen Lastwiderstand von $100\unit{k\Omega}$.
 
 Als erster Schritt wurden die Potentiometerspannungen mit Hilfe der in \hypref{Abb.}{winkel_spannung} gefundenen invertierbaren Funktion in Drehwinkel umgerechnet.
@@ -229,12 +229,12 @@ Als nächstes wurden die Winkel mit Hilfe von \hypref{Gleichung}{eq:gitter} in W
 I(\lambda) = I(\alpha(\lambda)) \;/\; \frac{\dif\lambda}{\dif\alpha}
 \end{equation}
 
-\subsubsection{Entfaltung der Spektren}\label{sec:entfaltung}
-Im nächsten Schritt wurde versucht die Spektren zu entfalten.
+\subsubsection{Entfaltung der Absorptionskurven}\label{sec:entfaltung}
+Im nächsten Schritt wurde versucht die Absorptionskurven zu entfalten.
 Unsere Lichtquelle war natürlich keine Punktquelle und mit dem Linsensystem gelang es auch nicht, die Glühlampe auf einen sehr kleinen Punkt abzubilden.
-Infolgedessen würde eine scharfe Spektrallinie als verwaschener Peak erscheinen und von der Absorptions-LED entsprechend aufgenommen werden. Unser gesamtes Spektrum wird somit etwas verbreitert und unscharf gemacht.
+Infolgedessen würde eine scharfe Spektrallinie als verwaschener Peak erscheinen und von der Absorptions-LED entsprechend aufgenommen werden. Unsere gesamten Absorptionskurven werden somit etwas verbreitert und unscharf gemacht.
 Mathematisch gesehen ist das eine Faltung und zwar mit der Punktantwort des optischen Systems als Faltungskern.
-Unser Ziel war es also, diese Operation rückgängig zu machen, also eine Entfaltung der Spektren durchzuführen.
+Unser Ziel war es also, diese Operation rückgängig zu machen, also eine Entfaltung der Absorptionskurven durchzuführen.
 
 Die Punktantwort des Systems konnte relativ einfach bestimmt werden, indem die Intensitätsverteilung um das nullte Interferenzmaximum herum gemessen wurde.
 Die Entfaltung selbst ist jedoch eine relativ schwierige Operation, da nicht unbedingt eine eindeutige Lösung existiert und kleine Fehler im Signal überinterpretiert und zu großen Fehlern in der Lösung führen können.
@@ -279,7 +279,7 @@ K = \alpha\cdot
 \Rightarrow\qquad
 x \approx (A^t A + K^t K)^{-1}\cdot  A^t b
 \end{equation}
-Hierbei ist $A$ die Faltungsmatrix, die aufgrund der endlichen Faltungsbreite eine Bandstruktur aufweist, $K$ die Krümmungsmatrix mit einstellbarem Vorfaktor $\alpha$, $b$ das gemessene Spektrum und $x$ die Lösung des entfalteten Spektrums.
+Hierbei ist $A$ die Faltungsmatrix, die aufgrund der endlichen Faltungsbreite eine Bandstruktur aufweist, $K$ die Krümmungsmatrix mit einstellbarem Vorfaktor $\alpha$, $b$ die gemessene Absorptionskurve und $x$ die Lösung der entfalteten Absorptionskurve.
 Die so erzeugten Lösungen erschienen relativ brauchbar.
 Anstatt von $K$ wurden auch Matrizen probiert, die auf Terme höherer Ordnung reagieren, was aber zu keinem signifikant besserem Ergebnis geführt hat.
 Nachteilig an so einem linearen Verfahren ist natürlich, dass negative Lösungen an einigen Stellen nicht unterdrückt werden können.
@@ -290,7 +290,7 @@ Letztlich wäre es also kein großer Fehler gewesen, die Faltung komplett zu ver
 
 Zwischen den einzelnen Schritten mussten die Daten für manche Operationen auf ein äquidistantes Gitter gebinnt werden, was einfach mit linearer Interpolation durchgeführt wurde.
 Als letzten Schritt wurde berücksichtigt, dass das eingestrahlte Spektrum nicht gleichhell in allen Wellenlängen war.
-Die Spektren wurden nun einfach noch durch die Intensität der jeweiligen Lichtquelle (\hypref{Abb.}{fig:lichtquelle}) geteilt.
+Die Absorptionskurven wurden nun einfach noch durch die Intensität der jeweiligen Lichtquelle (\hypref{Abb.}{fig:lichtquelle}) geteilt.
 Am Rand des Spektralbereichs, wo die Intensität gering war, sieht man daher auch die größten Fehler.
 Weiterhin fällt auf, dass die gemessenen Lichtquellen ein bestimmtes Muster enthalten, was bei unseren Messungen aber nicht vorhanden war, und daher invers aufgeprägt wurde.
 Dieser Fehler kann fast nur an dem kommerziellen Kalibrations\-spektrometer liegen.
@@ -444,24 +444,24 @@ Die Lösung gewinnt man dann mit
 \begin{equation}
 x = (A^tA+\beta\cdot K^tK)^{-1}\cdot A^t\,b
 \qquad\qquad
-\beta\in\mathbb{R}
+\beta\in\mathbb{R} \ ,
 \end{equation}
-mit der bekannten Krümmungsmatrix $K$ und einem Parameter $\beta$ den man zur Laufzeit anpassen kann.
+mit der bekannten Krümmungsmatrix $K$ und einem Parameter $\beta$, den man zur Laufzeit anpassen kann.
 Bei kleinem $\beta$ und mittelgroßer Binzahl zeigt dieses Verfahren, dass es numerisch nicht unbegrenzt stabil ist.
 Wir haben es deshalb mit einem mathematisch äquivalenten Singulärwertverfahren ersetzt.
 Durch den variablen Parameter war dieses Verfahren schon sehr universell einsetzbar, da man die Glättung an die Fehlerrate der Messwerte anpassen konnte und so immer ein vernünftiges Signal erhielt.
 
-Weitere Verbesserungen konnten wir nur erreichen indem wir uns von den linearen Matrizenverfahren trennten.
+Weitere Verbesserungen konnten wir nur erreichen, indem wir uns von den linearen Matrizenverfahren trennten.
 Viele Ungenauigkeiten und Oszillationen in der Lösungskurve können nämlich verringert werden, wenn die Zusatzbedingung nichtnegativer Intensitätswerte mit beachtet wird.
-Unser Ansatz bestand nun einfach darin, eine Zielfunktion zu Definieren, welche sowohl die Abstände vom Lösungsvektor als auch die Krümmung so wie die negativen Werte gewichtet und quadratisch zusammenaddiert.
+Unser Ansatz bestand nun einfach darin, eine Zielfunktion zu definieren, welche sowohl die Abstände vom Lösungsvektor, als auch die Krümmung sowie die negativen Werte gewichtet und quadratisch zusammenaddiert.
 Diese Funktion wird an einen Minimierungsalgorithmus übergeben, der die optimale Lösung sucht.
 Prinzipbedingt braucht dieses Verfahren erheblich mehr Rechenzeit als die anderen, weil die Lösung sehr oft neu ausgerechnet werden muss bis die Konvergenz erreicht ist.
-In \hypref{Abb.}{fig:screenshot} wird dieses Verfahren verwendet, und man sieht dass das Originalspektrum bis auf kleinere Oszillationen schon recht gut erreicht wird.
+In \hypref{Abb.}{fig:screenshot} wird dieses Verfahren verwendet und man sieht, dass das Originalspektrum bis auf kleinere Oszillationen schon recht gut erreicht wird.
 Auch wenn die Möglichkeiten zur Verbesserung noch groß sind, haben wir es vorerst bei diesem Verfahren belassen.
 
-Für spezielle Lichtquellen lohnt es sich außerdem, noch mehr Informationen aus dem Spektrum zu holen.
+Für spezielle Lichtquellen lohnt es sich außerdem noch mehr Informationen aus dem Spektrum zu holen.
 Von annähernd schwarzen Strahlern lässt sich mit dem Spektrometer die Effektivtemperatur mit einem passenden Schwarzkörperspektrum ermitteln.
-In diesem Modus fittet der Computer ein Planck-Spektrum $I(\lambda)$ mit den beiden Parametern Temperatur und Skalierungsfaktor auf die Messdaten so dass der Fehler
+In diesem Modus fittet der Computer ein Planck-Spektrum $I(\lambda)$ mit den beiden Parametern Temperatur und Skalierungsfaktor auf die Messdaten, so dass der Fehler
 \begin{equation}
 \left(
 A\cdot I(\lambda)
