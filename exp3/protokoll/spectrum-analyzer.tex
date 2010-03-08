@@ -376,11 +376,20 @@ Damit konnten wir sowohl Funktion und Qualität der Berechnungsmethoden von vorn
 \label{fig:programmablauf}
 \end{figure}
 
-\subsubsection{Rekonstruktionsalgorithmus}
+
 %% Algorithmik zur Auswertung					Basti
+\subsubsection{Berechnung des Spektrums}
 Die Berechnung eines Spektrums aus den Messwerten ist praktisch das Herzstück unserer Software und bot uns großen Spielraum für mathematische Tüfteleien.
 Ein komplettes Spektrum besitzt natürlich unendlich viele Freiheitsgrade, für die wir aber nur 16 Zwangsbedingungen besitzen.
 Daher muss man zusätzliche Annahmen in das System stecken, wofür es unzählige Möglichkeiten gibt, von welchen wir eine ganze Reihe getestet haben.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=1\textwidth]{matrix_A.pdf}
+\end{center}
+\vspace{-1.5\baselineskip}
+\caption{Bildliche Darstellung der Absorptionskurvenmatrix $A$. Jede Absorptionskurve ist auf 1 normiert.}
+\label{fig:matrixA}
+\end{figure}
 
 Unsere Ausgangsdaten waren also neben dem Vektor der Messwerte $b$ die Absorptionsspektren in Form einer Matrix $A$, gebinnt auf 1\,nm Intervalle zwischen 350 und 670\,nm. Außerdem wissen wir, wie die Messung mathematisch zustande kommt, nämlich:
 \begin{equation}
@@ -394,8 +403,11 @@ A =
 \end{pmatrix},
 \end{equation}
 wobei der Vektor $x$ das gesuchte Spektrum ist und die Matrix $A$ nicht quadratisch und somit auch nicht invertierbar ist.
+Problematisch ist außerdem, dass die Absorptionskurven in der Matrix sehr breit und im kurzwelligen Bereich sehr änhlich sind (siehe \hypref{Abb.}{fig:matrixA}).
+Der Bereich zwischen 420--470\,nm ist zudem nur schlecht abgedeckt, was an der sogenannten "`green gap"' liegen dürfte, also dem Problem, dass es im grünen Emissionsbereich vom 540--580\,nm noch keine effizienten Leuchtdioden gibt.\footnote{\href{http://www.pro-physik.de/Phy/pdfstart.do?mid=3\&articleid=51055\&recordid=51193}{Physik Journal 1/2010 S. 25f.}}
 
-Die naheliegendste Methode ist natürlich die Verringerung der Freiheitsgrade durch Vergrößerung der Binbreiten, so dass das Spektrum nur noch an 16 unabhängigen Punkten betrachtet wird.
+\subsubsection{Lineare Rekonstruktionsalgorithmen}
+Die naheliegendste Methode zur Verringerung der Freiheitsgrade ist natürlich die Vergrößerung der Binbreiten, so dass das Spektrum nur noch an 16 unabhängigen Punkten betrachtet wird.
 Die Matrix $A$ ist dann tatsächlich invertierbar und liefert immer eine Lösung $x = A^{-1}\cdot b$.
 Das Ergebnis ist allerdings völlig unbrauchbar, da die Werte schon bei geringen Messfehlern von unter 1\%, wovon man in der Praxis nur träumen kann, anfangen extrem zu oszillieren und selbst bei fehlerlosen Werten in der Simulation wurde des Spektrum oft nur an sehr wenigen Stellen korrekt wiedergegeben.
 Wahrscheinlich ist die Annahme einer konstanten Intensität innerhalb eines Bins einfach schon zu problematisch und die Breite unserer Absorptionskurven macht die Matrix schon fast singulär.
@@ -413,10 +425,10 @@ Das Ergebnis ist nochmal besser als die anderen, oszilliert aber auch bei Messfe
 Andere Ansätze die Lösung in verschiedenste Basen, wie Polynome oder Splines, zu entwickeln waren meistens noch problematischer.
 Wir mussten also festhalten, dass die Absorptionskurven einfach zu breit, die Matrix $A$ zu schlecht konditioniert und die Problemstellung zu empfindlich gegenüber Fehlern ist, um exakte Lösungen sinnvoll verwenden zu können.
 
+\subsubsection{Nichlineare Rekonstruktionsalgorithmen}
 Entfernt man sich von der Bedingung, das System exakt zu lösen, so lässt sich beispielsweise die Krümmung der Lösungskurve weiter verringern.
 
 ...
-
 
 
 
