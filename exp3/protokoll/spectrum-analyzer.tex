@@ -328,9 +328,9 @@ Um die Photoströme aller 16 LEDs auf möglichst einfache Weise gleichzeitig mes
 \label{fig:electronics}
 \end{figure}
 
-Auf der LED-Platine (größere Platine mir brauner Färbung) befindet sich zentral die Sensor-LED-Matrix. Dieser Aufbau bereitet dabei zwei große Probleme: Durch die große räumliche Ausdehung der Sensor-Matrix ist es schwer sicherzustellen, dass jede Photodiode mit der gleichen Intensität bestrahlt wird, was aber für eine exakte Messung von großer Wichtigkeit ist. Weiterhin erzeugt besonders der von uns verwendete Gehäusetyp eine starke Abhängikeit bezüglich des Einfallswinkels des zu analysierenden Lichts.
+Auf der LED-Platine (größere Platine mir brauner Färbung) befindet sich zentral die Sensor-LED-Matrix. Dieser Aufbau bereitet dabei zwei große Probleme: Durch die große räumliche Ausdehung der Sensor-Matrix ist es schwer sicherzustellen, dass jede Photodiode mit der gleichen Intensität bestrahlt wird, was aber für eine exakte Messung von großer Wichtigkeit ist. Weiterhin erzeugt besonders der von uns verwendete Gehäusetyp eine starke Abhängigkeit bezüglich des Einfallswinkels des zu analysierenden Lichts.
 
-Um die Photoströme der LEDs (typ. $100 \unit{nA}$) in eine messbare Spannung umsetzen zu können, verwenden wir weiterhin für jede Diode einen Transimpedanzverstärker (siehe \hypref{Abb.}{fig:transimp}), welcher im Wesentlichen aus einem Operationsverstärkern besteht. 
+Um die Photoströme der LEDs (typ. $100 \unit{nA}$) in eine messbare Spannung umsetzen zu können, verwenden wir weiterhin für jede Diode einen Transimpedanzverstärker (siehe \hypref{Abb.}{fig:transimp}), welcher im Wesentlichen aus einem Operationsverstärker besteht. 
 
 Die durch den Photostrom hervorgerufene Spannung am Ausgang des Verstärkers ist hierbei äquivalent zur Spannung, die an einem Ohmschen Widerstand abfallen würde.
 \begin{equation*}
@@ -342,12 +342,12 @@ U_{\text{Photo}} = \frac {h \nu - W_{\text{Austritt}}} {e},
 \end{equation*}
 die Ergebisse verfälschen können. Wir verwenden für alle LEDs einen Messwiderstand $R_{\text{Mess}} = 100 \unit{k \Omega}$.
 
-Um Induktionsströme, die beispielsweise aus dem Stromnetz eingestreut werden können, weitestgehend zu vermeiden, sind die Operationsverstärker (8-beinige ICs) auf der Elektronik möglichst dicht um die LEDs platziert worden. Wir verwenden wegen seines geringen Spannungs- sowie Stromrauschen einen OPA 2134, das eher geringe Bandbreiteprodukt ist aufgrund der geringen angestrebten Messwiederholrate (im Bereich von $1 \unit{Hz}$) ausreichend \footnote{\href{http://focus.ti.com/general/docs/lit/getliterature.tsp?genericPartNumber=opa2134&fileType=pdf}{Datenblatt OPA 2134}}. Auf einen Eigenoszillationen verhindernden Rückkopplungs-Kondensator parallel zum Messwiderstand haben wir bewusst verzichtet, da diese bei ersten Tests mit dem Verstärker in keinem signifiakten Maße auftraten. Allerdings könnten diese Einsparung eine Ursache für die instabilen Ergebnisse der Spektrenrekonstruktion darstellen. \\
-Für die weitere Verarbeitung der resultierenden Spannungen werden die Ausgänge von jeweils 8 Verstärkern über Multiplexer auf eine Leitung zusammengefasst.
+Um Induktionsströme, die beispielsweise aus dem Stromnetz eingestreut werden können, weitgehend zu vermeiden, sind die Operationsverstärker (8-beinige ICs) auf der Elektronik möglichst dicht um die LEDs platziert worden. Wir verwenden wegen seines geringen Spannungs- sowie Stromrauschens einen OPA 2134, das eher geringe Bandbreiteprodukt ist aufgrund der geringen angestrebten Messwiederholrate (im Bereich von $1 \unit{Hz}$) ausreichend\footnote{\href{http://focus.ti.com/general/docs/lit/getliterature.tsp?genericPartNumber=opa2134&fileType=pdf}{Datenblatt OPA 2134}}. Auf einen Eigenoszillationen verhindernden Rückkopplungs-Kondensator parallel zum Messwiderstand haben wir bewusst verzichtet, da diese bei ersten Tests mit dem Verstärker in keinem signifiakten Maße auftraten. Allerdings könnte diese Einsparung eine Ursache für die instabilen Ergebnisse der Spektrenrekonstruktion darstellen. \\
+Für die weitere Verarbeitung der resultierenden Spannungen werden die Ausgänge von jeweils 8 Verstärkern über Multiplexer zu einer Leitung zusammengefasst.
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=0.5\textwidth]{transimp.png}
+\includegraphics[width=0.5\textwidth]{transimp.pdf}
 \end{center}
 \vspace{-1.5\baselineskip}
 \caption{Transimpedanzverstärker}
@@ -356,7 +356,7 @@ Für die weitere Verarbeitung der resultierenden Spannungen werden die Ausgänge
 
 Auf der Digitalplatine (kleinere Platine mit grauer Färbung) befindet sich, neben der Spannungsversorgung und einem Pegelwandler für die Kommunikation über die serielle Schnittstelle,  das Herzstück unserer Elektronik, ein in C programmierter Mikrocontroller\footnote{\href{http://www.atmel.com/dyn/resources/prod_documents/doc2486.pdf}{Datenblatt ATmega 8}}.
 
-Die Spannungen $U_{\text{Mess}}$ der LEDs werden über einen integrierten 10-bit Analog-Digital-Converter gemessen, es wird also eine von der Refernzspannung $U_{\text{ref}}$ abhängige Auflösung von $U_{\text{ref}}/1024$ erreicht, wobei wir durch dynamische Anpassung des Messbereichs über Umschalten der Referenzspannung mittels eines Analogschalters Photoströme im Bereich von $10 \unit{nA}$ bis $300 \unit{\mu A}$ messen können. Ein Problem des ADC ist aber der relativ hohe Offsetwert von 17 Einheiten sowie das Eigenrauschen, da unsere Messwerte oftmals ebenfalls nur wenige Einheiten betragen. Der Controller übernimmt zudem nach Reskalierung der Messwerte die Übertragung dieser an den PC, auf welchem unsere Auswertungssoftware läuft, welche die Rekonstruktion des Spektrums aus den 16 Intensitätswerten übernimmt.
+Die Spannungen $U_{\text{Mess}}$ der LEDs werden über einen integrierten 10-bit Analog-Digital-Converter gemessen, es wird also eine von der Refernzspannung $U_{\text{ref}}$ abhängige Auflösung von $U_{\text{ref}}/1024$ erreicht, wobei wir durch dynamische Anpassung des Messbereichs über Umschalten der Referenzspannung mittels eines Analogschalters Photoströme im Bereich von $10 \unit{nA}$ bis $300 \unit{\mu A}$ messen können. Ein Problem des ADC ist aber der relativ hohe Offsetwert von 17 Einheiten sowie das starke Eigenrauschen, da unsere Messwerte oftmals ebenfalls nur wenige Einheiten betragen. Der Controller übernimmt zudem nach Reskalierung der gemessenen Spannungswerte die Übertragung dieser an den PC. Auf diesem läuft unsere Auswertungssoftware, welche die Rekonstruktion des Spektrums aus den 16 Intensitätswerten übernimmt.
 
 \subsection{Auswertungsprogramm} % Basti
 % Software: Berechnung der Spektren mit unserem Gerät
