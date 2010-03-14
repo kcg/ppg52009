@@ -9,7 +9,7 @@
 \usepackage{fix-cm} % für die große Titelschrift
 \usepackage{placeins} % laesst Bilder nicht über eine \FloatBarrier hinausrutschen
 \usepackage[pdftex]{hyperref} % Hyperlinks im Dokument
-\hypersetup{colorlinks=true, linkcolor=black, citecolor=black, filecolor=black, urlcolor=black, pdftitle={LED-Spektrometer - Projektpraktikum 09/10 Gruppe 5}}
+\hypersetup{colorlinks=true, linkcolor=black, citecolor=black, filecolor=black, urlcolor=black, pdftitle={Erdrotationsmessung - Projektpraktikum 09/10 Gruppe 5}}
 
 
 \newcommand{\unit}[1]{\ensuremath{\,\mathrm{#1}}} % Einheiten schreiben sich immer aufrecht!
@@ -177,14 +177,14 @@ Zur Aufzeichnung der Drehung des Stabes kam zun\"achst das CASSY Lab System zum 
 \label{zeit-winkel29-cassy}
 \end{figure}
 \\Daraus ergibt sich f\"ur die Winkelgeschwindigkeit:
-\[ \omega_{Cassymessung} = 138,51 \frac{\unit{deg}}{\unit{s}} \]
+\[ \omega_{\text{Cassymessung}} = 138,51 \frac{\unit{deg}}{\unit{s}} \]
 F\"ur die Erdrotation folgt damit ...
 %% Werte fuer die Groesse des Fehlers ????
 
 \FloatBarrier
 \subsection{Videomessungen} %Karl
 Da die Schwingung der Vorrichtung die Cassymessung fast unbrauchbar machte, wurden weitere Wege gesucht, die bisherigen Versuche dennoch auswertbar zu machen. Als Grundlage sollten hier Videoaufnahmen dienen, die es ermöglichten, die Drehung unmittelbar nach dem Einklappen des Stabes zu beschreiben, bevor die störende Schwingung den Effekt zu stark überlagert. Die zur verfügung stehenden Mitschnitte wurden ursprünglich nur zu Dokumentationszwecken aufgezeichnet. Dies hatte den Nachteil, dass die Videodateien vor der Auswertung noch stark bearbeitet werden mussten, um Messdaten ablesen zu können. Das Hauptproblem lag in der verzerrten Perspektive des Videos, das von schräg unten aufgenommen wurde (siehe Abbildung ?). Zur Auswertung wurde mit Hilfe der freien Bildbearbeitungssoftware GIMP wie folgt vorgegangen: Zuerst wurde das Video in seine Einzelbilder zerlegt. Anhand dieser Bilder, im Speziellen der sich drehenden, oberen Verbindungsquerstange, wurde durch fitten einer Ellipse die perspektivische Verzerrung ermittelt. Für das Halbachsenverhältnis dieser Ellipse ergab sich folgender Wert:
-\[\frac{a_{groß}}{a_{klein}}=3,21\]
+\[\frac{a_{\text{groß}}}{a_{\text{klein}}}=3,21\]
 Nun wurden die Einzellbilder senkrecht ausgerichtet, also um den Winkel $\alpha$ gedreht (siehe Abbildung ? - A) und schließlich um den ermittelten Faktor $3,21$ gestreckt (siehe Abbildung ? - B).
 \begin{figure}[h]
 \begin{center}
@@ -206,9 +206,9 @@ Da die schon anfänglich erwähnte Schwankung leider sehr schnell nach dem Einkl
 \end{figure}
 Der zeitliche Abstand der Videoeinzelbilder wurde mit Hilfe einer Stoppuhr zu $\Delta t = 0,04\unit{s}$ gemessen.
 Durch einen Geradenfit der ersten sechs Messpunkte wurde die Winkelgeschwindigkeit ermittelt. Es gilt:
-\[ \omega_{Messung} = 33,35 \frac{\unit{deg}}{\unit{s}} = 0,582 \unit{Hz} \]
+\[ \omega_{\text{Messung}} = 33,35 \frac{\unit{deg}}{\unit{s}} = 0,582 \unit{s^{-1}} \]
 Damit ergibt sich mit den bekannten Werten für die Trägheitsmomente folgende Winkelgeschwindigkeit der Erdrotation:
-\[ \omega_{Erde} = \frac{\omega_{lokal}}{\unit{sin}(\alpha)} = ... \]
+\[ \omega_{\text{Erde}} = \frac{\omega_{\text{lokal}}}{\sin(\alpha)} = ... \]
 
 
 \section{Verbesserungsvorschläge} %David faden, zwei stäbe, kamera von oben, symmetrischerer aufbau
