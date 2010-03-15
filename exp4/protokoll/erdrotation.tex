@@ -1,0 +1,220 @@
+\documentclass[11pt]{scrartcl}
+\usepackage[utf8]{inputenc} % Kodierung der Textdatei mit Sonderzeichen
+\usepackage[ngerman]{babel} % Sprache fuer Inhaltsverzeichnis etc.
+\usepackage{amssymb} % Mathematische Symbole
+\usepackage{amsmath} % Mehr mathematische Konstrukte
+\usepackage{graphicx} % Um Bilder einbinden zu koennen
+\usepackage{float} % fuer \begin{figure}[H]
+\usepackage{icomma} % laesst das Komma als Dezimaltrennzeichen interpretieren
+\usepackage{fix-cm} % für die große Titelschrift
+\usepackage{placeins} % laesst Bilder nicht über eine \FloatBarrier hinausrutschen
+\usepackage[pdftex]{hyperref} % Hyperlinks im Dokument
+\hypersetup{colorlinks=true, linkcolor=black, citecolor=black, filecolor=black, urlcolor=black, pdftitle={Erdrotationsmessung - Projektpraktikum 09/10 Gruppe 5}}
+
+
+\newcommand{\unit}[1]{\ensuremath{\,\mathrm{#1}}} % Einheiten schreiben sich immer aufrecht!
+\newcommand{\degr}{\ensuremath{^\circ}}
+\newcommand{\cel}{\ensuremath{\degr\mathrm{C}}}
+\newcommand{\dif}{\ensuremath{\mathrm{d}}}
+\newcommand{\pdif}[2]{\ensuremath{\frac{\partial#1}{\partial#2}}}
+\newcommand{\ee}[1]{\ensuremath{\cdot 10^{#1}}}
+\newcommand{\hypref}[2]{\hyperref[#2]{{#1}~\ref{#2}}}
+
+\setlength{\parindent}{1em}
+\setlength{\parskip}{0.5\baselineskip}
+
+
+\title{Direkte Messung der Erdrotation - Gruppe 5 WS 09/10, Projektpraktikum der Uni Erlangen}
+\date{07.12.2009 -- 15.01.2010}
+\author{Michele Collodo, Andreas Glossner, Karl-Christoph G\"odel, Bastian Hacker, Maria Obst, Alexander Wagner, David Winnekens}
+
+
+
+\begin{document}
+\sloppy % laesst Latex nicht ueber den Rand rausschreiben
+\thispagestyle{empty}
+\large{Projektpraktikum WS 09/10}
+\hfill
+\raisebox{-1.4cm}{\includegraphics[width=5cm]{images/fau.pdf}}
+\\[8\baselineskip]
+\begin{center}
+{\fontsize{36}{54}\textbf{Direkte Messung der Erdrotation}}
+\\[2\baselineskip]
+{\Large 07.12.2009 -- 15.01.2010}
+\\[7\baselineskip]
+{\huge\textbf{PPG 5}}
+\\[0.5\baselineskip]
+{\large\textbf{
+Michele Collodo,
+Andreas Glossner,\\
+Karl-Christoph G\"odel,
+Bastian Hacker,\\
+Maria Obst,
+Alexander Wagner,
+David Winnekens}\\
+Tutor: Xiaoyue Jin}
+\vfill
+
+
+
+\small{\url{http://pp.physik.uni-erlangen.de/groups/ws0910/ppg5/ppg5\_start.html}}
+\end{center}
+\newpage
+
+
+
+\tableofcontents
+\vfill
+
+
+
+\begin{abstract}
+Bla Abstract Bla
+\end{abstract}
+\newpage
+
+\section{Einleitung} %Michele
+Die Länge eines Tages, also die Zeit, die die Erde benötigt, um sich um die eigene Rotationsachse zu drehen, ist die älteste zeitliche Maßeinheit, von welcher ausgehend unser modernes Zeitsystem abgeleitet wurde. Auch wenn heute die die Sekunde nicht mehr über die Erdrehung definiert ist, so ist die präzise Kenntnis der Rotationsdauer der Erde in vielen Bereichen, allen voran die Astronomie, von großer Bedeutung. Bezogen auf den kosmischen Hintergrund beträgt diese 86\,164.1 Sekunden (mittlerer siderischer Tag).
+
+Die wohl älteste Methode zur Bestimmung dieser Rotationsgeschwindigkeit ist die Beobachtung des Sonnenstandes.
+Bei dieser Messung muss aber zwingend berücksichtigt werden, dass sich die Erde nicht nur um sich selbst, sondern auch um die Sonne dreht, eine Erdumdrehung also geringfügig länger dauert, als die Zeitspanne zwischen zwei Kulminationen der Sonne. Umgehen kann man diesen Effekt, wenn man direkt einen Fixstern beobachet, heutzutage werden hierfür extragalaktische Radioquellen herangezogen. Eine ebenfalls gebräuchliche Vorgehensweise ist die Positionsbestimmung geeigneter Satelliten.
+
+Eine weitere Möglichkeit der Messung der Winkelgeschwindigkeit der Erde kann über die roationsbedingten Scheinkräfte, also der Zentrifugal- und der Corioloskraft, erfolgen. Besonders anschaulich ist hierbei das Foucaultsches Pendel, möglich ist aber auch die Messung des Gewichtsunterschiedes eines Körpers an verschiedenen Breitengraden der Erde, der es unter Berücksichtigung der lokalen Fallbeschleunigungen erlaubt, auf die Zentrifuaglkraft zu schließen. 
+
+Wir haben uns, besonders wegen der Durchführbarkeit in einem kleinen und abgedunkelten Labor, für eine unkonventionelle Messmethode entschieden. Hierzu machen wir uns den Drehimpulserhalt sowie die Variation des Tragheitsmoments unserer Messvorrichtung zunutze.
+
+\section{Grundprinzip - Tr\"agheitsmoment}
+
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{images/prinzip.pdf}
+\end{center}
+\vspace{-1.5\baselineskip}
+\caption{Schema des Bewegungsablaufs}
+\label{prinzip}
+\end{figure}
+
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=0.2\textwidth]{images/welt.pdf}
+\end{center}
+\vspace{-1.5\baselineskip}
+\caption{Position auf der Welt}
+\label{Welt}
+\end{figure}
+
+%\FloatBarrier
+\section{Bau des Drehstabs} %Maria (solltest du nicht zu allem was wissen, sag bescheid)
+
+%%% Ich hab jetzt mal alles reingeschrieben was ich wusste. Mit den subsections bin ich nicht ganz klar gekommen in der Form, drum habe ich die weggelassen, aber ich denke es ist trotzdem alles drin was rein sollte. Wo Fragezeichen stehen war ich mir nicht sicher bzw. wusste keine konkreten Werte. Bei weiteren Beschwerden bitte bei mir meckern :)
+
+Der im Experiment verwendete Drehstab wurde in mehreren Schritten weiter verbessert. Das Ger\"ust jeder der Versionen war die Gabel, in der die drehbar gelagerte Stange aufgeh\"angt wurde. Zwei d\"unnwandige Aluminiumzylinder der L\"ange ??????????? mit einem Innenradius von $4\pm 0.1$ mm und einem Au\ss{}enradius von $5\pm 0.1$ mm sowie einer Masse von jeweils $66.5\pm 0.14$ g dienten als Stabilisator f\"ur den drehbaren Stab. Die beiden Gabelstangen wurden von zwei Achsen parallel gehalten: Die untere diente gleichzeitig als Drehachse f\"ur den Drehstab, an der oberen wurde die Anordnung an einer Halterung an der Decke des Raumes aufgeh\"angt. Hier wurde Nylonfaden der St\"arke 4 mm verwendet um einerseits eine m\"oglichst d\"unne unverdrillte Aufh\"angung zu gew\"ahrleisten die die Rotation nicht beeinflusst und andererseits das Gewicht des Drehstabes zuverl\"assig zu unterst\"utzen. Zudem waren an der oberen Achse d\"unne, schmale Balsaholzstreifen angebracht die bei der Drehung des Stabes durch die Lichtschranken liefen. Ein Anglerwirbel zwischen Nylonfaden und Stab erwies sich als nicht sinnvoll, da er aufgrund der Reibung durch das grosse Gewicht des Stabes nicht drehte sondern blockierte.
+
+In der Gabel wurde zun\"achst ein Drehstab aus massivem Eisen ???????? aufgeh\"angt. Dieser hatte eine L\"ange von ??????, einen Radius von ????????? sowie ein Gewicht von ?????????. Die waagrechte Rotationsachse des Stabes lag dabei nicht in dessen Schwerpunkt. Mithilfe von N\"ahgarn wurde das schwerere Ende des Stabes hochgebunden und dieser somit in eine waagrechte Position gebracht. So wurde sicher gestellt, dass er sich nach Durchbrennen des Fadens senkrecht ausrichtet.
+
+Um zu verhindern dass der Stab \"uber die Senkrechte hinausschwingt, wurde eine Bremse aus Styropor am oberen Ende der Gabel angebracht. F\"ur ein sicheres einrasten in die Senkrechte sorgte ein in die Bremse eingeschobener Magnet der Masse $24 \pm 0.3$ g. Um den Stab gen\"ugend zu beschleunigen damit er schnell und fest einrastet, wurde ein Federmechanismus aus Draht und Gummi an der Drehachse angebracht. %(siehe \hyperref[zugmechanismus]{Abb.~\ref{zugmechanismus}}) 
+%\begin{figure}[ht]
+%\begin{center}
+%\includegraphics[width=0.8\textwidth]{images/zugmechanismus.jpg}
+%\end{center}
+%\vspace{-1.5\baselineskip}
+%\caption{Gummizug zum Einklappen des Stabes}
+%\label{zugmechanismus}
+%\end{figure}
+%
+%%%%%%%%%% Bild notwendigtig? - Axi
+
+Nach den ersten Versuchen mit diesem Aufbau zeigte sich, dass beim Hochklappen des Stabes der Nylonfaden der Aufh\"angung waagrecht zu schwingen begann. Um den Einfluss dieser Schwingung auf die zu messende Rotation m\"oglichst gering zu halten und um zu vermeiden dass die Balsaholzst\"abe nicht mehr durch die Lichtschranken laufen wurde der Nylonfaden sp\"ater durch ein Plexiglasr\"ohrchen gef\"uhrt das ebenfalls an der Decke befestigt wurde. Jedoch war auch dieser Aufbau fehleranf\"allig, da die Reibung zwischen Faden und Rohr die Rotation beeintr\"achtigte.
+
+Nach dem Fehlschlagen der ersten Versuche wurde, um s\"amtliche Einfl\"usse von Magnetfeldern auszuschalten, nicht nur der ferromagnetische Eisenstab durch einen ansonsten baugleiche Messingstab der Masse ?????????? ersetzt, sondern auch der Magnet in der Bremse gegen einen Klettverschluss ausgetauscht, dessen Gegenst\"uck am oberen Drehstabende befestigt wurde. Zuletzt wurden noch die zwei Balsaholzst\"abchen, die die Lichtschranke ausl\"osen sollten, mit einen Kranz aus 36 St\"abchen im Abstand von jeweils 10$^{\circ}$ ausgewechselt um mehr Messpunkte zu erhalten.
+
+%\subsection{Material}
+%Magnetismus, Verwindung usw.
+%\subsection{Aufh\"angung}
+%Stabilisierung der Drehbewegung
+%\subsection{Klappmechanismus}
+%Zugmechanismus, Einrasten
+
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{images/stab-fertig.jpg}
+\end{center}
+\vspace{-1.5\baselineskip}
+\caption{Der ausgelenkte Stab}
+\label{stab-fertig}
+\end{figure}
+
+\section{Messungen}
+\subsection{Berechnungen im Vorraus} %Andi
+Tr\"agheitsmoment Rechnungen von Andi
+
+\subsection{Cassymessungen} %Axi
+Zur Aufzeichnung der Drehung des Stabes kam zun\"achst das CASSY Lab System zum Einsatz. Auf der H\"ohe der Spitze des Stabes wurde eine Lichtschranke durch Stativstangen an der Deckenkonstruktion verschraubt, welche die Durchg\"ange des Stabes z\"ahlte. Die Ausl\"osung der Lichtschranke sollte durch einen leichten Querstab aus Balsaholz erfolgen. Es stellte sich jedoch heraus, dass dabei nur unzureichende Genauigkeiten bei der Ermittlung der Drehgeschwindikeit erzielt werden konnten, da die Lichtschranke bei dieser Methode nur zweimal pro ganzer Umdrehung ausgel\"ost wird. Deshalb wurde an der Spitze des Stabes ein \glqq Speichenrad\grqq{} installiert. Die einzelnen Speichen hatten dabei einen Abstand von jeweils $10^\circ$. Pro Umdrehung wurde die Schranke also 36 Mal ausgel\"ost. Die L\"ange der einzelnen Speichen wurde so kurz wie m\"oglich gehalten, um das Tr\"agheitsmoment des Stabes nicht unn\"otig zu beeinflussen.
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{images/lichtschranke.jpg}
+\end{center}
+\vspace{-1.5\baselineskip}
+\caption{Das Speichenrad beim Durchgang durch die Lichtschranke}
+\label{lichtschranke}
+\end{figure}
+\\Die hier ausgewertete Messung wurde am 29.01.2010 durchgef\"uhrt. Der Stab hing bis zum Durchbrennen des Fadens ungef\"ahr 24 Stunden in ausgelenkter Postition. Zu diesem Zeitpunkt wurde bereits der Messingstab verwendet, daher war die Konstruktion auch nicht in Nord-S\"udrichtung orientiert, wie dies bei fr\"uheren Versuchen der Fall war. Das CASSY Lab nahm die Durchg\"ange mit einem Messintervall von $20ms$ auf. Der folgende Plot (siehe \hyperref[durchg29-cassy]{Abb.~\ref{durchg29-cassy}}) zeigt zun\"achst die aufsummierte Anzahl der Durchg\"ange durch die Lichtschranke seit dem Durchbrennen des Fadens. Bei der Beobachtung der Drehbewegung waren regelm\"a\ss{}ige \"Anderungen der Drehrichtung zu beobachten. Die Lichtschranke konnte zwar nicht zwischen Vor- und R\"uchw\"artsdrehung unterscheiden, jedoch zeigen die Punkte des Graphen mit horizontaler Tangente diese Wechsel, da die Drehbewegung sich hierbei zun\"achst verlangsammte und anschlie\ss{}end nach einem kurzen Stopp wieder in die andere Richtung beschleunigte.
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{images/durchg29-cassy.pdf}
+\end{center}
+\vspace{-1.5\baselineskip}
+\caption{Summe der Durch\"ange durch die Lichtschranke}
+\label{durchg29-cassy}
+\end{figure}
+\\F\"ur die Auswertung konnte somit nur ein Bereich vor dem ersten Richtungswechsel verwendet werden, um die Einfl\"usse von au\ss{}en gering zu halten. Nach dem Umrechnen der Zahl der Durchg\"ange in Drehwinkel ($1$ Durchgang \^{=} $10^\circ$ Drehung) wurde an das \glqq Zeit-Drehwinkel\grqq{} Diagramm (siehe \hyperref[zeit-winkel29-cassy]{Abb.~\ref{zeit-winkel29-cassy}}) ein Geradenfit durchgef\"uhrt.
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=0.99\textwidth]{images/zeit-winkel29-cassy.pdf}
+\end{center}
+\vspace{-1.5\baselineskip}
+\caption{Geradenfit zur Ermittlung der Winkelgeschwindigkeit}
+\label{zeit-winkel29-cassy}
+\end{figure}
+\\Daraus ergibt sich f\"ur die Winkelgeschwindigkeit:
+\[ \omega_{\text{Cassymessung}} = 138,51 \frac{\unit{deg}}{\unit{s}} \]
+F\"ur die Erdrotation folgt damit ...
+%% Werte fuer die Groesse des Fehlers ????
+
+\FloatBarrier
+\subsection{Videomessungen} %Karl
+Da die Schwingung der Vorrichtung die Cassymessung fast unbrauchbar machte, wurden weitere Wege gesucht, die bisherigen Versuche dennoch auswertbar zu machen. Als Grundlage sollten hier Videoaufnahmen dienen, die es ermöglichten, die Drehung unmittelbar nach dem Einklappen des Stabes zu beschreiben, bevor die störende Schwingung den Effekt zu stark überlagert. Die zur verfügung stehenden Mitschnitte wurden ursprünglich nur zu Dokumentationszwecken aufgezeichnet. Dies hatte den Nachteil, dass die Videodateien vor der Auswertung noch stark bearbeitet werden mussten, um Messdaten ablesen zu können. Das Hauptproblem lag in der verzerrten Perspektive des Videos, das von schräg unten aufgenommen wurde (siehe Abbildung ?). Zur Auswertung wurde mit Hilfe der freien Bildbearbeitungssoftware GIMP wie folgt vorgegangen: Zuerst wurde das Video in seine Einzelbilder zerlegt. Anhand dieser Bilder, im Speziellen der sich drehenden, oberen Verbindungsquerstange, wurde durch fitten einer Ellipse die perspektivische Verzerrung ermittelt. Für das Halbachsenverhältnis dieser Ellipse ergab sich folgender Wert:
+\[\frac{a_{\text{groß}}}{a_{\text{klein}}}=3,21\]
+Nun wurden die Einzellbilder senkrecht ausgerichtet, also um den Winkel $\alpha$ gedreht (siehe Abbildung ? - A) und schließlich um den ermittelten Faktor $3,21$ gestreckt (siehe Abbildung ? - B).
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{images/auswert.jpg}
+\end{center}
+\vspace{-1.5\baselineskip}
+\caption{Bearbeitung der Videoeinzelbilder}
+\label{Videobearbeitung}
+\end{figure}
+Aus diesen Bilddaten konnten nun der Drehwinkel $\phi$ abgelesen werden. Der Fehler dieser Messung lag vor allem in der unterschiedlichen Qualität der Einzelbilder und wurde durch mehrmaliges Messen pro Bild ermittelt.
+Da die schon anfänglich erwähnte Schwankung leider sehr schnell nach dem Einklappvorgang ins Gewicht fiel, konnten nur einige wenige Messpunkte zur Ermittlung der Winkelgeschwindigkeit herangezogen werden.
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{images/messung_Video.pdf}
+\end{center}
+\vspace{-1.5\baselineskip}
+\caption{Messergebnisse der Video-Messung}
+\label{messung_Video}
+\end{figure}
+Der zeitliche Abstand der Videoeinzelbilder wurde mit Hilfe einer Stoppuhr zu $\Delta t = 0,04\unit{s}$ gemessen.
+Durch einen Geradenfit der ersten sechs Messpunkte wurde die Winkelgeschwindigkeit ermittelt. Es gilt:
+\[ \omega_{\text{Messung}} = 33,35 \frac{\unit{deg}}{\unit{s}} = 0,582 \unit{s^{-1}} \]
+Damit ergibt sich mit den bekannten Werten für die Trägheitsmomente folgende Winkelgeschwindigkeit der Erdrotation:
+\[ \omega_{\text{Erde}} = \frac{\omega_{\text{lokal}}}{\sin(\alpha)} = ... \]
+
+
+\section{Verbesserungsvorschläge} %David faden, zwei stäbe, kamera von oben, symmetrischerer aufbau
+
+
+\section{Fazit} %Basti
+Nicht alles funktioniert so, wie erwartet \dots $\rightarrow$ Warum?
+
+\end{document}
