@@ -309,10 +309,11 @@ class DataSpectral():
 	
 	
 	def spectrum_backus_gilbert(self, input_signal, smooth=.5):
+		# (NR 19.6)
 		if self.smooth_bg != smooth:
 			print "creating backus-gilbert matrix..."
 			self.smooth_bg = smooth
-			# create a new backus_gilbert matrix BG
+			# create a new backus-gilbert matrix BG
 			self.BG = sc.zeros((self.m, self.n))
 			for x in range(self.m):
 				W = sc.zeros((self.n, self.n))
@@ -320,17 +321,21 @@ class DataSpectral():
 					for i in range(self.n):
 						for j in range(self.n):
 							for y in range(self.m):
+								# (NR 19.6.10)
 								W[i,j] += (self.lambdas[y] - self.lambdas[x])**2 * self.A[i, y] * self.A[j, y]
 				if smooth != 1.:
 					l = smooth**2 / (1. - smooth)**2
 				else:
 					l = 1.
 				# add error matrix S to W
+				# (NR 19.6.11)
 				for i in range(self.n):
 					W[i,i] += l * 1. # preliminary error estimate is 1 for all channels
 				R = self.A.sum(1)
+				# (NR 19.6.12)
 				WinvR = la.solve(W, R)
 				
+				# (NR 19.6.13 BG consists of all c(x))
 				self.BG[x] = WinvR / dot(R, WinvR)
 			print "...backus-gilbert matrix ready"
 		
