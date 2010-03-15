@@ -290,7 +290,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 				y = self.spec.spectrum_blackbody(sig, T)
 				text = u"blackbody $T=%i\,\mathrm{K}$" % (int(T[1]), )
 			elif self.cboxMethod.currentText() == u"polynomial":
-				y = self.spec.spectrum_polynomial(self.simulation.sig)
+				y = self.spec.spectrum_polynomial(sig)
 				text = "polynomial"
 			elif self.cboxMethod.currentText() == u"spline":
 				y = self.spec.spectrum_spline(sig)
