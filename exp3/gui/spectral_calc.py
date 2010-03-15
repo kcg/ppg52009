@@ -332,13 +332,14 @@ class DataSpectral():
 				for i in range(self.n):
 					W[i,i] += l * 1. # preliminary error estimate is 1 for all channels
 				R = self.A.sum(1)
-				# (NR 19.6.12)
+				# (part of NR 19.6.12)
 				WinvR = la.solve(W, R)
 				
-				# (NR 19.6.13 BG consists of all c(x))
+				# (NR 19.6.12 BG consists of all c(x))
 				self.BG[x] = WinvR / dot(R, WinvR)
 			print "...backus-gilbert matrix ready"
 		
+		# (NR 19.6.13)
 		return dot(self.BG, input_signal)
 
 
