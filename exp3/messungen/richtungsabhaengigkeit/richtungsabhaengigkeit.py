@@ -63,7 +63,7 @@ pl.plot(wgrid, U1grid, "b-", label="5mm Standard LED")
 pl.plot(w1, U1, "bo")
 
 
-pl.xlim(-92., 92.)
+pl.xlim(-90., 90.)
 pl.ylim(0., 1.3)
 pl.xticks(range(-90, 105, 15), [str(i) + u"°" for i in range(-90, 105, 15)])
 pl.grid()

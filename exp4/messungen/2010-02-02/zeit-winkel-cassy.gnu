@@ -2,7 +2,8 @@ a=417.133
 b=-9602.73
 f(x)=a*x+b
 #plot "02-02data.txt" using 1:3
-plot f(x) title "Fit 417.133deg/s * t - 9602.73deg", "02-02data.txt" using 1:3 title "Messwerte"
+set pointsize 4
+plot f(x) title "Fit 417.133deg/s * t - 9602.73deg" linewidth 4, "02-02data.txt" using 1:3 title "Messwerte" with dots linewidth 15
 set key box linewidth 2
 set key right bottom
 set xrange [24:26.8]
