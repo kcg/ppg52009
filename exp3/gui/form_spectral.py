@@ -96,6 +96,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 		self.cboxMethod.addItem(u"spline")
 		self.cboxMethod.addItem(u"polynomial")
 		self.cboxMethod.addItem(u"discrete")
+		self.cboxMethod.addItem(u"backus-gilbert")
 
 		# Schieber für Glättungsintensität
 		self.labelSmooth = QtGui.QLabel(u"smoothing:", self)
@@ -290,7 +291,7 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 				y = self.spec.spectrum_blackbody(sig, T)
 				text = u"blackbody $T=%i\,\mathrm{K}$" % (int(T[1]), )
 			elif self.cboxMethod.currentText() == u"polynomial":
-				y = self.spec.spectrum_polynomial(self.simulation.sig)
+				y = self.spec.spectrum_polynomial(sig)
 				text = "polynomial"
 			elif self.cboxMethod.currentText() == u"spline":
 				y = self.spec.spectrum_spline(sig)
@@ -308,6 +309,10 @@ class FormSpectral (threading.Thread, QtGui.QWidget):
 			elif self.cboxMethod.currentText() == u"discrete":
 				y = self.spec.spectrum_discrete(sig)
 				text = "discrete values"
+			elif self.cboxMethod.currentText() == u"backus-gilbert":
+				y = self.spec.spectrum_backus_gilbert(sig,
+					self.sliderSmooth.value() / (1. + self.sliderSmooth.maximum()))
+				text = "Backus-Gilbert"
 
 			peak = max(y)
 			if peak > 0. and self.radio_measure.isChecked():

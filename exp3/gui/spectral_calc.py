@@ -90,6 +90,8 @@ class DataSpectral():
 		self.S = .5 * (sc.eye(self.m-2, self.m, 0) + sc.eye(self.m-2, self.m, 2))
 		self.S -= sc.eye(self.m-2, self.m, 1)
 		self.STS = dot(self.S.T, self.S)
+		
+		self.smooth_bg = None # needs to be defined
 
 
 
@@ -285,8 +287,9 @@ class DataSpectral():
 		except (ValueError, ZeroDivisionError):
 			print "error fitting gauss"
 			return sc.zeros(self.m)
-			
-			
+	
+	
+	
 	def spectrum_discrete(self, input_signal):
 		'''
 		input_signal: Intensitätswert jeder LED (ca. 16 Werte)
@@ -302,6 +305,35 @@ class DataSpectral():
 		p = la.solve(dot(self.A, P), input_signal)
 
 		return dot(P, p)
-
+	
+	
+	
+	def spectrum_backus_gilbert(self, input_signal, smooth=.5):
+		if self.smooth_bg != smooth:
+			print "creating backus-gilbert matrix..."
+			self.smooth_bg = smooth
+			# create a new backus_gilbert matrix BG
+			self.BG = sc.zeros((self.m, self.n))
+			for x in range(self.m):
+				W = sc.zeros((self.n, self.n))
+				if smooth != 1.:
+					for i in range(self.n):
+						for j in range(self.n):
+							for y in range(self.m):
+								W[i,j] += (self.lambdas[y] - self.lambdas[x])**2 * self.A[i, y] * self.A[j, y]
+				if smooth != 1.:
+					l = smooth**2 / (1. - smooth)**2
+				else:
+					l = 1.
+				# add error matrix S to W
+				for i in range(self.n):
+					W[i,i] += l * 1. # preliminary error estimate is 1 for all channels
+				R = self.A.sum(1)
+				WinvR = la.solve(W, R)
+				
+				self.BG[x] = WinvR / dot(R, WinvR)
+			print "...backus-gilbert matrix ready"
+		
+		return dot(self.BG, input_signal)
 
 
