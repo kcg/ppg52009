@@ -1,3 +1,9 @@
+Vollzylinder: Messingstange (Mittelstange)
+Hohlzylinder: Aluminiumstangen (Befestigung)
+Dünner langer Stab: kleine Gewindestangen (Befestigung; Achse und Befestigung Klettverschluss)
+Quader: Magnet (1. Aufbau; später stattdessen Klettverschluss)
+
+
 Die Traegheitsmomente sind:
 
 
@@ -22,10 +28,21 @@ I_{\textnormal{Quader}})=1/12 \cdot M_{\textnormal{Quader}})= \cdot (b^2+l^2)
 
 
 
-Daraus ergibt sich mit den obigen Werten:
+Daraus ergibt sich mit den obigen Werten bei der Messung mit Klettverschluss und Messingstab:
 
 
+Falls die Stange in senkrechter Position ist:
 
 I_{\textnormal{Vollzylinder-parallel}}=2.7 \cdot 10^{-5} \unit{kg\m^2}
 
-restliche Werte liegne noch im PP und kommen morgen rein.
+
+und in paralleler Position (nach Zuklappen):
+
+I_{\textnormal{Vollzylinder-senkrecht}}=2.7 \cdot 10^{-5} \unit{kg\m^2}
+
+
+Daraus lässt sich nun aus dem Verhältnis von I_{\textnormal{Vollzylinder-parallel}} zu I_{\textnormal{Vollzylinder-senkrecht}} leicht die Rotationsdauer der Erde bei Drehung um ihre eigene Achse bestimmen:
+
+
+Wie man sieht, weicht das Ergebnis - auch nach vielen Verbesserungsversuchen - deutlich vom tatsächlichen Wert (24 h) ab.
+Mögliche Gründe dafür sollen an anderer Stelle im Protokoll erwähnt werden.
