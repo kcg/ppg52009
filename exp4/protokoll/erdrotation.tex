@@ -90,17 +90,20 @@ Eine weitere Möglichkeit der Messung der Winkelgeschwindigkeit der Erde kann ü
 Wir haben uns, besonders wegen der Durchführbarkeit in einem kleinen und abgedunkelten Labor, für eine unkonventionelle Messmethode entschieden. Hierzu machen wir uns den Drehimpulserhalt sowie die Variation des Tragheitsmoments unserer Messvorrichtung zunutze.
 
 \section{Grundprinzip - Tr\"agheitsmoment}
+Unter Ausnutzung der Drehimpulserhaltung wurde mit dem in den Abbildungen 1 und 2 skizzierten Aufbau versucht, die Erdrotationsdauer zu bestimmen. Ein drehbar gelagerter, massiver Messingstab wurde dabei frei an einem Faden im Labor aufgeh\"angt. Der aufgeklappte Stab dreht sich nach einer gewissen Zeit (einigen Stunden) mit der Erde mit, da dann Torsionseffekte durch den Faden, etc. keine Rolle mehr spielen. L\"asst man den Stab in seine Ausgangslage zur\"uckklappen, so muss der Drehimpuls erhalten bleiben. Misst man nun die Rotationsdauer des Systems, kann man daraus die Erdrotationsdauer ermitteln:
+Befindet man sich an einem Ort mit Breitengrad $\alpha$, so gilt wegen der Drehimpulserhaltung (wobei I\ltext{parallel} das Tr\"agheitsmoment des Systems im hochgeklappten Zustand und I\ltext{senkrecht} das Tr\"agheitsmoment im ausgelenkten Zustand bezeichnen):
 \begin{eqnarray}
 L_1 &=& L_2 \\
-\omega\ltext{Erde}\cos\alpha \cdot J\ltext{lang} &=&
-\omega\ltext{dreh} \cdot J\ltext{kurz} \\
-&=& (\omega\ltext{mess} + \omega\ltext{Erde}\cos\alpha) \cdot J\ltext{kurz}
+\omega\ltext{Erde}\cos\alpha \cdot I\ltext{senkrecht} &=&
+\omega\ltext{dreh} \cdot I\ltext{parallel} \\
+&=& (\omega\ltext{mess} + \omega\ltext{Erde}\cos\alpha) \cdot I\ltext{parallel}
 \end{eqnarray}
+Damit ergibt sich schliesslich die Erdrotationsdauer:
 \begin{equation}
 \boxed{
 \omega\ltext{Erde} =
 \frac{1}{\cos\alpha}\ 
-\frac{\omega\ltext{mess}}{J\ltext{lang} / J\ltext{kurz} - 1}
+\frac{\omega\ltext{mess}}{I\ltext{senkrecht} / I\ltext{parallel} - 1}
 }
 \end{equation}
 
@@ -170,6 +173,8 @@ Um s\"amtliche Einfl\"usse von Magnetfeldern auszuschalten wurde nicht nur der f
 \section{Messungen}
 \subsection{Berechnungen im Vorraus} %Andi
 
+\subsubsection{Berechnung der theoretischen Rotationsdauer des zugeklappten Aufbaus}
+
 Zun\"achst wurde die Rotationsdauer des Aufbaus nach dem Hochklappen des Messingsstabes (d.h. im "`parallelen Zustand"') rechnerisch bestimmt. 
 
 Der erste Schritt dabei war die Berechnung der Tr\"agheitsmomente. Dazu wurden die folgenden geometrischen N\"aherungen vorgenommen:
@@ -218,7 +223,7 @@ und in paralleler Position (nach Zuklappen):
 
 \[I_{\textnormal{Aufbau-senkrecht}}=I_{\textnormal{Vollzylinder-senkrecht}}+2 \cdot I_{\textnormal{Hohlzylinder}} + 2 \cdot I_{\textnormal{duenner, langer Stab}}=\]
 
-Daraus ergibt sich mit (vgl. auch oben)
+Daraus ergibt sich mit (vgl. auch Grundprinzipen, \textit{(4)})
 
 \[\omega\ltext{mess} = 
 (\frac{1}{\cos\alpha}
@@ -228,7 +233,17 @@ die Periodendauer einer Drehung nach dem Hochklappen zu
 
 \[T_{parallel}=\]
 
-Der tats�chlich gemessene Wert war jeweils betr\"achtlich k\"uerzer - die vermuteten Gr\"uende hierf\"uer sind weiter unten angegeben.
+Der tats\"achlich gemessene Wert war jeweils betr\"achtlich k\"uerzer - die vermuteten Gr\"uende hierf\"uer sind weiter unten angegeben.
+
+\subsubsection{Berechnung der Erdrotationsdauer aus der gemessenen Rotationsdauer des zugeklappten Aufbaus}
+
+Die eigentliche Grundidee des Versuchs war es nat\"urlich, die Erdrotationsdauer aus dem \textit{gemessenen} Wert f\"ur die Rotationsdauer des zugeklappten Aufbaus experimentell zu bestimmen. Die Rechnung und Herleitung dazu finden sich unter dem obigen Abschnitt "Grundprinzip":
+
+\[\omega\ltext{Erde} = 
+\frac{1}{\cos\alpha}
+\frac{\omega\ltext{mess}}{I\ltext{senkrecht} / I\ltext{parallel} - 1}\]
+
+Mit unseren Messwerten w�rde sich folglich eine Rotationsdauer von ??? ergeben - also ein deutlich k\"uerzerer Wert als ein Tag!
 
 \subsection{Cassymessungen} %Axi
 Zur Aufzeichnung der Drehung des Stabes kam zun\"achst das CASSY Lab System zum Einsatz. Auf der H\"ohe der Spitze des Stabes wurde eine Lichtschranke durch Stativstangen an der Deckenkonstruktion verschraubt, welche die Durchg\"ange des Stabes z\"ahlte. Die Ausl\"osung der Lichtschranke sollte durch einen leichten Querstab aus Balsaholz erfolgen. Es stellte sich jedoch heraus, dass dabei nur unzureichende Genauigkeiten bei der Ermittlung der Drehgeschwindikeit erzielt werden konnten, da die Lichtschranke bei dieser Methode nur zweimal pro ganzer Umdrehung ausgel\"ost wird. Deshalb wurde an der Spitze des Stabes ein \glqq Speichenrad\grqq{} installiert. Die einzelnen Speichen hatten dabei einen Abstand von jeweils $10^\circ$. Pro Umdrehung wurde die Schranke also 36 Mal ausgel\"ost. Die L\"ange der einzelnen Speichen wurde so kurz wie m\"oglich gehalten, um das Tr\"agheitsmoment des Stabes nicht unn\"otig zu beeinflussen.
