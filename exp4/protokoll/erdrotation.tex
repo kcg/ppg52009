@@ -73,7 +73,7 @@ Tutor: Xiaoyue Jin}
 
 \begin{abstract}
 In diesem Projekt wurde versucht, die Drehgeschwindigkeit der Erde im Labor zu messen.
-Hierzu wurde eine massive drehbar gelagerte Stange verwendet, die ihr Trägheitsmoment um die vertikale Achse durch Einklappen um den Faktor $10^4$ ???? ändern kann und damit die vorhandene Drehbewegung verstärkt und messbar macht.
+Hierzu wurde eine massive drehbar gelagerte Stange verwendet, die ihr Trägheitsmoment um die vertikale Achse durch Einklappen um den Faktor 3600 ändern kann und damit die vorhandene Drehbewegung verstärkt und messbar macht.
 Im Gegensatz zum Focaultschen Pendel ist hiermit eine instantane Messung möglich.
 Allerdings hatten wir mit starken Schwingungs- und Reibungseffekten zu kämpfen, so dass unsere Werte am Ende immer noch um eine Gr\"ossenordnung daneben lagen.
 \end{abstract}
@@ -89,9 +89,17 @@ Eine weitere Möglichkeit der Messung der Winkelgeschwindigkeit der Erde kann ü
 
 Wir haben uns, besonders wegen der Durchführbarkeit in einem kleinen und abgedunkelten Labor, für eine unkonventionelle Messmethode entschieden. Hierzu machen wir uns den Drehimpulserhalt sowie die Variation des Tr\"agheitsmoments unserer Messvorrichtung zunutze.
 
-\section{Grundprinzip - Tr\"agheitsmoment}
+\section{Grundprinzip - Tr\"agheitsmoment}\label{sec:grundprinzip}
+\begin{figure}[th]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{prinzip.pdf}
+\end{center}
+\vspace{-1.5\baselineskip}
+\caption{Schema des Bewegungsablaufs}
+\label{prinzip}
+\end{figure}
 Unter Ausnutzung der Drehimpulserhaltung wurde mit dem in den Abbildungen 1 und 2 skizzierten Aufbau versucht, die Erdrotationsdauer zu bestimmen. Ein drehbar gelagerter, massiver Messingstab wurde dabei frei an einem Faden im Labor aufgeh\"angt. Der aufgeklappte Stab dreht sich nach einer gewissen Zeit (einigen Stunden) mit der Erde mit, da dann Torsionseffekte durch den Faden, etc. keine Rolle mehr spielen. L\"asst man den Stab in seine Ausgangslage zur\"uckklappen, so muss der Drehimpuls erhalten bleiben. Misst man nun die Rotationsdauer des Systems, kann man daraus die Erdrotationsdauer ermitteln:
-Befindet man sich an einem Ort mit Breitengrad $\alpha$, so gilt wegen der Drehimpulserhaltung (wobei I\ltext{parallel} das Tr\"agheitsmoment des Systems im hochgeklappten Zustand und I\ltext{senkrecht} das Tr\"agheitsmoment im ausgelenkten Zustand bezeichnen):
+Befindet man sich an einem Ort mit Breitengrad $\alpha$, so gilt wegen der Drehimpulserhaltung (wobei $I\ltext{parallel}$ das Tr\"agheitsmoment des Systems im hochgeklappten Zustand und $I\ltext{senkrecht}$ das Tr\"agheitsmoment im ausgelenkten Zustand bezeichnen):
 \begin{eqnarray}
 L_1 &=& L_2 \\
 \omega\ltext{Erde}\cos\alpha \cdot I\ltext{senkrecht} &=&
@@ -100,6 +108,7 @@ L_1 &=& L_2 \\
 \end{eqnarray}
 Damit ergibt sich schliesslich die Erdrotationsdauer:
 \begin{equation}
+\label{eq:grund}
 \boxed{
 \omega\ltext{Erde} =
 \frac{1}{\cos\alpha}\ 
@@ -109,19 +118,10 @@ Damit ergibt sich schliesslich die Erdrotationsdauer:
 
 \begin{figure}[ht]
 \begin{center}
-\includegraphics[width=0.8\textwidth]{prinzip.pdf}
+\includegraphics[width=0.3\textwidth]{welt.pdf}
 \end{center}
 \vspace{-1.5\baselineskip}
-\caption{Schema des Bewegungsablaufs}
-\label{prinzip}
-\end{figure}
-
-\begin{figure}[ht]
-\begin{center}
-\includegraphics[width=0.2\textwidth]{welt.pdf}
-\end{center}
-\vspace{-1.5\baselineskip}
-\caption{Position auf der Welt}
+\caption{Position auf der Erde}
 \label{Welt}
 \end{figure}
 
@@ -152,7 +152,7 @@ Nach den ersten Versuchen mit diesem Aufbau zeigte sich, dass beim Hochklappen d
 
 Nach einigen fehlgeschlagenen Versuchen stellten wir fest, dass der eingebaute Halterungsmagnet, sowie die leicht magnetisierte Eisenstange selbst als Kompass im Erdmagnetfeld fungierten und somit die empfindliche Messung erheblich störten.
 Einerseits konnte damit der Faden auch nach längerer Wartezeit keine drehmomentfreie Lage einnehmen, andererseits störte das magnetische Drehmoment den Stab während der Messung.
-Um s\"amtliche Einfl\"usse von Magnetfeldern auszuschalten wurde nicht nur der ferromagnetische Eisenstab durch einen ansonsten baugleiche Messingstab der Masse 1,5 \unit{kg} ersetzt, sondern auch der Magnet in der Bremse gegen einen Klettverschluss ausgetauscht, dessen Gegenst\"uck am oberen Drehstabende befestigt wurde. Zuletzt wurden noch die zwei Balsaholzst\"abchen, die die Lichtschranke ausl\"osen sollten, mit einen Kranz aus 36 St\"abchen im Abstand von jeweils 10$^{\circ}$ ausgewechselt um mehr Messpunkte zu erhalten.
+Um s\"amtliche Einfl\"usse von Magnetfeldern auszuschalten wurde nicht nur der ferromagnetische Eisenstab durch einen ansonsten baugleiche Messingstab der Masse 1,5\unit{kg} ersetzt, sondern auch der Magnet in der Bremse gegen einen Klettverschluss ausgetauscht, dessen Gegenst\"uck am oberen Drehstabende befestigt wurde. Zuletzt wurden noch die zwei Balsaholzst\"abchen, die die Lichtschranke ausl\"osen sollten, mit einen Kranz aus 36 St\"abchen im Abstand von jeweils 10$^{\circ}$ ausgewechselt um mehr Messpunkte zu erhalten.
 
 %\subsection{Material}
 %Magnetismus, Verwindung usw.
@@ -192,57 +192,69 @@ Der erste Schritt dabei war die Berechnung der Tr\"agheitsmomente. Dazu wurden d
 \end{tabular}
 
 
+\noindent
 Es gilt also:
-
-\[
-I_{\textnormal{Vollzylinder-parallel}}=1/2 \cdot (R_{\textnormal{Vollzylinder}})^2 \cdot M_{\textnormal{Vollzylinder}}\]
-
-
-
-\[I_{\textnormal{Vollzylinder-senkrecht}}=1/12 \cdot (L_{\textnormal{Vollzylinder}})^2 \cdot M_{\textnormal{Vollzylinder}} +(a_{\textnormal{Vollzylinder}})^2 \cdot M_{\textnormal{Vollzylinder}}\]
-
-
-\[I_{\textnormal{Hohlzylinder}}=1/2 \cdot M_{\textnormal{Hohlzylinder}} \cdot ((R_{\textnormal{innen}})^2+(R_{\textnormal{aussen}})^2)+(a_{\textnormal{Hohlzylinder}})^2 \cdot M_{\textnormal{Hohlzylinder}}\]
-
-
-\[I_{\textnormal{duenner, langer Stab}}=1/12 \cdot M_{\textnormal{duenner, langer Stab}} \cdot L^2\]
-
-
-
-\[I_{\textnormal{Quader}}=1/12 \cdot M_{\textnormal{Quader}} \cdot (b^2+l^2)\]
-
-Daraus ergibt sich mit den obigen Werten bei der Messung mit Klettverschluss und Messingstab (der Klettverschluss wurde bei den Rechnungen vernachl\"assigt:
+\begin{equation}
+I\ltext{Vollzylinder-parallel}
+=\frac{1}{2} \cdot (R\ltext{Vollzylinder})^2 \cdot M\ltext{Vollzylinder}
+\end{equation}
+\begin{eqnarray}
+I\ltext{Vollzylinder-senkrecht}
+&=& \frac{1}{12} \cdot (L\ltext{Vollzylinder})^2 \cdot M\ltext{Vollzylinder}\nonumber\\
+&& + (a\ltext{Vollzylinder})^2 \cdot M\ltext{Vollzylinder}
+\end{eqnarray}
+\begin{eqnarray}
+I\ltext{Hohlzylinder}
+&=&\frac{1}{2} \cdot M\ltext{Hohlzylinder} \cdot ((R\ltext{innen})^2+(R\ltext{aussen})^2)\nonumber\\
+&& +(a\ltext{Hohlzylinder})^2 \cdot M\ltext{Hohlzylinder}
+\end{eqnarray}
+\begin{equation}
+I\ltext{duenner, langer Stab}
+=\frac{1}{12} \cdot M\ltext{dünner, langer Stab} \cdot L^2
+\end{equation}
+\begin{equation}
+I\ltext{Quader}
+=\frac{1}{12} \cdot M\ltext{Quader} \cdot (b^2+l^2)
+\end{equation}
+Daraus ergibt sich mit den obigen Werten bei der Messung mit Klettverschluss und Messingstab (der Klettverschluss wurde bei den Rechnungen vernachl"assigt):
 
 
 Falls die Stange in senkrechter Position ist:
-
-\[I_{\textnormal{Aufbau-senkrecht}}=I_{\textnormal{Vollzylinder-senkrecht}}+2 \cdot I_{\textnormal{Hohlzylinder}} + 2 \cdot I_{\textnormal{duenner, langer Stab}}=36 \cdot 10^{-2} \unit{kg} \unit{m^2}\]
-
-
+\begin{eqnarray}
+I\ltext{Aufbau-senkrecht}
+&=&
+I\ltext{Vollzylinder-senkrecht}+2 \cdot I\ltext{Hohlzylinder} + 2 \cdot I\ltext{dünner, langer Stab}\nonumber\\
+&=& 3.6 \ee{-1} \unit{kg} \unit{m^2}
+\end{eqnarray}
 und in paralleler Position (nach Zuklappen):
-
-\[I_{\textnormal{Aufbau-parallel}}=I_{\textnormal{Vollzylinder-parallel}}+2 \cdot I_{\textnormal{Hohlzylinder}} + 2 \cdot I_{\textnormal{duenner, langer Stab}}=99 \cdot 10^{-6} \unit{kg} \unit{m^2}\]
-
-Daraus ergibt sich mit (vgl. auch Grundprinzip, \textit{(4)})
-
-\[\omega\ltext{mess} = 
-\cos\alpha \cdot (I\ltext{senkrecht} / I\ltext{parallel} - 1) \cdot \omega\ltext{Erde}\]
-
+\begin{eqnarray}
+I\ltext{Aufbau-parallel}
+&=& I\ltext{Vollzylinder-parallel}+2 \cdot I\ltext{Hohlzylinder} + 2 \cdot I\ltext{dünner, langer Stab}\nonumber\\
+&=& 9.9 \ee{-5} \unit{kg} \unit{m^2}
+\end{eqnarray}
+Daraus ergibt sich mit (vgl. auch Grundprinzip, \hypref{Gl.}{eq:grund})
+\begin{equation}
+\omega\ltext{mess} = 
+\cos\alpha \cdot (I\ltext{senkrecht} / I\ltext{parallel} - 1) \cdot \omega\ltext{Erde}
+\end{equation}
 die Periodendauer einer Drehung nach dem Hochklappen zu
-
-\[T_{parallel}=30.3 \unit{s}\]
-
-Der tats\"achlich gemessene Wert war jeweils betr\"achtlich k\"urzer - die vermuteten Gr\"unde hierf\"ur sind weiter unten angegeben.
+\begin{equation}
+T_{parallel}=30.3 \unit{s}
+\end{equation}
+Der tats"achlich gemessene Wert war jeweils betr"achtlich k"urzer - die vermuteten Gr"unde hierf"ur sind weiter unten angegeben.
 
 \subsubsection{Berechnung der Erdrotationsdauer aus der gemessenen Rotationsdauer des zugeklappten Aufbaus}
 
-Die eigentliche Grundidee des Versuchs war es nat\"urlich, die Erdrotationsdauer aus dem \textit{gemessenen} Wert f\"ur die Rotationsdauer des zugeklappten Aufbaus experimentell zu bestimmen. Die Rechnung und Herleitung dazu finden sich unter dem obigen Abschnitt "Grundprinzip":
+Die eigentliche Grundidee des Versuchs war es nat\"urlich, die Erdrotationsdauer aus dem \textit{gemessenen} Wert f\"ur die Rotationsdauer des zugeklappten Aufbaus experimentell zu bestimmen. Die Rechnung und Herleitung dazu finden sich unter dem obigen \hypref{Abschnitt}{sec:grundprinzip}:
 
-\[\omega\ltext{Erde} = 
-\frac{1}{\cos\alpha}
-\frac{\omega\ltext{mess}}{I\ltext{senkrecht} / I\ltext{parallel} - 1}\]
+\begin{equation}
+\omega\ltext{Erde} = 
+\frac{1}{\cos(40.4\degr)}\ 
+\frac{\omega\ltext{mess}}{3.6\ee{-1} / 3.6\ee{-1} - 1}
+= 4\,904\unit{s}
+\end{equation}
 
-Mit unseren Messwerten w"urde sich folglich eine Rotationsdauer von 4 904 \unit{s} ergeben - also ein deutlich k\"uerzerer Wert als ein Tag!
+Mit unseren Messwerten w"urde sich folglich eine Rotationsdauer von 4\,904\unit{s} ergeben - also ein deutlich k"urzerer Wert als ein Tag!
 
 \subsection{Cassymessungen} %Axi
 Zur Aufzeichnung der Drehung des Stabes kam zun\"achst das CASSY Lab System zum Einsatz. Auf der H\"ohe der Spitze des Stabes wurde eine Lichtschranke durch Stativstangen an der Deckenkonstruktion verschraubt, welche die Durchg\"ange des Stabes z\"ahlte. Die Ausl\"osung der Lichtschranke sollte durch einen leichten Querstab aus Balsaholz erfolgen. Es stellte sich jedoch heraus, dass dabei nur unzureichende Genauigkeiten bei der Ermittlung der Drehgeschwindikeit erzielt werden konnten, da die Lichtschranke bei dieser Methode nur zweimal pro ganzer Umdrehung ausgel\"ost wird. Deshalb wurde an der Spitze des Stabes ein \glqq Speichenrad\grqq{} installiert. Die einzelnen Speichen hatten dabei einen Abstand von jeweils $10^\circ$. Pro Umdrehung wurde die Schranke also 36 Mal ausgel\"ost. Die L\"ange der einzelnen Speichen wurde so kurz wie m\"oglich gehalten, um das Tr\"agheitsmoment des Stabes nicht unn\"otig zu beeinflussen.
@@ -339,7 +351,7 @@ Das Problem mit dem Magneten hätte uns natürlich früher auffallen können.
 Einer präzisen zentrale Aufhängung und der Spielfreiheit unserer Drehgelenke waren allerdings gewisse Grenzen gesetzt.
 Bei einigen der in \hypref{Abschnitt}{sec:verbesserung} aufgeführten Versuchsänderungen wären diese Ungenauigkeiten vielleicht weniger kritisch gewesen und wir hätten einen guten Wert erhalten.
 
-Bei einer Abweichung um den Faktor eine Gr\"ossenordnung vom theoretischen Wert sind die Fehler nun so groß, dass von einem sicheren Nachweis der Erddrehung natürlich nicht mehr die Rede sein kann.
+Bei einer Abweichung um den Faktor eine Gr"oßenordnung vom theoretischen Wert sind die Fehler nun so groß, dass von einem sicheren Nachweis der Erddrehung natürlich nicht mehr die Rede sein kann.
 Wäre es allerdings Galileo Galilei als Begründer der modernen Experimentalphysik gelungen, unseren Aufbau ein wenig präziser durchrzuführen, so hätte er den unumstößlichen Beweis in Händen gehabt:
 Und sie dreht sich doch!
 
