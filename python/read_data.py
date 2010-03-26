@@ -10,12 +10,11 @@ def readdata(filename, colsep="\t", comment="#"):
 	data = []; l = 0
 	for linetext in ifile.readlines():
 		l += 1
-		if linetext[0] == comment:
-			continue
+		if linetext[0] == comment: continue
 		linetext = linetext[:-1].strip()
 		line = linetext.split(colsep)
-		if len(line) <= 0:
-			continue
+		if len(line) <= 0: continue
+		if line == ['']: continue
 		row = []
 		for i in line:
 			try:

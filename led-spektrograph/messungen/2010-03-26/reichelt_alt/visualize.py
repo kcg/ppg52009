@@ -29,17 +29,21 @@ while i < len(filenames):
 
 
 for fname in filenames:
-	data = readdata(fname)
-	U = [i[0] for i in data]
-	I = [i[1] for i in data]
-	I_foto = [i[2] for i in data]
-	
 	#zufallsfarbe
 	col = colorsys.hsv_to_rgb(random.random(),
 		1., 1. - .5 * random.random()**2)
+		
+	data = readdata(fname)
+	U = [i[0] for i in data]
+	if len(data[0]) == 2:
+		I_foto = [i[1] for i in data]
+		pylab.plot(U, I_foto, "-", color=col, label=None, linewidth=.5)
+	else:
+		I = [i[1] for i in data]
+		I_foto = [i[2] for i in data]
 	
-	pylab.plot(U, I, "-", color=col, label=fname[:-4], linewidth=2)
-	pylab.plot(U, I_foto, "-", color=col, label=None, linewidth=.5)
+		pylab.plot(U, I, "-", color=col, label=fname[:-4], linewidth=2)
+		pylab.plot(U, I_foto, "-", color=col, label=None, linewidth=.5)
 
 pylab.xlabel(u"Poti Spannung")
 pylab.ylabel(u"LED Spannung")
