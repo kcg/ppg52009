@@ -239,6 +239,7 @@ Daraus ergibt sich mit (vgl. auch Grundprinzip, \hypref{Gl.}{eq:grund})
 \end{equation}
 die Periodendauer einer Drehung nach dem Hochklappen zu
 \begin{equation}
+\label{eq:tpara}
 T_{parallel}=30.3 \unit{s}
 \end{equation}
 Der tats"achlich gemessene Wert war jeweils betr"achtlich k"urzer - die vermuteten Gr"unde hierf"ur sind weiter unten angegeben.
@@ -250,8 +251,8 @@ Die eigentliche Grundidee des Versuchs war es nat\"urlich, die Erdrotationsdauer
 \begin{equation}
 \omega\ltext{Erde} = 
 \frac{1}{\cos(40.4\degr)}\ 
-\frac{\omega\ltext{mess}}{3.6\ee{-1} / 3.6\ee{-1} - 1}
-= 4\,904\unit{s}
+\frac{\omega\ltext{mess}}{3.6\ee{-1} / 9.9\ee{-5} - 1}
+= 4\,904\unit{s} %% stimmt der Wert jetzt noch?, wie groﬂ ist hier omega-mess? by Axi
 \end{equation}
 
 Mit unseren Messwerten w"urde sich folglich eine Rotationsdauer von 4\,904\unit{s} ergeben -- also ein deutlich k"urzerer Wert als ein Tag!
@@ -283,16 +284,25 @@ Zur Aufzeichnung der Drehung des Stabes kam zun\"achst das CASSY Lab System zum 
 \label{zeit-winkel29-cassy}
 \end{figure}
 
-Die hier ausgewertete Messung wurde am 29.01.2010 durchgef\"uhrt. Der Stab hing bis zum Durchbrennen des Fadens ungef\"ahr 24 Stunden in ausgelenkter Postition. Zu diesem Zeitpunkt wurde bereits der Messingstab verwendet, daher war die Konstruktion auch nicht in Nord-S\"udrichtung orientiert, wie dies bei fr\"uheren Versuchen der Fall war. Das CASSY Lab nahm die Durchg\"ange mit einem Messintervall von $20\unit{ms}$ auf. Der folgende Plot (siehe \hypref{Abb.}{durchg29-cassy}) zeigt zun\"achst die aufsummierte Anzahl der Durchg\"ange durch die Lichtschranke seit dem Durchbrennen des Fadens. Bei der Beobachtung der Drehbewegung waren regelm\"a\ss{}ige \"Anderungen der Drehrichtung zu beobachten. Die Lichtschranke konnte zwar nicht zwischen Vor- und R\"uchw\"artsdrehung unterscheiden, jedoch zeigen die Punkte des Graphen mit horizontaler Tangente diese Wechsel, da die Drehbewegung sich hierbei zun\"achst verlangsammte und anschlie\ss{}end nach einem kurzen Stopp wieder in die andere Richtung beschleunigte.
+Die hier ausgewertete Messung wurde am 29.01.2010 durchgef\"uhrt. Der Stab hing bis zum Durchbrennen des Fadens ungef\"ahr 24 Stunden in ausgelenkter Postition. Zu diesem Zeitpunkt wurde bereits der Messingstab verwendet, daher war die Konstruktion auch nicht in Nord-S\"udrichtung orientiert, wie dies bei fr\"uheren Versuchen der Fall war. Das CASSY Lab nahm die Durchg\"ange mit einem Messintervall von $20\unit{ms}$ auf. Der folgende Plot (siehe \hypref{Abb.}{durchg29-cassy}) zeigt zun\"achst die aufsummierte Anzahl der Durchg\"ange durch die Lichtschranke seit dem Durchbrennen des Fadens. Bei der Beobachtung der Drehbewegung waren regelm\"a\ss{}ige \"Anderungen der Drehrichtung zu beobachten. Die Lichtschranke konnte zwar nicht zwischen Vor- und R\"uchw\"artsdrehung unterscheiden, jedoch zeigen die Punkte des Graphen mit horizontaler Tangente diese Wechsel, da sich die Drehbewegung hierbei zun\"achst verlangsammte und anschlie\ss{}end nach einem kurzen Stopp wieder in die andere Richtung beschleunigte.
 
-F\"ur die Auswertung konnte somit nur ein Bereich vor dem ersten Richtungswechsel verwendet werden, um die Einfl\"usse von au\ss{}en gering zu halten. Nach dem Umrechnen der Zahl der Durchg\"ange in Drehwinkel (1 Durchgang \^{=} $10^\circ$ Drehung) wurde an das \glqq Zeit-Drehwinkel\grqq{} Diagramm (siehe \hypref{Abb.}{zeit-winkel29-cassy}) ein Geradenfit durchgef\"uhrt.
-
-Daraus ergibt sich f\"ur die Winkelgeschwindigkeit:
+F\"ur die Auswertung konnte somit nur ein Bereich vor dem ersten Richtungswechsel verwendet werden, um die Einfl\"usse von au\ss{}en gering zu halten. Nach dem Umrechnen der Zahl der Durchg\"ange in Drehwinkel (1 Durchgang \^{=} $10^\circ$ Drehung) wurde an das \glqq Zeit-Drehwinkel\grqq{} Diagramm (siehe \hypref{Abb.}{zeit-winkel29-cassy}) ein Geradenfit durchgef\"uhrt. Daraus ergibt sich f\"ur die Winkelgeschwindigkeit:
 \begin{equation}
 \omega\ltext{Cassymessung} = 139\pm 3 \unit{\frac{deg}{s}}
 \end{equation}
-F\"ur die Erdrotation folgt damit ...
-%% Werte fuer die Groesse des Fehlers ????
+Eine Umdrehung des hochgeklappten Stabes dauert somit 
+\begin{equation}
+T_{parallel-Messung}=\frac{360\degr}{139 \unit{\frac{deg}{s}}}=2.59 \unit{s}
+\end{equation}
+was knapp 12 Mal so schnell, wie der theoretische Wert von $T_{parallel}= 30.3$ ist. (\hypref{Gl.}{eq:tpara})\\ \\
+Folglich ergibt sich auch f\"ur die resultierende Geschwindigkeit der Erddrehung mit der oben hergeleiteten Formel (\hypref{Gl.}{eq:grund}) ein stark von der Realit\"at abweichender Wert.
+\begin{equation}
+\omega\ltext{Erde-Messung} = 
+\frac{1}{\cos(40.4\degr)}\ 
+\frac{139 \unit{\frac{deg}{s}}}{(3.6\ee{-1} / 9.9\ee{-5}) - 1}
+= 5.02\ee{-2} \unit{\frac{deg}{s}}
+\end{equation}
+Ein Tag dauert somit nach unserer Messung mit dem CASSY Lab nur $7\,170 \unit{s}$ statt $86\,164.1 \unit{s}$.
 
 \FloatBarrier
 \subsection{Videomessungen} %Karl
