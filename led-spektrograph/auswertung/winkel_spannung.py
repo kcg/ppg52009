@@ -28,7 +28,7 @@ U1 = [i[1] for i in data_winkel]
 # Winkelfunktion fitten
 par1, success = optimize.leastsq(winkel_err, [-100., 300., -20., 6., .6], args=(U1, w1))
 print par1
-print "mean error", sqrt(sum([i**2 for i in winkel_err(par1, U1, w1)]) / len(w1))
+print "mean error", sqrt(sum([i**2 for i in winkel_err(par1, U1, w1)]) / (len(w1) - len(par1)))
 
 interval = sc.linspace(.47, .83, 100)
 
