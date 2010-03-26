@@ -17,7 +17,7 @@ from read_data import *
 
 # Dateien im Verzeichnis suchen
 filenames = []
-for folder in ["2010-03-23/Conrad", "2010-03-23/Roithner", "2010-03-24/reichelt", "2010-03-26/reichelt_alt", "2010-03-26/zylinderlines"]:
+for folder in ["2010-03-23/Conrad", "2010-03-23/Roithner", "2010-03-24/reichelt", "2010-03-26/reichelt_alt", "2010-03-26/zylinderlinse"]:
 	for i in os.walk(folder):
 		for j in range(len(i[2])):
 			i[2][j] = folder + "/" + i[2][j]
