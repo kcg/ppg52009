@@ -26,3 +26,4 @@ set term x11
 # bei diagonaler Korelationsmatrix:
 # a = 138.51 +/- 2.904
 # b = -2471.37 +/- 0.552
+#
