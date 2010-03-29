@@ -212,23 +212,20 @@ I\ltext{Hohlzylinder}
 I\ltext{dünner, langer Stab}
 =\frac{1}{12} \cdot M\ltext{dünner, langer Stab} \cdot L^2
 \end{equation}
-\begin{equation}
-I\ltext{Quader}
-=\frac{1}{12} \cdot M\ltext{Quader} \cdot (b^2+l^2)
-\end{equation}
 %Fehlt: Erklärung was die "a_..." sind und deren Werte
+Hierbei beschreibt $ a\ltext{Vollzylinder} = 0,8 \unit{cm} $ den Abstand des Aufh�ngepunktes des Messingstabes von seinem Schwerpunkt und $ a\ltext{Hohlzylinder} = 1,4 \unit{cm} $ die Entfernung der zwei Hohlzylinder von der Drehachse.\\
 Daraus ergibt sich mit den obigen Werten bei der Messung mit Klettverschluss und Messingstab (der Klettverschluss wurde bei den Rechnungen vernachl"assigt):\\
 \\
-Ist die Stange in senkrechter Position:
+In senkrechter Position:
 \begin{eqnarray}
-I\ltext{Aufbau-senkrecht}
+I\ltext{Aufbau-senkrecht}=I_1
 &=&
 I\ltext{Vollzylinder-senkrecht}+2 \cdot I\ltext{Hohlzylinder} + 2 \cdot I\ltext{dünner, langer Stab}\nonumber\\
 &=& 3,6 \ee{-1} \unit{kg} \unit{m^2}
 \end{eqnarray}
 In paralleler Position (nach dem Zuklappen):
 \begin{eqnarray}
-I\ltext{Aufbau-parallel}
+I\ltext{Aufbau-parallel}=I_2
 &=& I\ltext{Vollzylinder-parallel}+2 \cdot I\ltext{Hohlzylinder} + 2 \cdot I\ltext{dünner, langer Stab}\nonumber\\
 &=& 9,9 \ee{-5} \unit{kg} \unit{m^2}
 \end{eqnarray}
@@ -253,7 +250,7 @@ Die eigentliche Grundidee des Versuchs war es nat\"urlich, die Erdrotationsdauer
 \omega\ltext{Erde} = 
 \frac{1}{\cos(40,4\degr)}\ 
 \frac{\omega\ltext{mess}}{(3,6\ee{-1}) / (9,9\ee{-5}) - 1}
-= 4\,904\unit{s} %% stimmt der Wert jetzt noch?, wie gro� ist hier omega-mess? by Axi
+= \frac{1}{4\,904\unit{s}} %% stimmt der Wert jetzt noch?, wie gro� ist hier omega-mess? by Axi
 \end{equation}
 
 Mit unseren vorweggenommenen Messwerten w"urde sich folglich eine Rotationsdauer von 4\,904\unit{s} ergeben -- also ein deutlich k"urzerer Wert als ein Tag!
@@ -338,9 +335,12 @@ Durch einen Geradenfit der ersten sechs Messpunkte wurde die Winkelgeschwindigke
 \end{equation}
 Damit ergibt sich mit den bekannten Werten für die Trägheitsmomente folgende Winkelgeschwindigkeit der Erdrotation:
 \begin{equation}
-\omega\ltext{Erde} = \frac{\omega\ltext{lokal}}{\cos(\alpha)} = ...
+\omega\ltext{Erde} = 
+\frac{1}{\cos(40,4\degr)}\ 
+\frac{\omega\ltext{mess}}{(3,6\ee{-1}) / (9,9\ee{-5}) - 1}
+= \frac{1}{4757\unit{s}}
 \end{equation}
-
+Die hieraus resultierende Dauer eines Tages weicht weiterhin um einen Faktor von $\frac{1}{18}$ vom wahren Wert ab.
 
 
 \FloatBarrier
