@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
+
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -12,7 +13,7 @@
    height="350"
    id="svg3482"
    sodipodi:version="0.32"
-   inkscape:version="0.46"
+   inkscape:version="0.47pre4 r22446"
    version="1.0"
    sodipodi:docname="welt.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape">
@@ -51,6 +52,13 @@
        inkscape:vp_z="744.09448 : 526.18109 : 1"
        inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
        id="perspective3490" />
+    <inkscape:perspective
+       id="perspective2866"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -59,16 +67,18 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.98994949"
-     inkscape:cx="125.66682"
-     inkscape:cy="158.9552"
+     inkscape:zoom="1.4"
+     inkscape:cx="85.487322"
+     inkscape:cy="203.91769"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1280"
-     inkscape:window-height="727"
+     inkscape:window-width="1270"
+     inkscape:window-height="723"
      inkscape:window-x="0"
-     inkscape:window-y="24" />
+     inkscape:window-y="24"
+     inkscape:object-nodes="true"
+     inkscape:window-maximized="0" />
   <metadata
      id="metadata3487">
     <rdf:RDF>
@@ -77,6 +87,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -93,7 +104,7 @@
        sodipodi:cy="225.55232"
        sodipodi:rx="59.093925"
        sodipodi:ry="50.002552"
-       d="M 297.995,225.55232 A 59.093925,50.002552 0 1 1 179.80715,225.55232 A 59.093925,50.002552 0 1 1 297.995,225.55232 z"
+       d="m 297.995,225.55232 c 0,27.61565 -26.45725,50.00255 -59.09392,50.00255 -32.63668,0 -59.09393,-22.3869 -59.09393,-50.00255 0,-27.61564 26.45725,-50.00255 59.09393,-50.00255 32.63667,0 59.09392,22.38691 59.09392,50.00255 z"
        transform="matrix(1.9301759,0.1966822,-0.2360265,2.3162885,16.25828,-223.06381)" />
     <path
        style="opacity:1;fill:#93aca7;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -138,7 +149,7 @@
        sodipodi:cy="225.55232"
        sodipodi:rx="59.093925"
        sodipodi:ry="50.002552"
-       d="M 297.995,225.55232 A 59.093925,50.002552 0 1 1 179.80715,225.55232 A 59.093925,50.002552 0 1 1 297.995,225.55232 z"
+       d="m 297.995,225.55232 c 0,27.61565 -26.45725,50.00255 -59.09392,50.00255 -32.63668,0 -59.09393,-22.3869 -59.09393,-50.00255 0,-27.61564 26.45725,-50.00255 59.09393,-50.00255 32.63667,0 59.09392,22.38691 59.09392,50.00255 z"
        transform="matrix(1.9401709,0,0,2.3282828,-38.86358,-179.09684)" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.49999976;stroke-linecap:butt;stroke-linejoin:miter;marker-start:url(#Arrow2Mstart);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -152,7 +163,7 @@
        sodipodi:cy="118.43361"
        sodipodi:rx="17.5"
        sodipodi:ry="3.9285715"
-       d="M 267.47504,114.84468 A 17.5,3.9285715 0 1 1 254.45797,114.73498"
+       d="m 267.47504,114.84468 c 8.8294,0.88249 12.80026,3.20471 8.86915,5.18682 -3.9311,1.98211 -14.27553,2.87353 -23.10493,1.99104 -8.82941,-0.88249 -12.80026,-3.20471 -8.86916,-5.18682 1.94381,-0.9801 5.58855,-1.73909 10.08787,-2.10074"
        sodipodi:start="5.131268"
        sodipodi:end="10.651744"
        sodipodi:open="true"
@@ -162,26 +173,21 @@
        d="M 537.01815,218.55364 L 501.66631,258.94277"
        id="path8214" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:6, 6;stroke-dashoffset:0;stroke-opacity:1"
-       d="M 424.14026,229.24537 L 424.85454,346.38823 L 502.71168,257.81681"
-       id="path8218"
-       sodipodi:nodetypes="ccc" />
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 425.14979,292.97649 C 440.95235,292.51774 448.81849,295.43185 459.60702,306.07257"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 459.24244,307.37116 c 9.99419,9.89532 16.85017,21.39572 17.53717,38.60244"
        id="path8220"
        sodipodi:nodetypes="cc" />
     <text
        xml:space="preserve"
-       style="font-size:9.77196121px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
-       x="381.24808"
-       y="352.87323"
+       style="font-size:9.77196121px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       x="397.85651"
+       y="381.57303"
        id="text8222"
-       transform="scale(1.1252022,0.8887292)"><tspan
+       transform="scale(1.1252022,0.88872917)"><tspan
          sodipodi:role="line"
          id="tspan8224"
-         x="381.24808"
-         y="352.87323"
+         x="397.85651"
+         y="381.57303"
          style="font-size:26.05856514px;font-weight:normal;-inkscape-font-specification:Bitstream Vera Sans">α</tspan></text>
     <text
        xml:space="preserve"
@@ -229,5 +235,10 @@
          x="538.92322"
          y="261.71185"
          style="font-weight:bold;-inkscape-font-specification:Bitstream Vera Sans Bold">Lokal</tspan></text>
+    <path
+       id="path8218-5"
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6, 6;stroke-dashoffset:0"
+       d="m 424.85454,346.38823 114.03846,0 m -114.75274,-117.14286 0.71428,117.14286 77.85714,-88.57142"
+       sodipodi:nodetypes="ccccc" />
   </g>
 </svg>

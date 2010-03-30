@@ -1,4 +1,4 @@
-\documentclass[11pt]{scrartcl}
+\documentclass[halfparskip, 11pt]{scrartcl}
 \usepackage[utf8]{inputenc} % Kodierung der Textdatei mit Sonderzeichen
 \usepackage[ngerman]{babel} % Sprache fuer Inhaltsverzeichnis etc.
 \usepackage{amssymb} % Mathematische Symbole
@@ -9,6 +9,7 @@
 \usepackage{fix-cm} % für die große Titelschrift
 \usepackage{placeins} % laesst Bilder nicht über eine \FloatBarrier hinausrutschen
 \usepackage[pdftex]{hyperref} % Hyperlinks im Dokument
+\usepackage{parskip} % korrekte Abstände der Absätze
 \hypersetup{colorlinks=true, linkcolor=black, citecolor=black, filecolor=black, urlcolor=black, pdftitle={Erdrotationsmessung - Projektpraktikum 09/10 Gruppe 5}}
 
 
@@ -22,7 +23,6 @@
 \newcommand{\hypref}[2]{\hyperref[#2]{{#1}~\ref{#2}}}
 
 \setlength{\parindent}{1em}
-\setlength{\parskip}{0.5\baselineskip}
 
 \graphicspath{{images/}}
 
@@ -73,9 +73,9 @@ Tutor: Xiaoyue Jin}
 
 \begin{abstract}
 In diesem Projekt wurde versucht, die Drehgeschwindigkeit der Erde im Labor zu messen.
-Hierzu wurde eine massive, drehbar gelagerte Stange verwendet, die ihr Trägheitsmoment um die vertikale Achse durch Einklappen um den Faktor 3600 ändern kann und damit die vorhandene Drehbewegung verstärkt und messbar macht.
+Hierzu wurde eine massive, drehbar gelagerte Stange verwendet, die ihr Trägheitsmoment um die vertikale Achse durch Einklappen um den Faktor 5000 ändern kann und damit die vorhandene Drehbewegung verstärkt und messbar macht.
 Im Gegensatz zum Foucaultschen Pendel ist hiermit eine instantane Messung möglich.
-Allerdings hatten wir mit starken Schwingungs- und Reibungseffekten zu kämpfen, so dass unsere Werte am Ende immer noch um eine Größenordnung daneben lagen.
+Allerdings hatten wir mit starken Schwingungs- und Reibungseffekten zu kämpfen, so dass unsere Werte am Ende immer noch um einen Faktor zwei daneben lagen.
 \end{abstract}
 \newpage
 
@@ -91,10 +91,8 @@ Wir haben uns, besonders wegen der Durchführbarkeit in einem kleinen und abgedu
 
 \section{Grundprinzip - Tr\"agheitsmoment}\label{sec:grundprinzip}
 \begin{figure}[th]
-\begin{center}
+\centering
 \includegraphics[width=0.8\textwidth]{prinzip.pdf}
-\end{center}
-\vspace{-1.5\baselineskip}
 \caption{Schema des Bewegungsablaufs}
 \label{prinzip}
 \end{figure}
@@ -102,30 +100,31 @@ Unter Ausnutzung der Drehimpulserhaltung wurde mit dem in den \hypref{Abbildunge
 Befindet man sich an einem Ort mit Breitengrad $\alpha$, so gilt aufgrund der Drehimpulserhaltung (hierbei bezeichnet $I\ltext{parallel}$ das Tr\"agheitsmoment des Systems im hochgeklappten Zustand und $I\ltext{senkrecht}$ das Tr\"agheitsmoment im ausgelenkten Zustand):
 \begin{eqnarray}
 L_1 &=& L_2 \\
-\omega\ltext{Erde}\cos\alpha \cdot I\ltext{senkrecht} &=&
-\omega\ltext{dreh} \cdot I\ltext{parallel} \\
-&=& (\omega\ltext{mess} + \omega\ltext{Erde}\cos\alpha) \cdot I\ltext{parallel}
+\omega\ltext{Erde}\sin\alpha \cdot I_1 &=&
+\omega\ltext{dreh} \cdot I_2 \\
+&=& (\omega\ltext{mess} + \omega\ltext{Erde}\sin\alpha) \cdot I_2
 \end{eqnarray}
 Damit ergibt sich schließlich die Erdrotationsdauer:
 \begin{equation}
 \label{eq:grund}
 \boxed{
 \omega\ltext{Erde} =
-\frac{1}{\cos\alpha}\ 
-\frac{\omega\ltext{mess}}{I\ltext{senkrecht} / I\ltext{parallel} - 1}
+\frac{1}{\sin\alpha}\ 
+\frac{\omega\ltext{mess}}{I_1 / I_2 - 1}
 }
 \end{equation}
 
 \begin{figure}[ht]
-\begin{center}
+\centering
 \includegraphics[width=0.3\textwidth]{welt.pdf}
-\end{center}
-\vspace{-1.5\baselineskip}
 \caption{Position auf der Erde}
 \label{Welt}
 \end{figure}
 
-%\FloatBarrier
+
+
+
+\FloatBarrier
 \section{Bau des Drehstabs} %Maria (solltest du nicht zu allem was wissen, sag bescheid)
 
 %%% Ich hab jetzt mal alles reingeschrieben was ich wusste. Mit den subsections bin ich nicht ganz klar gekommen in der Form, drum habe ich die weggelassen, aber ich denke es ist trotzdem alles drin was rein sollte. Wo Fragezeichen stehen war ich mir nicht sicher bzw. wusste keine konkreten Werte. Bei weiteren Beschwerden bitte bei mir meckern :)
@@ -134,52 +133,48 @@ Der im Experiment verwendete Drehstab wurde in mehreren Schritten weiter verbess
 % ist 4mm nicht etwas dick für den Faden ??? - Ja; Habe mal 0,7mm daraus gemacht, das erscheint mir realistischer, oder?!
  verwendet, um einerseits eine m\"oglichst d\"unne unverdrillte Aufh\"angung zu gew\"ahrleisten, welche die Rotation nicht beeinflusst und andererseits das Gewicht des Drehstabes zuverl\"assig zu halten. Zudem waren an der oberen Achse d\"unne Balsaholzstreifen angebracht, die bei der Drehung des Stabes durch die Lichtschranken liefen. Ein Anglerwirbel zwischen Nylonfaden und Stab erwieß sich als nicht sinnvoll, da er aufgrund der Reibung durch das große Gewicht des Stabes nicht drehte sondern blockierte.
 
-In der Gabel wurde zun\"achst ein Drehstab aus massivem Stahl aufgeh\"angt. Dieser hatte eine L\"ange von 1,70 \unit{m}, einen Radius von $6,0\pm 0,05\unit{mm}$ sowie ein Gewicht von $1,5\pm 0,3\unit{kg}$. Die waagrechte Rotationsachse des Stabes lag dabei nicht in dessen Schwerpunkt. Mithilfe von N\"ahgarn wurde das schwerere Ende des Stabes hochgebunden und dieser somit in eine waagerechte Position gebracht. So wurde sicher gestellt, dass er sich nach Durchbrennen des Fadens senkrecht ausrichtet.
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1.\textwidth]{stab-fertig.jpg}
+\caption{Der ausgelenkte Stab}
+\label{stab-fertig}
+\end{figure}
 
-Um zu verhindern, dass der Stab \"uber die Senkrechte hinausschwingt, wurde eine Bremse aus Styropor am oberen Ende der Gabel angebracht. F\"ur ein sicheres Einrasten in die Senkrechte sorgte ein in die Bremse eingeschobener Magnet der Masse $24,0 \pm 0,3\unit{g}$. Um den Stab gen\"ugend zu beschleunigen, sodass er schnell und fest einrastet, wurde ein Federmechanismus aus Draht und Gummi an der Drehachse angebracht. %(siehe \hyperref[zugmechanismus]{Abb.~\ref{zugmechanismus}}) 
-%\begin{figure}[ht]
-%\begin{center}
-%\includegraphics[width=0.8\textwidth]{zugmechanismus.jpg}
-%\end{center}
-%\vspace{-1.5\baselineskip}
-%\caption{Gummizug zum Einklappen des Stabes}
-%\label{zugmechanismus}
-%\end{figure}
-%
-%%%%%%%%%% Bild notwendigtig? - Axi ; denke nicht - David
+In der Gabel wurde zun\"achst ein Drehstab aus massivem Stahl aufgeh\"angt. Dieser hatte eine L\"ange von 1,70 \unit{m}, einen Radius von $6,0\pm 0,05\unit{mm}$ sowie ein Gewicht von $1,5\pm 0,000\,3\unit{kg}$. Die waagrechte Rotationsachse des Stabes lag dabei nicht genau in dessen Schwerpunkt, so dass der Stab von selbst in die vertikale Lage umschwenkt. Mithilfe von N\"ahgarn wurde das schwerere Ende des Stabes hochgebunden und dieser somit in eine waagerechte Position gebracht. So wurde sicher gestellt, dass er sich nach Durchbrennen des Fadens senkrecht ausrichtet.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.42\textwidth]{styropor.jpg}
+\caption{die Bremse für den Stab beim Einklappen}
+\label{fig:styropor}
+\end{figure}
+
+Um zu verhindern, dass der Stab \"uber die Senkrechte hinausschwingt, wurde eine Bremse aus Styropor am oberen Ende der Gabel angebracht (\hypref{Abb.}{fig:styropor}). F\"ur ein sicheres Einrasten in die Senkrechte sorgte ein in die Bremse eingeschobener Magnet der Masse $24,0 \pm 0,3\unit{g}$. Um den Stab gen\"ugend zu beschleunigen, sodass er schnell und fest einrastet, wurde ein Federmechanismus aus Draht und Gummi an der Drehachse angebracht (\hypref{Abb.}{zugmechanismus}).
 
 Nach den ersten Versuchen mit diesem Aufbau zeigte sich, dass beim Hochklappen des Stabes der Nylonfaden der Aufh\"angung stark zu schwingen begann. Um den Einfluss dieser Schwingung auf die zu messende Rotation m\"oglichst gering zu halten und um zu vermeiden, dass die Balsaholzst\"abe nicht mehr durch die Lichtschranken laufen, wurde der Nylonfaden sp\"ater durch ein Plexiglasr\"ohrchen gef\"uhrt, welches am Gerüst der Lichtschranken befestigt war. Jedoch war auch dieser Aufbau fehleranf\"allig, da die Reibung zwischen Faden und Rohr die Rotation beeintr\"achtigte.
 
 Nach einigen fehlgeschlagenen Versuchen stellten wir fest, dass der eingebaute Halterungsmagnet, sowie die leicht magnetisierte Eisenstange selbst als Kompass im Erdmagnetfeld fungierten und somit die empfindliche Messung erheblich störten.
 Einerseits konnte damit der Faden auch nach längerer Wartezeit keine drehmomentfreie Lage einnehmen, andererseits störte das magnetische Drehmoment den Stab während der Messung.
-Um s\"amtliche Einfl\"usse von Magnetfeldern auszuschalten, wurde nicht nur der ferromagnetische Eisenstab durch einen ansonsten baugleichen Messingstab der Masse 1,5\unit{kg} ersetzt, sondern auch der Magnet in der Bremse gegen einen Klettverschluss ausgetauscht, dessen Gegenst\"uck am oberen Drehstabende befestigt wurde. Zuletzt wurden noch die zwei Balsaholzst\"abchen, die die Lichtschranke ausl\"osen sollten, mit einen Kranz aus 36 St\"abchen im Abstand von jeweils 10$^{\circ}$ ausgewechselt, um mehr Messpunkte zu erhalten.
-
-%\subsection{Material}
-%Magnetismus, Verwindung usw.
-%\subsection{Aufh\"angung}
-%Stabilisierung der Drehbewegung
-%\subsection{Klappmechanismus}
-%Zugmechanismus, Einrasten
+Um s\"amtliche Einfl\"usse von Magnetfeldern auszuschalten, wurde nicht nur der ferromagnetische Eisenstab durch einen ansonsten baugleichen Messingstab der Masse 1,5\unit{kg} ersetzt, sondern auch der Magnet in der Bremse gegen einen Klettverschluss ausgetauscht, dessen Gegenst\"uck am oberen Drehstabende befestigt wurde. Zuletzt wurden noch die zwei Balsaholzst\"abchen, die die Lichtschranke ausl\"osen sollten, mit einen Kranz aus 36 St\"abchen im Abstand von jeweils $10\degr$ ausgewechselt, um mehr Messpunkte zu erhalten.
 
 \begin{figure}[ht]
-\begin{center}
-\includegraphics[width=0.8\textwidth]{stab-fertig.jpg}
-\end{center}
-\vspace{-1.5\baselineskip}
-\caption{Der ausgelenkte Stab}
-\label{stab-fertig}
+\centering
+\includegraphics[width=0.6\textwidth]{zugmechanismus.jpg}
+\caption{Gummizug zum Einklappen des Stabes}
+\label{zugmechanismus}
 \end{figure}
 
-\section{Messungen}
-\subsection{Berechnungen im Voraus} %Andi
+%%%%%%%%%% Bild notwendigtig? - Axi ; denke nicht - David ; schadet nicht, da der Bericht sowieso kurz ist
 
-\subsubsection{Berechnung der theoretischen Rotationsdauer des zugeklappten Aufbaus}
+
+
+\section{Berechnung der Trägheitsmomente} %Andi
 
 Zun\"achst wurde die Rotationsdauer des Aufbaus nach dem Hochklappen des Messingsstabes (d.h. im "`parallelen Zustand"') rechnerisch bestimmt. 
 
 Der erste Schritt dabei war die Berechnung der Tr\"agheitsmomente. Dazu wurden die folgenden geometrischen N\"aherungen vorgenommen:
 
-\begin{tabular}[ht]{|l|c|}
+\begin{tabular}[ht]{|l|p{8.5cm}|}
   \hline
   Ann\"aherung in Rechnung & Objekt im Aufbau\\
   \hline\hline
@@ -198,16 +193,16 @@ Es gilt also:
 I\ltext{Vollzylinder-parallel}
 =\frac{1}{2} \cdot (R\ltext{Vollzylinder})^2 \cdot M\ltext{Vollzylinder}
 \end{equation}
-\begin{eqnarray}
+\begin{align}
 I\ltext{Vollzylinder-senkrecht}
-&=& \frac{1}{12} \cdot (L\ltext{Vollzylinder})^2 \cdot M\ltext{Vollzylinder}\nonumber\\
-&& + (a\ltext{Vollzylinder})^2 \cdot M\ltext{Vollzylinder}
-\end{eqnarray}
-\begin{eqnarray}
+&= \frac{1}{12} \cdot (L\ltext{Vollzylinder})^2 \cdot M\ltext{Vollzylinder}\nonumber\\
+& + (a\ltext{Vollzylinder})^2 \cdot M\ltext{Vollzylinder}
+\end{align}
+\begin{equation}
 I\ltext{Hohlzylinder}
-&=&\frac{1}{2} \cdot M\ltext{Hohlzylinder} \cdot ((R\ltext{innen})^2+(R\ltext{außen})^2)\nonumber\\
-&& +(a\ltext{Hohlzylinder})^2 \cdot M\ltext{Hohlzylinder}
-\end{eqnarray}
+= M\ltext{Hohlzylinder} \cdot 
+\left(\frac{1}{2} (R\ltext{innen}^2+R\ltext{außen}^2) + a\ltext{Hohlzylinder}^2\right)
+\end{equation}
 \begin{equation}
 I\ltext{dünner, langer Stab}
 =\frac{1}{12} \cdot M\ltext{dünner, langer Stab} \cdot L^2
@@ -217,67 +212,62 @@ Hierbei beschreibt $ a\ltext{Vollzylinder} = 0,8 \unit{cm} $ den Abstand des Auf
 Daraus ergibt sich mit den obigen Werten bei der Messung mit Klettverschluss und Messingstab (der Klettverschluss wurde bei den Rechnungen vernachl"assigt):\\
 \\
 In senkrechter Position:
-\begin{eqnarray}
-I\ltext{Aufbau-senkrecht}=I_1
-&=&
+\begin{align}
+I_1
+&=
 I\ltext{Vollzylinder-senkrecht}+2 \cdot I\ltext{Hohlzylinder} + 2 \cdot I\ltext{dünner, langer Stab}\nonumber\\
-&=& 3,6 \ee{-1} \unit{kg} \unit{m^2}
-\end{eqnarray}
+&= 3,61 \ee{-1} \unit{kg} \unit{m^2}
+\end{align}
 In paralleler Position (nach dem Zuklappen):
-\begin{eqnarray}
-I\ltext{Aufbau-parallel}=I_2
-&=& I\ltext{Vollzylinder-parallel}+2 \cdot I\ltext{Hohlzylinder} + 2 \cdot I\ltext{dünner, langer Stab}\nonumber\\
-&=& 9,9 \ee{-5} \unit{kg} \unit{m^2}
-\end{eqnarray}
-Daraus ergibt sich zusammen mit \hypref{Gleichung}{eq:grund}
-%\begin{equation}
-%\omega\ltext{mess} = 
-%\cos\alpha \cdot (I\ltext{senkrecht} / I\ltext{parallel} - 1) \cdot \omega\ltext{Erde}
-%\end{equation}
-%Referenz reicht - würde ich sagen ?!
-die Periodendauer einer Drehung nach dem Hochklappen zu
+\begin{align}
+I_2
+&= I\ltext{Vollzylinder-parallel}+2 \cdot I\ltext{Hohlzylinder} + 2 \cdot I\ltext{dünner, langer Stab}\nonumber\\
+&= (2,70 + 2\cdot1,23 + 2\cdot0,84)\ee{-5}\unit{kg\,m^2}\nonumber\\
+&= 6,8 \ee{-5} \unit{kg\,m^2}
+\end{align}
+Daraus ergibt sich zusammen mit \hypref{Gleichung}{eq:grund} die zu erwartende Periodendauer einer Drehung nach dem Hochklappen als
 \begin{equation}
 \label{eq:tpara}
-T_{parallel}=30,3 \unit{s}.
+T\ltext{mess}
+=\frac{T\ltext{Erde} / \sin\alpha}{\left(I_1/I_2-1\right)}
+= 21,5 \unit{s}.
 \end{equation}
-Der tats"achlich gemessene Wert war jeweils betr"achtlich k"urzer - die vermuteten Gr"unde hierf"ur sind weiter unten angegeben.
+Der tats"achlich gemessene Wert war jeweils betr"achtlich k"urzer -- die vermuteten Gr"unde hierf"ur sind weiter unten angegeben.
 
-\subsubsection{Berechnung der Erdrotationsdauer aus der gemessenen Rotationsdauer des zugeklappten Aufbaus}
+Der Umrechnungsfaktor für die späteren Messungen ergibt sich zu:
+\begin{align}
+\frac{\omega\ltext{Erde}}{\omega\ltext{mess}}
+&= \frac{1}{\sin\alpha\,(I_1 / I_2 - 1)}\nonumber\\
+&= \frac{1}{\sin(49,6\degr)\cdot(0,36 / (6,8\ee{-5}) - 1)}\nonumber\\
+&= 2,48\ee{-4}
+\end{align}
 
-Die eigentliche Grundidee des Versuchs war es nat\"urlich, die Erdrotationsdauer aus dem \textit{gemessenen} Wert f\"ur die Rotationsdauer des zugeklappten Aufbaus experimentell zu bestimmen. Die Rechnung und Herleitung dazu finden sich unter dem obigen \hypref{Abschnitt}{sec:grundprinzip}:
 
-\begin{equation}
-\omega\ltext{Erde} = 
-\frac{1}{\cos(40,4\degr)}\ 
-\frac{\omega\ltext{mess}}{(3,6\ee{-1}) / (9,9\ee{-5}) - 1}
-= \frac{1}{4\,904\unit{s}} %% stimmt der Wert jetzt noch?, wie gro� ist hier omega-mess? by Axi
-\end{equation}
 
-Mit unseren vorweggenommenen Messwerten w"urde sich folglich eine Rotationsdauer von 4\,904\unit{s} ergeben -- also ein deutlich k"urzerer Wert als ein Tag!
+
+\section{Messungen}
+Zur Bestimmung der Erdrotation mussten wir die Rotationsgeschwindigkeit des Stabes direkt nach dem Einklappen so genau wie möglich messen.
+
 
 \subsection{Cassymessungen} %Axi
 \begin{figure}[ht]
-\begin{center}
-\includegraphics[width=0.8\textwidth]{lichtschranke.jpg}
-\end{center}
-\vspace{-1.5\baselineskip}
+\centering
+\includegraphics[width=1.\textwidth]{lichtschranke.jpg}
 \caption{Das Speichenrad beim Durchgang durch die Lichtschranke}
 \label{lichtschranke}
 \end{figure}
 \begin{figure}[th]
-\begin{center}
-\includegraphics[width=0.8\textwidth]{durchg29-cassy.pdf}
-\end{center}
-\vspace{-1.5\baselineskip}
+\centering
+\includegraphics[width=1.\textwidth]{durchg29-cassy.pdf}
+\vspace{-2\baselineskip}
 \caption{Summe der Durch\"ange durch die Lichtschranke}
 \label{durchg29-cassy}
 \end{figure}
 Zur Aufzeichnung der Drehung des Stabes kam zun\"achst das CASSY Lab System zum Einsatz. Auf H\"ohe der Spitze des Stabes wurde eine Lichtschranke durch Stativstangen an der Deckenkonstruktion verschraubt, welche die Durchg\"ange des Stabes z\"ahlte. Die Ausl\"osung der Lichtschranke sollte durch einen leichten Querstab aus Balsaholz erfolgen. Es stellte sich jedoch heraus, dass dabei nur unzureichende Genauigkeiten bei der Ermittlung der Drehgeschwindikeit erzielt werden konnten, da die Lichtschranke bei dieser Methode nur zweimal pro ganzer Umdrehung ausgel\"ost wird. Deshalb wurde an der Spitze des Stabes ein \glqq Speichenrad\grqq{} installiert. Die einzelnen Speichen hatten dabei einen Abstand von jeweils $10^\circ$. Pro Umdrehung wurde die Schranke also 36 Mal ausgel\"ost. Die L\"ange der einzelnen Speichen wurde so kurz wie m\"oglich gehalten, um das Tr\"agheitsmoment des Stabes nicht unn\"otig zu beeinflussen.
 \begin{figure}[ht]
-\begin{center}
-\includegraphics[width=0.99\textwidth]{zeit-winkel29-cassy.pdf}
-\end{center}
-\vspace{-1.5\baselineskip}
+\centering
+\includegraphics[width=1.\textwidth]{zeit-winkel29-cassy.pdf}
+\vspace{-2\baselineskip}
 \caption{Geradenfit zur Ermittlung der Winkelgeschwindigkeit}
 \label{zeit-winkel29-cassy}
 \end{figure}
@@ -290,44 +280,46 @@ F\"ur die Auswertung konnte somit nur der Bereich vor dem ersten Richtungswechse
 \end{equation}
 Eine Umdrehung des hochgeklappten Stabes dauert somit 
 \begin{equation}
-T_{parallel-Messung}=\frac{360\degr}{139 \unit{\frac{deg}{s}}}=2,59 \unit{s} \ ,
+T\ltext{parallel-Messung}
+=\frac{360\degr}{139 \unit{\frac{deg}{s}}}=2,59 \unit{s} \ ,
 \end{equation}
-was knapp zwölf Mal so schnell wie der theoretische Wert von $T_{parallel}= 30,3$ ist (siehe \hypref{Gleichung}{eq:tpara}).\\ \\
+was knapp zwölf Mal so schnell wie der theoretische Wert von $T\ltext{parallel}= 30,3 \unit{s}$ ist (siehe \hypref{Gleichung}{eq:tpara}).
+
 Folglich ergibt sich auch f\"ur die resultierende Geschwindigkeit der Erddrehung mit der oben hergeleiteten \hypref{Formel}{eq:grund} ein stark von der Realit\"at abweichender Wert:
 \begin{equation}
-\omega\ltext{Erde-Messung} = 
-\frac{1}{\cos(40,4\degr)}\ 
-\frac{139 \unit{\frac{deg}{s}}}{(3,6\ee{-1}) / (9,9\ee{-5}) - 1}
-= 5,02\ee{-2} \unit{\frac{deg}{s}}
+\omega\ltext{Erde, Messung} = 
+2,48\ee{-4}\cdot
+139 \unit{\frac{deg}{s}}
+= 3,4\ee{-2} \unit{\frac{deg}{s}}
 \end{equation}
-Ein Tag dauert somit nach unserer Messung mit dem CASSY Lab nur $7\,170 \unit{s}$ statt $86\,164,1 \unit{s}$. Auf die einzelnen Fehler, die zu dieser Abweichung f\"uhren, wird in einem sp\"ateren Abschnitt eingegangen.
+Ein Tag würde somit nach unserer Messung mit dem CASSY Lab nur $2,9 \unit{h}$ statt $24 \unit{h}$ dauern. Auf die möglichen Fehler, die zu dieser Abweichung f\"uhren, wird in einem sp\"ateren Abschnitt eingegangen.
+
+
 
 \FloatBarrier
 \subsection{Videomessungen} %Karl
-Da die Schwingung der Vorrichtung die Cassymessung fast unbrauchbar machte, wurden weitere Wege gesucht, die bisherigen Versuche dennoch auswertbar zu machen. Als Grundlage sollten hier Videoaufnahmen dienen, die es ermöglichten, die Drehung unmittelbar nach dem Einklappen des Stabes zu beschreiben, bevor die störende Schwingung den Effekt zu stark überlagert. Die zur Verfügung stehenden Mitschnitte wurden ursprünglich nur zu Dokumentationszwecken aufgezeichnet. Dies hatte den Nachteil, dass die Videodateien vor der Auswertung noch stark bearbeitet werden mussten, um Messdaten ablesen zu können. Das Hauptproblem lag in der verzerrten Perspektive des Videos, das von schräg unten aufgenommen wurde (siehe \hypref{Abb.}{Videobearbeitung}). Zur Auswertung wurde mit Hilfe der freien Bildbearbeitungssoftware GIMP wie folgt vorgegangen:\\
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.95\textwidth]{auswert.jpg}
+\caption{Bearbeitung der Videoeinzelbilder}
+\label{Videobearbeitung}
+\end{figure}
+Da die Schwingung der Vorrichtung die Cassymessung fast unbrauchbar machte, wurden weitere Wege gesucht, die bisherigen Versuche dennoch auswertbar zu machen. Als Grundlage sollten hier Videoaufnahmen dienen, die es ermöglichten, die Drehung unmittelbar nach dem Einklappen des Stabes zu beschreiben, bevor die störende Schwingung den Effekt zu stark überlagert. Die zur Verfügung stehenden Mitschnitte wurden ursprünglich nur zu Dokumentationszwecken aufgezeichnet. Dies hatte den Nachteil, dass die Videodateien vor der Auswertung noch stark bearbeitet werden mussten, um Messdaten ablesen zu können. Das Hauptproblem lag in der verzerrten Perspektive des Videos, das von schräg unten aufgenommen wurde (siehe \hypref{Abb.}{Videobearbeitung}). Zur Auswertung wurde mit Hilfe der freien Bildbearbeitungssoftware GIMP wie folgt vorgegangen:
+
 Zuerst wurde das Video in seine Einzelbilder zerlegt. Anhand dieser Bilder, im Speziellen der sich drehenden oberen Verbindungsquerstange, wurde durch Fitten einer Ellipse die perspektivische Verzerrung ermittelt. Für das Halbachsenverhältnis dieser Ellipse ergab sich folgender Wert:
 \begin{equation}
 \frac{a\ltext{groß}}{a\ltext{klein}}=3,21
 \end{equation}
 Nun wurden die Einzelbilder senkrecht ausgerichtet, also um den Winkel $\alpha$ gedreht (siehe \hypref{Abbildung}{Videobearbeitung} - A) und schließlich um den ermittelten Faktor $3,21$ gestreckt (siehe \hypref{Abbildung}{Videobearbeitung} - B).
-\begin{figure}[h]
-\begin{center}
-\includegraphics[width=0.8\textwidth]{auswert.jpg}
-\end{center}
-\vspace{-1.5\baselineskip}
-\caption{Bearbeitung der Videoeinzelbilder}
-\label{Videobearbeitung}
-\end{figure}
-Aus diesen Bilddaten konnten nun der Drehwinkel $\phi$ abgelesen werden. Der Fehler dieser Messung lag vor allem in der unterschiedlichen Qualität der Einzelbilder und wurde durch mehrmaliges Messen pro Bild ermittelt.
-Da die schon anfänglich erwähnte Schwankung leider sehr schnell nach dem Einklappvorgang ins Gewicht fiel, konnten nur wenige Messpunkte zur Ermittlung der Winkelgeschwindigkeit herangezogen werden.
-\begin{figure}[h]
-\begin{center}
-\includegraphics[width=0.8\textwidth]{messung_Video.pdf}
-\end{center}
-\vspace{-1.5\baselineskip}
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1.\textwidth]{messung_Video.pdf}
 \caption{Messergebnisse der Video-Messung}
 \label{messung_Video}
 \end{figure}
+
+Aus diesen Bilddaten konnten nun der Drehwinkel $\phi$ abgelesen werden. Der Fehler dieser Messung lag vor allem in der unterschiedlichen Qualität der Einzelbilder und wurde durch mehrmaliges Messen pro Bild ermittelt.
+Da die schon anfänglich erwähnte Schwankung leider sehr schnell nach dem Einklappvorgang ins Gewicht fiel, konnten nur wenige Messpunkte zur Ermittlung der Winkelgeschwindigkeit herangezogen werden.
 Der zeitliche Abstand der Videoeinzelbilder wurde durch Filmen einer Stoppuhr zu $\Delta t = 0,04\unit{s}$ bestimmt.
 Durch einen Geradenfit der ersten sechs Messpunkte wurde die Winkelgeschwindigkeit ermittelt. Es gilt:
 \begin{equation}
@@ -335,12 +327,12 @@ Durch einen Geradenfit der ersten sechs Messpunkte wurde die Winkelgeschwindigke
 \end{equation}
 Damit ergibt sich mit den bekannten Werten für die Trägheitsmomente folgende Winkelgeschwindigkeit der Erdrotation:
 \begin{equation}
-\omega\ltext{Erde} = 
-\frac{1}{\cos(40,4\degr)}\ 
-\frac{\omega\ltext{mess}}{(3,6\ee{-1}) / (9,9\ee{-5}) - 1}
-= \frac{1}{4757\unit{s}}
+\omega\ltext{Erde, Messung} = 
+2,48\ee{-4}\cdot 33,35 \unit{\frac{deg}{s}}
+= 8,3\ee{-3} \unit{\frac{deg}{s}}
 \end{equation}
-Die hieraus resultierende Dauer eines Tages weicht weiterhin um einen Faktor von $\frac{1}{18}$ vom wahren Wert ab.
+Die hieraus resultierende Dauer eines Tages weicht mit $12,1\unit{h}$ immer noch um einen Faktor von 2 vom wahren Wert ab.
+
 
 
 \FloatBarrier
@@ -356,16 +348,16 @@ Für den generellen Aufbau gibt es noch Spielraum bei dem Einfangmechanismus des
 
 Das größte Potential ein besseres Ergebnis zu ermöglichen hat jedoch ein neuer Aufbau, bei dem nicht ein Stab anfangs horizontal ausgerichtet ist und anschließend nach oben schwingt, sondern bei welchem zwei, jeweils an einem Ende freischwingend mit dem Gehäuse verbundene Stäbe derart waagerecht gehalten werden, dass sie in der Ruheposition dann nach unten schwingen können und sich gegenseitig in der Ruhelage bremsen (siehe \hypref{Abbildung}{prinzip2}).
 
-\begin{figure}[h]
-\begin{center}
-\includegraphics[width=0.8\textwidth]{prinzip-2.pdf}
-\end{center}
-\vspace{-1.5\baselineskip}
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1.\textwidth]{prinzip-2.pdf}
 \caption{Alternativer Aufbau}
 \label{prinzip2}
 \end{figure}
 
 
+
+\newpage
 \section{Fazit} %Basti
 Dieser Versuch ist ein schönes Beispiel wie es in der Physik Mittel und Wege gibt auch extrem kleine Größen durch ein Experiment zu messen.
 Voraussetzung ist aber, neben einem theoretisch richtigen Konzept, die strikte Elimination zahlreicher störender Faktoren.
