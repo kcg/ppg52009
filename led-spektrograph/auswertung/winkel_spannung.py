@@ -27,6 +27,7 @@ U1 = [i[1] for i in data_winkel]
 
 # Winkelfunktion fitten
 par1, success = optimize.leastsq(winkel_err, [-100., 300., -20., 6., .6], args=(U1, w1))
+# Ergabnis: par1 = [ -87.66683998  345.87383922  -17.17072303    5.99282158    0.54002762]
 print par1
 print "Messfehler", sqrt(sum([i**2 for i in winkel_err(par1, U1, w1)]) / (len(w1) - len(par1))), "grad"
 
