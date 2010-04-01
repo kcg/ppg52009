@@ -75,7 +75,7 @@ class Window (threading.Thread, QtGui.QWidget):
 		
 		# Graph 2
 		self.graph2 = QtGui.QWidget()
-		self.fig2_have_colorbar = False
+		self.colorbar = None
 		self.fig2 = Figure((50.0, 50.0), dpi=self.dpi, facecolor=self.mplbg, edgecolor=self.mplbg)
 		self.canvas2 = FigureCanvas(self.fig2)
 		self.canvas2.setParent(self.graph2)
@@ -125,7 +125,11 @@ class Window (threading.Thread, QtGui.QWidget):
 			lamb = sc.array([i[0] for i in data])
 			I = sc.array([i[1] for i in data])
 			intensity = I.mean()
-			lmean = sc.dot(lamb, I) / I.sum()
+			s1 = 0.; s2 = 0.
+			for i in range(len(lamb)):
+				s1 += lamb[i] * max(0., I[i])
+				s2 += max(0., I[i])
+			lmean = s1 / s2
 			spektren.append([fname[:-4], lamb, I, intensity, lmean])
 		# sort spectry by mean wavelength
 		permut = sc.array([i[4] for i in spektren]).argsort()
@@ -192,9 +196,10 @@ class Window (threading.Thread, QtGui.QWidget):
 		#self.axes2.imshow(self.A[self.active], aspect="auto", interpolation="nearest", cmap=cm.gray)
 		self.axes2.imshow(self.A[self.active], aspect="auto", interpolation="nearest")
 		self.axes2.set_xticklabels(range(int(self.spektren[0][1][0])-100, int(self.spektren[0][1][0])+500, 100))
-		if not self.fig2_have_colorbar:
-			self.fig2.colorbar(self.axes2.get_images()[0], fraction=.06, pad=.02)
-			self.fig2_have_colorbar = True
+		if self.colorbar == None:
+			self.colorbar = self.fig2.colorbar(self.axes2.get_images()[0], fraction=.06, pad=.02)
+		else:
+			self.colorbar.update_bruteforce(self.axes2.get_images()[0])
 		self.canvas2.draw()
 	
 	
