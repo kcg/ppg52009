@@ -81,7 +81,7 @@ void DataSpectral::spectrum_backus_gilbert(NRVec<DP> signal,
 		BG = NRMat<DP>(m, n);
 		for (int x = 0; x < m; x++)
 		{
-			NRMat<DP> W(n, n);
+			NRMat<DP> W(0., n, n);
 			double s = 1.;
 			if (smooth != 1.)
 			{
@@ -202,7 +202,7 @@ void readfile(string fname, NRVec<DP> &x, NRVec<DP> &y)
 	
 	while (fin.peek() != -1)
 	{
-		if (fin.peek() == 35 or fin.peek() == 10)
+		if (fin.peek() == 35 || fin.peek() == 10)
 		{
 			// skip comment and empty lines
 			char line[100];

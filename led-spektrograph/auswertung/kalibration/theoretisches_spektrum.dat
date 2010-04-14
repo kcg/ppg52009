@@ -1,0 +1,6 @@
+# Das theoretische Spektrum der benutzten Lichtquelle
+# Diese Werte wollen wir ueber das MPI bekommen und hier eintragen
+# Spalte 1: Wellenlaenge in nm
+# Spalte 2: Intensitaet in beliebigen Einheiten
+200.	1.
+800.	1.
