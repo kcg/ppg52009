@@ -2,12 +2,10 @@
 # -*- coding: utf8 -*-
 
 import pylab as pl
-import scipy
+import scipy as sc
 import os
 import random, colorsys
 from math import *
-import scipy.interpolate
-from matplotlib import colors as clr
 
 
 
@@ -39,6 +37,37 @@ def readdata(filename, colsep="\t", comment="#"):
 		data.append(row)
 	return(data)
 
+def spectral(lamb, bgcolor=None):
+	'''
+	calculates an rgba-color from wavelengths
+	'''
+	#   UV, violett, blau, türkis, grün, gelb, rot,  IR
+	l = [350., 400., 450., 492., 535., 580., 650., 750.]
+	colors = [[.5, .5, 0., 0., 0., 1., 1., 1.],
+		[0., 0., 0., .8, 1., 1., 0., 0.],
+		[1., 1., 1., .9, 0., 0., 0., 0.],
+		[0., 1., 1., 1., 1., 1., 1., 0.]]
+	
+	rgba = []
+
+	i = 0
+	while i < len(l) - 1 and l[i+1] <= lamb:
+		i += 1
+	
+	for j in range(4):
+		if lamb <= l[0] or l[-1] <= lamb:
+			rgba.append(colors[j][i])
+		else:
+			f = (lamb - l[i]) / (l[i+1] - l[i])
+			rgba.append(colors[j][i] * (1. - f) + f * colors[j][i+1])		
+	
+	if bgcolor == None:
+		return tuple(rgba)
+	else:
+		x = rgba[3]; y = 1. - x
+		return tuple([x * rgba[i] + y * bgcolor[i] for i in range(3)])
+
+
 # Dateien im Verzeichnis suchen
 filenames = []
 for i in os.walk('.'):
@@ -54,40 +83,6 @@ while i < len(filenames):
 		i += 1
 
 
-def spectral(lamb):
-	'''
-	Berechnet eine rgba-Farbe aus Wellenlängen
-	'''
-	l = [360., 400., 470., 535., 580., 650., 720.]
-	#   UV, violett, blau, grün, gelb, rot,  IR
-
-	red = 0.; green = 0.; blue = 0.; alpha = 1.
-	if lamb < l[0]:
-		alpha = 0.
-	elif lamb <= l[1]:
-		alpha = (lamb - l[0]) / (l[1] - l[0])
-		blue = (lamb - l[0]) / (l[1] - l[0])
-		red = .5 * (lamb - l[0]) / (l[1] - l[0])
-	elif lamb <= l[2]:
-		red = .5 * (l[2] - lamb) / (l[2] - l[1])
-		blue = 1.
-	elif lamb <= l[3]:
-		blue = 1. - (1. - (l[3] - lamb) / (l[3] - l[2])) **2
-		green = 1. - (1. - (lamb - l[2]) / (l[3] - l[2])) **2
-	elif lamb <= l[4]:
-		green = 1.
-		red = (lamb - l[3]) / (l[4] - l[3])
-	elif lamb <= l[5]:
-		red = 1.
-		green = (l[5] - lamb) / (l[5] - l[4])
-	elif lamb <= l[6]:
-		red = 1.
-		alpha = (l[6] - lamb) / (l[6] - l[5])
-	else:
-		alpha = 0.
-
-	return (red, green, blue, alpha)
-
 filenames.sort()
 filenames.reverse()
 pl.clf()
@@ -96,9 +91,12 @@ for k in range(len(filenames)):
 	data = readdata(fname)
 	U = [i[0] for i in data]
 	I = [i[1] for i in data]
+	
+	lmean = sc.dot(U,I) / sum(I)
 
-	col = colorsys.hsv_to_rgb(random.random(),
-		1., 1. - .5 * random.random()**2)
+	col = spectral(lmean, (0,0,0))
+	#col = colorsys.hsv_to_rgb(random.random(),
+	#	1., 1. - .5 * random.random()**2)
 	pl.plot(U, I, "-", color=col, label=fname[:-4])
 
 pl.xlabel(u"Poti Spannung")
