@@ -10,6 +10,10 @@ public:
 	const NRMat<DP> &getA() { return A; };
 	void signal_from_spectrum(NRVec<DP> spectrum, NRVec<DP> &signal);
 	void spectrum_backus_gilbert(NRVec<DP> signal, NRVec<DP> &spectrum, double smooth=0.5);
+	void spectrum_blackbody(NRVec<DP> signal,
+	NRVec<DP> &spectrum, DP &temperature, DP &chisq);
+	void spectrum_gauss(NRVec<DP> signal,
+	NRVec<DP> &spectrum, DP &lamb, DP &chisq);
 private:
 	// number of channels and lenght of each channel
 	int n, m;
