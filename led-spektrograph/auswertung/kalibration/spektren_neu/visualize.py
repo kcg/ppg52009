@@ -84,7 +84,7 @@ while i < len(filenames):
 
 
 filenames.sort()
-filenames.reverse()
+#filenames.reverse()
 pl.clf()
 for k in range(len(filenames)):
 	fname = filenames[k]
@@ -97,13 +97,13 @@ for k in range(len(filenames)):
 	col = spectral(lmean, (0,0,0))
 	#col = colorsys.hsv_to_rgb(random.random(),
 	#	1., 1. - .5 * random.random()**2)
-	pl.plot(U, I, "-", color=col, label=fname[:-4])
+	pl.plot(U, I, "-", color=col, label=fname[:-4], linewidth=3)
 
-pl.xlabel(u"Poti Spannung")
-pl.ylabel(u"LED Spannung")
+pl.xlabel(u"Wellenlänge [nm]")
+pl.ylabel(u"LED Signal")
 #pl.xlim(345., 675.)
-#pl.ylim(-.3, 6.)
-pl.rcParams.update({'font.size' : 9})
-pl.legend(loc=u"best", ncol=5)
+pl.ylim(0., 1.02)
+pl.rcParams.update({'font.size' : 14})
+pl.legend(loc=u"best", ncol=3)
 pl.show()
 

@@ -1,7 +1,7 @@
 # Das theoretische Spektrum der benutzten Lichtquelle
 # Sonnenspektrum von http://rredc.nrel.gov/solar/spectra/am1.5/
 # Spalte 1: Wellenlaenge in nm
-# Spalte 2: Intensitaet in beliebigen Einheiten
+# Spalte 2: Intensitaet in W/m^2/nm
 300.0	0.00102
 300.5	0.00125
 301.0	0.00193
