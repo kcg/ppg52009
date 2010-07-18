@@ -33,11 +33,11 @@ DataSpectral::DataSpectral()
 	int n, m;
 	vector<NRVec<DP> > xv, yv;
 	string folder = "spektren";
-	char *(fnames[]) = { "180391.dat", "180567.dat", "180575.dat",
-		"epd470.dat", "LGT676.dat", "LPM675.dat", "LVT67C.dat",
-		"LYT676.dat", "rlcv415a.dat", "smc660.dat", "smc680.dat",
-		"smc700.dat", "smc720.dat", "smd-led3528RT.dat", "smt735.dat",
-		"vl400_2.dat"};
+	char *(fnames[]) = {"01_vl400.dat", "02_rlcv415a.dat", "03_180391.dat",
+	    "04_LVT67C.dat", "05_epd470.dat", "06_180567.dat", "07_LPM675.dat",
+	    "08_LGT676.dat", "10_180575.dat", "09_LYT676.dat",
+	    "11_smd-led3528RT.dat", "12_smc660.dat", "13_smc680.dat",
+	    "14_smc700.dat", "15_smt735.dat", "16_smc720.dat"};
 	for (int i = 0; i < sizeof(fnames) / sizeof(char*); i++)
 	{
 		NRVec<DP> x, y;
@@ -59,8 +59,10 @@ DataSpectral::DataSpectral()
 		}
 		lambda[j] = xv[0][j];
 	}
-	NRVec<DP> error_estimate(0.2, n);
-	for (int i = 0; i < n; i++) error_estimate[i] = 0.4 * A_rowsum[i];
+	const DP error_estimate_array[] = {1.3, 1.7, 2.2, 0.7, 3.4,
+	    2.6, 4.0, 4.1, 3.1, 10.0, 3.0, 4.3, 1.4, 3.5, 9.4, 1.1};
+	NRVec<DP> error_estimate(16);
+	for (int i = 0; i < n; i++) error_estimate[i] = error_estimate_array[i];	
 	
 	this->A = A; global_A = A;
 	this->A_rowsum = A_rowsum;
@@ -118,7 +120,7 @@ void DataSpectral::spectrum_backus_gilbert(NRVec<DP> signal,
 			// (NR 19.6.11)
 			for (int i = 0; i < n; i++)
 			{
-				W[i][i] += s * sqr(error_estimate[i]);
+				W[i][i] += 1.0 * s * sqr(error_estimate[i]);
 			}
 			// W is now W + s * S
 			

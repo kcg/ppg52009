@@ -6,11 +6,13 @@ def spectral(lamb, bgcolor=None):
 	'''
 	calculates an rgba-color from wavelengths
 	'''
+	# basic data from http://www.magnetkern.de/spektrum.html
+	
 	#   UV, violett, blau, türkis, grün, gelb, rot,  IR
-	l = [350., 400., 450., 492., 535., 580., 650., 750.]
+	l = [350., 430., 454., 490., 542., 571., 630., 750.]
 	colors = [[.5, .5, 0., 0., 0., 1., 1., 1.],
-		[0., 0., 0., .8, 1., 1., 0., 0.],
-		[1., 1., 1., .9, 0., 0., 0., 0.],
+		[0., 0., 0., 1., 1., 1., 0., 0.],
+		[1., 1., 1., 1., 0., 0., 0., .3],
 		[0., 1., 1., 1., 1., 1., 1., 0.]]
 	
 	rgba = []

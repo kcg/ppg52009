@@ -79,9 +79,9 @@ means = I2.mean(0)
 #print I2[:,15]
 
 for i in range(len(means)):
-	print '{0:.3f}'.format(means[i]),
+	print '{0:.1f}'.format(means[i]),
 	vals = I2[:,i]
-	print '{0:.3f}'.format(sqrt(sum((vals - means[i])**2) / (len(vals) - 1.)))
+	print '{0:.1f},'.format(sqrt(sum((vals - means[i])**2) / (len(vals) - 1.)))
 
 
 
