@@ -1,5 +1,7 @@
 Für alle Grafiken, die nicht bereits in Pixelformaten vorliegen, wie zum Beispiel Fotos, sind Vektorformate die bessere Wahl. Vektorgrafiken sind viel schöner und brauchen trotzdem meistens nicht viel Speicher. Wenn man Latex mit dem pdflatex Befehl benutzt, lassen sich pdf-Grafiken direkt einbinden, jedoch dann keine .eps. Vektorgrafiken können nach pdf konvertiert werden:
+-Beste Konvertierung: http://www.fileformat.info/convert/image/svg2pdf.htm
+-Funktionierende Konvertierung, mit einigen Bugs bei Farbverläufen etc.:
 $ inkscape -z <Name.svg> -A <Name.pdf>
+-Konvertierung aus eps-Dateien:
 $ epstopdf <Name.eps> --outfile=<Name.pdf>
-$ convert <Name.???> <Name.pdf>
 Die Bilder, welche im Dokument benutzt werden, sollten im Unterordner "images" abgelegt werden.
