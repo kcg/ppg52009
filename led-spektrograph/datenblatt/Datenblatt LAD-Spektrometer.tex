@@ -70,7 +70,7 @@ Das Messwertsignal $I$ (offsetbereinigt) ist proportional zum eingebauten Messwi
 {\centering
 \begin{tabular}{c|c|c|c|c|l|r|r}
 \# &
-Bestllnummer &
+Bestellnummer &
 $\lambda_\text{em} [\mathrm{nm}]$ &
 $\lambda_\text{abs} [\mathrm{nm}]$ &
 $\Delta\lambda_\text{abs} [\mathrm{nm}]$ &
@@ -123,5 +123,19 @@ Ein Schwarzkörperspektrum mit den Parametern Temperatur und Amplitude wird auf 
 
 \subsection{Gauß}
 Eine Gaußkurve mit den Parametern mittlere Wellenlänge, Breite und Amplitude wird auf die Messdaten gefittet und die mittlere Wellenlänge ausgegeben.
+
+\section{Elektronik}
+\begin{center}
+\includegraphics[width=\textwidth]{images/circuit.pdf}
+\end{center}
+
+Die Elektronik des Spektrometers besteht aus 16 Transimpedanz-Verstärkern zur Messung der Photoströme sowie einem Mikrocontroller für die Übertragung der Daten zum PC, zusätzlich werden noch Multiplexer (\texttt{4051}) benötigt.
+
+Für den Transimpedanz-Verstärker wird ein Operationsverstärker des Typs \texttt{OPA2134} sowie ein Widerstand und eine Kapazität in Gegenkopplung verwendet.
+Der Verstärkungsfaktor wird auf jede LED einzeln anhand deren Absorptionskurven mithilfe des Gegenkopplungs-Widerstandes
+\[ U_{\text{out}} = - R_{\text{Gegenkopplung}} \cdot I_{\text{Photo}} \]
+abgestimmt, hierbei werden Werte im Bereich von $68\unit{k\Omega} \ldots 1 \unit{M\Omega}$ gewählt. Der Kondensator in der Größenordnung von einigen $\unit{pF}$ dient der Unterdrückung von Schwingungen.
+
+Die Übertragung der Messwerte auf einen Computer übernimmt ein Mikrocontroller des Typs \texttt{ATmega 8}. Dessen interner 10-bit ADC wird für die Digitalisierung der Spannungswerte herangezogen, die Kommunikation mit dem PC erfolgt über die UART-Schnittstelle mit nachgeschaltetem IC für die Wandlung des Signals auf das USB-Protokoll (\texttt{FT232RL}).
 
 \end{document}
